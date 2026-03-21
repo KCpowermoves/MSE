@@ -207,7 +207,7 @@
 
     /* Hero */
     .hero {
-      background: #fff;
+      background: #1A2332;
       position: relative;
       overflow: hidden;
       padding: 5rem 1.5rem 4.5rem;
@@ -215,21 +215,16 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -120px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%);
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.22;
       pointer-events: none;
     }
     .hero::after {
       content: '';
       position: absolute;
-      bottom: -60px;
-      left: -80px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(244,161,29,0.07) 0%, transparent 70%);
+      inset: 0;
+      background: linear-gradient(90deg, rgba(26,35,50,0.85) 40%, rgba(26,35,50,0.4) 100%);
       pointer-events: none;
     }
     .hero-inner {
@@ -244,9 +239,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: rgba(244,161,29,0.15);
-      border: 1px solid rgba(244,161,29,0.4);
-      color: #1A2332;
+      background: rgba(244,161,29,0.2);
+      border: 1px solid rgba(244,161,29,0.5);
+      color: #F4A11D;
       font-family: 'Barlow', sans-serif;
       font-weight: 700;
       font-size: 0.8rem;
@@ -266,7 +261,7 @@
       font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 900;
       line-height: 1.08;
-      color: #1A2332;
+      color: #fff;
       margin: 0 0 1.25rem;
     }
     .hero h1 .zero {
@@ -276,7 +271,7 @@
     .hero-sub {
       font-size: 1.125rem;
       line-height: 1.7;
-      color: #555;
+      color: rgba(255,255,255,0.8);
       margin: 0 0 2rem;
       max-width: 520px;
     }
@@ -306,18 +301,18 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: #fff;
-      color: #1A2332;
+      background: transparent;
+      color: #fff;
       font-family: 'Barlow', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       padding: 0.875rem 1.75rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 2px solid rgba(26,35,50,0.2);
+      border: 2px solid rgba(255,255,255,0.4);
       transition: border-color 0.15s, color 0.15s, transform 0.1s;
     }
-    .btn-secondary:hover { border-color: #1A2332; color: #C8102E; transform: translateY(-1px); }
+    .btn-secondary:hover { border-color: #fff; color: #F4A11D; transform: translateY(-1px); }
     .btn-secondary:active { transform: translateY(0); }
 
     .hero-trust {
@@ -334,7 +329,7 @@
       font-family: 'Barlow', sans-serif;
       font-weight: 600;
       font-size: 0.8rem;
-      color: #666;
+      color: rgba(255,255,255,0.7);
     }
     .hero-trust-item svg { color: #C8102E; flex-shrink: 0; }
 
@@ -1095,10 +1090,10 @@
     <nav>
       <div class="nav-inner">
         <a class="nav-logo" href="index.html">
-          <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+          <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
           <div>
             <div class="nav-brand-name">Maryland Smart Energy</div>
-            <div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div>
+            <div class="nav-brand-tag">Smarter Buildings. Lower Bills.</div>
           </div>
         </a>
         <ul class="nav-links">
@@ -1152,7 +1147,7 @@
     </nav>
     <!-- Announcement Bar -->
     <div class="announce-bar">
-      Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.
+      $0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland.
     </div>
   </div>
 
@@ -1511,9 +1506,9 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="logo-wrap">
-            <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+            <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
           </div>
-          <div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div>
+          <div class="footer-brand-tagline">Smarter Buildings. Lower Bills.</div>
           <div class="footer-brand-desc">Maryland's trusted commercial energy efficiency contractor. We help businesses save money through EmPOWER Maryland utility rebate programs — at zero out-of-pocket cost.</div>
           <div class="footer-badge">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3L11 4.5 8.5 7l.5 3.5L6 9l-3 1.5.5-3.5L1 4.5 4.5 4z" fill="currentColor"/></svg>

@@ -201,7 +201,7 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links, .nav-cta-wrap { display: none; }
+      .nav-links, .nav-cta-wrap { display: none !important; }
       .mobile-menu-btn { display: block; }
     }
 
@@ -1076,7 +1076,16 @@
       .footer-top { grid-template-columns: 1fr; }
       .footer-brand { grid-column: span 1; }
     }
-  </style>
+  
+    /* ── Mobile nav fixes ─────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 1rem; height: 60px; }
+      .nav-logo img { height: 38px; }
+      .nav-brand-name { font-size: 0.875rem; }
+      .nav-brand-tag { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+    </style>
 </head>
 <body>
 

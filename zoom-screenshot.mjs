@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer';
+const [,, url, outFile, scrollY = '400'] = process.argv;
+const browser = await puppeteer.launch({headless:true,args:['--no-sandbox']});
+const page = await browser.newPage();
+await page.setViewport({width:1280,height:800});
+await page.goto(url, {waitUntil:'networkidle0', timeout:20000});
+await page.evaluate(y => window.scrollTo(0, parseInt(y)), scrollY);
+await new Promise(r => setTimeout(r, 500));
+await page.screenshot({path: outFile});
+await browser.close();
+console.log('Saved:', outFile);

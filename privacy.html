@@ -23,7 +23,7 @@
     .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s;white-space:nowrap}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
     .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
     .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
-    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
     .page-hero{background:#1A2332;padding:4rem 1.5rem;text-align:center}
     .page-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;color:#fff;margin:0 0 .75rem}
     .page-hero p{font-size:1rem;color:rgba(255,255,255,.6);margin:0}
@@ -39,7 +39,16 @@
     .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
     .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
     .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.45);text-decoration:none;margin-left:1.25rem}.footer-legal a:hover{color:#F4A11D}
-  </style>
+  
+    /* ── Mobile nav fixes ─────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 1rem; height: 60px; }
+      .nav-logo img { height: 38px; }
+      .nav-brand-name { font-size: 0.875rem; }
+      .nav-brand-tag { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+    </style>
 </head>
 <body>
   <div class="site-header">

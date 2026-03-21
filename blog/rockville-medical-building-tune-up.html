@@ -23,7 +23,7 @@
     .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s;white-space:nowrap}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
     .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
     .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
-    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
     .post-hero{background:#1A2332;padding:4rem 1.5rem;position:relative;overflow:hidden}
     .post-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,35,50,.65),rgba(26,35,50,.65)),url('../brand_assets/images/building-tuneup-hero.jpg') center/cover no-repeat}
     .post-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
@@ -69,7 +69,16 @@
     footer{background:#1A2332;color:rgba(255,255,255,.7);padding:3rem 1.5rem 2rem}
     .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
     .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.45);text-decoration:none;margin-left:1.25rem}.footer-legal a:hover{color:#F4A11D}
-  </style>
+  
+    /* ── Mobile nav fixes ─────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 1rem; height: 60px; }
+      .nav-logo img { height: 38px; }
+      .nav-brand-name { font-size: 0.875rem; }
+      .nav-brand-tag { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+    </style>
 </head>
 <body>
   <div class="site-header">

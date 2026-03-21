@@ -55,7 +55,7 @@
     .mobile-nav a { display: block; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 1rem; color: #1A2332; text-decoration: none; padding: 0.6rem 0; border-bottom: 1px solid rgba(26,35,50,0.06); }
     .mobile-nav a:hover { color: #C8102E; }
     .mobile-nav .mobile-cta { display: block; margin-top: 1rem; background: #C8102E; color: #fff; text-align: center; padding: 0.75rem; border-radius: 6px; font-weight: 700; }
-    @media (max-width: 900px) { .nav-links, .nav-cta-wrap { display: none; } .mobile-menu-btn { display: block; } }
+    @media (max-width: 900px) { .nav-links, .nav-cta-wrap { display: none !important; } .mobile-menu-btn { display: block; } }
     /* Page hero */
     .page-hero { background: #1A2332; padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(26,35,50,.62),rgba(26,35,50,.62)),url('../brand_assets/images/hvac-tune-up-hero.jpg') center/cover no-repeat; pointer-events: none; }
@@ -162,7 +162,16 @@
     .footer-bottom p { font-size: 0.8125rem; color: rgba(255,255,255,0.35); margin: 0; }
     .footer-legal a { font-size: 0.8125rem; color: rgba(255,255,255,0.35); text-decoration: none; margin-left: 1.25rem; }
     @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-  </style>
+  
+    /* ── Mobile nav fixes ─────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 1rem; height: 60px; }
+      .nav-logo img { height: 38px; }
+      .nav-brand-name { font-size: 0.875rem; }
+      .nav-brand-tag { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+    </style>
 </head>
 <body>
 

@@ -16,7 +16,7 @@
     .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
     .nav-logo img{height:52px;width:auto}
     .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
-    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;margin-top:.2rem}
     .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
     .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
     .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
@@ -25,7 +25,7 @@
     .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
     @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
     .post-hero{background:#1A2332;padding:4rem 1.5rem;position:relative;overflow:hidden}
-    .post-hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80') center/cover no-repeat;opacity:.18}
+    .post-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,35,50,.65),rgba(26,35,50,.65)),url('../brand_assets/images/benchmarking-hero.jpg') center/cover no-repeat}
     .post-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
     .post-category{display:inline-block;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;padding:.25rem .75rem;border-radius:4px;margin-bottom:1rem}
     .post-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;color:#fff;margin:0 0 1rem;line-height:1.15}
@@ -68,13 +68,13 @@
     <nav><div class="nav-inner">
       <a class="nav-logo" href="../index.html">
         <img src="../brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
-        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings. Lower Bills.</div></div>
+        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
       </a>
       <ul class="nav-links">
         <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown-menu"><a href="../services/hvac-tune-up.html">HVAC Tune-Up</a><a href="../services/building-tune-up.html">Building Tune-Up</a><a href="../services/lighting.html">Lighting</a><a href="../services/energy-supply.html">Energy Supply</a><a href="../services/community-solar.html">Community Solar</a><a href="../services/benchmarking.html">Benchmarking Services</a></div>
         </li>
-        <li><a href="../about.html">About</a></li><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li><li class="dropdown"><a href="../empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="../empower-maryland.html">EmPOWER Maryland Overview</a><a href="../bge-energy-efficiency.html">BGE Programs</a><a href="../pepco-energy-efficiency.html">Pepco Programs</a><a href="../delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="../smeco-energy-efficiency.html">SMECO Programs</a></div></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
       </ul>
       <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem">
         <a href="tel:3018887090" class="nav-phone">(301) 888-7090</a>
@@ -90,7 +90,7 @@
   <section class="post-hero">
     <div class="post-hero-inner">
       <div class="post-category">EmPOWER Maryland</div>
-      <h1>What Maryland's HB 864 Means for Your Business — and Why 2025 Is the Year to Act</h1>
+      <h1>What Maryland's HB 864 Means for Your Business — and Why 2026 Is the Year to Act</h1>
       <div class="post-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> January 8, 2026</span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7 min read</span>
@@ -113,6 +113,7 @@
       <div class="stat-card"><div class="num">2026</div><div class="label">Current Program Cycle End</div></div>
     </div>
 
+    <img src="../brand_assets/images/benchmarking-side.jpg" alt="Maryland energy benchmarking and compliance" style="width:100%;height:280px;object-fit:cover;border-radius:10px;margin:2rem 0 1.5rem">
     <h2>What HB 864 Changed in 2024</h2>
     <p>Prior to HB 864, EmPOWER Maryland's commercial programs had a relatively narrow focus on traditional energy efficiency measures — lighting upgrades, HVAC tune-ups, and building envelope improvements. HB 864 expanded that scope in several meaningful ways:</p>
 
@@ -142,13 +143,13 @@
     <h3>Lighting Upgrade Programs (Up to 80% Rebate)</h3>
     <p>LED lighting upgrades remain one of the highest-ROI energy investments for commercial buildings. Under EmPOWER Maryland's 2024–2026 cycle, lighting rebates cover up to 80% of upgrade costs, with instant discounts also available at participating distributors. LED fixtures use up to 90% less electricity than fluorescent or metal halide alternatives and last 3–5x longer.</p>
 
-    <h2>Why 2025 Is the Right Time to Act</h2>
-    <p>The current EmPOWER Maryland program cycle runs through 2026. Here's why acting in 2025 — rather than waiting — makes strategic sense:</p>
+    <h2>Why 2026 Is the Right Time to Act</h2>
+    <p>The current EmPOWER Maryland program cycle runs through 2026 — meaning this is the final year of the current funding cycle. Here's why acting now rather than waiting makes strategic sense:</p>
     <ul>
-      <li><strong>Budget availability:</strong> Early in a program cycle, rebate budgets are fully funded. Applications submitted mid-cycle have a higher approval rate than those submitted when budgets are running low.</li>
-      <li><strong>Future uncertainty:</strong> EmPOWER Maryland is subject to reauthorization and rate proceedings. While the program has strong bipartisan support, rebate structures can change. What's available today may not be available at the same rates in 2027.</li>
-      <li><strong>Compounding savings:</strong> Every month you delay is a month of energy savings you're leaving on the table. A building that completes an HVAC tune-up in January 2025 will have captured 12+ months of savings by year-end. Waiting until December means those savings are gone forever.</li>
-      <li><strong>BEPS compliance runway:</strong> Maryland's Building Energy Performance Standards (BEPS) require buildings 35,000+ sq ft to meet energy intensity targets starting in 2030. Buildings that start energy improvements now will have a much easier path to compliance than those scrambling in 2028–2029.</li>
+      <li><strong>Final year of the cycle:</strong> The 2024–2026 program cycle ends this year. Applications submitted now still have access to the full rebate structure. Waiting until 2027 means starting fresh under a new cycle with potentially different (and possibly lower) rebate rates.</li>
+      <li><strong>Budget depletion risk:</strong> Rebate budgets are consumed on a first-come, first-served basis. By mid-year, high-demand programs — especially HVAC — can exhaust their annual budgets. Don't wait until Q3 or Q4.</li>
+      <li><strong>Compounding savings:</strong> Every month you delay is a month of energy savings you're leaving on the table. A building that completes an HVAC tune-up in Q1 2026 will capture a full year of savings. Waiting until year-end means those savings are gone forever.</li>
+      <li><strong>BEPS compliance runway:</strong> Maryland's Building Energy Performance Standards (BEPS) require buildings 35,000+ sq ft to meet energy intensity targets starting in 2030. With only four years left, buildings that start energy improvements in 2026 will have a much easier path to compliance than those scrambling in 2028–2029.</li>
     </ul>
 
     <div class="callout">

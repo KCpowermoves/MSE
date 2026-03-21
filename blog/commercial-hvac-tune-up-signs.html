@@ -16,7 +16,7 @@
     .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
     .nav-logo img{height:52px;width:auto}
     .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
-    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;margin-top:.2rem}
     .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
     .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
     .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
@@ -25,7 +25,7 @@
     .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
     @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
     .post-hero{background:#1A2332;padding:4rem 1.5rem;position:relative;overflow:hidden}
-    .post-hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1400&q=80') center/cover no-repeat;opacity:.2}
+    .post-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,35,50,.65),rgba(26,35,50,.65)),url('../brand_assets/images/hvac-tune-up-hero.jpg') center/cover no-repeat}
     .post-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
     .post-category{display:inline-block;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;padding:.25rem .75rem;border-radius:4px;margin-bottom:1rem}
     .post-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;color:#fff;margin:0 0 1rem;line-height:1.15}
@@ -73,13 +73,13 @@
     <nav><div class="nav-inner">
       <a class="nav-logo" href="../index.html">
         <img src="../brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
-        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings. Lower Bills.</div></div>
+        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
       </a>
       <ul class="nav-links">
         <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown-menu"><a href="../services/hvac-tune-up.html">HVAC Tune-Up</a><a href="../services/building-tune-up.html">Building Tune-Up</a><a href="../services/lighting.html">Lighting</a><a href="../services/energy-supply.html">Energy Supply</a><a href="../services/community-solar.html">Community Solar</a><a href="../services/benchmarking.html">Benchmarking Services</a></div>
         </li>
-        <li><a href="../about.html">About</a></li><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li><li class="dropdown"><a href="../empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="../empower-maryland.html">EmPOWER Maryland Overview</a><a href="../bge-energy-efficiency.html">BGE Programs</a><a href="../pepco-energy-efficiency.html">Pepco Programs</a><a href="../delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="../smeco-energy-efficiency.html">SMECO Programs</a></div></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
       </ul>
       <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem">
         <a href="tel:3018887090" class="nav-phone">(301) 888-7090</a>
@@ -138,6 +138,7 @@
       <div class="sign-body">If you've had service technicians out multiple times in the past year — replacing a contactor here, adding refrigerant there, replacing a capacitor — without a thorough diagnosis of why these parts keep failing, you may be in a reactive maintenance cycle. A comprehensive tune-up takes a systematic approach: checking refrigerant charge against manufacturer specs, measuring supply and return air temperatures, testing all electrical components, and calibrating controls. This diagnostic view often reveals that what looked like multiple component failures was actually a single underlying issue — and that replacement isn't needed.</div>
     </div>
 
+    <img src="../brand_assets/images/hvac-tune-up-side.jpg" alt="HVAC technician servicing a commercial rooftop unit" style="width:100%;height:280px;object-fit:cover;border-radius:10px;margin:2rem 0 1.5rem">
     <h2>When Replacement IS the Right Call</h2>
     <p>To be fair, some situations genuinely warrant replacement rather than a tune-up:</p>
     <ul>

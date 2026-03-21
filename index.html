@@ -85,7 +85,7 @@
     .nav-logo { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; }
     .nav-logo img { height: 52px; width: auto; }
     .nav-brand-name { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.0625rem; color: #1A2332; line-height: 1.15; }
-    .nav-brand-tag { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.6875rem; color: #999; line-height: 1; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+    .nav-brand-tag { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.6875rem; color: #C8102E; line-height: 1; margin-top: 0.2rem; }
     .nav-phone { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.875rem; color: #1A2332; text-decoration: none; white-space: nowrap; }
     .nav-phone:hover { color: #C8102E; }
     .nav-links {
@@ -216,16 +216,9 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80') center/cover no-repeat;
-      opacity: 0.22;
+      background: linear-gradient(rgba(26,35,50,0.65), rgba(26,35,50,0.65)), url('brand_assets/images/hvac-hero-background.jpg') center/cover no-repeat;
       pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(26,35,50,0.85) 40%, rgba(26,35,50,0.4) 100%);
-      pointer-events: none;
+      z-index: 0;
     }
     .hero-inner {
       max-width: 1200px;
@@ -234,6 +227,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
     .hero-badge {
       display: inline-flex;
@@ -1093,7 +1088,7 @@
           <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
           <div>
             <div class="nav-brand-name">Maryland Smart Energy</div>
-            <div class="nav-brand-tag">Smarter Buildings. Lower Bills.</div>
+            <div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div>
           </div>
         </a>
         <ul class="nav-links">
@@ -1114,7 +1109,7 @@
             </div>
           </li>
           <li><a href="about.html">About</a></li>
-          <li><a href="empower-maryland.html">EmPOWER Maryland</a></li>
+          <li class="dropdown"><a href="empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="empower-maryland.html">EmPOWER Maryland Overview</a><a href="bge-energy-efficiency.html">BGE Programs</a><a href="pepco-energy-efficiency.html">Pepco Programs</a><a href="delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="smeco-energy-efficiency.html">SMECO Programs</a></div></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -1161,7 +1156,7 @@
         </div>
         <h1>Maryland's <span class="zero">$0</span> Commercial HVAC Tune-Up Program</h1>
         <p class="hero-sub">
-          Your HVAC tune-up, building upgrades, and lighting improvements — fully covered by EmPOWER Maryland. No out-of-pocket cost. No gimmicks. We handle all the paperwork.
+          Your HVAC tune-up, building upgrades, and lighting improvements — fully covered by EmPOWER Maryland. $0 after rebates. No gimmicks. We handle all the paperwork.
         </p>
         <div class="hero-actions">
           <a href="contact.html" class="btn-primary">
@@ -1269,8 +1264,8 @@
           <div class="why-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>$0 Out-of-Pocket Cost</h3>
-          <p>Your HVAC tune-up and building upgrades are 100% covered by EmPOWER Maryland rebates. There is no catch — it is free for qualifying businesses.</p>
+          <h3>$0 After Rebates</h3>
+          <p>Your HVAC tune-up and building upgrades are 100% covered by EmPOWER Maryland rebates. There is no catch — it's $0 after rebates for qualifying businesses.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">
@@ -1478,7 +1473,7 @@
       <div class="faq-list">
         <details>
           <summary>Is it really free? What's the catch?</summary>
-          <div class="faq-answer">There is no catch. The EmPOWER Maryland program is funded by a small surcharge on every Maryland electric bill — meaning the program is already paid for. Businesses like yours are entitled to these benefits. Maryland Smart Energy is an authorized service provider that performs the work and handles the rebate paperwork on your behalf. You pay nothing out of pocket.</div>
+          <div class="faq-answer">There is no catch. The EmPOWER Maryland program is funded by a small surcharge on every Maryland electric bill — meaning the program is already paid for. Businesses like yours are entitled to these benefits. Maryland Smart Energy is an authorized service provider that performs the work and handles the rebate paperwork on your behalf. Your cost is $0 after rebates.</div>
         </details>
         <details>
           <summary>Who qualifies for the $0 HVAC tune-up?</summary>
@@ -1508,7 +1503,7 @@
           <div class="logo-wrap">
             <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
           </div>
-          <div class="footer-brand-tagline">Smarter Buildings. Lower Bills.</div>
+          <div class="footer-brand-tagline">Smarter Buildings, Smaller Bills</div>
           <div class="footer-brand-desc">Maryland's trusted commercial energy efficiency contractor. We help businesses save money through EmPOWER Maryland utility rebate programs — at zero out-of-pocket cost.</div>
           <div class="footer-badge">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3L11 4.5 8.5 7l.5 3.5L6 9l-3 1.5.5-3.5L1 4.5 4.5 4z" fill="currentColor"/></svg>

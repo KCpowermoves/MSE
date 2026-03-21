@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commercial HVAC Tune-Up — $0 Cost | Maryland Smart Energy</title>
-  <meta name="description" content="Get a free commercial HVAC tune-up covered 100% by EmPOWER Maryland. Serving BGE, Pepco, Delmarva Power & SMECO customers. Save 5–20% on energy bills." />
+  <meta name="description" content="Get your $0-after-rebates commercial HVAC tune-up through EmPOWER Maryland. Serving BGE, Pepco, Delmarva Power & SMECO customers. Save 5–20% on energy bills." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
     .nav-logo { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; }
     .nav-logo img { height: 52px; width: auto; }
     .nav-brand-name { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.0625rem; color: #1A2332; line-height: 1.15; }
-    .nav-brand-tag { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.6875rem; color: #999; line-height: 1; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+    .nav-brand-tag { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.6875rem; color: #C8102E; line-height: 1; margin-top: 0.2rem; }
     .nav-phone { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.875rem; color: #1A2332; text-decoration: none; white-space: nowrap; } .nav-phone:hover { color: #C8102E; }
     .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
     .nav-links a { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.9rem; color: #1A2332; text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 4px; transition: background 0.15s, color 0.15s; }
@@ -58,9 +58,9 @@
     @media (max-width: 900px) { .nav-links, .nav-cta-wrap { display: none; } .mobile-menu-btn { display: block; } }
     /* Page hero */
     .page-hero { background: #1A2332; padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1400&q=80') center/cover no-repeat; opacity: .18; pointer-events: none; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(26,35,50,.62),rgba(26,35,50,.62)),url('../brand_assets/images/hvac-tune-up-hero.jpg') center/cover no-repeat; pointer-events: none; }
     .page-hero::after { content: ''; position: absolute; bottom: -60px; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(244,161,29,0.1) 0%, transparent 65%); pointer-events: none; }
-    .page-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: center; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: center;  position: relative; z-index: 1; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(244,161,29,0.15); border: 1px solid rgba(244,161,29,0.3); color: #F4A11D; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 100px; margin-bottom: 1.25rem; }
     .page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.25rem); font-weight: 900; color: #fff; margin: 0 0 1.25rem; line-height: 1.1; }
     .page-hero h1 span { color: #F4A11D; }
@@ -71,13 +71,13 @@
     .btn-gold { display: inline-flex; align-items: center; gap: 0.5rem; background: #F4A11D; color: #1A2332; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1rem; padding: 0.875rem 1.75rem; border-radius: 6px; text-decoration: none; transition: background 0.15s, transform 0.1s; }
     .btn-gold:hover { background: #D4891A; transform: translateY(-1px); }
     /* Hero card */
-    .hero-info-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.75rem; }
+    .hero-info-card { display: flex; flex-direction: column; gap: .75rem; }
     .info-card-row { display: flex; flex-direction: column; gap: 1rem; }
-    .info-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .info-item { display: flex; align-items: center; gap: 0.875rem; background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:.875rem 1rem;backdrop-filter:blur(6px); }
     .info-icon { width: 36px; height: 36px; background: rgba(200,16,46,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .info-icon svg { color: #F4A11D; }
     .info-text strong { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.9375rem; color: #fff; display: block; }
-    .info-text span { font-size: 0.8125rem; color: rgba(255,255,255,0.55); }
+    .info-text span { font-size: 0.8125rem; color: rgba(255,255,255,0.8); }
     @media (max-width: 900px) { .page-hero-inner { grid-template-columns: 1fr; } .hero-info-card { display: none; } }
     /* Breadcrumb */
     .breadcrumb { background: #F5F5F5; padding: 0.75rem 1.5rem; font-family: 'Barlow', sans-serif; font-size: 0.8125rem; color: #888; }
@@ -171,7 +171,7 @@
     <div class="nav-inner">
       <a class="nav-logo" href="../index.html">
         <img src="../brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
-        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings. Lower Bills.</div></div>
+        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
       </a>
       <ul class="nav-links">
         <li class="dropdown">
@@ -186,7 +186,7 @@
           </div>
         </li>
         <li><a href="../about.html">About</a></li>
-        <li><a href="../empower-maryland.html">EmPOWER Maryland</a></li>
+        <li class="dropdown"><a href="../empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="../empower-maryland.html">EmPOWER Maryland Overview</a><a href="../bge-energy-efficiency.html">BGE Programs</a><a href="../pepco-energy-efficiency.html">Pepco Programs</a><a href="../delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="../smeco-energy-efficiency.html">SMECO Programs</a></div></li>
         <li><a href="../blog.html">Blog</a></li>
         <li><a href="../faq.html">FAQ</a></li>
         <li><a href="../contact.html">Contact</a></li>
@@ -220,7 +220,7 @@
     <div class="page-hero-inner">
       <div>
         <div class="hero-eyebrow">Most Popular Service</div>
-        <h1>Commercial HVAC Tune-Up — <span>$0 Out-of-Pocket</span></h1>
+        <h1>Commercial HVAC Tune-Up — <span>$0 After Rebates</span></h1>
         <p class="page-hero-sub">Full inspection, cleaning, and optimization of your commercial HVAC systems — completely covered by EmPOWER Maryland. Save 5–20% on your energy bill starting immediately after service.</p>
         <div class="hero-actions">
           <a href="../contact.html" class="btn-primary">Schedule Your Free Tune-Up <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -257,7 +257,7 @@
       <div class="content-section">
         <div class="section-eyebrow">Program Overview</div>
         <h2 class="section-title">What Is the Commercial HVAC Tune-Up Program?</h2>
-        <p>The Commercial HVAC Tune-Up program is an EmPOWER Maryland initiative that allows Maryland businesses to receive a full professional tune-up of their HVAC systems at absolutely no out-of-pocket cost. The program is funded through your utility's EmPOWER Maryland surcharge — meaning you have already been contributing to this program every month on your electric bill.</p>
+        <p>The Commercial HVAC Tune-Up program is an EmPOWER Maryland initiative that allows Maryland businesses to receive a full professional tune-up of their HVAC systems at $0 after rebates. The program is funded through your utility's EmPOWER Maryland surcharge — meaning you have already been contributing to this program every month on your electric bill.</p>
         <p>Maryland Smart Energy is an authorized service provider for this program under BGE, Pepco, Delmarva Power, and SMECO. We perform the technical work, handle all utility rebate applications, and submit all documentation on your behalf. You simply schedule a time and we do the rest.</p>
         <p>Commercial HVAC systems that are not regularly maintained lose 5–10% efficiency per year. A professional tune-up restores peak performance, reduces energy consumption, and extends equipment life — all at zero cost to your business.</p>
       </div>
@@ -372,7 +372,7 @@
     <aside class="sidebar">
       <div class="sidebar-card">
         <h3>Ready to Schedule?</h3>
-        <p>Get your free commercial HVAC tune-up covered by EmPOWER Maryland. Takes 2 minutes to get started.</p>
+        <p>Get your $0-after-rebates commercial HVAC tune-up through EmPOWER Maryland. Takes 2 minutes to get started.</p>
         <a href="../contact.html" class="btn-gold">Schedule Free Tune-Up</a>
         <div style="margin-top:1rem;text-align:center;">
           <a href="tel:3018887090" style="color:rgba(255,255,255,0.7);font-size:0.875rem;text-decoration:none;">Or call (301) 888-7090</a>
@@ -444,7 +444,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img src="../brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
-          <div class="footer-brand-tagline">Smarter Buildings. Lower Bills.</div>
+          <div class="footer-brand-tagline">Smarter Buildings, Smaller Bills</div>
         </div>
         <div class="footer-col"><h4>Services</h4><ul>
           <li><a href="hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="building-tune-up.html">Building Tune-Up</a></li>
@@ -452,7 +452,7 @@
           <li><a href="community-solar.html">Community Solar</a></li><li><a href="benchmarking.html">Benchmarking</a></li>
         </ul></div>
         <div class="footer-col"><h4>Resources</h4><ul>
-          <li><a href="../empower-maryland.html">EmPOWER Maryland</a></li>
+          <li class="dropdown"><a href="../empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="../empower-maryland.html">EmPOWER Maryland Overview</a><a href="../bge-energy-efficiency.html">BGE Programs</a><a href="../pepco-energy-efficiency.html">Pepco Programs</a><a href="../delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="../smeco-energy-efficiency.html">SMECO Programs</a></div></li>
           <li><a href="../bge-energy-efficiency.html">BGE Programs</a></li>
           <li><a href="../pepco-energy-efficiency.html">Pepco Programs</a></li>
           <li><a href="../delmarva-energy-efficiency.html">Delmarva Programs</a></li>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — Maryland Smart Energy Pricing</title>
+  <meta name="description" content="Choose your commercial energy efficiency plan. $0 net-cost HVAC tune-up after EmPOWER Maryland rebate. Serving BGE, Pepco, Delmarva Power, and SMECO customers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}
+    h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;margin-top:.2rem}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
+    @media(max-width:768px){.nav-inner{padding:0 1rem;height:60px}.nav-logo img{height:38px}.nav-brand-name{font-size:.875rem}.nav-brand-tag{display:none}.mobile-menu-btn{display:block}}
+    .page-hero{background:#1A2332;padding:3.5rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,35,50,.72),rgba(26,35,50,.72)),url('brand_assets/images/hvac-tune-up-hero.jpg') center/cover no-repeat;pointer-events:none;z-index:0}
+    .page-hero>*{position:relative;z-index:1}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1rem}
+    .page-hero h1{font-size:clamp(2rem,3.5vw,2.75rem);font-weight:900;color:#fff;margin:0 0 1rem;line-height:1.1}
+    .page-hero h1 em{font-style:normal;color:#F4A11D}
+    .page-hero-sub{font-size:1rem;line-height:1.7;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto}
+    .widget-page{background:#f8fafc;min-height:60vh;padding:3.5rem 1rem 5rem}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);font-family:'Barlow',sans-serif;text-align:center;padding:2rem 1.5rem;font-size:.875rem}
+    footer a{color:#F4A11D;text-decoration:none}
+    /* Pricing widget */
+    .mse-fade{animation:mseFade .35s ease-out both}
+    @keyframes mseFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes mseGlow{0%,100%{box-shadow:0 8px 32px rgba(27,107,58,.12)}50%{box-shadow:0 8px 44px rgba(27,107,58,.22)}}
+    .mse-wrap{font-family:'DM Sans','Segoe UI',sans-serif;max-width:1160px;margin:0 auto;color:#1a2b3c}
+    .mse-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:28px 24px;transition:border-color .2s,box-shadow .2s,transform .15s;cursor:pointer;position:relative;display:flex;flex-direction:column}
+    .mse-card:hover{border-color:#94b8d4;box-shadow:0 4px 20px rgba(30,80,130,.08);transform:translateY(-2px)}
+    .mse-hero-card{border:3px solid #1B6B3A;animation:mseGlow 3s ease-in-out infinite;transform:scale(1.02);z-index:2}
+    .mse-hero-card:hover{transform:scale(1.03) translateY(-2px)}
+    .mse-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:5px 18px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+    .mse-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans','Segoe UI',sans-serif}
+    .mse-pri{background:#1B6B3A;color:#fff}.mse-pri:hover{background:#145a2f}
+    .mse-sec{background:#f1f5f9;color:#475569}.mse-sec:hover{background:#e2e8f0}
+    .mse-out{background:transparent;color:#1B6B3A;border:2px solid #1B6B3A}.mse-out:hover{background:#f0faf3}
+    .mse-out-purple{background:transparent;color:#5B21B6;border:2px solid #7C3AED}.mse-out-purple:hover{background:#f5f3ff}
+    .mse-input{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:15px;font-family:'DM Sans','Segoe UI',sans-serif;color:#1a2b3c;transition:border-color .2s;outline:none;box-sizing:border-box}
+    .mse-input:focus{border-color:#1B6B3A}
+    .mse-err-border{border-color:#dc2626!important}
+    .mse-sel{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2364748B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center;padding-right:40px}
+    .mse-stepper-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;border:2px solid #e2e8f0;background:#fff;font-size:20px;cursor:pointer;font-family:'DM Sans',sans-serif;color:#1a2b3c;font-weight:600;transition:all .15s;user-select:none}
+    .mse-stepper-btn:hover{background:#f0faf3;border-color:#1B6B3A}
+    .mse-disclaimer{display:flex;align-items:flex-start;gap:2px;font-size:11px;color:#94a3b8;line-height:1.5;margin-top:4px}
+    .mse-grid{display:flex;gap:20px;align-items:stretch;justify-content:center}
+    @media(max-width:860px){.mse-grid{flex-direction:column!important;align-items:center}.mse-hero-card{transform:scale(1)!important}.mse-hero-card:hover{transform:translateY(-2px)!important}.mse-grid .mse-card{max-width:100%!important;width:100%}}
+    @media(max-width:600px){.mse-progress{flex-wrap:wrap;gap:6px!important}.mse-progress-connector{display:none}}
+  </style>
+</head>
+<body>
+<div class="site-header">
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="brand_assets/MSE Logo.png" alt="Maryland Smart Energy" />
+        <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+      </a>
+      <ul class="nav-links">
+        <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="dropdown-menu"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking Services</a></div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown"><a href="empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="dropdown-menu"><a href="empower-maryland.html">EmPOWER Maryland Overview</a><a href="bge-energy-efficiency.html">BGE Programs</a><a href="pepco-energy-efficiency.html">Pepco Programs</a><a href="delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="smeco-energy-efficiency.html">SMECO Programs</a></div>
+        </li>
+        <li><a href="blog.html">Blog</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="pricing.html" class="nav-cta-btn">Get Started</a></div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)">(301) 888-7090</a><a href="pricing.html" class="mobile-cta">Get Started</a></div>
+  </nav>
+  <div class="announce-bar">$0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland.</div>
+</div>
+
+<div class="page-hero">
+  <div class="hero-eyebrow">EmPOWER Maryland Authorized Provider</div>
+  <h1>Choose Your <em>Energy Plan</em></h1>
+  <p class="page-hero-sub">Customize pricing for your building in under 2 minutes. All plans include full EmPOWER rebate filing — we handle the paperwork.</p>
+</div>
+
+<div class="widget-page">
+  <div id="mse-widget" class="mse-wrap"></div>
+</div>
+
+<footer>
+  <p style="margin:0 0 .5rem">&copy; 2025 Maryland Smart Energy &mdash; EmPOWER Maryland Authorized Provider</p>
+  <p style="margin:0">Questions? Call <a href="tel:3018887090">(301) 888-7090</a> or <a href="contact.html">contact us</a>.</p>
+</footer>
+
+<script>
+const state = { step:1, units:3, selectedPlan:null, errors:{}, form:{name:'',email:'',phone:'',address:'',utility:''} };
+const UTILITIES = ['BGE','Pepco','Delmarva Power','SMECO','Other'];
+
+function fmt(n){ return Number(n).toLocaleString(); }
+function totals(){ const u=state.units; return { t1:u*160, t2:u*54, t3:u<=5?2400:2400+(u-5)*160 }; }
+
+function tier3Stack(){
+  const u=state.units;
+  return [
+    {item:`4 quarterly HVAC tune-ups (${u} units)`,value:u*214*4,cat:'core'},
+    {item:'Programmable thermostat install + optimization',value:u*229,cat:'eq'},
+    {item:'BAS review & controls optimization (engineer-led)',value:1500,cat:'eq'},
+    {item:'Walk-in refrigeration sensor & controls assessment',value:800,cat:'eq'},
+    {item:'Comprehensive lighting efficiency walkthrough',value:500,cat:'add'},
+    {item:'Energy supply rate analysis & procurement review',value:400,cat:'add'},
+    {item:'Community solar feasibility assessment',value:400,cat:'add'},
+    {item:'BEPS benchmarking compliance setup & filing',value:1200,cat:'add'},
+    {item:'Annual energy performance report',value:600,cat:'add'},
+    {item:'Dedicated utility advisor (year-round)',value:1200,cat:'add'},
+  ];
+}
+
+const SVG = {
+  check:`<svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px;margin-right:8px"><circle cx="9" cy="9" r="9" fill="#E8F5E9"/><path d="M5.5 9.5L7.5 11.5L12.5 6.5" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  star:`<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="display:block;flex-shrink:0"><path d="M8 0l2.47 4.94L16 5.77l-4 3.83L12.94 16 8 13.27 3.06 16 4 9.6 0 5.77l5.53-.83z"/></svg>`,
+  arrow:`<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h10M10 5l4 4-4 4"/></svg>`,
+  arrowDown:`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1B6B3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>`,
+  info:`<svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="vertical-align:middle;margin-right:4px;flex-shrink:0"><circle cx="7" cy="7" r="6.5" stroke="#94a3b8"/><path d="M7 6v4M7 4.5v.01" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+};
+
+function progress(){
+  const steps=[{num:1,label:'Building Info'},{num:2,label:'Contact Details'},{num:3,label:'Choose Plan'},{num:4,label:'Checkout'}];
+  return `<div class="mse-progress" style="display:flex;justify-content:center;gap:4px;margin-bottom:40px;flex-wrap:wrap">
+    ${steps.map((s,i)=>`<div style="display:flex;align-items:center;gap:4px">
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;background:${state.step>=s.num?'#f0faf3':'#f8fafc'};border:2px solid ${state.step===s.num?'#1B6B3A':'transparent'}">
+        <div style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;background:${state.step>=s.num?'#1B6B3A':'#cbd5e1'};color:#fff">${state.step>s.num?'&#10003;':s.num}</div>
+        <span style="font-size:13px;font-weight:${state.step===s.num?600:400};color:${state.step>=s.num?'#1a2b3c':'#94a3b8'}">${s.label}</span>
+      </div>
+      ${i<steps.length-1?`<div class="mse-progress-connector" style="width:24px;height:2px;background:${state.step>s.num?'#1B6B3A':'#e2e8f0'};border-radius:1px"></div>`:''}
+    </div>`).join('')}
+  </div>`;
+}
+
+function rebateFlow(){
+  const amt=fmt(state.units*160);
+  return `<div style="background:linear-gradient(135deg,#f0faf3,#e6f4ea);border-radius:12px;padding:16px 18px;margin-bottom:18px">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#64748b;margin-bottom:12px">Here's how it works</div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#374151">You pay today</span><span style="font-size:15px;font-weight:700;color:#1a2b3c">$${amt}</span></div>
+      <div style="display:flex;justify-content:center;padding:2px 0">${SVG.arrowDown}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;color:#374151">Your utility rebate</span><span style="font-size:15px;font-weight:700;color:#1B6B3A">&#8722;$${amt}</span></div>
+      <div style="border-top:2px solid #1B6B3A;margin-top:6px;padding-top:8px;display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:14px;font-weight:700;color:#1a2b3c">Your net cost</span>
+        <span style="font-size:22px;font-weight:800;color:#1B6B3A">$0</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function step1(){
+  return `<div style="max-width:540px;margin:0 auto;text-align:center">
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:8px">Let's Get Started</h2>
+    <p style="color:#64748b;font-size:16px;margin-bottom:40px;line-height:1.6">Tell us about your building so we can customize your plan and pricing.</p>
+    <div style="background:#f8faf9;border-radius:16px;padding:40px 32px;border:1px solid #e8efe8">
+      <label style="display:block;font-size:16px;font-weight:600;margin-bottom:20px">How many HVAC units does your building have?</label>
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px">
+        <button class="mse-stepper-btn" id="u-minus">&#8722;</button>
+        <span style="width:72px;text-align:center;font-size:28px;font-weight:700;color:#1B6B3A" id="u-disp">${state.units}</span>
+        <button class="mse-stepper-btn" id="u-plus">+</button>
+      </div>
+      <p style="font-size:13px;color:#94a3b8;margin:0;line-height:1.5">Standard pricing covers 3-ton to 20-ton units.<br>For units outside this range, we'll customize a quote.</p>
+    </div>
+    <button class="mse-btn mse-pri" id="s1-next" style="margin-top:32px;width:100%;max-width:320px">See My Pricing ${SVG.arrow}</button>
+  </div>`;
+}
+
+function step2(){
+  const fields=[
+    {key:'name',label:'Full Name',type:'text',ph:'John Smith'},
+    {key:'email',label:'Email Address',type:'email',ph:'john@company.com'},
+    {key:'phone',label:'Phone Number',type:'tel',ph:'(301) 555-0123'},
+    {key:'address',label:'Building Address',type:'text',ph:'123 Main St, Baltimore, MD 21201'},
+  ];
+  return `<div style="max-width:540px;margin:0 auto">
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:8px;text-align:center">Where should we send your plan details?</h2>
+    <p style="color:#64748b;font-size:16px;margin-bottom:32px;text-align:center;line-height:1.6">Pricing customized for ${state.units} unit${state.units!==1?'s':''}.</p>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      ${fields.map(f=>`<div>
+        <label style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">${f.label}</label>
+        <input class="mse-input${state.errors[f.key]?' mse-err-border':''}" type="${f.type}" placeholder="${f.ph}" value="${state.form[f.key]}" data-field="${f.key}" />
+        ${state.errors[f.key]?`<span style="font-size:12px;color:#dc2626;margin-top:4px;display:block">${state.errors[f.key]}</span>`:''}
+      </div>`).join('')}
+      <div>
+        <label style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Utility Provider</label>
+        <select class="mse-input mse-sel${state.errors.utility?' mse-err-border':''}" data-field="utility">
+          <option value="">Select your utility...</option>
+          ${UTILITIES.map(u=>`<option value="${u}"${state.form.utility===u?' selected':''}>${u}</option>`).join('')}
+        </select>
+        ${state.errors.utility?`<span style="font-size:12px;color:#dc2626;margin-top:4px;display:block">${state.errors.utility}</span>`:''}
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:32px">
+      <button class="mse-btn mse-sec" id="s2-back">Back</button>
+      <button class="mse-btn mse-pri" id="s2-next" style="flex:1">Show My Options ${SVG.arrow}</button>
+    </div>
+  </div>`;
+}
+
+function step3(){
+  const {t1,t2,t3}=totals(); const u=state.units;
+  const stack=tier3Stack();
+  const totalVal=stack.reduce((a,b)=>a+b.value,0);
+  const core=stack.filter(v=>v.cat==='core'||v.cat==='eq');
+  const add=stack.filter(v=>v.cat==='add');
+
+  return `<div>
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:8px;text-align:center">Choose Your Plan</h2>
+    <p style="color:#64748b;font-size:16px;margin-bottom:36px;text-align:center;line-height:1.6">Pricing for ${u} HVAC unit${u!==1?'s':''}. All plans include full EmPOWER rebate filing.</p>
+    <div class="mse-grid">
+
+      <!-- Card 1: Zero-Cost -->
+      <div class="mse-card mse-hero-card" id="plan-zero" style="flex:1 1 0;max-width:370px;min-width:270px">
+        <div class="mse-badge" style="background:#1B6B3A;color:#fff;display:flex;align-items:center;justify-content:center;gap:4px">${SVG.star}&nbsp;Most Popular</div>
+        <div style="text-align:center;margin-top:12px">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:#1B6B3A;opacity:.65;margin-bottom:2px">Net Cost Per Unit</div>
+          <div style="font-size:64px;font-weight:800;color:#1B6B3A;line-height:1;letter-spacing:-3px">$0</div>
+          <div style="font-size:14px;color:#475569;font-weight:500;margin-top:4px;margin-bottom:16px">after your EmPOWER Maryland rebate</div>
+        </div>
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:14px;text-align:center">Zero-Cost Tune-Up</h3>
+        ${rebateFlow()}
+        <div style="background:#fef3c7;border-radius:8px;padding:7px 14px;margin-bottom:16px;text-align:center;font-size:12px;font-weight:700;color:#92400e">
+          25% INSTANT DISCOUNT &#8212; <span style="text-decoration:line-through">$213</span> &#8594; $160/unit
+        </div>
+        <ul style="list-style:none;padding:0;margin:0 0 16px;flex:1">
+          ${['Full HVAC tune-up &amp; system optimization','We handle all EmPOWER rebate paperwork','$160/unit rebate mailed directly to you','Priority scheduling','For 3-ton to 20-ton units'].map(f=>`<li style="display:flex;align-items:flex-start;font-size:14px;margin-bottom:8px;line-height:1.5;color:#374151">${SVG.check}${f}</li>`).join('')}
+        </ul>
+        <div class="mse-disclaimer">${SVG.info}<span>EmPOWER HVAC tune-up rebate available once every 3 years per unit. We'll verify your eligibility.</span></div>
+        <button class="mse-btn mse-pri" style="width:100%;padding:16px 28px;font-size:16px;margin-top:16px">Get Started &#8212; $0 Net Cost ${SVG.arrow}</button>
+      </div>
+
+      <!-- Card 2: Standard -->
+      <div class="mse-card" id="plan-standard" style="flex:1 1 0;max-width:340px;min-width:260px">
+        <div style="text-align:center;margin-top:8px">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-bottom:2px">Your Out-of-Pocket</div>
+          <div><span style="font-size:46px;font-weight:800;color:#1a2b3c;letter-spacing:-1px">$54</span><span style="font-size:15px;color:#64748b;font-weight:500">/unit</span></div>
+          <div style="font-size:14px;color:#475569;font-weight:500;margin-top:2px;margin-bottom:16px">EmPOWER rebate covers the rest</div>
+        </div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:14px;text-align:center">Standard Tune-Up</h3>
+        <div style="background:#f8fafc;border-radius:10px;padding:14px 16px;margin-bottom:16px;text-align:center">
+          <div style="font-size:13px;color:#64748b;margin-bottom:4px">Total for ${u} unit${u!==1?'s':''}</div>
+          <div style="font-size:24px;font-weight:700;color:#1a2b3c">$${fmt(t2)}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:6px;line-height:1.5">You pay $${fmt(t2)} today. We file the EmPOWER rebate, which covers our remaining service cost.</div>
+        </div>
+        <ul style="list-style:none;padding:0;margin:0 0 16px;flex:1">
+          ${['Full HVAC tune-up &amp; system optimization','We handle all EmPOWER rebate paperwork','Rebate covers remaining service cost','For 3-ton to 20-ton units','Service scheduled within 2 weeks'].map(f=>`<li style="display:flex;align-items:flex-start;font-size:14px;margin-bottom:8px;line-height:1.5;color:#374151">${SVG.check}${f}</li>`).join('')}
+        </ul>
+        <div class="mse-disclaimer">${SVG.info}<span>EmPOWER HVAC tune-up rebate available once every 3 years per unit. We'll verify your eligibility.</span></div>
+        <button class="mse-btn mse-out" style="width:100%;margin-top:16px">Select Standard ${SVG.arrow}</button>
+      </div>
+
+      <!-- Card 3: Premium -->
+      <div class="mse-card" id="plan-premium" style="flex:1 1 0;max-width:370px;min-width:270px">
+        <div class="mse-badge" style="background:linear-gradient(135deg,#5B21B6,#7C3AED);color:#fff">Complete Building Solution</div>
+        <div style="text-align:center;margin-top:12px">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-bottom:2px">Starting At</div>
+          <div><span style="font-size:42px;font-weight:800;color:#1a2b3c;letter-spacing:-1px">$${fmt(t3)}</span><span style="font-size:15px;color:#64748b;font-weight:500">/year</span></div>
+          <div style="font-size:14px;color:#475569;font-weight:500;margin-top:2px;margin-bottom:16px">Everything your building needs, handled</div>
+        </div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:14px;text-align:center">Total Building Energy Plan</h3>
+        <div style="background:#faf8ff;border-radius:10px;padding:14px;margin-bottom:12px;border:1px solid #ede9fe">
+          <div style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">HVAC &amp; Mechanical</div>
+          ${core.map(v=>`<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;color:#475569"><span style="flex:1">${v.item}</span><span style="font-weight:600;color:#b0b8c4;text-decoration:line-through;margin-left:8px;white-space:nowrap">$${fmt(v.value)}</span></div>`).join('')}
+          <div style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-top:12px;margin-bottom:8px">Energy Advisory &amp; Compliance</div>
+          ${add.map(v=>`<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;color:#475569"><span style="flex:1">${v.item}</span><span style="font-weight:600;color:#b0b8c4;text-decoration:line-through;margin-left:8px;white-space:nowrap">$${fmt(v.value)}</span></div>`).join('')}
+          <div style="border-top:2px solid #7C3AED;margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-weight:700;font-size:13px;align-items:center">
+            <span>Total Value</span><span style="color:#dc2626;text-decoration:line-through;font-size:15px">$${fmt(totalVal)}</span>
+          </div>
+          <div style="text-align:center;margin-top:10px"><span style="font-size:15px;color:#64748b">Your price: </span><span style="font-size:22px;font-weight:800;color:#5B21B6">$${fmt(t3)}/year</span></div>
+          <div style="text-align:center;margin-top:4px"><span style="display:inline-block;background:#f0fdf4;color:#166534;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700">You save $${fmt(totalVal-t3)}</span></div>
+        </div>
+        <div style="background:#f0faf3;border-radius:8px;padding:8px 12px;margin-bottom:12px;text-align:center;font-size:12px;color:#1B6B3A;font-weight:600">
+          First-year HVAC tune-up qualifies for $160/unit rebate &#8212; up to $${fmt(u*160)} back
+        </div>
+        <div class="mse-disclaimer" style="margin-bottom:6px">${SVG.info}<span>HVAC tune-up rebate applies to first-year service (once per 3 years). Subsequent quarterly visits maintain performance at plan rate.</span></div>
+        <div style="margin-top:auto"><button class="mse-btn mse-out-purple" style="width:100%">Select Annual Plan ${SVG.arrow}</button></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px"><button class="mse-btn mse-sec" id="s3-back">Back</button></div>
+  </div>`;
+}
+
+function step4(){
+  const {t1,t2,t3}=totals(); const u=state.units;
+  const plans={'zero-cost':{name:'Zero-Cost Tune-Up',total:t1,perUnit:160},'standard':{name:'Standard Tune-Up',total:t2,perUnit:54},'premium':{name:'Total Building Energy Plan',total:t3,perUnit:null}};
+  const p=plans[state.selectedPlan]; if(!p) return '';
+  let note='';
+  if(state.selectedPlan==='zero-cost') note=`<div style="background:linear-gradient(135deg,#f0faf3,#e6f4ea);border-radius:10px;padding:16px;margin-top:16px;text-align:center"><div style="font-size:14px;color:#374151;margin-bottom:4px">Your utility will mail you a <strong>$${fmt(t1)} rebate</strong>.</div><div style="font-size:22px;font-weight:800;color:#1B6B3A">Net cost: $0</div></div>`;
+  if(state.selectedPlan==='standard') note=`<div style="background:#f8fafc;border-radius:10px;padding:14px;margin-top:16px;text-align:center;font-size:14px;color:#475569;line-height:1.5">Your out-of-pocket is $${fmt(t2)}. The EmPOWER rebate covers the remaining service cost.</div>`;
+  if(state.selectedPlan==='premium') note=`<div style="background:#faf8ff;border-radius:10px;padding:14px;margin-top:16px;border:1px solid #ede9fe;text-align:center;font-size:14px;color:#5B21B6;font-weight:600;line-height:1.5">Your first-year HVAC tune-up qualifies for the $160/unit rebate &#8212; up to $${fmt(u*160)} back.</div>`;
+  return `<div style="max-width:580px;margin:0 auto">
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:8px;text-align:center">Confirm &amp; Pay</h2>
+    <p style="color:#64748b;font-size:16px;margin-bottom:32px;text-align:center;line-height:1.6">Review your order, then complete payment.</p>
+    <div style="background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:28px;margin-bottom:24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+        <div><h3 style="font-size:18px;font-weight:700;margin:0 0 4px">${p.name}</h3><p style="font-size:14px;color:#64748b;margin:0">${u} HVAC unit${u!==1?'s':''}</p></div>
+        ${state.selectedPlan==='zero-cost'?'<span style="display:inline-block;background:#1B6B3A;color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700">MOST POPULAR</span>':''}
+      </div>
+      <div style="border-top:1px solid #f1f5f9;padding-top:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:#64748b">Units</span><span style="font-weight:600">${u}</span></div>
+        ${p.perUnit?`<div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:#64748b">Price per unit</span><span style="font-weight:600">$${p.perUnit}/unit</span></div>`:''}
+        ${state.selectedPlan==='zero-cost'?`<div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:#64748b">Discount (25%)</span><span style="font-weight:600;color:#1B6B3A">&#8722;$${fmt(u*53)}</span></div>`:''}
+        <div style="border-top:2px solid #1B6B3A;margin-top:8px;padding-top:12px;display:flex;justify-content:space-between">
+          <span style="font-size:17px;font-weight:700">Total Due Today</span>
+          <span style="font-size:22px;font-weight:700;color:${state.selectedPlan==='premium'?'#5B21B6':'#1B6B3A'}">$${fmt(p.total)}</span>
+        </div>
+      </div>
+      ${note}
+    </div>
+    <div style="background:#f8fafc;border:2px dashed #cbd5e1;border-radius:14px;padding:40px;text-align:center;margin-bottom:24px">
+      <p style="font-size:16px;font-weight:600;color:#475569;margin:0 0 8px">Stripe Payment Form</p>
+      <p style="font-size:13px;color:#94a3b8;margin:0;line-height:1.5">Stripe Elements will be embedded here.<br>Accepts all major credit cards and ACH transfers.</p>
+    </div>
+    <button class="mse-btn mse-pri" style="width:100%;padding:16px 28px;font-size:17px">Complete Payment &#8212; $${fmt(p.total)}</button>
+    <p style="text-align:center;font-size:12px;color:#94a3b8;margin-top:16px;line-height:1.6">Secure payment powered by Stripe. By completing this purchase, you agree to our Terms of Service.<br>We'll contact you within 1 business day to schedule your first visit.</p>
+    <div style="text-align:center;margin-top:20px"><button class="mse-btn mse-sec" id="s4-change">Change Plan</button></div>
+  </div>`;
+}
+
+function render(){
+  const w=document.getElementById('mse-widget');
+  const body=state.step===1?step1():state.step===2?step2():state.step===3?step3():step4();
+  w.innerHTML=progress()+`<div class="mse-fade">${body}</div>`;
+  bind();
+  window.scrollTo({top:w.offsetTop-120,behavior:'smooth'});
+}
+
+function bind(){
+  // Step 1
+  const um=document.getElementById('u-minus'), up=document.getElementById('u-plus'), ud=document.getElementById('u-disp');
+  if(um) um.onclick=()=>{state.units=Math.max(1,state.units-1);ud.textContent=state.units;};
+  if(up) up.onclick=()=>{state.units=Math.min(50,state.units+1);ud.textContent=state.units;};
+  const s1n=document.getElementById('s1-next');
+  if(s1n) s1n.onclick=()=>{state.step=2;render();};
+  // Step 2
+  document.querySelectorAll('[data-field]').forEach(el=>el.addEventListener('input',e=>{state.form[e.target.dataset.field]=e.target.value;}));
+  const s2b=document.getElementById('s2-back'),s2n=document.getElementById('s2-next');
+  if(s2b) s2b.onclick=()=>{state.step=1;render();};
+  if(s2n) s2n.onclick=()=>{
+    const e={};
+    if(!state.form.name.trim()) e.name='Required';
+    if(!state.form.email.trim()||!/\S+@\S+\.\S+/.test(state.form.email)) e.email='Valid email required';
+    if(!state.form.phone.trim()) e.phone='Required';
+    if(!state.form.address.trim()) e.address='Required';
+    if(!state.form.utility) e.utility='Please select your utility';
+    state.errors=e;
+    if(Object.keys(e).length){render();return;}
+    state.step=3;render();
+  };
+  // Step 3
+  const s3b=document.getElementById('s3-back');
+  if(s3b) s3b.onclick=()=>{state.step=2;render();};
+  ['plan-zero','plan-standard','plan-premium'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    const plans=['zero-cost','standard','premium'];
+    if(el) el.onclick=()=>{state.selectedPlan=plans[i];state.step=4;render();};
+  });
+  // Step 4
+  const s4c=document.getElementById('s4-change');
+  if(s4c) s4c.onclick=()=>{state.selectedPlan=null;state.step=3;render();};
+}
+
+render();
+</script>
+</body>
+</html>

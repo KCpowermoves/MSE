@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Benchmarking & BEPS Compliance — Maryland Smart Energy</title>
+  <meta name="description" content="EPA Portfolio Manager setup and BEPS compliance support for Maryland buildings 35,000+ sq ft. Required by 2030 under Maryland's Climate Solutions Now Act." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'brand-red':'#C8102E','brand-gold':'#F4A11D','brand-navy':'#1A2332','brand-gray':'#F5F5F5'}}}}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}.announce-bar a{color:#1A2332}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .nav-logo img{height:44px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;line-height:1.1}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.7rem;color:#888;letter-spacing:.03em}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover,.dropdown-menu a.active{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    .breadcrumb{background:#F5F5F5;padding:.75rem 1.5rem;font-family:'Barlow',sans-serif;font-size:.8125rem;color:#888}.breadcrumb a{color:#888;text-decoration:none}.breadcrumb a:hover{color:#C8102E}.breadcrumb span{margin:0 .4rem}
+    .page-hero{background:#1A2332;padding:4.5rem 1.5rem;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(200,16,46,.2) 0%,transparent 65%);pointer-events:none}
+    .page-hero-inner{max-width:1200px;margin:0 auto}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1.25rem}
+    .page-hero h1{font-size:clamp(2.2rem,4vw,3rem);font-weight:900;color:#fff;margin:0 0 1.25rem;line-height:1.1;max-width:700px}
+    .page-hero h1 span{color:#F4A11D}
+    .page-hero-sub{font-size:1.0625rem;line-height:1.7;color:rgba(255,255,255,.75);margin:0 0 2rem;max-width:580px}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;box-shadow:0 4px 14px rgba(200,16,46,.4);transition:background .15s,transform .1s}.btn-primary:hover{background:#A30D24;transform:translateY(-1px)}
+    .btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;transition:background .15s,transform .1s}.btn-gold:hover{background:#D4891A;transform:translateY(-1px)}
+    .urgency-bar{background:#C8102E;padding:1rem 1.5rem}
+    .urgency-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .urgency-inner p{margin:0;color:#fff;font-family:'Barlow',sans-serif;font-weight:600;font-size:.9375rem}
+    .urgency-inner strong{font-weight:800}
+    .content-wrap{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 340px;gap:3.5rem;align-items:start}
+    @media(max-width:1000px){.content-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+    .section-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;margin-bottom:.5rem}
+    .section-title{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.6rem,2.5vw,2.1rem);color:#1A2332;margin:0 0 1rem;letter-spacing:-.02em}
+    .section-title em{font-style:normal;color:#C8102E}
+    .content-section{margin-bottom:3rem}
+    .content-section p{font-size:1rem;line-height:1.75;color:#555;margin:0 0 1rem}
+    .timeline{margin:1.5rem 0;border-left:3px solid #C8102E;padding-left:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+    .timeline-item{}
+    .timeline-date{font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;color:#C8102E;margin-bottom:.25rem}
+    .timeline-title{font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;color:#1A2332;margin-bottom:.25rem}
+    .timeline-desc{font-size:.9rem;color:#666;line-height:1.6;margin:0}
+    .services-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0}
+    .service-item{background:#F5F5F5;border-radius:10px;padding:1.25rem;border-left:3px solid #C8102E}
+    .service-item h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:0 0 .375rem}
+    .service-item p{font-size:.875rem;color:#666;margin:0;line-height:1.6}
+    @media(max-width:600px){.services-list{grid-template-columns:1fr}}
+    .elig-list{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .elig-list li{display:flex;align-items:center;gap:.625rem;font-size:.9375rem;color:#444}
+    .elig-list li::before{content:'';width:8px;height:8px;background:#C8102E;border-radius:50%;flex-shrink:0}
+    .steps-list{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.25rem}
+    .step-item{display:flex;align-items:flex-start;gap:1rem}
+    .step-num{width:36px;height:36px;background:#C8102E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;color:#fff;flex-shrink:0}
+    .step-content strong{font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;color:#1A2332;display:block;margin-bottom:.2rem}
+    .step-content span{font-size:.9rem;color:#666;line-height:1.6}
+    .sidebar{position:sticky;top:88px}
+    .sidebar-card{background:#1A2332;border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;color:#fff}
+    .sidebar-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;margin:0 0 .5rem}
+    .sidebar-card p{font-size:.875rem;color:rgba(255,255,255,.65);margin:0 0 1.25rem;line-height:1.65}
+    .btn-gold-block{display:block;text-align:center;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;padding:.875rem;border-radius:6px;text-decoration:none}
+    .sidebar-urgent{background:rgba(200,16,46,.1);border:1px solid rgba(200,16,46,.2);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem}
+    .sidebar-urgent h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#C8102E;margin:0 0 .5rem}
+    .sidebar-urgent p{font-size:.875rem;color:#444;margin:0;line-height:1.6}
+    .sidebar-info{background:#F5F5F5;border-radius:14px;padding:1.5rem}
+    .sidebar-info h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:0 0 1rem}
+    .sidebar-fact{display:flex;align-items:flex-start;gap:.625rem;margin-bottom:.875rem}
+    .sidebar-fact-icon{width:28px;height:28px;background:rgba(200,16,46,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sidebar-fact-icon svg{color:#C8102E}
+    .sidebar-fact-text strong{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;display:block}
+    .sidebar-fact-text span{font-size:.8125rem;color:#777}
+    .related-section{background:#F5F5F5;padding:4rem 1.5rem}
+    .related-inner{max-width:1200px;margin:0 auto}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+    .related-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid rgba(26,35,50,.06);text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s;display:block}.related-card:hover{box-shadow:0 8px 24px rgba(200,16,46,.1);transform:translateY(-2px)}
+    .related-card h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:.75rem 0 .375rem}
+    .related-card p{font-size:.875rem;color:#666;margin:0;line-height:1.6}
+    .related-icon{width:44px;height:44px;background:rgba(200,16,46,.08);border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .related-icon svg{color:#C8102E}
+    @media(max-width:768px){.related-grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.related-grid{grid-template-columns:1fr}}
+    .cta-block{background:#C8102E;padding:4rem 1.5rem;text-align:center}
+    .cta-block h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,3vw,2.25rem);color:#fff;margin:0 0 .75rem}
+    .cta-block p{font-size:1.0625rem;color:rgba(255,255,255,.8);margin:0 0 2rem}
+    .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-white{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .1s}.btn-white:hover{transform:translateY(-1px)}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:4rem 1.5rem 2rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+    .footer-brand img{height:36px;filter:brightness(0) invert(1);margin-bottom:.75rem}
+    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
+    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><img src="../brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div></a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="hvac-tune-up.html">HVAC Tune-Up</a><a href="building-tune-up.html">Building Tune-Up</a><a href="lighting.html">Lighting</a><a href="energy-supply.html">Energy Supply</a><a href="community-solar.html">Community Solar</a><a href="benchmarking.html" class="active">Benchmarking Services</a></div>
+      </li>
+      <li><a href="../about.html">About</a></li><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="../contact.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="hvac-tune-up.html">HVAC Tune-Up</a><a href="building-tune-up.html">Building Tune-Up</a><a href="lighting.html">Lighting</a><a href="energy-supply.html">Energy Supply</a><a href="community-solar.html">Community Solar</a><a href="benchmarking.html">Benchmarking</a><a href="../about.html">About</a><a href="../empower-maryland.html">EmPOWER Maryland</a><a href="../blog.html">Blog</a><a href="../faq.html">FAQ</a><a href="../contact.html">Contact</a><a href="tel:3018887090" class="nav-phone" style="display:block;text-align:center;padding:.5rem 0">(301) 888-7090</a><a href="../contact.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
+  </nav>
+  <div class="announce-bar">Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.</div>
+</div>
+
+  <div class="urgency-bar">
+    <div class="urgency-inner">
+      <p>⚠️ <strong>Compliance Deadline:</strong> Maryland buildings 35,000+ sq ft must complete energy benchmarking and meet BEPS emissions targets by 2030 under the Climate Solutions Now Act. Penalties for non-compliance.</p>
+      <a href="../contact.html" style="background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:.875rem;padding:.5rem 1rem;border-radius:6px;text-decoration:none;white-space:nowrap;flex-shrink:0">Get Compliant →</a>
+    </div>
+  </div>
+
+  <div class="breadcrumb"><div style="max-width:1200px;margin:0 auto"><a href="../index.html">Home</a><span>›</span><a href="#">Services</a><span>›</span>Benchmarking Services</div></div>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="hero-eyebrow">BEPS Compliance & Energy Benchmarking</div>
+      <h1>Energy Benchmarking & <span>BEPS Compliance Services</span></h1>
+      <p class="page-hero-sub">Maryland's Climate Solutions Now Act requires buildings 35,000+ square feet to benchmark energy use and meet emissions reduction targets by 2030. Maryland Smart Energy helps you understand your building's performance, comply with state requirements, and identify upgrade opportunities — with utility rebate support available.</p>
+      <div class="hero-actions">
+        <a href="../contact.html" class="btn-primary">Get Benchmarking Help <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="tel:3018887090" class="btn-gold">Call (301) 888-7090</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-wrap">
+    <main>
+      <div class="content-section">
+        <div class="section-eyebrow">What Is BEPS?</div>
+        <h2 class="section-title">Maryland's Building Energy <em>Performance Standards</em></h2>
+        <p>Maryland's Building Energy Performance Standards (BEPS) were established under the Climate Solutions Now Act of 2022. They apply to approximately 9,000 commercial and multifamily buildings statewide that are 35,000 square feet or larger.</p>
+        <p>BEPS requires covered buildings to benchmark energy use through EPA's ENERGY STAR Portfolio Manager, report annually to the Maryland Department of the Environment, and meet increasingly stringent greenhouse gas emissions reduction targets over time.</p>
+        <p>Non-compliant buildings face escalating penalties. The program also creates an opportunity — buildings that understand their energy performance can target the right improvements, qualify for utility rebates, and significantly reduce operating costs.</p>
+
+        <h3 style="font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#1A2332;margin:1.5rem 0 .75rem">BEPS Key Deadlines</h3>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">September 2025</div><div class="timeline-title">Benchmarking Completion Required</div><p class="timeline-desc">All covered buildings must complete energy benchmarking in EPA Portfolio Manager and submit to MDE.</p></div>
+          <div class="timeline-item"><div class="timeline-date">2030</div><div class="timeline-title">Direct GHG Emissions Compliance Begins</div><p class="timeline-desc">Buildings must meet a 20% reduction in average GHG emissions per square foot compared to baseline. Non-compliance penalties begin.</p></div>
+          <div class="timeline-item"><div class="timeline-date">2040</div><div class="timeline-title">Net-Zero Building Emissions Target</div><p class="timeline-desc">Maryland's ultimate goal: net-zero greenhouse gas emissions from covered commercial buildings.</p></div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Our Services</div>
+        <h2 class="section-title">What Maryland Smart Energy <em>Provides</em></h2>
+        <div class="services-list">
+          <div class="service-item"><h4>EPA Portfolio Manager Setup</h4><p>Complete account creation, building profile configuration, and utility data integration — so your benchmarking is done correctly the first time.</p></div>
+          <div class="service-item"><h4>Benchmarking Data Collection</h4><p>We coordinate with your utility (BGE, Pepco, Delmarva, SMECO) to automatically upload 12 months of energy consumption data into Portfolio Manager.</p></div>
+          <div class="service-item"><h4>ENERGY STAR Score Analysis</h4><p>We interpret your ENERGY STAR score, explain what it means compared to peer buildings, and identify which systems are driving poor performance.</p></div>
+          <div class="service-item"><h4>BEPS Compliance Pathway</h4><p>We develop a customized roadmap showing the specific improvements needed to meet your 2030 GHG emissions targets under BEPS.</p></div>
+          <div class="service-item"><h4>Utility Rebate Integration</h4><p>We identify EmPOWER Maryland rebates available for the improvements on your compliance pathway — often funding 75–85% of upgrade costs.</p></div>
+          <div class="service-item"><h4>Annual Reporting Support</h4><p>Ongoing support for required annual benchmarking data submissions to MDE and Portfolio Manager updates as your building makes improvements.</p></div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Who Must Comply</div>
+        <h2 class="section-title">Does Your Building <em>Need to Comply?</em></h2>
+        <ul class="elig-list">
+          <li>Commercial buildings 35,000 square feet or larger in Maryland</li>
+          <li>Multifamily residential buildings 35,000+ square feet with 5+ units</li>
+          <li>State-owned buildings (separate compliance timeline)</li>
+          <li>Approximately 9,000 buildings statewide are covered</li>
+          <li>Some exemptions apply — contact us to confirm your status</li>
+        </ul>
+        <p style="margin-top:1.25rem">Even if your building is under 35,000 sqft and not required to comply, voluntary benchmarking is a best practice that identifies energy savings opportunities and qualifies you for additional EmPOWER Maryland rebates.</p>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Getting Started</div>
+        <h2 class="section-title">How to Get <em>Benchmark-Ready</em></h2>
+        <ul class="steps-list">
+          <li class="step-item"><div class="step-num">1</div><div class="step-content"><strong>Compliance Assessment</strong><span>We confirm your building's BEPS coverage status, current benchmarking situation, and compliance timeline based on your building type and size.</span></div></li>
+          <li class="step-item"><div class="step-num">2</div><div class="step-content"><strong>Portfolio Manager Setup</strong><span>We create or claim your EPA Portfolio Manager account, configure your building profile accurately, and integrate your utility data feeds — often completed in one session.</span></div></li>
+          <li class="step-item"><div class="step-num">3</div><div class="step-content"><strong>Score Analysis &amp; Roadmap</strong><span>Once data is collected, we analyze your ENERGY STAR score and create a written compliance roadmap with prioritized improvements, estimated costs, and available rebates.</span></div></li>
+          <li class="step-item"><div class="step-num">4</div><div class="step-content"><strong>Improvement Implementation</strong><span>We connect you with the appropriate EmPOWER Maryland programs (HVAC tune-up, building tune-up, lighting) to implement the improvements — with rebate funding covering the majority of costs.</span></div></li>
+        </ul>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-urgent">
+        <h4>⚠️ 2030 Deadline Approaching</h4>
+        <p>Maryland buildings 35,000+ sq ft face penalties for non-compliance with BEPS by 2030. Start your benchmarking now to understand your compliance gap.</p>
+      </div>
+      <div class="sidebar-card">
+        <h3>Get Benchmarking Help</h3>
+        <p>We'll set up your EPA Portfolio Manager, analyze your score, and build a BEPS compliance pathway.</p>
+        <a href="../contact.html" class="btn-gold-block">Schedule Consultation</a>
+        <div style="margin-top:1rem;text-align:center"><a href="tel:3018887090" style="color:rgba(255,255,255,.7);font-size:.875rem;text-decoration:none">Or call (301) 888-7090</a></div>
+      </div>
+      <div class="sidebar-info">
+        <h4>Quick Facts</h4>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M3 7v1m0 4v1m0 4v1M6 21V3l9 4v14M21 21V8l-6-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>9,000 MD buildings</strong><span>Covered by BEPS statewide</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>2030 compliance required</strong><span>20% GHG reduction target</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>35,000+ sq ft threshold</strong><span>Minimum size for BEPS coverage</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>Rebates up to 85%</strong><span>For qualifying improvements</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related-section">
+    <div class="related-inner">
+      <div class="section-eyebrow">Improve Your Score</div>
+      <h2 class="section-title">Programs That Improve Your <em>ENERGY STAR Score</em></h2>
+      <div class="related-grid">
+        <a href="building-tune-up.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M3 7v1m0 4v1m0 4v1M6 21V3l9 4v14M21 21V8l-6-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Building Tune-Up</h4><p>Whole-building optimization that directly improves your ENERGY STAR score. Up to 85% covered.</p></a>
+        <a href="hvac-tune-up.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h4>HVAC Tune-Up</h4><p>HVAC systems are the largest energy consumer. A tune-up is essential for BEPS compliance.</p></a>
+        <a href="lighting.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Lighting Upgrades</h4><p>LED retrofits significantly reduce energy intensity — one of the key BEPS metrics.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <h2>Don't Wait on BEPS Compliance</h2>
+    <p>2030 is closer than it seems. Understanding your building's current performance and compliance gap now gives you time to act — with EmPOWER Maryland rebates funding most of the improvements.</p>
+    <div class="cta-actions"><a href="../contact.html" class="btn-white">Get Benchmarking Help Today</a><a href="tel:3018887090" style="display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.85);font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;padding:.875rem 0">Call (301) 888-7090</a></div>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><img src="../brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="building-tune-up.html">Building Tune-Up</a></li><li><a href="lighting.html">Lighting</a></li><li><a href="energy-supply.html">Energy Supply</a></li><li><a href="community-solar.html">Community Solar</a></li><li><a href="benchmarking.html">Benchmarking</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../bge-energy-efficiency.html">BGE Programs</a></li><li><a href="../faq.html">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:3018887090">(301) 888-7090</a></li><li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li><li><a href="../contact.html">Schedule a Consultation</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Maryland Smart Energy. Licensed · Bonded · Insured.</p><div><a href="../privacy.html" class="footer-legal">Privacy</a><a href="../terms.html" class="footer-legal">Terms</a></div></div>
+  </div></footer>
+</body>
+</html>

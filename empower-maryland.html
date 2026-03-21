@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is EmPOWER Maryland? | Maryland Smart Energy</title>
+  <meta name="description" content="EmPOWER Maryland is the state's energy efficiency program that pays up to 85% of commercial HVAC and building upgrade costs. Learn how Maryland businesses get $0 out-of-pocket energy improvements." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'brand-red':'#C8102E','brand-gold':'#F4A11D','brand-navy':'#1A2332','brand-gray':'#F5F5F5'}}}}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#999;line-height:1;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    .page-hero{background:#1A2332;padding:5rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(200,16,46,.18) 0%,transparent 60%);pointer-events:none}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1.25rem}
+    .page-hero h1{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:900;color:#fff;margin:0 0 1.25rem;line-height:1.08}
+    .page-hero h1 em{font-style:normal;color:#F4A11D}
+    .page-hero-sub{font-size:1.125rem;line-height:1.7;color:rgba(255,255,255,.7);max-width:680px;margin:0 auto 2.5rem}
+    .hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+    .hero-stat{text-align:center}
+    .hero-stat-val{font-family:'Barlow',sans-serif;font-weight:900;font-size:2rem;color:#F4A11D}
+    .hero-stat-lbl{font-family:'Barlow',sans-serif;font-weight:600;font-size:.8rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em}
+    .section{padding:5rem 1.5rem}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .section-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;margin-bottom:.5rem}
+    .section-title{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,3vw,2.5rem);color:#1A2332;margin:0 0 1.25rem;letter-spacing:-.02em}
+    .section-title em{font-style:normal;color:#C8102E}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:2.5rem}}
+    .prose p{font-size:1rem;line-height:1.75;color:#555;margin:0 0 1rem}
+    /* timeline */
+    .timeline{position:relative;padding-left:2.5rem;margin-top:2rem}
+    .timeline::before{content:'';position:absolute;left:.75rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#C8102E,rgba(200,16,46,.1))}
+    .tl-item{position:relative;margin-bottom:2.25rem}
+    .tl-dot{position:absolute;left:-2.5rem;top:.2rem;width:1.5rem;height:1.5rem;border-radius:50%;background:#C8102E;border:3px solid #fff;box-shadow:0 0 0 2px #C8102E;display:flex;align-items:center;justify-content:center}
+    .tl-year{font-family:'Barlow',sans-serif;font-weight:900;font-size:.6875rem;color:#fff;line-height:1}
+    .tl-content h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;margin:0 0 .375rem}
+    .tl-content p{font-size:.9375rem;color:#666;line-height:1.65;margin:0}
+    /* program cards */
+    .program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    @media(max-width:900px){.program-grid{grid-template-columns:1fr}}
+    .program-card{background:#F5F5F5;border-radius:12px;padding:1.75rem;border:1px solid rgba(26,35,50,.05);transition:transform .2s,box-shadow .2s}
+    .program-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,35,50,.1)}
+    .prog-icon{width:48px;height:48px;background:rgba(200,16,46,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+    .prog-icon svg{color:#C8102E}
+    .program-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;margin:0 0 .5rem}
+    .program-card p{font-size:.9375rem;color:#666;line-height:1.65;margin:0 0 1rem}
+    .prog-rebate{display:inline-block;background:rgba(200,16,46,.08);color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:.8125rem;padding:.25rem .625rem;border-radius:4px}
+    /* utility logos */
+    .utility-row{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:center;padding:2.5rem 1.5rem;background:#F5F5F5;border-radius:12px;margin-top:2rem}
+    .util-badge{background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;padding:.75rem 1.5rem;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    /* funding explanation */
+    .funding-card{background:#1A2332;border-radius:16px;padding:2.5rem;color:#fff;position:relative;overflow:hidden}
+    .funding-card::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(244,161,29,.2) 0%,transparent 65%);pointer-events:none}
+    .funding-card h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0 0 1rem}
+    .funding-card p{font-size:.9375rem;line-height:1.7;color:rgba(255,255,255,.7);margin:0 0 1rem}
+    .funding-item{display:flex;align-items:flex-start;gap:.875rem;padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .funding-item:last-child{border-bottom:none}
+    .fi-icon{width:36px;height:36px;background:rgba(244,161,29,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .fi-icon svg{color:#F4A11D}
+    .fi-text h4{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;color:#fff;margin:0 0 .2rem}
+    .fi-text p{font-size:.875rem;color:rgba(255,255,255,.55);margin:0;line-height:1.5}
+    /* eligibility */
+    .elig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:1.75rem}
+    @media(max-width:640px){.elig-grid{grid-template-columns:1fr}}
+    .elig-card{background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:10px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem}
+    .elig-check{width:28px;height:28px;background:#C8102E;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+    .elig-check svg{color:#fff}
+    .elig-card h4{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;color:#1A2332;margin:0 0 .2rem}
+    .elig-card p{font-size:.875rem;color:#777;margin:0;line-height:1.5}
+    /* HB864 update bar */
+    .update-bar{background:linear-gradient(135deg,#1A2332 0%,#243047 100%);border-left:4px solid #F4A11D;border-radius:0 8px 8px 0;padding:1.5rem 2rem;margin:2.5rem 0;display:flex;gap:1.25rem;align-items:flex-start}
+    .update-badge{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:800;font-size:.75rem;padding:.2rem .5rem;border-radius:4px;white-space:nowrap;margin-top:.1rem}
+    .update-bar h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#fff;margin:0 0 .375rem}
+    .update-bar p{font-size:.9rem;color:rgba(255,255,255,.65);margin:0;line-height:1.55}
+    /* ROI comparison */
+    .roi-band{background:#1A2332;padding:4rem 1.5rem}
+    .roi-inner{max-width:1100px;margin:0 auto;text-align:center}
+    .roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+    @media(max-width:768px){.roi-grid{grid-template-columns:1fr}}
+    .roi-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:2rem 1.5rem;text-align:center}
+    .roi-val{font-family:'Barlow',sans-serif;font-weight:900;font-size:2.5rem;color:#F4A11D;line-height:1}
+    .roi-label{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;margin-top:.5rem}
+    .roi-desc{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.5rem;line-height:1.5}
+    /* steps */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;position:relative}
+    @media(max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:540px){.steps-grid{grid-template-columns:1fr}}
+    .step-card{text-align:center;padding:1.75rem 1.25rem}
+    .step-num{width:52px;height:52px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:900;font-size:1.375rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;box-shadow:0 4px 12px rgba(200,16,46,.3)}
+    .step-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:0 0 .5rem}
+    .step-card p{font-size:.9rem;color:#666;line-height:1.65;margin:0}
+    /* CTA */
+    .cta-block{background:#C8102E;padding:5rem 1.5rem;text-align:center}
+    .cta-block h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,3vw,2.5rem);color:#fff;margin:0 0 .75rem}
+    .cta-block p{font-size:1.0625rem;color:rgba(255,255,255,.8);margin:0 0 2rem}
+    .btn-white{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .1s;margin:.5rem}.btn-white:hover{transform:translateY(-1px)}
+    .btn-outline-white{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:border-color .15s,background .15s;margin:.5rem}.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:4rem 1.5rem 2rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+    .footer-brand img{height:36px;filter:brightness(0) invert(1);margin-bottom:.75rem}
+    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
+    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+      <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="about.html">About</a></li><li><a href="empower-maryland.html" style="color:#C8102E">EmPOWER Maryland</a></li><li><a href="blog.html">Blog</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="contact.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06);">(301) 888-7090</a><a href="contact.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
+  </nav>
+  <div class="announce-bar">Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.</div>
+</div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hero-eyebrow">Maryland's Energy Law</div>
+    <h1>What Is <em>EmPOWER Maryland</em>?</h1>
+    <p class="page-hero-sub">Established in 2008, EmPOWER Maryland is state law that requires utilities to fund energy efficiency programs for their customers — meaning Maryland businesses are entitled to significant rebates on energy upgrades, right now.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">$14.5B</div><div class="hero-stat-lbl">Energy Savings Delivered</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">$4.1B</div><div class="hero-stat-lbl">Program Investment</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">Up to 85%</div><div class="hero-stat-lbl">Rebate Coverage</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">2024–26</div><div class="hero-stat-lbl">Current Program Cycle</div></div>
+    </div>
+  </section>
+
+  <!-- What Is It / How Funded -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="two-col">
+        <div class="prose">
+          <div class="section-eyebrow">The Program Explained</div>
+          <h2 class="section-title">Maryland Law Requires Utilities to <em>Pay for Your Upgrades</em></h2>
+          <p>The EmPOWER Maryland Energy Efficiency Act of 2008 mandated that Maryland's electric utilities reduce overall electricity consumption. To meet those targets, each utility must offer rebate programs that pay for energy-saving upgrades at commercial buildings.</p>
+          <p>This is not a grant application or a lottery — it is a mandated program. Every Maryland business that is a commercial customer of BGE, Pepco, Delmarva Power, or SMECO is eligible to participate. The rebates are built into the program cycle and are available now.</p>
+          <p>The current program cycle runs <strong>2024–2026</strong>. Under the Climate Solutions Now Act and the 2024 HB 864 update, EmPOWER Maryland has been expanded to include additional electrification incentives and broader building upgrade coverage.</p>
+
+          <div class="update-bar">
+            <span class="update-badge">2024 Update</span>
+            <div>
+              <h4>HB 864 Expands EmPOWER Maryland Incentives</h4>
+              <p>Maryland's 2024 legislature passed HB 864, expanding EmPOWER Maryland to include heat pump installations, electric vehicle charging infrastructure for commercial properties, and broader income-qualified programs. Rebate amounts remain at up to 85% for qualifying businesses.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="funding-card">
+          <h3>How It's Funded</h3>
+          <p>You are already paying for this program through a small surcharge on your monthly electric bill — every Maryland electric customer is. That means the money is already collected and waiting to fund your upgrades.</p>
+          <div class="funding-item">
+            <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="fi-text"><h4>Universal Surcharge</h4><p>All Maryland electric customers pay a small Systems Benefits Charge on each bill — this funds the rebate pools.</p></div>
+          </div>
+          <div class="funding-item">
+            <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2M9 7h1m-1 4h1m4-4h1m-1 4h1M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="fi-text"><h4>Utility Administration</h4><p>Each utility (BGE, Pepco, Delmarva, SMECO) manages its own rebate pool and sets program-specific incentive levels.</p></div>
+          </div>
+          <div class="funding-item">
+            <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="fi-text"><h4>Authorized Providers</h4><p>Businesses work with certified service providers like Maryland Smart Energy to access rebates — we handle all paperwork.</p></div>
+          </div>
+          <div class="funding-item">
+            <div class="fi-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="fi-text"><h4>$0 Out of Pocket</h4><p>Rebates cover 75–85% of qualified project costs for small commercial customers. You pay nothing upfront in most cases.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program History Timeline -->
+  <section class="section" style="background:#F5F5F5;padding-top:4rem;padding-bottom:4rem">
+    <div class="section-inner">
+      <div class="two-col">
+        <div>
+          <div class="section-eyebrow">Program History</div>
+          <h2 class="section-title">18 Years of Delivering <em>Maryland Energy Savings</em></h2>
+          <p class="prose" style="font-size:1rem;line-height:1.75;color:#555;margin-bottom:0">EmPOWER Maryland has been funding energy efficiency since 2008, making it one of the nation's longest-running and most successful utility efficiency programs. Here is how it has evolved:</p>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"><span class="tl-year">'08</span></div>
+              <div class="tl-content"><h3>EmPOWER Maryland Energy Efficiency Act</h3><p>Governor O'Malley signs the EmPOWER Maryland Act, setting a statewide goal to reduce per capita electricity consumption by 15% by 2015. Utilities required to establish rebate programs.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span class="tl-year">'12</span></div>
+              <div class="tl-content"><h3>Commercial Programs Expand</h3><p>EmPOWER Maryland expands to include comprehensive commercial building tune-up programs, HVAC incentives, and lighting upgrade rebates for businesses of all sizes.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span class="tl-year">'15</span></div>
+              <div class="tl-content"><h3>15% Reduction Goal Exceeded</h3><p>Maryland exceeds its per-capita electricity reduction goal ahead of schedule, proving the program's effectiveness. Program extended and expanded with new three-year cycles.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span class="tl-year">'22</span></div>
+              <div class="tl-content"><h3>Climate Solutions Now Act</h3><p>Maryland passes landmark climate legislation mandating 60% GHG reduction by 2031 and net-zero emissions by 2045. EmPOWER Maryland is expanded significantly to support these goals, including BEPS for large buildings.</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span class="tl-year">'24</span></div>
+              <div class="tl-content"><h3>HB 864 — Electrification Incentives Added</h3><p>2024 legislation adds heat pump and electrification incentives to EmPOWER Maryland. Current 2024–2026 cycle offers highest rebate levels in program history for commercial customers.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-eyebrow">Participating Utilities</div>
+          <h2 class="section-title">Four Utilities, <em>One Program</em></h2>
+          <p style="font-size:1rem;line-height:1.75;color:#555;margin-bottom:1.5rem">EmPOWER Maryland operates through Maryland's four major electric utilities. Maryland Smart Energy is an authorized service provider for all four, meaning we can serve businesses anywhere in Maryland.</p>
+          <div class="utility-row">
+            <a href="bge-energy-efficiency.html" style="text-decoration:none"><div class="util-badge">BGE →</div></a>
+            <a href="pepco-energy-efficiency.html" style="text-decoration:none"><div class="util-badge">Pepco →</div></a>
+            <a href="delmarva-energy-efficiency.html" style="text-decoration:none"><div class="util-badge">Delmarva Power →</div></a>
+            <a href="smeco-energy-efficiency.html" style="text-decoration:none"><div class="util-badge">SMECO →</div></a>
+          </div>
+          <div style="margin-top:2rem;background:#fff;border-radius:12px;padding:1.75rem;border:1px solid rgba(26,35,50,.07)">
+            <div class="section-eyebrow" style="margin-bottom:.75rem">Don't Know Your Utility?</div>
+            <p style="font-size:.9375rem;color:#555;line-height:1.65;margin:0 0 1rem">Your utility is determined by your address. Check your electric bill — it will show BGE, Pepco, Delmarva Power, or SMECO. If you're unsure, we can look it up when you call.</p>
+            <a href="contact.html" style="display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.625rem 1.25rem;border-radius:6px;text-decoration:none">Call (301) 888-7090 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Available - Programs -->
+  <section class="section">
+    <div class="section-inner">
+      <div style="text-align:center;max-width:700px;margin:0 auto">
+        <div class="section-eyebrow">EmPOWER Maryland Rebate Programs</div>
+        <h2 class="section-title">What EmPOWER Maryland <em>Pays For</em></h2>
+        <p style="font-size:1rem;line-height:1.75;color:#555;margin:0 0 .5rem">Under the current 2024–2026 cycle, Maryland commercial businesses can access rebates for the following programs. All are available through Maryland Smart Energy at $0 out-of-pocket.</p>
+      </div>
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>HVAC Tune-Up</h3>
+          <p>Comprehensive tune-up and optimization of existing commercial HVAC systems. Rooftop units, split systems, and package equipment. Saves 5–20% on HVAC energy costs.</p>
+          <span class="prog-rebate">Up to 85% Covered</span>
+          <div style="margin-top:.875rem"><a href="services/hvac-tune-up.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2M9 7h1m-1 4h1m4-4h1m-1 4h1M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Building Tune-Up</h3>
+          <p>Whole-building energy optimization for commercial properties. Includes small building, large building, and monitoring-based commissioning programs for buildings up to 200,000 sqft.</p>
+          <span class="prog-rebate">Up to 85% Covered</span>
+          <div style="margin-top:.875rem"><a href="services/building-tune-up.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Lighting Upgrades</h3>
+          <p>LED lighting retrofits and controls upgrades. Includes instant discounts at participating distributors plus utility rebates. 90% energy reduction versus legacy fluorescent and HID.</p>
+          <span class="prog-rebate">Up to 80% Covered</span>
+          <div style="margin-top:.875rem"><a href="services/lighting.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Community Solar</h3>
+          <p>Receive bill credits by subscribing to a local solar array — no rooftop installation required. Works for any commercial building regardless of roof condition or ownership status.</p>
+          <span class="prog-rebate">Not EmPOWER-Funded</span>
+          <div style="margin-top:.875rem"><a href="services/community-solar.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Benchmarking Services</h3>
+          <p>EPA Portfolio Manager setup and annual energy benchmarking. Required for Maryland buildings 35,000+ sqft under BEPS compliance (Climate Solutions Now Act deadline: 2030).</p>
+          <span class="prog-rebate">Priced Separately</span>
+          <div style="margin-top:.875rem"><a href="services/benchmarking.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+        <div class="program-card">
+          <div class="prog-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Energy Supply</h3>
+          <p>Maryland is a deregulated energy market — businesses can choose their electricity supplier and negotiate competitive rates. We analyze your current contract and identify savings opportunities.</p>
+          <span class="prog-rebate">Not EmPOWER-Funded</span>
+          <div style="margin-top:.875rem"><a href="services/energy-supply.html" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#C8102E;text-decoration:none">Learn More →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Stats -->
+  <div class="roi-band">
+    <div class="roi-inner">
+      <div class="section-eyebrow" style="color:#F4A11D">Program Performance</div>
+      <h2 style="font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,3vw,2.5rem);color:#fff;margin:0 0 .75rem">EmPOWER Maryland by the Numbers</h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,.6);max-width:600px;margin:0 auto">Since 2008, the program has delivered exceptional ROI for Maryland businesses and the state as a whole.</p>
+      <div class="roi-grid">
+        <div class="roi-card">
+          <div class="roi-val">$14.5B</div>
+          <div class="roi-label">Total Energy Savings</div>
+          <div class="roi-desc">Cumulative energy cost savings delivered to Maryland electric customers since program inception</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-val">3.5:1</div>
+          <div class="roi-label">Return on Investment</div>
+          <div class="roi-desc">$14.5B savings on $4.1B investment — every dollar invested returns $3.50 in energy savings</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-val">15%+</div>
+          <div class="roi-label">Per-Capita Reduction</div>
+          <div class="roi-desc">Maryland has exceeded its 15% per-capita electricity consumption reduction target ahead of schedule</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who Qualifies -->
+  <section class="section">
+    <div class="section-inner">
+      <div style="text-align:center;max-width:680px;margin:0 auto">
+        <div class="section-eyebrow">Eligibility</div>
+        <h2 class="section-title">Does Your Business <em>Qualify?</em></h2>
+        <p style="font-size:1rem;line-height:1.75;color:#555;margin-bottom:2rem">Most Maryland commercial businesses qualify for at least one EmPOWER Maryland program. Here are the key eligibility requirements:</p>
+      </div>
+      <div class="elig-grid">
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Maryland Commercial Customer</h4><p>Your business must be a commercial electric customer of BGE, Pepco, Delmarva Power, or SMECO.</p></div>
+        </div>
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Existing Equipment (HVAC Tune-Up)</h4><p>HVAC equipment must be at least 2 years old and in operational condition for tune-up eligibility.</p></div>
+        </div>
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Building Type</h4><p>Office, retail, warehouse, industrial, medical, restaurant, hospitality, and most commercial property types qualify.</p></div>
+        </div>
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Not Previously Served</h4><p>Equipment and systems must not have received an EmPOWER Maryland rebate within the past program cycle.</p></div>
+        </div>
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Multiple Units Welcome</h4><p>Businesses with multiple locations or buildings can apply for each qualifying property separately.</p></div>
+        </div>
+        <div class="elig-card">
+          <div class="elig-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>No Minimum Size</h4><p>Small businesses with just one HVAC unit qualify the same as large campuses. There is no minimum building size or energy spend.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Get Started -->
+  <section class="section" style="background:#F5F5F5;padding-top:4rem;padding-bottom:4rem">
+    <div class="section-inner">
+      <div style="text-align:center;margin-bottom:1rem">
+        <div class="section-eyebrow">Getting Started</div>
+        <h2 class="section-title">How to Access <em>EmPOWER Maryland Benefits</em></h2>
+        <p style="font-size:1rem;line-height:1.75;color:#555;max-width:600px;margin:0 auto">Maryland Smart Energy manages the entire process on your behalf. Here is how it works:</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Call or Contact Us</h3>
+          <p>Reach out by phone or web form. We will confirm your utility, building type, and which programs you are eligible for — no paperwork yet.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Schedule Site Visit</h3>
+          <p>Our technician visits your property to assess your HVAC systems, lighting, and building envelope. This visit is free and typically takes 1–2 hours.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>We Handle Everything</h3>
+          <p>Maryland Smart Energy submits all rebate paperwork to your utility on your behalf. You do not fill out a single form. We track the application through approval.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>You Save Money</h3>
+          <p>Work is completed with rebate applied — meaning you pay nothing or near nothing out of pocket. Savings begin immediately on your next utility bill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-block">
+    <h2>Ready to Claim Your EmPOWER Maryland Benefits?</h2>
+    <p>These rebates are funded and available right now. Don't leave money on the table — call Maryland Smart Energy today.</p>
+    <a href="contact.html" class="btn-white">Schedule a Free Assessment</a>
+    <a href="tel:3018887090" class="btn-outline-white">Call (301) 888-7090</a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+          <div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div>
+          <div style="font-size:.8125rem;color:rgba(255,255,255,.35)">Licensed · Bonded · Insured</div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services/hvac-tune-up.html">HVAC Tune-Up</a></li>
+            <li><a href="services/building-tune-up.html">Building Tune-Up</a></li>
+            <li><a href="services/lighting.html">Lighting Upgrades</a></li>
+            <li><a href="services/energy-supply.html">Energy Supply</a></li>
+            <li><a href="services/community-solar.html">Community Solar</a></li>
+            <li><a href="services/benchmarking.html">Benchmarking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="empower-maryland.html">EmPOWER Maryland</a></li>
+            <li><a href="bge-energy-efficiency.html">BGE Programs</a></li>
+            <li><a href="pepco-energy-efficiency.html">Pepco Programs</a></li>
+            <li><a href="delmarva-energy-efficiency.html">Delmarva Programs</a></li>
+            <li><a href="smeco-energy-efficiency.html">SMECO Programs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:3018887090">(301) 888-7090</a></li>
+            <li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li>
+            <li><a href="contact.html">Schedule Service</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Maryland Smart Energy. All rights reserved. Authorized EmPOWER Maryland Service Provider.</p>
+        <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

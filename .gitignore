@@ -1,0 +1,11 @@
+# Dev tools (local only)
+node_modules/
+temporary screenshots/
+screenshot.mjs
+serve.mjs
+*.code-workspace
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

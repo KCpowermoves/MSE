@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions — Maryland Smart Energy</title>
+  <meta name="description" content="Answers to the most common questions about Maryland's $0 commercial HVAC tune-up and building energy upgrade programs funded by EmPOWER Maryland." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'brand-red':'#C8102E','brand-gold':'#F4A11D','brand-navy':'#1A2332','brand-gray':'#F5F5F5'}}}}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#999;line-height:1;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    .page-hero{background:#1A2332;padding:4.5rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(200,16,46,.15) 0%,transparent 65%);pointer-events:none}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1.25rem}
+    .page-hero h1{font-size:clamp(2.2rem,4vw,3rem);font-weight:900;color:#fff;margin:0 0 1.25rem;line-height:1.1}
+    .page-hero h1 em{font-style:normal;color:#F4A11D}
+    .page-hero-sub{font-size:1.0625rem;line-height:1.7;color:rgba(255,255,255,.7);max-width:580px;margin:0 auto}
+    .faq-wrap{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:240px 1fr;gap:4rem;align-items:start}
+    @media(max-width:900px){.faq-wrap{grid-template-columns:1fr;gap:2rem}}
+    .faq-nav{position:sticky;top:88px}
+    .faq-nav h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.875rem;letter-spacing:.06em;text-transform:uppercase;color:#888;margin:0 0 1rem}
+    .faq-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.25rem}
+    .faq-nav ul a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#555;text-decoration:none;padding:.5rem .75rem;border-radius:6px;transition:background .15s,color .15s}
+    .faq-nav ul a:hover{background:#F5F5F5;color:#C8102E}
+    @media(max-width:900px){.faq-nav{display:none}}
+    .faq-section-group{margin-bottom:3rem}
+    .faq-category{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.375rem;color:#1A2332;margin:0 0 1.25rem;padding-bottom:.75rem;border-bottom:2px solid #C8102E;display:flex;align-items:center;gap:.625rem}
+    .faq-category-icon{width:32px;height:32px;background:rgba(200,16,46,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .faq-category-icon svg{color:#C8102E}
+    details{border-bottom:1px solid rgba(26,35,50,.08)}
+    details:first-of-type{border-top:1px solid rgba(26,35,50,.08)}
+    summary{font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;color:#1A2332;padding:1rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;list-style:none;user-select:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:1.25rem;font-weight:400;color:#C8102E;flex-shrink:0;width:24px;text-align:center}
+    details[open] summary::after{content:'−'}
+    .faq-answer{font-size:.9375rem;line-height:1.75;color:#555;padding-bottom:1.25rem}
+    .faq-answer a{color:#C8102E;font-weight:600}
+    .cta-inset{background:#1A2332;border-radius:14px;padding:2rem;margin-top:2rem;text-align:center}
+    .cta-inset h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.375rem;color:#fff;margin:0 0 .5rem}
+    .cta-inset p{font-size:.9375rem;color:rgba(255,255,255,.65);margin:0 0 1.5rem;line-height:1.65}
+    .btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;transition:background .15s,transform .1s}.btn-gold:hover{background:#D4891A;transform:translateY(-1px)}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:4rem 1.5rem 2rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+    .footer-brand img{height:36px;filter:brightness(0) invert(1);margin-bottom:.75rem}
+    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
+    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+      <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="about.html">About</a></li><li><a href="empower-maryland.html">EmPOWER Maryland</a></li><li><a href="blog.html">Blog</a></li><li><a href="faq.html" style="color:#C8102E">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="contact.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06);">(301) 888-7090</a><a href="contact.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
+  </nav>
+  <div class="announce-bar">Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.</div>
+</div>
+
+  <section class="page-hero">
+    <div class="hero-eyebrow">FAQ</div>
+    <h1>Frequently Asked <em>Questions</em></h1>
+    <p class="page-hero-sub">Everything you need to know about Maryland's commercial energy efficiency programs — answered clearly and honestly.</p>
+  </section>
+
+  <div class="faq-wrap">
+    <nav class="faq-nav">
+      <h4>Jump to Section</h4>
+      <ul>
+        <li><a href="#about-program">About the Program</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#process">The Process</a></li>
+        <li><a href="#savings">Savings & Results</a></li>
+        <li><a href="#about-mse">About Maryland Smart Energy</a></li>
+      </ul>
+    </nav>
+
+    <div class="faq-content">
+      <!-- About the Program -->
+      <div class="faq-section-group" id="about-program">
+        <div class="faq-category">
+          <div class="faq-category-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          About the Program
+        </div>
+        <details><summary>Is the HVAC tune-up really free? What's the catch?</summary><div class="faq-answer">There is no catch. The EmPOWER Maryland program has been funded since 2008 through a small surcharge on every Maryland electric bill. Every Maryland electricity customer has been contributing to this fund monthly — and businesses are entitled to claim the benefits. Maryland Smart Energy is an authorized service provider that performs the work and processes the rebate application. You pay $0 out of pocket.</div></details>
+        <details><summary>What is EmPOWER Maryland and who runs it?</summary><div class="faq-answer">EmPOWER Maryland is a statewide energy efficiency initiative established by the Energy Efficiency Act of 2008. It is administered by the Maryland Public Service Commission and funded through charges on customer electric bills. Each of Maryland's major utilities (BGE, Pepco, Delmarva Power, and SMECO) runs its own EmPOWER Maryland programs. The program has generated $14.5 billion in customer savings against $4.1 billion in program costs since its inception. <a href="empower-maryland.html">Learn more about EmPOWER Maryland →</a></div></details>
+        <details><summary>Who pays for the rebate program?</summary><div class="faq-answer">EmPOWER Maryland is funded through a small charge on all Maryland electric bills. Every residential and commercial electric customer in Maryland contributes a few dollars per month to this fund. The Public Service Commission oversees the program and sets rebate levels for each utility cycle. The current program cycle runs 2024–2026. Because businesses have already been paying into this fund, claiming the benefits is essentially getting a return on what you have already been contributing.</div></details>
+        <details><summary>What services are covered by EmPOWER Maryland?</summary><div class="faq-answer">Commercial programs covered include: HVAC Tune-Up (up to 85% of costs), Building Tune-Up (up to 85%), LED Lighting Upgrades (up to 80%), Instant Point-of-Purchase Lighting and HVAC Discounts, Building Operator Training (up to 100% / $1,000 per course), and New Construction incentives. Maryland Smart Energy helps you access the HVAC, Building Tune-Up, and Lighting programs specifically.</div></details>
+        <details><summary>Is this program available if I already use a different electricity supplier (not my utility)?</summary><div class="faq-answer">Yes. Maryland has a deregulated electricity market, meaning many businesses use competitive electricity suppliers rather than buying supply from their utility. However, all EmPOWER Maryland rebates are tied to your utility distribution account (BGE, Pepco, Delmarva, or SMECO) — not your electricity supplier. You remain fully eligible for all programs regardless of your current electricity supplier.</div></details>
+      </div>
+
+      <!-- Eligibility -->
+      <div class="faq-section-group" id="eligibility">
+        <div class="faq-category">
+          <div class="faq-category-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Eligibility
+        </div>
+        <details><summary>What types of businesses qualify?</summary><div class="faq-answer">Any Maryland commercial establishment with an active commercial electric account qualifies — office buildings, retail stores, restaurants, warehouses, medical offices, religious institutions, nonprofits, manufacturers, hotels, property management companies, schools, and more. The key requirement is an active commercial electric account with BGE, Pepco, Delmarva Power, or SMECO.</div></details>
+        <details><summary>Is there a minimum or maximum building size to qualify?</summary><div class="faq-answer">For the HVAC Tune-Up program: No minimum or maximum square footage. If you have commercial HVAC equipment that is at least 2 years old and in working condition, you likely qualify. For the Building Tune-Up program: Small building programs are available for buildings under 75,000 sq ft. Large building programs are for 75,000+ sq ft. For BEPS/Benchmarking: The compliance mandate applies to buildings 35,000+ sq ft, but voluntary benchmarking is available for all sizes.</div></details>
+        <details><summary>Does my HVAC equipment need to meet any requirements?</summary><div class="faq-answer">Yes. The equipment must be at least 2 years old and in working operational condition. It does not need to be in perfect condition — that is what the tune-up is for. Eligible equipment types include rooftop packaged units, split systems, heat pumps, air handlers, and central systems. Portable window units and new construction installations (less than 2 years) do not qualify.</div></details>
+        <details><summary>Which utilities do you work with?</summary><div class="faq-answer">Maryland Smart Energy is authorized to perform EmPOWER Maryland work under all four major Maryland utilities: BGE (Baltimore Gas & Electric), Pepco, Delmarva Power, and SMECO (Southern Maryland Electric Cooperative). If your business has a commercial electric account with any of these utilities, we can likely serve you.</div></details>
+        <details><summary>I am a tenant, not a property owner. Can I still participate?</summary><div class="faq-answer">Yes, in most cases. If your business pays the electric bill directly (meaning the commercial electric account is in your business's name), you qualify regardless of whether you own or rent the building. In some cases where the landlord controls the HVAC equipment and pays the electric bill, you would need landlord cooperation. We can advise on your specific situation during the initial call.</div></details>
+        <details><summary>Can I participate in multiple programs at the same time?</summary><div class="faq-answer">Yes — and we encourage it. Many businesses get their HVAC tune-up, building tune-up, and lighting upgrade all done together. The rebates are separate for each service. You can also combine EmPOWER Maryland rebates with a competitive electricity supply rate change and a community solar subscription for maximum total savings.</div></details>
+      </div>
+
+      <!-- The Process -->
+      <div class="faq-section-group" id="process">
+        <div class="faq-category">
+          <div class="faq-category-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          The Process
+        </div>
+        <details><summary>How long does a commercial HVAC tune-up take?</summary><div class="faq-answer">A commercial HVAC tune-up typically takes 2–4 hours per unit. A small office with one rooftop unit might be done in 2 hours. A larger facility with 5–6 units might take a full day. Our technicians work efficiently and keep you updated throughout. Most businesses remain fully open during the service.</div></details>
+        <details><summary>Do I need to be present during the tune-up?</summary><div class="faq-answer">You or a designated representative should be available at the start of the appointment to grant access and answer basic questions. You do not need to stay throughout. Our technician will notify you when the work is complete and provide a written service report before leaving.</div></details>
+        <details><summary>How long does it take to schedule after I contact you?</summary><div class="faq-answer">We typically confirm eligibility within one business day of your initial contact. Appointments are usually available within 1–3 weeks depending on demand. If you have a specific scheduling need (avoiding certain days or times), just let us know and we will do our best to accommodate.</div></details>
+        <details><summary>Who handles the utility rebate paperwork?</summary><div class="faq-answer">We do — 100%. After completing the service, we prepare all required documentation and submit the rebate application directly to your utility on your behalf. You will not need to fill out any forms or contact your utility. Rebate processing typically takes 4–8 weeks after submission. We track the application and follow up if there are any issues.</div></details>
+        <details><summary>Will I receive a bill after the service?</summary><div class="faq-answer">No. For qualifying EmPOWER Maryland programs, there is no invoice and no payment required from you. The utility pays the rebate directly to Maryland Smart Energy as the authorized service provider. If any portion of the project is not covered by the rebate (which is rare for the HVAC tune-up), we will clearly communicate that before any work begins and get your written approval.</div></details>
+        <details><summary>What happens if my equipment is not repairable during the tune-up?</summary><div class="faq-answer">If we discover a significant repair need during the tune-up (e.g., a compressor failure), we will stop and clearly explain the situation. We will provide a written report of findings and recommendations. Some repair costs may be eligible for EmPOWER Maryland rebates under separate programs. For equipment that is beyond economic repair, we can discuss replacement incentives available through the utility programs.</div></details>
+      </div>
+
+      <!-- Savings -->
+      <div class="faq-section-group" id="savings">
+        <div class="faq-category">
+          <div class="faq-category-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Savings &amp; Results
+        </div>
+        <details><summary>How much will I actually save on my energy bill?</summary><div class="faq-answer">Typical energy savings from a commercial HVAC tune-up range from 5–20% on HVAC-related electricity costs. The actual amount depends on how poorly maintained your current equipment is, the age and type of equipment, your building's usage patterns, and weather conditions. A complete building tune-up that addresses controls and sequences in addition to HVAC typically achieves the higher end of this range. We provide a written estimate of expected savings after assessing your facility.</div></details>
+        <details><summary>When will the savings start showing up on my bill?</summary><div class="faq-answer">Energy savings begin immediately after the tune-up is completed. Your HVAC systems will run more efficiently from day one. You will typically see the impact on your first full billing cycle after the service. Note that seasonal factors affect energy usage — comparing year-over-year bills (same month) is the best way to measure savings.</div></details>
+        <details><summary>Does the tune-up extend the life of my HVAC equipment?</summary><div class="faq-answer">Yes, significantly. Unmaintained commercial HVAC equipment loses efficiency and accumulates stress that shortens lifespan. Regular professional maintenance — including proper refrigerant charge, clean coils, and tight electrical connections — can extend equipment life by 3–5 years. Delaying equipment replacement saves tens of thousands of dollars in capital costs, especially for larger commercial systems.</div></details>
+        <details><summary>How do I measure my savings after the tune-up?</summary><div class="faq-answer">We provide a post-service report documenting your equipment's efficiency before and after the tune-up. The most accurate way to track bill savings is to compare your energy use (kWh) on the same billing period year over year — not total dollar amounts, which fluctuate with rates. BGE and other utilities also offer online energy management tools (Business Energy Manager) that can help you track consumption trends over time.</div></details>
+      </div>
+
+      <!-- About MSE -->
+      <div class="faq-section-group" id="about-mse">
+        <div class="faq-category">
+          <div class="faq-category-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          About Maryland Smart Energy
+        </div>
+        <details><summary>Is Maryland Smart Energy licensed and insured?</summary><div class="faq-answer">Yes. Maryland Smart Energy is licensed, bonded, and fully insured to perform HVAC and energy efficiency work in Maryland. All of our HVAC technicians hold the appropriate certifications and licenses required by state and local regulations. We carry general liability insurance and workers' compensation coverage for all employees performing work at your facility.</div></details>
+        <details><summary>Are you directly affiliated with the utility companies?</summary><div class="faq-answer">We are not employed by the utilities, but we are authorized service providers under their EmPOWER Maryland programs. This means we have been vetted, approved, and listed in the utility's service provider directories. We work directly with the utility's program administrators to submit rebate applications on your behalf. We operate independently, which means we can serve customers across all four Maryland utilities — not just one.</div></details>
+        <details><summary>Do you charge any fees for your services?</summary><div class="faq-answer">No fees are charged to qualifying businesses for EmPOWER Maryland covered services. The utility rebate covers our service costs. We are compensated through the utility program, which is funded by the EmPOWER Maryland surcharge. For services that fall outside of EmPOWER Maryland coverage (such as certain equipment repairs or non-covered upgrades), we will provide a clear, upfront quote before any work begins.</div></details>
+        <details><summary>What areas of Maryland do you serve?</summary><div class="faq-answer">We serve the entire state of Maryland, covering all four major utility territories: BGE (Central Maryland, Baltimore area, suburban DC counties), Pepco (Montgomery County, Prince George's County), Delmarva Power (Eastern Shore), and SMECO (Southern Maryland — Calvert, Charles, St. Mary's, and portions of Prince George's County). <a href="about.html#territory">View our full service territory →</a></div></details>
+        <details><summary>How long has Maryland Smart Energy been in business?</summary><div class="faq-answer">Maryland Smart Energy is an experienced commercial energy efficiency contractor with a track record of serving hundreds of Maryland businesses across all four utility territories. Our team includes certified HVAC technicians, energy engineers, and utility program specialists who understand the EmPOWER Maryland program inside and out.</div></details>
+      </div>
+
+      <div class="cta-inset">
+        <h3>Still Have Questions?</h3>
+        <p>We are happy to answer any questions about the programs, your eligibility, or our process before you schedule. Call us or submit a contact form — no obligation.</p>
+        <a href="contact.html" class="btn-gold">Contact Us</a>
+        <p style="margin:.75rem 0 0;color:rgba(255,255,255,.5);font-size:.875rem">Or call <a href="tel:3018887090" style="color:#F4A11D;text-decoration:none">(301) 888-7090</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services/hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="services/building-tune-up.html">Building Tune-Up</a></li><li><a href="services/lighting.html">Lighting</a></li><li><a href="services/energy-supply.html">Energy Supply</a></li><li><a href="services/community-solar.html">Community Solar</a></li><li><a href="services/benchmarking.html">Benchmarking</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="empower-maryland.html">EmPOWER Maryland</a></li><li><a href="bge-energy-efficiency.html">BGE Programs</a></li><li><a href="pepco-energy-efficiency.html">Pepco Programs</a></li><li><a href="delmarva-energy-efficiency.html">Delmarva Programs</a></li><li><a href="smeco-energy-efficiency.html">SMECO Programs</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:3018887090">(301) 888-7090</a></li><li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li><li><a href="contact.html">Schedule a Tune-Up</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Maryland Smart Energy. Licensed · Bonded · Insured.</p><div><a href="privacy.html" class="footer-legal">Privacy Policy</a><a href="terms.html" class="footer-legal">Terms of Service</a></div></div>
+  </div></footer>
+</body>
+</html>

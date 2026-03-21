@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Solar for Maryland Businesses — Bill Credits | Maryland Smart Energy</title>
+  <meta name="description" content="Get monthly credits on your electric bill by subscribing to a Maryland community solar farm. No panels, no installation, no capital cost. Available to BGE, Pepco, Delmarva & SMECO customers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'brand-red':'#C8102E','brand-gold':'#F4A11D','brand-navy':'#1A2332','brand-gray':'#F5F5F5'}}}}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}.announce-bar a{color:#1A2332}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+    .nav-logo img{height:44px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;line-height:1.1}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.7rem;color:#888;letter-spacing:.03em}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover,.dropdown-menu a.active{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    .breadcrumb{background:#F5F5F5;padding:.75rem 1.5rem;font-family:'Barlow',sans-serif;font-size:.8125rem;color:#888}.breadcrumb a{color:#888;text-decoration:none}.breadcrumb a:hover{color:#C8102E}.breadcrumb span{margin:0 .4rem}
+    .page-hero{background:linear-gradient(135deg,#1A2332 0%,#243044 100%);padding:4.5rem 1.5rem;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:350px;height:350px;background:radial-gradient(circle,rgba(244,161,29,.12) 0%,transparent 65%);pointer-events:none}
+    .page-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1.25rem}
+    .page-hero h1{font-size:clamp(2.2rem,4vw,3rem);font-weight:900;color:#fff;margin:0 0 1.25rem;line-height:1.1}
+    .page-hero h1 span{color:#F4A11D}
+    .page-hero-sub{font-size:1.0625rem;line-height:1.7;color:rgba(255,255,255,.75);margin:0 0 2rem;max-width:480px}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;box-shadow:0 4px 14px rgba(200,16,46,.4);transition:background .15s,transform .1s}.btn-primary:hover{background:#A30D24;transform:translateY(-1px)}
+    .btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;transition:background .15s,transform .1s}.btn-gold:hover{background:#D4891A;transform:translateY(-1px)}
+    .solar-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:2rem}
+    .solar-card-title{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#F4A11D;margin-bottom:1.25rem}
+    .solar-step{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1rem}
+    .solar-step:last-child{margin-bottom:0}
+    .solar-step-num{width:28px;height:28px;background:#F4A11D;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow',sans-serif;font-weight:800;font-size:.8125rem;color:#1A2332;flex-shrink:0}
+    .solar-step-text strong{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#fff;display:block}
+    .solar-step-text span{font-size:.8125rem;color:rgba(255,255,255,.55)}
+    @media(max-width:900px){.page-hero-inner{grid-template-columns:1fr}.solar-card{display:none}}
+    .content-wrap{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 340px;gap:3.5rem;align-items:start}
+    @media(max-width:1000px){.content-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+    .section-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;margin-bottom:.5rem}
+    .section-title{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.6rem,2.5vw,2.1rem);color:#1A2332;margin:0 0 1rem;letter-spacing:-.02em}
+    .section-title em{font-style:normal;color:#C8102E}
+    .content-section{margin-bottom:3rem}
+    .content-section p{font-size:1rem;line-height:1.75;color:#555;margin:0 0 1rem}
+    .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+    .vs-card{border-radius:10px;padding:1.5rem}
+    .vs-card.bad{background:#FFF5F5;border:1px solid rgba(200,16,46,.15)}
+    .vs-card.good{background:#F0FDF4;border:1px solid rgba(34,197,94,.2)}
+    .vs-card h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;margin:0 0 .75rem}
+    .vs-card.bad h4{color:#C8102E}
+    .vs-card.good h4{color:#16a34a}
+    .vs-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .vs-card ul li{font-size:.9rem;color:#555;display:flex;align-items:flex-start;gap:.5rem}
+    .vs-card ul li::before{content:'✓';font-weight:800;flex-shrink:0}
+    .vs-card.bad ul li::before{content:'✗';color:#C8102E}
+    .vs-card.good ul li::before{color:#16a34a}
+    @media(max-width:600px){.vs-grid{grid-template-columns:1fr}}
+    .elig-list{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .elig-list li{display:flex;align-items:center;gap:.625rem;font-size:.9375rem;color:#444}
+    .elig-list li::before{content:'';width:8px;height:8px;background:#C8102E;border-radius:50%;flex-shrink:0}
+    .steps-list{list-style:none;margin:1.5rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.25rem}
+    .step-item{display:flex;align-items:flex-start;gap:1rem}
+    .step-num{width:36px;height:36px;background:#C8102E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;color:#fff;flex-shrink:0}
+    .step-content strong{font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;color:#1A2332;display:block;margin-bottom:.2rem}
+    .step-content span{font-size:.9rem;color:#666;line-height:1.6}
+    .sidebar{position:sticky;top:88px}
+    .sidebar-card{background:#1A2332;border-radius:14px;padding:1.75rem;margin-bottom:1.5rem;color:#fff}
+    .sidebar-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;margin:0 0 .5rem}
+    .sidebar-card p{font-size:.875rem;color:rgba(255,255,255,.65);margin:0 0 1.25rem;line-height:1.65}
+    .btn-gold-block{display:block;text-align:center;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;padding:.875rem;border-radius:6px;text-decoration:none}
+    .sidebar-info{background:#F5F5F5;border-radius:14px;padding:1.5rem}
+    .sidebar-info h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:0 0 1rem}
+    .sidebar-fact{display:flex;align-items:flex-start;gap:.625rem;margin-bottom:.875rem}
+    .sidebar-fact-icon{width:28px;height:28px;background:rgba(200,16,46,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sidebar-fact-icon svg{color:#C8102E}
+    .sidebar-fact-text strong{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;display:block}
+    .sidebar-fact-text span{font-size:.8125rem;color:#777}
+    .related-section{background:#F5F5F5;padding:4rem 1.5rem}
+    .related-inner{max-width:1200px;margin:0 auto}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+    .related-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid rgba(26,35,50,.06);text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s;display:block}.related-card:hover{box-shadow:0 8px 24px rgba(200,16,46,.1);transform:translateY(-2px)}
+    .related-card h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#1A2332;margin:.75rem 0 .375rem}
+    .related-card p{font-size:.875rem;color:#666;margin:0;line-height:1.6}
+    .related-icon{width:44px;height:44px;background:rgba(200,16,46,.08);border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .related-icon svg{color:#C8102E}
+    @media(max-width:768px){.related-grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.related-grid{grid-template-columns:1fr}}
+    .cta-block{background:#C8102E;padding:4rem 1.5rem;text-align:center}
+    .cta-block h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,3vw,2.25rem);color:#fff;margin:0 0 .75rem}
+    .cta-block p{font-size:1.0625rem;color:rgba(255,255,255,.8);margin:0 0 2rem}
+    .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-white{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .1s}.btn-white:hover{transform:translateY(-1px)}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:4rem 1.5rem 2rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+    .footer-brand img{height:36px;filter:brightness(0) invert(1);margin-bottom:.75rem}
+    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
+    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><img src="../brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div></a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="hvac-tune-up.html">HVAC Tune-Up</a><a href="building-tune-up.html">Building Tune-Up</a><a href="lighting.html">Lighting</a><a href="energy-supply.html">Energy Supply</a><a href="community-solar.html" class="active">Community Solar</a><a href="benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="../about.html">About</a></li><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="../contact.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="hvac-tune-up.html">HVAC Tune-Up</a><a href="building-tune-up.html">Building Tune-Up</a><a href="lighting.html">Lighting</a><a href="energy-supply.html">Energy Supply</a><a href="community-solar.html">Community Solar</a><a href="benchmarking.html">Benchmarking</a><a href="../about.html">About</a><a href="../empower-maryland.html">EmPOWER Maryland</a><a href="../blog.html">Blog</a><a href="../faq.html">FAQ</a><a href="../contact.html">Contact</a><a href="tel:3018887090" class="nav-phone" style="display:block;text-align:center;padding:.5rem 0">(301) 888-7090</a><a href="../contact.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
+  </nav>
+  <div class="announce-bar">Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.</div>
+</div>
+
+  <div class="breadcrumb"><div style="max-width:1200px;margin:0 auto"><a href="../index.html">Home</a><span>›</span><a href="#">Services</a><span>›</span>Community Solar</div></div>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <div class="hero-eyebrow">No Panels Required</div>
+        <h1>Community Solar — <span>Monthly Bill Credits, Zero Installation</span></h1>
+        <p class="page-hero-sub">Subscribe to a share of a local Maryland solar farm and receive monthly credits directly on your electric bill. No rooftop panels, no construction, no capital investment — just lower electric bills every month.</p>
+        <div class="hero-actions">
+          <a href="../contact.html" class="btn-primary">Enroll in Community Solar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="tel:3018887090" class="btn-gold">Call (301) 888-7090</a>
+        </div>
+      </div>
+      <div class="solar-card">
+        <div class="solar-card-title">How Community Solar Works</div>
+        <div class="solar-step"><div class="solar-step-num">1</div><div class="solar-step-text"><strong>Subscribe to a Local Solar Farm</strong><span>We match you with an available Maryland solar project near you</span></div></div>
+        <div class="solar-step"><div class="solar-step-num">2</div><div class="solar-step-text"><strong>Farm Generates Electricity</strong><span>The solar farm feeds power into the grid on your behalf</span></div></div>
+        <div class="solar-step"><div class="solar-step-num">3</div><div class="solar-step-text"><strong>Credits Applied to Your Bill</strong><span>Your utility automatically applies monthly credits based on production</span></div></div>
+        <div class="solar-step"><div class="solar-step-num">4</div><div class="solar-step-text"><strong>You Save Every Month</strong><span>Typical savings of 5–15% on your electricity supply costs</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-wrap">
+    <main>
+      <div class="content-section">
+        <div class="section-eyebrow">What Is Community Solar?</div>
+        <h2 class="section-title">Solar Benefits Without <em>Rooftop Panels</em></h2>
+        <p>Community solar (also called shared solar or solar gardens) allows businesses to subscribe to electricity generated by a nearby solar farm — without installing any equipment on their own property. The solar farm is built, owned, and maintained by a third party. You simply subscribe to a portion of its output.</p>
+        <p>Each month, your utility company (BGE, Pepco, Delmarva, or SMECO) applies credits to your electric bill based on your share of the solar farm's production. These credits offset a portion of your electricity supply charges, reducing your total bill.</p>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Community Solar vs. Rooftop Solar</div>
+        <h2 class="section-title">Why Community Solar May Be <em>Right for You</em></h2>
+        <div class="vs-grid">
+          <div class="vs-card bad"><h4>Rooftop Solar Challenges</h4><ul><li>Requires suitable roof structure and orientation</li><li>Significant upfront capital ($50k–$500k+)</li><li>Long payback periods (7–12 years)</li><li>Construction disruption to your business</li><li>You own and maintain the equipment</li></ul></div>
+          <div class="vs-card good"><h4>Community Solar Advantages</h4><ul><li>No equipment on your property at all</li><li>Zero capital cost to participate</li><li>Bill credits begin within 1–2 billing cycles</li><li>No construction, no disruption</li><li>Third party owns and maintains the farm</li></ul></div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Eligibility</div>
+        <h2 class="section-title">Who Can <em>Subscribe?</em></h2>
+        <ul class="elig-list">
+          <li>Any commercial business with an active electric account with BGE, Pepco, Delmarva Power, or SMECO</li>
+          <li>Renters and property owners both qualify — you do not need to own your building</li>
+          <li>Buildings that cannot support rooftop panels (flat roofs, structural limitations, shading)</li>
+          <li>No minimum or maximum electricity usage requirement</li>
+          <li>Subscription sizes are matched to your average monthly usage</li>
+          <li>Available statewide wherever solar farms have capacity</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <div class="section-eyebrow">Enrollment Process</div>
+        <h2 class="section-title">How to Start Getting <em>Solar Credits</em></h2>
+        <ul class="steps-list">
+          <li class="step-item"><div class="step-num">1</div><div class="step-content"><strong>Usage Analysis</strong><span>We review your electric bills to determine the appropriate subscription size based on your average monthly electricity consumption.</span></div></li>
+          <li class="step-item"><div class="step-num">2</div><div class="step-content"><strong>Project Matching</strong><span>We connect you with an available Maryland community solar project in your utility territory. We verify the farm is operational and credits are being issued.</span></div></li>
+          <li class="step-item"><div class="step-num">3</div><div class="step-content"><strong>Enrollment</strong><span>We handle the subscription paperwork. You sign a community solar agreement — typically a 20-year term with the right to transfer if you move.</span></div></li>
+          <li class="step-item"><div class="step-num">4</div><div class="step-content"><strong>Credits Begin</strong><span>Your utility automatically applies monthly credits to your electric bill. No additional action required. Credits appear within 1–2 billing cycles of enrollment.</span></div></li>
+        </ul>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>Enroll in Community Solar</h3>
+        <p>Start receiving monthly solar bill credits with zero installation cost. We handle the enrollment.</p>
+        <a href="../contact.html" class="btn-gold-block">Get Enrolled Today</a>
+        <div style="margin-top:1rem;text-align:center"><a href="tel:3018887090" style="color:rgba(255,255,255,.7);font-size:.875rem;text-decoration:none">Or call (301) 888-7090</a></div>
+      </div>
+      <div class="sidebar-info">
+        <h4>Quick Facts</h4>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3v1M12 20v1M4.22 4.22l.707.707M19.07 19.07l.707.707M1 12h2M21 12h2M4.22 19.78l.707-.707M19.07 4.93l.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>No panels on your property</strong><span>Zero installation required</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>Zero capital cost</strong><span>No upfront investment</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>5–15% bill savings</strong><span>Typical monthly credit value</span></div></div>
+        <div class="sidebar-fact"><div class="sidebar-fact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sidebar-fact-text"><strong>Credits start in 1–2 billing cycles</strong><span>Fast activation after enrollment</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related-section">
+    <div class="related-inner">
+      <div class="section-eyebrow">More Services</div>
+      <h2 class="section-title">Stack Community Solar With <em>Other Savings</em></h2>
+      <div class="related-grid">
+        <a href="hvac-tune-up.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h4>HVAC Tune-Up</h4><p>$0 out-of-pocket HVAC tune-up. Reduce consumption, then offset with solar credits.</p></a>
+        <a href="energy-supply.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Energy Supply</h4><p>Lower your electricity rate on top of community solar credits for maximum savings.</p></a>
+        <a href="lighting.html" class="related-card"><div class="related-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>LED Lighting</h4><p>Use less electricity and offset what you use with solar. Double savings strategy.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <h2>Start Getting Solar Credits on Your Electric Bill</h2>
+    <p>No panels. No installation. No cost. Just monthly credits that reduce your electric bill starting this year.</p>
+    <div class="cta-actions"><a href="../contact.html" class="btn-white">Enroll in Community Solar</a><a href="tel:3018887090" style="display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.85);font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;padding:.875rem 0">Call (301) 888-7090</a></div>
+  </section>
+
+  <footer><div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><img src="../brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="building-tune-up.html">Building Tune-Up</a></li><li><a href="lighting.html">Lighting</a></li><li><a href="energy-supply.html">Energy Supply</a></li><li><a href="community-solar.html">Community Solar</a></li><li><a href="benchmarking.html">Benchmarking</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="../empower-maryland.html">EmPOWER Maryland</a></li><li><a href="../bge-energy-efficiency.html">BGE Programs</a></li><li><a href="../faq.html">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:3018887090">(301) 888-7090</a></li><li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li><li><a href="../contact.html">Schedule a Consultation</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Maryland Smart Energy. Licensed · Bonded · Insured.</p><div><a href="../privacy.html" class="footer-legal">Privacy</a><a href="../terms.html" class="footer-legal">Terms</a></div></div>
+  </div></footer>
+</body>
+</html>

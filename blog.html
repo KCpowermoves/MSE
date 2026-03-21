@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Efficiency Blog for Maryland Businesses | Maryland Smart Energy</title>
+  <meta name="description" content="Energy efficiency insights, EmPOWER Maryland updates, and HVAC tips for Maryland commercial businesses. Stay informed and save more with Maryland Smart Energy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{'brand-red':'#C8102E','brand-gold':'#F4A11D','brand-navy':'#1A2332','brand-gray':'#F5F5F5'}}}}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#999;line-height:1;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none}.mobile-menu-btn{display:block}}
+    .page-hero{background:#1A2332;padding:4rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(200,16,46,.15) 0%,transparent 60%);pointer-events:none}
+    .hero-eyebrow{display:inline-flex;align-items:center;background:rgba(244,161,29,.15);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1.25rem}
+    .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin:0 0 1rem;line-height:1.1}
+    .page-hero h1 em{font-style:normal;color:#F4A11D}
+    .page-hero-sub{font-size:1.0625rem;line-height:1.7;color:rgba(255,255,255,.7);max-width:580px;margin:0 auto}
+    /* blog layout */
+    .blog-layout{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:start}
+    @media(max-width:900px){.blog-layout{grid-template-columns:1fr;gap:2.5rem}}
+    /* featured post */
+    .featured-post{background:#1A2332;border-radius:16px;overflow:hidden;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr 1fr;min-height:300px}
+    @media(max-width:768px){.featured-post{grid-template-columns:1fr}}
+    .featured-img{background:linear-gradient(135deg,#243047 0%,#1A2332 50%,#0f1820 100%);display:flex;align-items:center;justify-content:center;padding:2.5rem;position:relative;overflow:hidden}
+    .featured-img::before{content:'';position:absolute;top:-30px;left:-30px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,16,46,.3) 0%,transparent 65%)}
+    .featured-img-icon{width:80px;height:80px;background:rgba(200,16,46,.15);border:1px solid rgba(200,16,46,.2);border-radius:20px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+    .featured-img-icon svg{color:#C8102E}
+    .featured-content{padding:2.5rem}
+    .post-tag{display:inline-block;background:rgba(244,161,29,.15);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .5rem;border-radius:4px;margin-bottom:.875rem}
+    .featured-content h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0 0 .75rem;line-height:1.2}
+    .featured-content p{font-size:.9375rem;line-height:1.65;color:rgba(255,255,255,.65);margin:0 0 1.5rem}
+    .post-meta{font-size:.8125rem;color:rgba(255,255,255,.4);margin-bottom:1.25rem;display:flex;gap:.75rem}
+    .read-more{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#F4A11D;text-decoration:none;display:inline-flex;align-items:center;gap:.375rem}.read-more:hover{color:#fff}
+    /* post cards */
+    .post-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    @media(max-width:640px){.post-grid{grid-template-columns:1fr}}
+    .post-card{background:#fff;border:1px solid rgba(26,35,50,.07);border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .post-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,35,50,.1)}
+    .post-card-img{height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .post-card-img.hvac-bg{background:linear-gradient(135deg,#1A2332 0%,#243047 100%)}
+    .post-card-img.lighting-bg{background:linear-gradient(135deg,#2a1a0a 0%,#4a2c0e 100%)}
+    .post-card-img.empower-bg{background:linear-gradient(135deg,#1a0a0a 0%,#3a1010 100%)}
+    .post-card-img.case-bg{background:linear-gradient(135deg,#0a1a2a 0%,#0f2a40 100%)}
+    .post-card-img-icon{width:52px;height:52px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center}
+    .post-card-body{padding:1.25rem 1.5rem}
+    .post-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;margin:0 0 .5rem;line-height:1.25}
+    .post-card p{font-size:.9rem;color:#666;line-height:1.65;margin:0 0 1rem}
+    .post-card-meta{display:flex;justify-content:space-between;align-items:center}
+    .post-date{font-size:.8125rem;color:#999}
+    .post-read-link{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8125rem;color:#C8102E;text-decoration:none}.post-read-link:hover{color:#A30D24}
+    /* sidebar */
+    .sidebar{position:sticky;top:88px}
+    .sidebar-widget{background:#F5F5F5;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+    .sidebar-widget:last-child{margin-bottom:0}
+    .widget-title{font-family:'Barlow',sans-serif;font-weight:800;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;color:#1A2332;margin:0 0 1rem;padding-bottom:.75rem;border-bottom:2px solid rgba(26,35,50,.08)}
+    .cat-list{list-style:none;margin:0;padding:0}
+    .cat-list li{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(26,35,50,.06)}
+    .cat-list li:last-child{border-bottom:none}
+    .cat-list a{font-size:.9375rem;color:#555;text-decoration:none;font-weight:600}.cat-list a:hover{color:#C8102E}
+    .cat-count{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8125rem;background:rgba(200,16,46,.08);color:#C8102E;padding:.1rem .4rem;border-radius:4px}
+    .popular-item{display:flex;gap:.875rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid rgba(26,35,50,.06)}
+    .popular-item:last-child{border-bottom:none}
+    .pop-num{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.25rem;color:rgba(200,16,46,.2);line-height:1;flex-shrink:0;width:1.5rem;text-align:center}
+    .popular-item a{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#1A2332;text-decoration:none;line-height:1.35}.popular-item a:hover{color:#C8102E}
+    .pop-date{font-size:.8rem;color:#aaa;margin-top:.2rem}
+    .cta-widget{background:#C8102E;border-radius:12px;padding:1.75rem;text-align:center;color:#fff}
+    .cta-widget h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.125rem;color:#fff;margin:0 0 .625rem}
+    .cta-widget p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.55;margin:0 0 1.25rem}
+    .cta-widget a{display:block;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem;border-radius:6px;text-decoration:none}.cta-widget a:hover{background:#F5F5F5}
+    /* newsletter */
+    .newsletter{background:#1A2332;padding:4rem 1.5rem;text-align:center}
+    .newsletter-inner{max-width:540px;margin:0 auto}
+    .newsletter h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.875rem;color:#fff;margin:0 0 .75rem}
+    .newsletter p{font-size:1rem;color:rgba(255,255,255,.6);margin:0 0 1.75rem;line-height:1.6}
+    .newsletter-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto}
+    @media(max-width:540px){.newsletter-form{flex-direction:column}}
+    .newsletter-form input{flex:1;padding:.75rem 1rem;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);border-radius:6px;font-size:.9375rem;color:#fff;outline:none}.newsletter-form input::placeholder{color:rgba(255,255,255,.35)}.newsletter-form input:focus{border-color:rgba(255,255,255,.3)}
+    .newsletter-form button{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;padding:.75rem 1.25rem;border:none;border-radius:6px;cursor:pointer;white-space:nowrap;transition:background .15s}.newsletter-form button:hover{background:#A30D24}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:4rem 1.5rem 2rem}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+    .footer-brand img{height:36px;filter:brightness(0) invert(1);margin-bottom:.75rem}
+    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
+    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
+    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" />
+      <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="about.html">About</a></li><li><a href="empower-maryland.html">EmPOWER Maryland</a></li><li><a href="blog.html" style="color:#C8102E">Blog</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="contact.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06);">(301) 888-7090</a><a href="contact.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
+  </nav>
+  <div class="announce-bar">Zero-Dollar HVAC Tune-Up. 100% Covered by EmPOWER Maryland After Rebates.</div>
+</div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hero-eyebrow">Knowledge Base</div>
+    <h1>Energy Efficiency Insights for <em>Maryland Businesses</em></h1>
+    <p class="page-hero-sub">HVAC tips, EmPOWER Maryland updates, lighting upgrades, and real case studies from Maryland commercial properties.</p>
+  </section>
+
+  <!-- Blog Layout -->
+  <div class="blog-layout">
+    <!-- Main Content -->
+    <div>
+      <!-- Featured Post -->
+      <div class="featured-post">
+        <div class="featured-img">
+          <div class="featured-img-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="featured-content">
+          <span class="post-tag">EmPOWER Maryland</span>
+          <div class="post-meta"><span>March 15, 2025</span><span>·</span><span>6 min read</span></div>
+          <h2>What the 2024 HB 864 Update Means for Your Maryland Business</h2>
+          <p>Maryland's 2024 legislature expanded EmPOWER Maryland to include heat pump installations and new electrification incentives. Here is what changed — and how to claim the new benefits before the 2024–2026 cycle ends.</p>
+          <a href="blog/hb864-maryland-energy-law-2024.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Post Grid -->
+      <h2 style="font-family:'Barlow',sans-serif;font-weight:800;font-size:1.375rem;color:#1A2332;margin:0 0 1.5rem">Recent Articles</h2>
+      <div class="post-grid">
+
+        <div class="post-card">
+          <div class="post-card-img hvac-bg">
+            <div class="post-card-img-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#C8102E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag" style="background:rgba(200,16,46,.08);color:#C8102E">HVAC</span>
+            <h3 style="margin-top:.625rem">5 Signs Your Commercial Rooftop Unit Needs a Tune-Up (Not a Replacement)</h3>
+            <p>Many Maryland business owners replace HVAC equipment unnecessarily. Learn to spot the signs that a tune-up — covered by EmPOWER Maryland — will restore full efficiency without the capital cost.</p>
+            <div class="post-card-meta">
+              <span class="post-date">December 3, 2025</span>
+              <a href="blog/commercial-hvac-tune-up-signs.html" class="post-read-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-card-img lighting-bg">
+            <div class="post-card-img-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="#F4A11D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag" style="background:rgba(244,161,29,.1);color:#c47e00">Lighting</span>
+            <h3 style="margin-top:.625rem">LED Lighting Upgrades: How Maryland Warehouses Are Cutting Bills by 40%</h3>
+            <p>An illustrative look at the energy and cost savings achievable when a Maryland distribution warehouse upgrades from metal halide to LED lighting with EmPOWER Maryland rebates.</p>
+            <div class="post-card-meta">
+              <span class="post-date">November 14, 2025</span>
+              <a href="blog/led-lighting-warehouse-savings.html" class="post-read-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-card-img empower-bg">
+            <div class="post-card-img-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="#C8102E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag" style="background:rgba(200,16,46,.08);color:#C8102E">EmPOWER Maryland</span>
+            <h3 style="margin-top:.625rem">What Maryland's HB 864 Means for Your Business — and Why 2025 Is the Year to Act</h3>
+            <p>Maryland's 2024 legislature expanded EmPOWER Maryland with new electrification incentives and increased funding targets. Here's what changed and how your business can take advantage.</p>
+            <div class="post-card-meta">
+              <span class="post-date">January 8, 2026</span>
+              <a href="blog/hb864-maryland-energy-law-2024.html" class="post-read-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-card-img case-bg">
+            <div class="post-card-img-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2M9 7h1m-1 4h1m4-4h1m-1 4h1M9 15h6" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag" style="background:rgba(96,165,250,.1);color:#2563eb">Case Study</span>
+            <h3 style="margin-top:.625rem">Case Study: Rockville Medical Office Cuts Energy Costs 18% With Building Tune-Up</h3>
+            <p>An illustrative look at how a 28,000 sq ft medical office in the Pepco service territory reduced energy costs 18% through the EmPOWER Maryland Building Tune-Up program.</p>
+            <div class="post-card-meta">
+              <span class="post-date">October 22, 2025</span>
+              <a href="blog/rockville-medical-building-tune-up.html" class="post-read-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Load More (placeholder) -->
+      <div style="text-align:center;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(26,35,50,.08)">
+        <button style="background:#F5F5F5;border:1px solid rgba(26,35,50,.1);color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;padding:.75rem 2rem;border-radius:6px;cursor:pointer">Load More Articles</button>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- CTA Widget -->
+      <div class="cta-widget">
+        <h3>Ready for $0 Energy Upgrades?</h3>
+        <p>Stop leaving EmPOWER Maryland money on the table. Schedule a free assessment today — we handle all the paperwork.</p>
+        <a href="contact.html">Schedule Free Assessment</a>
+        <div style="margin-top:.75rem;font-size:.8125rem;color:rgba(255,255,255,.6)">Or call: <a href="tel:3018887090" style="color:#fff;font-weight:700">(301) 888-7090</a></div>
+      </div>
+
+      <!-- Categories -->
+      <div class="sidebar-widget">
+        <div class="widget-title">Categories</div>
+        <ul class="cat-list">
+          <li><a href="#">EmPOWER Maryland</a><span class="cat-count">8</span></li>
+          <li><a href="#">HVAC</a><span class="cat-count">6</span></li>
+          <li><a href="#">Lighting</a><span class="cat-count">4</span></li>
+          <li><a href="#">Case Studies</a><span class="cat-count">5</span></li>
+          <li><a href="#">Energy Supply</a><span class="cat-count">3</span></li>
+          <li><a href="#">BEPS Compliance</a><span class="cat-count">4</span></li>
+        </ul>
+      </div>
+
+      <!-- Popular Posts -->
+      <div class="sidebar-widget">
+        <div class="widget-title">Popular Posts</div>
+        <div class="popular-item">
+          <div class="pop-num">1</div>
+          <div><a href="#">How EmPOWER Maryland Actually Pays for Your HVAC Tune-Up</a><div class="pop-date">November 2024</div></div>
+        </div>
+        <div class="popular-item">
+          <div class="pop-num">2</div>
+          <div><a href="#">BGE vs. Pepco Rebates: Which Maryland Utility Offers More?</a><div class="pop-date">October 2024</div></div>
+        </div>
+        <div class="popular-item">
+          <div class="pop-num">3</div>
+          <div><a href="#">BEPS 2030: Is Your Maryland Building Compliant?</a><div class="pop-date">September 2024</div></div>
+        </div>
+      </div>
+
+      <!-- Services widget -->
+      <div class="sidebar-widget">
+        <div class="widget-title">Our Services</div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem">
+          <li><a href="services/hvac-tune-up.html" style="font-size:.9375rem;color:#555;text-decoration:none;display:flex;align-items:center;gap:.375rem"><span style="color:#C8102E">→</span> HVAC Tune-Up (Up to 85%)</a></li>
+          <li><a href="services/building-tune-up.html" style="font-size:.9375rem;color:#555;text-decoration:none;display:flex;align-items:center;gap:.375rem"><span style="color:#C8102E">→</span> Building Tune-Up (Up to 85%)</a></li>
+          <li><a href="services/lighting.html" style="font-size:.9375rem;color:#555;text-decoration:none;display:flex;align-items:center;gap:.375rem"><span style="color:#C8102E">→</span> Lighting Upgrades (Up to 80%)</a></li>
+          <li><a href="services/community-solar.html" style="font-size:.9375rem;color:#555;text-decoration:none;display:flex;align-items:center;gap:.375rem"><span style="color:#C8102E">→</span> Community Solar</a></li>
+          <li><a href="services/benchmarking.html" style="font-size:.9375rem;color:#555;text-decoration:none;display:flex;align-items:center;gap:.375rem"><span style="color:#C8102E">→</span> BEPS Benchmarking</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <div class="hero-eyebrow" style="margin-bottom:1rem;display:inline-flex">Energy Insights Newsletter</div>
+      <h2>Stay Ahead of Maryland Energy Programs</h2>
+      <p>Get quarterly updates on EmPOWER Maryland rebate changes, new programs, and energy efficiency tips tailored for Maryland commercial businesses.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault();this.innerHTML='<p style=\'color:rgba(255,255,255,.7);font-size:.9375rem\'>Thanks! We\'ll be in touch.</p>'">
+        <input type="email" placeholder="Your business email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p style="font-size:.8125rem;color:rgba(255,255,255,.35);margin-top:1rem">No spam. Unsubscribe anytime. Maryland energy news only.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><img src="brand_assets/mse logo.png" alt="Maryland Smart Energy" /><div class="footer-brand-tagline">Smarter Buildings. Smaller Bills.</div><div style="font-size:.8125rem;color:rgba(255,255,255,.35)">Licensed · Bonded · Insured</div></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="services/hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="services/building-tune-up.html">Building Tune-Up</a></li><li><a href="services/lighting.html">Lighting Upgrades</a></li><li><a href="services/energy-supply.html">Energy Supply</a></li><li><a href="services/community-solar.html">Community Solar</a></li><li><a href="services/benchmarking.html">Benchmarking</a></li></ul></div>
+        <div class="footer-col"><h4>Resources</h4><ul><li><a href="empower-maryland.html">EmPOWER Maryland</a></li><li><a href="bge-energy-efficiency.html">BGE Programs</a></li><li><a href="pepco-energy-efficiency.html">Pepco Programs</a></li><li><a href="delmarva-energy-efficiency.html">Delmarva Programs</a></li><li><a href="smeco-energy-efficiency.html">SMECO Programs</a></li><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:3018887090">(301) 888-7090</a></li><li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li><li><a href="contact.html">Schedule Service</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Maryland Smart Energy. All rights reserved. Authorized EmPOWER Maryland Service Provider.</p>
+        <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

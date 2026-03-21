@@ -80,10 +80,10 @@
         </li>
         <li><a href="blog.html">Blog</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="pricing.html" class="nav-cta-btn">Get Started</a></div>
+      <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="pricing.html" class="nav-cta-btn">Schedule No-Cost Walkthrough</a></div>
       <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
-    <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)">(301) 888-7090</a><a href="pricing.html" class="mobile-cta">Get Started</a></div>
+    <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking</a><a href="about.html">About</a><a href="empower-maryland.html">EmPOWER Maryland</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)">(301) 888-7090</a><a href="pricing.html" class="mobile-cta">Schedule No-Cost Walkthrough</a></div>
   </nav>
   <div class="announce-bar">$0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland.</div>
 </div>
@@ -241,6 +241,13 @@ function step3(){
           ${['Full HVAC tune-up &amp; system optimization','We handle all EmPOWER rebate paperwork','$160/unit rebate mailed directly to you','Priority scheduling','For 3-ton to 20-ton units'].map(f=>`<li style="display:flex;align-items:flex-start;font-size:14px;margin-bottom:8px;line-height:1.5;color:#374151">${SVG.check}${f}</li>`).join('')}
         </ul>
         <div class="mse-disclaimer">${SVG.info}<span>EmPOWER HVAC tune-up rebate available once every 3 years per unit. We'll verify your eligibility.</span></div>
+        <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:10px;padding:12px 14px;margin-top:14px;display:flex;align-items:flex-start;gap:10px">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M11 2L3 6v5c0 4.97 3.36 9.63 8 10.93C15.64 20.63 19 15.97 19 11V6l-8-4z" fill="#16a34a" opacity=".15" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:3px">Risk-Free Guarantee</div>
+            <div style="font-size:12px;color:#166534;line-height:1.5">Get your full rebate — or we refund your deposit. As of 2026, most rebates process in 4–6 weeks. If your utility is unresponsive for an unreasonable period, we'll refund you 100%.</div>
+          </div>
+        </div>
         <button class="mse-btn mse-pri" style="width:100%;padding:16px 28px;font-size:16px;margin-top:16px">Get Started &#8212; $0 Net Cost ${SVG.arrow}</button>
       </div>
 
@@ -300,7 +307,7 @@ function step4(){
   const plans={'zero-cost':{name:'Zero-Cost Tune-Up',total:t1,perUnit:160},'standard':{name:'Standard Tune-Up',total:t2,perUnit:54},'premium':{name:'Total Building Energy Plan',total:t3,perUnit:null}};
   const p=plans[state.selectedPlan]; if(!p) return '';
   let note='';
-  if(state.selectedPlan==='zero-cost') note=`<div style="background:linear-gradient(135deg,#f0faf3,#e6f4ea);border-radius:10px;padding:16px;margin-top:16px;text-align:center"><div style="font-size:14px;color:#374151;margin-bottom:4px">Your utility will mail you a <strong>$${fmt(t1)} rebate</strong>.</div><div style="font-size:22px;font-weight:800;color:#1B6B3A">Net cost: $0</div></div>`;
+  if(state.selectedPlan==='zero-cost') note=`<div style="background:linear-gradient(135deg,#f0faf3,#e6f4ea);border-radius:10px;padding:16px;margin-top:16px;text-align:center"><div style="font-size:14px;color:#374151;margin-bottom:4px">Your utility will mail you a <strong>$${fmt(t1)} rebate</strong>.</div><div style="font-size:22px;font-weight:800;color:#1B6B3A">Net cost: $0</div></div><div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:10px;padding:12px 14px;margin-top:12px;display:flex;align-items:flex-start;gap:10px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M11 2L3 6v5c0 4.97 3.36 9.63 8 10.93C15.64 20.63 19 15.97 19 11V6l-8-4z" fill="#16a34a" opacity=".15" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:3px">Risk-Free Guarantee</div><div style="font-size:12px;color:#166534;line-height:1.5">Get your full rebate — or we refund your deposit. As of 2026, most rebates process in 4–6 weeks. If your utility is unresponsive for an unreasonable period, we'll refund you 100%.</div></div></div>`;
   if(state.selectedPlan==='standard') note=`<div style="background:#f8fafc;border-radius:10px;padding:14px;margin-top:16px;text-align:center;font-size:14px;color:#475569;line-height:1.5">Your out-of-pocket is $${fmt(t2)}. The EmPOWER rebate covers the remaining service cost.</div>`;
   if(state.selectedPlan==='premium') note=`<div style="background:#faf8ff;border-radius:10px;padding:14px;margin-top:16px;border:1px solid #ede9fe;text-align:center;font-size:14px;color:#5B21B6;font-weight:600;line-height:1.5">Your first-year HVAC tune-up qualifies for the $160/unit rebate &#8212; up to $${fmt(u*160)} back.</div>`;
   return `<div style="max-width:580px;margin:0 auto">

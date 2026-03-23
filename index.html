@@ -491,6 +491,8 @@
       text-align: center;
     }
     .stat-item { }
+    .stat-item.counted { animation: statPop .4s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes statPop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     .stat-val {
       font-family: 'Barlow', sans-serif;
       font-weight: 900;
@@ -965,7 +967,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 2rem;
     }
-    .footer-brand .logo-wrap img { height: 72px; width: auto; margin-bottom: 0.75rem; filter: brightness(0) invert(1); opacity: 0.92; }
+    .footer-brand .logo-wrap img { height: 72px; width: auto; margin-bottom: 0.75rem; opacity: 0.92; }
     .footer-brand-tagline {
       font-family: 'Barlow', sans-serif;
       font-weight: 600;
@@ -1053,6 +1055,13 @@
       border: 1px solid rgba(255,255,255,0.1);
       padding: 0.25rem 0.625rem;
       border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .footer-utility-chip:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-color: rgba(255,255,255,0.25);
     }
     .footer-bottom {
       display: flex;
@@ -1212,7 +1221,7 @@
             <div style="width:1px;height:3.5rem;background:rgba(255,255,255,.18);flex-shrink:0"></div>
             <div style="display:flex;align-items:baseline;gap:.45rem">
               <div class="hero-card-pct" style="color:#C8102E;text-shadow:0 0 30px rgba(200,16,46,.35)">$0</div>
-              <div style="font-family:'Barlow',sans-serif;font-weight:700;font-size:2rem;color:rgba(255,255,255,.75);line-height:1;letter-spacing:-.01em">after rebates</div>
+              <div style="font-family:'Barlow',sans-serif;font-weight:800;font-size:3.5rem;color:#C8102E;line-height:1;letter-spacing:-.02em;text-shadow:0 0 30px rgba(200,16,46,.35)">after rebates</div>
             </div>
           </div>
           <div class="hero-card-row">
@@ -1250,15 +1259,15 @@
   <div class="stats-band">
     <div class="stats-band-inner">
       <div class="stat-item">
-        <div class="stat-val">5,000+</div>
+        <div class="stat-val" data-count="5000" data-prefix="" data-suffix="+">5,000+</div>
         <div class="stat-lbl">Businesses Served</div>
       </div>
       <div class="stat-item">
-        <div class="stat-val">$14.5B</div>
+        <div class="stat-val" data-count="14.5" data-prefix="$" data-suffix="B">$14.5B</div>
         <div class="stat-lbl">EmPOWER MD Savings</div>
       </div>
       <div class="stat-item">
-        <div class="stat-val">4</div>
+        <div class="stat-val" data-count="4" data-prefix="" data-suffix="">4</div>
         <div class="stat-lbl">Maryland Utilities</div>
       </div>
       <div class="stat-item">
@@ -1267,6 +1276,46 @@
       </div>
     </div>
   </div>
+  <script>
+  (function(){
+    const stats = document.querySelectorAll('.stats-band .stat-val[data-count]');
+    let fired = false;
+    const observer = new IntersectionObserver(entries => {
+      if (fired) return;
+      if (!entries[0].isIntersecting) return;
+      fired = true;
+      observer.disconnect();
+      // Pop animation on all stat items with stagger
+      document.querySelectorAll('.stats-band .stat-item').forEach((item, i) => {
+        setTimeout(() => item.classList.add('counted'), i * 120);
+      });
+      stats.forEach(el => {
+        const target = parseFloat(el.dataset.count);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = target % 1 !== 0;
+        const duration = 1800;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out expo
+          const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const val = target * ease;
+          if (isDecimal) {
+            el.textContent = prefix + val.toFixed(1) + suffix;
+          } else {
+            const rounded = Math.round(val);
+            el.textContent = prefix + (target >= 1000 ? rounded.toLocaleString() : rounded) + suffix;
+          }
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.4 });
+    observer.observe(document.querySelector('.stats-band'));
+  })();
+  </script>
 
   <!-- Why Choose MSE -->
   <section class="why-section">
@@ -1536,7 +1585,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="logo-wrap">
-            <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
+            <img src="brand_assets/images/mse-gray-logo.png" alt="Maryland Smart Energy" />
           </div>
           <div class="footer-brand-tagline">Smarter Buildings, Smaller Bills</div>
           <div class="footer-brand-desc">Maryland's trusted commercial energy efficiency contractor. We help businesses save money through EmPOWER Maryland utility rebate programs — <span style="font-size:1.05rem;font-weight:800;color:#C8102E;font-family:'Barlow',sans-serif;white-space:nowrap">$0 After Rebates.</span></div>
@@ -1589,10 +1638,10 @@
       </div>
       <div class="footer-utilities">
         <span class="footer-utilities-label">Authorized provider for:</span>
-        <span class="footer-utility-chip">BGE</span>
-        <span class="footer-utility-chip">Pepco</span>
-        <span class="footer-utility-chip">Delmarva Power</span>
-        <span class="footer-utility-chip">SMECO</span>
+        <a href="bge-energy-efficiency.html" class="footer-utility-chip">BGE</a>
+        <a href="pepco-energy-efficiency.html" class="footer-utility-chip">Pepco</a>
+        <a href="delmarva-energy-efficiency.html" class="footer-utility-chip">Delmarva Power</a>
+        <a href="smeco-energy-efficiency.html" class="footer-utility-chip">SMECO</a>
       </div>
       <div class="footer-bottom">
         <p>© 2026 Maryland Smart Energy. All rights reserved. | mdsmartenergy.com | (301) 888-7090</p>

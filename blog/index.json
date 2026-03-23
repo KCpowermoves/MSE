@@ -6,7 +6,8 @@
     "date": "March 23, 2026",
     "readtime": "10 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "What do you think? I think I like this...."
+    "excerpt": "What do you think? I think I like this....",
+    "featured": false
   },
   {
     "slug": "hb864-maryland-energy-law-2024.html",
@@ -16,7 +17,7 @@
     "readtime": "7 min read",
     "hero": "benchmarking-hero.jpg",
     "excerpt": "If you own or manage a commercial building in Maryland, 2024 was a big year for energy incentives — even if you didn't hear much about it. The Maryland General Assembly passed House Bill 864...",
-    "featured": false
+    "featured": true
   },
   {
     "slug": "commercial-hvac-tune-up-signs.html",
@@ -36,7 +37,7 @@
     "readtime": "5 min read",
     "hero": "lighting-hero.jpg",
     "excerpt": "Note: The scenario described in this article is an illustrative example based on typical project outcomes for commercial warehouse LED lighting upgrades in the Maryland market...",
-    "featured": true
+    "featured": false
   },
   {
     "slug": "rockville-medical-building-tune-up.html",

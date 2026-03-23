@@ -6,7 +6,8 @@
     "date": "March 23, 2026",
     "readtime": "5 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "sdfsdfsdfsd..."
+    "excerpt": "sdfsdfsdfsd...",
+    "featured": false
   },
   {
     "slug": "test-blog.html",
@@ -15,7 +16,8 @@
     "date": "March 23, 2026",
     "readtime": "5 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "Hey, this is the test. What do you think? Add some images. What do you think?&nbsp; Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every..."
+    "excerpt": "Hey, this is the test. What do you think? Add some images. What do you think?&nbsp; Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every...",
+    "featured": false
   },
   {
     "slug": "bwewer.html",
@@ -24,42 +26,47 @@
     "date": "March 23, 2026",
     "readtime": "5 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "sdsdfsdsd Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every step of the paperwork. Schedule Your Free Tune-Up Ã¢ÂÂ..."
+    "excerpt": "sdsdfsdsd Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every step of the paperwork. Schedule Your Free Tune-Up ÃÂ¢ÃÂÃÂ...",
+    "featured": false
   },
   {
     "slug": "hb864-maryland-energy-law-2024.html",
-    "title": "What Maryland's HB 864 Means for Your Business Ã¢ÂÂ and Why 2026 Is the Year to Act",
+    "title": "What Maryland's HB 864 Means for Your Business ÃÂ¢ÃÂÃÂ and Why 2026 Is the Year to Act",
     "category": "EmPOWER Maryland",
     "date": "January 8, 2026",
     "readtime": "7 min read",
     "hero": "benchmarking-hero.jpg",
-    "excerpt": "If you own or manage a commercial building in Maryland, 2024 was a big year for energy incentives Ã¢ÂÂ even if you didn't hear much about it. The Maryland General Assembly passed Hous..."
+    "excerpt": "If you own or manage a commercial building in Maryland, 2024 was a big year for energy incentives ÃÂ¢ÃÂÃÂ even if you didn't hear much about it. The Maryland General Assembly passed Hous...",
+    "featured": true
   },
   {
     "slug": "commercial-hvac-tune-up-signs.html",
-    "title": "5 Signs Your Commercial RTU Needs a Tune-Up Ã¢ÂÂ Not a Replacement",
+    "title": "5 Signs Your Commercial RTU Needs a Tune-Up ÃÂ¢ÃÂÃÂ Not a Replacement",
     "category": "HVAC",
     "date": "December 3, 2025",
     "readtime": "6 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before y..."
+    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before y...",
+    "featured": false
   },
   {
     "slug": "led-lighting-warehouse-savings.html",
     "title": "How LED Lighting Cut One Maryland Warehouse's Energy Bill by 41%",
-    "category": "Lighting ÃÂ· Illustrative Case Study",
+    "category": "Lighting ÃÂÃÂ· Illustrative Case Study",
     "date": "November 14, 2025",
     "readtime": "5 min read",
     "hero": "lighting-hero.jpg",
-    "excerpt": "Note: The scenario described in this article is an illustrative example based on typical project outcomes for commercial warehouse LED lighting upgrades in the Maryland market. Fig..."
+    "excerpt": "Note: The scenario described in this article is an illustrative example based on typical project outcomes for commercial warehouse LED lighting upgrades in the Maryland market. Fig...",
+    "featured": false
   },
   {
     "slug": "rockville-medical-building-tune-up.html",
     "title": "How a Rockville Medical Office Cut Energy Costs 18% With a Building Tune-Up",
-    "category": "Case Study ÃÂ· Illustrative",
+    "category": "Case Study ÃÂÃÂ· Illustrative",
     "date": "October 22, 2025",
     "readtime": "6 min read",
     "hero": "building-tuneup-hero.jpg",
-    "excerpt": "Note: This is an illustrative case study based on typical outcomes for medical office building tune-ups under the EmPOWER Maryland small commercial program. It represents the type..."
+    "excerpt": "Note: This is an illustrative case study based on typical outcomes for medical office building tune-ups under the EmPOWER Maryland small commercial program. It represents the type...",
+    "featured": false
   }
 ]

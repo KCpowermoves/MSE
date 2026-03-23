@@ -87,8 +87,13 @@
     .topbar-actions{display:flex;align-items:center;gap:.5rem}
     .btn-preview{background:transparent;color:#555;border:1px solid rgba(26,35,50,.15);border-radius:6px;padding:.45rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
     .btn-preview:hover{border-color:#C8102E;color:#C8102E}
+    .btn-archive-post{background:transparent;color:#805ad5;border:1px solid rgba(128,90,213,.25);border-radius:6px;padding:.45rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
+    .btn-archive-post:hover{background:rgba(128,90,213,.06)}
     .btn-delete-post{background:transparent;color:#e53e3e;border:1px solid rgba(229,62,62,.25);border-radius:6px;padding:.45rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
     .btn-delete-post:hover{background:rgba(229,62,62,.06)}
+    .upload-hero-label{cursor:pointer;display:inline-flex;align-items:center}
+    #upload-hero-btn{font-size:.72rem;color:#C8102E;font-weight:600;padding:.25rem .5rem;border:1px dashed rgba(200,16,46,.35);border-radius:4px;transition:all .15s;white-space:nowrap}
+    #upload-hero-btn:hover{background:rgba(200,16,46,.06);border-color:#C8102E}
     .btn-save-post{background:#C8102E;color:#fff;border:none;border-radius:6px;padding:.45rem 1.125rem;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.4rem}
     .btn-save-post:hover{background:#a30d24}
     .btn-save-post:disabled{background:#ccc;cursor:not-allowed}
@@ -204,7 +209,8 @@
         </div>
         <div class="topbar-actions">
           <button class="btn-preview" onclick="previewPost()">↗ Preview</button>
-          <button class="btn-delete-post" id="delete-btn" onclick="deletePost()">Delete</button>
+          <button class="btn-archive-post" id="archive-btn" onclick="archivePost()" title="Remove from site but keep file">Archive</button>
+          <button class="btn-delete-post" id="delete-btn" onclick="deletePost()" title="Permanently delete">Delete</button>
           <button class="btn-save-post" id="save-btn" onclick="savePost()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Save &amp; Publish
@@ -215,15 +221,16 @@
       <!-- Meta fields -->
       <div class="meta-row">
         <div class="meta-item">
-          <label>Category</label>
-          <select id="field-category" onchange="markUnsaved()">
+          <label>Category <span style="color:#C8102E">*</span></label>
+          <select id="field-category" onchange="markUnsaved()" required>
             <option value="HVAC">HVAC</option>
+            <option value="EmPOWER Maryland">EmPOWER Maryland</option>
             <option value="Lighting">Lighting</option>
-            <option value="Building">Building</option>
-            <option value="Policy">Policy</option>
+            <option value="Building Tune-Up">Building Tune-Up</option>
             <option value="Case Study">Case Study</option>
-            <option value="EmPOWER">EmPOWER</option>
-            <option value="Energy">Energy</option>
+            <option value="Energy Supply">Energy Supply</option>
+            <option value="Community Solar">Community Solar</option>
+            <option value="BEPS Compliance">BEPS Compliance</option>
           </select>
         </div>
         <div class="meta-item">
@@ -236,17 +243,23 @@
         </div>
         <div class="meta-item">
           <label>Hero Image</label>
-          <select id="field-hero" onchange="markUnsaved()">
-            <option value="hvac-tune-up-hero.jpg">HVAC Hero</option>
-            <option value="building-tuneup-hero.jpg">Building Tune-Up Hero</option>
-            <option value="lighting-hero.jpg">Lighting Hero</option>
-            <option value="benchmarking-hero-black-female.jpg">Benchmarking Hero</option>
-            <option value="community-solar-hero.jpg">Community Solar Hero</option>
-            <option value="hvac-hero-background.jpg">HVAC Background</option>
-            <option value="hvac-tune-up-side.jpg">HVAC Side</option>
-            <option value="building-tuneup-side.jpg">Building Side</option>
-            <option value="lighting-side.jpg">Lighting Side</option>
-          </select>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <select id="field-hero" onchange="markUnsaved()">
+              <option value="hvac-tune-up-hero.jpg">HVAC Hero</option>
+              <option value="building-tuneup-hero.jpg">Building Tune-Up Hero</option>
+              <option value="lighting-hero.jpg">Lighting Hero</option>
+              <option value="benchmarking-hero-black-female.jpg">Benchmarking Hero</option>
+              <option value="community-solar-hero.jpg">Community Solar Hero</option>
+              <option value="hvac-hero-background.jpg">HVAC Background</option>
+              <option value="hvac-tune-up-side.jpg">HVAC Side</option>
+              <option value="building-tuneup-side.jpg">Building Side</option>
+              <option value="lighting-side.jpg">Lighting Side</option>
+            </select>
+            <label class="upload-hero-label" title="Upload a custom hero image">
+              <input type="file" id="hero-upload" accept="image/*" style="display:none" onchange="uploadHeroImage(this)"/>
+              <span id="upload-hero-btn">⬆ Upload custom image</span>
+            </label>
+          </div>
         </div>
         <div class="meta-item slug-field">
           <label>URL Slug (filename)</label>
@@ -373,7 +386,7 @@ async function loadPostList() {
     const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}/index.json`);
     if (!res.ok) throw new Error('Could not load index.json');
     const data = await res.json();
-    const entries = JSON.parse(atob(data.content.replace(/\n/g,'')));
+    const entries = JSON.parse(decodeContent(data.content));
     posts = entries.map(e => ({
       name: e.slug,
       title: e.title || slugToTitle(e.slug.replace('.html','')),
@@ -415,7 +428,7 @@ async function setFeatured(slug) {
   const r = await ghFetch(`/repos/${REPO}/contents/${indexPath}`);
   if (!r.ok) { toast('Could not update index.json', 'error'); return; }
   const d = await r.json();
-  let entries = JSON.parse(atob(d.content.replace(/\n/g,'')));
+  let entries = JSON.parse(decodeContent(d.content));
   entries.forEach(e => e.featured = (e.slug === slug && !already));
   const payload = { message: `blog: set featured → ${slug}`, content: b64Encode(JSON.stringify(entries, null, 2)), sha: d.sha };
   const res = await ghFetch(`/repos/${REPO}/contents/${indexPath}`, { method:'PUT', body: JSON.stringify(payload) });
@@ -434,6 +447,7 @@ async function openPost(filename) {
   setStatus('loading', 'Loading…');
   id('save-btn').disabled = true;
   id('delete-btn').style.display = 'inline-flex';
+  id('archive-btn').style.display = 'inline-flex';
   renderPostList();
 
   try {
@@ -462,8 +476,20 @@ async function openPost(filename) {
     const idx = posts.findIndex(p => p.name === filename);
     if (idx > -1) { posts[idx].title = meta.title || posts[idx].title; posts[idx].category = meta.category; posts[idx].date = meta.date; renderPostList(); }
   } catch (e) {
-    toast('Failed to load: ' + e.message, 'error');
-    setStatus('saved', 'Error');
+    const isNotFound = e.message && (e.message.includes('Not Found') || e.message.includes('404'));
+    if (isNotFound && confirm(`"${filename}" no longer exists on GitHub.\n\nRemove it from the blog index?`)) {
+      try {
+        await updateBlogIndex('delete', { slug: filename });
+        toast('Removed stale entry from index.', 'success');
+        activeFile = null; activeSha = null;
+        id('editor-panel').style.display = 'none';
+        id('empty-state').style.display = 'flex';
+        await loadPostList();
+      } catch (e2) { toast('Could not clean up index: ' + e2.message, 'error'); }
+    } else if (!isNotFound) {
+      toast('Failed to load: ' + e.message, 'error');
+      setStatus('saved', 'Error');
+    }
   }
 }
 
@@ -486,6 +512,7 @@ function newPost() {
   id('field-hero').value     = 'hvac-tune-up-hero.jpg';
   quill.setContents([]);
   id('delete-btn').style.display = 'none';
+  id('archive-btn').style.display = 'none';
   id('save-btn').disabled = false;
   setStatus('unsaved', 'New Article — Unsaved');
   renderPostList();
@@ -500,7 +527,7 @@ async function updateBlogIndex(action, postMeta) {
   if (r.ok) {
     const d = await r.json();
     indexSha = d.sha;
-    try { entries = JSON.parse(atob(d.content.replace(/\n/g,''))); } catch {}
+    try { entries = JSON.parse(decodeContent(d.content)); } catch {}
   }
   if (action === 'upsert') {
     const i = entries.findIndex(e => e.slug === postMeta.slug);
@@ -569,12 +596,30 @@ async function savePost() {
     btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Save & Publish';
     btn.disabled = false;
     id('delete-btn').style.display = 'inline-flex';
+    id('archive-btn').style.display = 'inline-flex';
     await loadPostList();
     renderPostList();
   } catch (e) {
     toast('Save failed: ' + e.message, 'error');
     btn.innerHTML = 'Save & Publish';
     btn.disabled = false;
+  }
+}
+
+// ─── ARCHIVE POST ─────────────────────────────────────────────────────────────
+async function archivePost() {
+  if (!activeFile || !activeSha) return;
+  if (!confirm(`Archive "${activeFile}"? It will be removed from the blog listing but the file will be kept.`)) return;
+  try {
+    // Just remove from index — file stays in repo but won't show on site
+    await updateBlogIndex('delete', { slug: activeFile });
+    activeFile = null; activeSha = null; isNewPost = false; unsaved = false;
+    id('editor-panel').style.display = 'none';
+    id('empty-state').style.display = 'flex';
+    toast('Article archived — removed from blog listing.', 'success');
+    await loadPostList();
+  } catch (e) {
+    toast('Archive failed: ' + e.message, 'error');
   }
 }
 
@@ -594,11 +639,51 @@ async function deletePost() {
     activeFile = null; activeSha = null; isNewPost = false; unsaved = false;
     id('editor-panel').style.display = 'none';
     id('empty-state').style.display = 'flex';
-    toast('Article deleted.', 'success');
+    toast('Article permanently deleted.', 'success');
     await loadPostList();
   } catch (e) {
     toast('Delete failed: ' + e.message, 'error');
   }
+}
+
+// ─── UPLOAD HERO IMAGE ────────────────────────────────────────────────────────
+async function uploadHeroImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const btn = id('upload-hero-btn');
+  btn.textContent = 'Uploading…';
+
+  try {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    await new Promise(r => reader.onload = r);
+    const base64 = reader.result.split(',')[1];
+    const filename = file.name.replace(/\s+/g, '-').toLowerCase();
+    const path = `brand_assets/images/${filename}`;
+
+    // Check if file already exists (need sha to update)
+    let sha;
+    const check = await ghFetch(`/repos/${REPO}/contents/${path}`);
+    if (check.ok) { sha = (await check.json()).sha; }
+
+    const payload = { message: `blog: upload hero image ${filename}`, content: base64 };
+    if (sha) payload.sha = sha;
+    const res = await ghFetch(`/repos/${REPO}/contents/${path}`, { method: 'PUT', body: JSON.stringify(payload) });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
+
+    // Add to dropdown and select it
+    const sel = id('field-hero');
+    let opt = sel.querySelector(`option[value="${filename}"]`);
+    if (!opt) { opt = new Option(filename, filename); sel.appendChild(opt); }
+    sel.value = filename;
+    markUnsaved();
+    btn.textContent = '✓ Uploaded: ' + filename;
+    toast('Hero image uploaded!', 'success');
+  } catch (e) {
+    btn.textContent = '⬆ Upload custom image';
+    toast('Upload failed: ' + e.message, 'error');
+  }
+  input.value = '';
 }
 
 // ─── PREVIEW ──────────────────────────────────────────────────────────────────
@@ -751,7 +836,10 @@ function id(s) { return document.getElementById(s); }
 function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function toSlug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 function slugToTitle(s) { return s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
-function decodeContent(b64) { return decodeURIComponent(escape(atob(b64.replace(/\n/g,'')))); }
+function decodeContent(b64) {
+  const binary = atob(b64.replace(/\n/g,''));
+  return decodeURIComponent(binary.split('').map(c => '%' + c.charCodeAt(0).toString(16).padStart(2,'0')).join(''));
+}
 function b64Encode(str) {
   try { return btoa(unescape(encodeURIComponent(str))); }
   catch { return btoa(str); }

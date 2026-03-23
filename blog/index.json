@@ -1,5 +1,23 @@
 [
   {
+    "slug": "test-blog.html",
+    "title": "test blog",
+    "category": "HVAC",
+    "date": "March 23, 2026",
+    "readtime": "5 min read",
+    "hero": "hvac-tune-up-hero.jpg",
+    "excerpt": "Hey, this is the test. What do you think? Add some images. What do you think?&nbsp; Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every..."
+  },
+  {
+    "slug": "bwewer.html",
+    "title": "bwewer",
+    "category": "HVAC",
+    "date": "March 23, 2026",
+    "readtime": "5 min read",
+    "hero": "hvac-tune-up-hero.jpg",
+    "excerpt": "sdsdfsdsd Ready for Your $0 HVAC Tune-Up? EmPOWER Maryland covers up to 100% of the cost. We handle every step of the paperwork. Schedule Your Free Tune-Up →..."
+  },
+  {
     "slug": "hb864-maryland-energy-law-2024.html",
     "title": "What Maryland's HB 864 Means for Your Business — and Why 2026 Is the Year to Act",
     "category": "EmPOWER Maryland",

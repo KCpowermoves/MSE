@@ -34,9 +34,9 @@
     .game-label{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
     .fullscreen-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;padding:.35rem .85rem;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
     .fullscreen-btn:hover{background:rgba(255,255,255,.13);color:#fff}
-    /* Scale game to 60% — wrapper height = game natural height × 0.6 */
-    .game-frame-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);background:#0d1117;height:576px}
-    .game-frame{width:calc(100% / 0.6);height:960px;transform:scale(0.6);transform-origin:top left;border:none;display:block;background:#0d1117}
+    /* Scale game to 75% — wrapper height = game natural height × 0.75 */
+    .game-frame-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);background:#0d1117;height:720px}
+    .game-frame{width:calc(100% / 0.75);height:960px;transform:scale(0.75);transform-origin:top left;border:none;display:block;background:#0d1117}
     .game-blocked{display:none;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;background:#161b22;height:400px;border-radius:12px}
     .game-blocked p{color:rgba(255,255,255,.5);font-size:.9375rem;margin:.5rem 0 1.5rem}
     .game-blocked a{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none}
@@ -91,7 +91,7 @@
 <div class="game-section" id="game-section">
   <div class="game-container">
     <div class="game-toolbar">
-      <span class="game-label">Tune-Up Tech Challenge</span>
+      <span class="game-label">Tune Up Tech</span>
       <button class="fullscreen-btn" id="fs-btn" onclick="toggleFullscreen()">
         <svg id="fs-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
         <span id="fs-label">Full Screen</span>

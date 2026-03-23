@@ -26,40 +26,19 @@
     @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
     @media(max-width:768px){.nav-inner{padding:0 1rem;height:60px}.nav-logo img{height:38px}.nav-brand-name{font-size:.875rem}.nav-brand-tag{display:none}}
 
-    /* ── INTRO BANNER ──────────────────────────────── */
-    .game-intro{background:#1A2332;padding:1.75rem 1.5rem;text-align:center;position:relative;overflow:hidden}
-    .game-intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(200,16,46,.18) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(244,161,29,.12) 0%,transparent 60%);pointer-events:none}
-    .game-intro-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
-    .game-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,161,29,.12);border:1px solid rgba(244,161,29,.3);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:100px;margin-bottom:.875rem}
-    .game-eyebrow svg{flex-shrink:0}
-    .game-intro h1{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.5rem,3vw,2.25rem);color:#fff;margin:0 0 .5rem;line-height:1.1;letter-spacing:-.03em}
-    .game-intro h1 em{font-style:normal;color:#C8102E}
-    .game-intro p{font-size:.9375rem;color:rgba(255,255,255,.55);margin:0;line-height:1.6}
-    .game-badges{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:1rem;flex-wrap:wrap}
-    .game-badge{display:inline-flex;align-items:center;gap:.375rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.75rem;color:rgba(255,255,255,.6)}
-    .game-badge svg{color:rgba(255,255,255,.4)}
-
     /* ── GAME FRAME ────────────────────────────────── */
     .game-wrap{width:100%;background:#0d1117;position:relative}
-    .game-frame{width:100%;height:calc(100svh - 68px - 36px - 130px);min-height:500px;border:none;display:block;background:#0d1117}
+    /* Fill viewport minus sticky header (nav ~68px + announce ~36px) */
+    .game-frame{width:100%;height:calc(100svh - 104px);min-height:500px;border:none;display:block;background:#0d1117}
     .game-blocked{display:none;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;background:#161b22;height:400px}
     .game-blocked p{color:rgba(255,255,255,.5);font-size:.9375rem;margin:.5rem 0 1.5rem}
     .game-blocked a{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none}
 
     /* ── FOOTER ────────────────────────────────────── */
-    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:3rem 1.5rem 1.5rem}
-    .footer-inner{max-width:1200px;margin:0 auto}
-    .footer-top{display:grid;grid-template-columns:280px repeat(3,1fr);gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem}
-    .footer-brand img{height:36px;margin-bottom:.75rem}
-    .footer-brand-tagline{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:.75rem}
-    .footer-col h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 1rem}
-    .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
-    .footer-col ul a{font-size:.875rem;color:rgba(255,255,255,.55);text-decoration:none}.footer-col ul a:hover{color:#F4A11D}
-    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
-    .footer-legal{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
-    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.footer-top{grid-template-columns:1fr}.game-badges{gap:.5rem}}
+    footer{background:#1A2332;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer p{font-size:.8rem;color:rgba(255,255,255,.3);margin:0}
+    footer a{font-size:.8rem;color:rgba(255,255,255,.3);text-decoration:none;margin-left:1rem}
+    footer a:hover{color:#F4A11D}
   </style>
 </head>
 <body>
@@ -94,23 +73,6 @@
   <div class="announce-bar">$0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland.</div>
 </div>
 
-<!-- ── INTRO ────────────────────────────────────────────────────────────────── -->
-<div class="game-intro">
-  <div class="game-intro-inner">
-    <div class="game-eyebrow">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      Staff Training Portal
-    </div>
-    <h1>Tune-Up <em>Tech</em> Challenge</h1>
-    <p>Think you know commercial HVAC? Put your skills to the test.</p>
-    <div class="game-badges">
-      <span class="game-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Real-world scenarios</span>
-      <span class="game-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Leaderboard</span>
-      <span class="game-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8M12 3v4"/></svg> EmPOWER MD knowledge</span>
-    </div>
-  </div>
-</div>
-
 <!-- ── GAME ─────────────────────────────────────────────────────────────────── -->
 <div class="game-wrap">
   <iframe
@@ -129,18 +91,10 @@
 </div>
 
 <!-- ── FOOTER ───────────────────────────────────────────────────────────────── -->
-<footer><div class="footer-inner">
-  <div class="footer-top">
-    <div class="footer-brand"><img src="brand_assets/images/mse-gray-logo.png" alt="Maryland Smart Energy" /><div class="footer-brand-tagline">Smarter Buildings, Smaller Bills</div><div style="font-size:.8125rem;color:rgba(255,255,255,.35)">Licensed · Bonded · Insured</div></div>
-    <div class="footer-col"><h4>Services</h4><ul><li><a href="services/hvac-tune-up.html">HVAC Tune-Up</a></li><li><a href="services/building-tune-up.html">Building Tune-Up</a></li><li><a href="services/lighting.html">Lighting</a></li><li><a href="services/energy-supply.html">Energy Supply</a></li><li><a href="services/community-solar.html">Community Solar</a></li><li><a href="services/benchmarking.html">Benchmarking</a></li></ul></div>
-    <div class="footer-col"><h4>Resources</h4><ul><li><a href="empower-maryland.html">EmPOWER Maryland</a></li><li><a href="bge-energy-efficiency.html">BGE Programs</a></li><li><a href="pepco-energy-efficiency.html">Pepco Programs</a></li><li><a href="delmarva-energy-efficiency.html">Delmarva Programs</a></li><li><a href="smeco-energy-efficiency.html">SMECO Programs</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:3018887090">(301) 888-7090</a></li><li><a href="mailto:service@mdsmartenergy.com">service@mdsmartenergy.com</a></li><li><a href="contact.html">Schedule a Tune-Up</a></li><li><a href="about.html">About Us</a></li></ul></div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Maryland Smart Energy. All rights reserved. Authorized EmPOWER Maryland Service Provider.</p>
-    <div><a href="privacy.html" class="footer-legal">Privacy Policy</a><a href="terms.html" class="footer-legal">Terms of Service</a></div>
-  </div>
-</div></footer>
+<footer>
+  <p>© 2026 Maryland Smart Energy · Licensed · Bonded · Insured</p>
+  <div><a href="privacy.html">Privacy Policy</a><a href="index.html">Back to Site</a></div>
+</footer>
 
 <script>
   // If the iframe fails to load (blocked by X-Frame-Options), show fallback

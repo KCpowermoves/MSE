@@ -244,7 +244,7 @@
       if (!posts.length) { document.getElementById('blog-loading').textContent = 'No articles yet.'; return; }
 
       const featured = posts[0];
-      const rest = posts.slice(1);
+      const rest = posts; // all posts shown in Recent Articles, newest first
 
       let html = `
         <div class="featured-post" onclick="location.href='blog/${featured.slug}'" style="cursor:pointer">

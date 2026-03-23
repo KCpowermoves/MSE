@@ -293,18 +293,19 @@ async function doLogin() {
   id('login-error').style.display = 'none';
 
   try {
-    // Fine-grained PATs don't expose /user — verify via repo access instead
-    const rRes = await ghFetch(`/repos/${REPO}`);
-    if (!rRes.ok) throw new Error('Token invalid or no access to KCpowermoves/MSE.');
-
-    // Try /user but don't fail if it's blocked by fine-grained token scope
-    let username = 'Admin';
-    const uRes = await ghFetch('/user');
-    if (uRes.ok) { const u = await uRes.json(); username = u.login || 'Admin'; }
+    // Validate token by reading blog folder (PAT not set yet, so fetch directly)
+    const rRes = await fetch(`${API}/repos/${REPO}/contents/${BPATH}`, {
+      headers: {
+        'Authorization': `Bearer ${tok}`,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28'
+      }
+    });
+    if (!rRes.ok) throw new Error(`Access denied (${rRes.status}). Check token has Contents: Read & write for KCpowermoves/MSE.`);
 
     PAT = tok;
     sessionStorage.setItem('mse_pat', tok);
-    id('user-name').textContent = username;
+    id('user-name').textContent = 'Admin';
     startCMS();
   } catch (e) {
     loginErr(e.message);

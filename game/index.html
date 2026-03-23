@@ -28,12 +28,24 @@
     @media(max-width:768px){.nav-inner{padding:0 1rem;height:60px}.nav-logo img{height:38px}.nav-brand-name{font-size:.875rem}.nav-brand-tag{display:none}}
 
     /* ── GAME FRAME ────────────────────────────────── */
-    .game-wrap{width:100%;background:#0d1117;position:relative}
-    /* Fill viewport minus sticky header (nav ~68px + announce ~36px) */
-    .game-frame{width:100%;height:calc(100svh - 104px);min-height:500px;border:none;display:block;background:#0d1117}
-    .game-blocked{display:none;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;background:#161b22;height:400px}
+    .game-section{background:#0d1117;padding:1.25rem 2rem 1.5rem}
+    .game-container{max-width:1200px;margin:0 auto;position:relative}
+    .game-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+    .game-label{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    .fullscreen-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;padding:.35rem .85rem;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}
+    .fullscreen-btn:hover{background:rgba(255,255,255,.13);color:#fff}
+    .game-frame-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .game-frame{width:100%;height:calc(100svh - 220px);min-height:520px;border:none;display:block;background:#0d1117}
+    .game-blocked{display:none;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;background:#161b22;height:400px;border-radius:12px}
     .game-blocked p{color:rgba(255,255,255,.5);font-size:.9375rem;margin:.5rem 0 1.5rem}
     .game-blocked a{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none}
+    /* Fullscreen override */
+    .game-section.is-fullscreen{position:fixed;inset:0;z-index:999;padding:0;border-radius:0}
+    .game-section.is-fullscreen .game-container{max-width:100%;height:100%;display:flex;flex-direction:column;padding:0}
+    .game-section.is-fullscreen .game-toolbar{padding:.6rem 1rem;margin:0;background:rgba(0,0,0,.4)}
+    .game-section.is-fullscreen .game-frame-wrap{flex:1;border-radius:0}
+    .game-section.is-fullscreen .game-frame{height:100%}
+    @media(max-width:768px){.game-section{padding:.75rem 1rem}}
 
     /* ── FOOTER ────────────────────────────────────── */
     footer{background:#1A2332;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
@@ -75,19 +87,30 @@
 </div>
 
 <!-- ── GAME ─────────────────────────────────────────────────────────────────── -->
-<div class="game-wrap">
-  <iframe
-    id="game-frame"
-    class="game-frame"
-    src="https://tune-up-tech-55437643109.us-west1.run.app/"
-    title="Tune-Up Tech Challenge"
-    allow="fullscreen"
-    loading="lazy"
-  ></iframe>
-  <div class="game-blocked" id="game-blocked">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <p>The game couldn't load in embedded mode.<br/>Open it directly in a new tab to play.</p>
-    <a href="https://tune-up-tech-55437643109.us-west1.run.app/" target="_blank" rel="noopener">Open Tune-Up Tech →</a>
+<div class="game-section" id="game-section">
+  <div class="game-container">
+    <div class="game-toolbar">
+      <span class="game-label">Tune-Up Tech Challenge</span>
+      <button class="fullscreen-btn" id="fs-btn" onclick="toggleFullscreen()">
+        <svg id="fs-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <span id="fs-label">Full Screen</span>
+      </button>
+    </div>
+    <div class="game-frame-wrap">
+      <iframe
+        id="game-frame"
+        class="game-frame"
+        src="https://tune-up-tech-55437643109.us-west1.run.app/"
+        title="Tune-Up Tech Challenge"
+        allow="fullscreen"
+        loading="lazy"
+      ></iframe>
+      <div class="game-blocked" id="game-blocked">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <p>The game couldn't load in embedded mode.<br/>Open it directly in a new tab to play.</p>
+        <a href="https://tune-up-tech-55437643109.us-west1.run.app/" target="_blank" rel="noopener">Open Tune-Up Tech →</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -98,6 +121,19 @@
 </footer>
 
 <script>
+  function toggleFullscreen() {
+    const section = document.getElementById('game-section');
+    const label = document.getElementById('fs-label');
+    const icon = document.getElementById('fs-icon');
+    const isFs = section.classList.toggle('is-fullscreen');
+    label.textContent = isFs ? 'Exit Full Screen' : 'Full Screen';
+    icon.innerHTML = isFs
+      ? '<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>'
+      : '<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>';
+    document.body.style.overflow = isFs ? 'hidden' : '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { const s = document.getElementById('game-section'); if (s.classList.contains('is-fullscreen')) toggleFullscreen(); } });
+
   // If the iframe fails to load (blocked by X-Frame-Options), show fallback
   const frame = document.getElementById('game-frame');
   frame.addEventListener('error', () => {

@@ -45,9 +45,13 @@
     .sidebar-section-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.75rem 1rem .375rem}
     .article-list{flex:1;overflow-y:auto;padding:0 .5rem .5rem}
     .article-list::-webkit-scrollbar{width:4px}.article-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-    .post-item{padding:.7rem .75rem;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:1px;transition:all .12s}
+    .post-item{padding:.7rem .75rem;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:1px;transition:all .12s;display:flex;align-items:flex-start;gap:.5rem}
     .post-item:hover{background:rgba(255,255,255,.04)}
     .post-item.active{background:rgba(200,16,46,.1);border-color:rgba(200,16,46,.2)}
+    .post-item > div { flex:1; min-width:0; }
+    .feature-toggle{background:none;border:none;cursor:pointer;font-size:.9rem;color:rgba(255,255,255,.2);padding:0;line-height:1;flex-shrink:0;margin-top:.1rem;transition:color .15s,transform .15s}
+    .feature-toggle:hover{color:#F4A11D;transform:scale(1.2)}
+    .feature-toggle.is-featured{color:#F4A11D;text-shadow:0 0 8px rgba(244,161,29,.6)}
     .post-item-title{font-size:.82rem;font-weight:600;color:#e6edf3;line-height:1.4;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .post-item-meta{display:flex;align-items:center;gap:.5rem}
     .cat-chip{font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(244,161,29,.15);color:#F4A11D;padding:.1rem .4rem;border-radius:3px}
@@ -365,19 +369,18 @@ function ghFetch(path, opts = {}) {
 async function loadPostList() {
   id('article-list').innerHTML = '<div class="sidebar-loading">Loading…</div>';
   try {
-    const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}`);
-    if (!res.ok) throw new Error(await res.text());
-    const files = (await res.json()).filter(f => f.name.endsWith('.html'));
-
-    // Light parse: just filename → readable title
-    posts = files.reverse().map(f => ({
-      name: f.name,
-      sha: f.sha,
-      title: slugToTitle(f.name.replace('.html','')),
-      category: '',
-      date: ''
+    // Load from index.json so we have full metadata including featured flag
+    const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}/index.json`);
+    if (!res.ok) throw new Error('Could not load index.json');
+    const data = await res.json();
+    const entries = JSON.parse(atob(data.content.replace(/\n/g,'')));
+    posts = entries.map(e => ({
+      name: e.slug,
+      title: e.title || slugToTitle(e.slug.replace('.html','')),
+      category: e.category || '',
+      date: e.date || '',
+      featured: e.featured || false
     }));
-
     renderPostList();
   } catch (e) {
     id('article-list').innerHTML = `<div class="sidebar-loading" style="color:#ff8096">Error: ${e.message}</div>`;
@@ -389,12 +392,35 @@ function renderPostList() {
     ? '<div class="sidebar-loading">No articles yet.</div>'
     : posts.map(p => `
         <div class="post-item ${p.name === activeFile ? 'active' : ''}" onclick="openPost('${p.name}')">
+          <button class="feature-toggle ${p.featured ? 'is-featured' : ''}"
+            title="${p.featured ? 'Featured article' : 'Set as featured'}"
+            onclick="event.stopPropagation();setFeatured('${p.name}')">★</button>
           <div class="post-item-title">${esc(p.title)}</div>
           <div class="post-item-meta">
             ${p.category ? `<span class="cat-chip">${esc(p.category)}</span>` : ''}
             ${p.date ? `<span class="post-item-date">${esc(p.date)}</span>` : ''}
           </div>
         </div>`).join('');
+}
+
+async function setFeatured(slug) {
+  // Toggle: if already featured, un-feature; otherwise set as the only featured
+  const already = posts.find(p => p.name === slug)?.featured;
+  posts.forEach(p => p.featured = false);
+  if (!already) { const p = posts.find(p => p.name === slug); if (p) p.featured = true; }
+  renderPostList();
+
+  // Persist to index.json
+  const indexPath = `${BPATH}/index.json`;
+  const r = await ghFetch(`/repos/${REPO}/contents/${indexPath}`);
+  if (!r.ok) { toast('Could not update index.json', 'error'); return; }
+  const d = await r.json();
+  let entries = JSON.parse(atob(d.content.replace(/\n/g,'')));
+  entries.forEach(e => e.featured = (e.slug === slug && !already));
+  const payload = { message: `blog: set featured → ${slug}`, content: b64Encode(JSON.stringify(entries, null, 2)), sha: d.sha };
+  const res = await ghFetch(`/repos/${REPO}/contents/${indexPath}`, { method:'PUT', body: JSON.stringify(payload) });
+  if (res.ok) toast(already ? 'Featured removed.' : `"${slug}" is now the featured article.`, 'success');
+  else toast('Failed to update featured.', 'error');
 }
 
 // ─── OPEN POST ─────────────────────────────────────────────────────────────────

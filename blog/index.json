@@ -6,7 +6,8 @@
     "date": "March 23, 2026",
     "readtime": "5 min read",
     "hero": "wp2071759-baltimore-wallpapers.jpg",
-    "excerpt": "So this is really cool test and I'm gonna upload a custom image...."
+    "excerpt": "So this is really cool test and I'm gonna upload a custom image....",
+    "featured": true
   },
   {
     "slug": "hb864-maryland-energy-law-2024.html",
@@ -15,7 +16,8 @@
     "date": "January 8, 2026",
     "readtime": "7 min read",
     "hero": "benchmarking-hero.jpg",
-    "excerpt": "If you own or manage a commercial building in Maryland, 2024 was a big year for energy incentives — even if you didn't hear much about it. The Maryland General Assembly passed House Bill 864..."
+    "excerpt": "If you own or manage a commercial building in Maryland, 2024 was a big year for energy incentives — even if you didn't hear much about it. The Maryland General Assembly passed House Bill 864...",
+    "featured": false
   },
   {
     "slug": "commercial-hvac-tune-up-signs.html",
@@ -24,7 +26,8 @@
     "date": "December 3, 2025",
     "readtime": "6 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before you sign anything..."
+    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before you sign anything...",
+    "featured": false
   },
   {
     "slug": "led-lighting-warehouse-savings.html",
@@ -33,7 +36,8 @@
     "date": "November 14, 2025",
     "readtime": "5 min read",
     "hero": "lighting-hero.jpg",
-    "excerpt": "Note: The scenario described in this article is an illustrative example based on typical project outcomes for commercial warehouse LED lighting upgrades in the Maryland market..."
+    "excerpt": "Note: The scenario described in this article is an illustrative example based on typical project outcomes for commercial warehouse LED lighting upgrades in the Maryland market...",
+    "featured": false
   },
   {
     "slug": "rockville-medical-building-tune-up.html",
@@ -42,6 +46,7 @@
     "date": "October 22, 2025",
     "readtime": "6 min read",
     "hero": "building-tuneup-hero.jpg",
-    "excerpt": "Note: This is an illustrative case study based on typical outcomes for medical office building tune-ups under the EmPOWER Maryland small commercial program..."
+    "excerpt": "Note: This is an illustrative case study based on typical outcomes for medical office building tune-ups under the EmPOWER Maryland small commercial program...",
+    "featured": false
   }
 ]

@@ -439,6 +439,8 @@ async function openPost(filename) {
   try {
     const res  = await ghFetch(`/repos/${REPO}/contents/${BPATH}/${filename}`);
     const data = await res.json();
+    if (!res.ok) throw new Error(data.message || `HTTP ${res.status}`);
+    if (!data.content) throw new Error('File returned no content. It may be too large or missing.');
     activeSha  = data.sha;
     const html = decodeContent(data.content);
 

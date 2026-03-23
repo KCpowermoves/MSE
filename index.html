@@ -352,45 +352,53 @@
     .hero-card-label {
       font-family: 'Barlow', sans-serif;
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.55);
       margin-bottom: 0.5rem;
+    }
+    .hero-card-pct {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 900;
+      font-size: 5rem;
+      color: #F4A11D;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(244,161,29,0.45);
+      letter-spacing: -0.03em;
     }
     .hero-card-amount {
       font-family: 'Barlow', sans-serif;
       font-weight: 900;
-      font-size: 4rem;
-      color: #F4A11D;
+      font-size: 2rem;
+      color: #C8102E;
       line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-    .hero-card-desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 1.5rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1.25rem;
     }
     .hero-card-row {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     .hero-card-stat {
       flex: 1;
-      background: rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 0.75rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 0.875rem 0.75rem;
     }
     .hero-card-stat-val {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
-      font-size: 1.5rem;
-      color: #fff;
+      font-size: 1.4rem;
+      color: #F4A11D;
+      line-height: 1;
     }
     .hero-card-stat-lbl {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 0.1rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.3rem;
+      line-height: 1.35;
     }
     .hero-badge-float {
       position: absolute;
@@ -957,7 +965,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 2rem;
     }
-    .footer-brand .logo-wrap img { height: 40px; width: auto; filter: brightness(0) invert(1); margin-bottom: 0.75rem; }
+    .footer-brand .logo-wrap img { height: 72px; width: auto; margin-bottom: 0.75rem; filter: brightness(0) invert(1); opacity: 0.92; }
     .footer-brand-tagline {
       font-family: 'Barlow', sans-serif;
       font-weight: 600;
@@ -1125,7 +1133,7 @@
         </ul>
         <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem;">
           <a href="tel:3018887090" class="nav-phone">(301) 888-7090</a>
-          <a href="pricing.html" class="nav-cta" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:0.875rem;color:#fff;text-decoration:none;padding:0.5rem 1.125rem;border-radius:6px;background:#C8102E;box-shadow:0 4px 14px rgba(200,16,46,0.3);transition:background 0.15s,transform 0.1s;display:inline-block;white-space:nowrap;">Schedule Your No-Cost HVAC Tune-Up</a>
+          <a href="pricing.html" class="nav-cta" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:0.875rem;color:#fff;text-decoration:none;padding:0.5rem 1.125rem;border-radius:6px;background:#C8102E;box-shadow:0 4px 14px rgba(200,16,46,0.3);transition:background 0.15s,transform 0.1s;display:inline-block;white-space:nowrap;">Schedule Your $0 HVAC Tune-Up</a>
         </div>
         <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -1146,7 +1154,7 @@
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
         <a href="tel:3018887090" style="display:block;font-family:'Barlow',sans-serif;font-weight:700;color:#C8102E;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06);">(301) 888-7090</a>
-        <a href="pricing.html" class="mobile-cta">Schedule No-Cost Walkthrough</a>
+        <a href="pricing.html" class="mobile-cta">Schedule Your $0 HVAC Tune-Up</a>
       </div>
     </nav>
     <!-- Announcement Bar -->
@@ -1188,7 +1196,7 @@
           </div>
           <div class="hero-trust-item">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7z" fill="#C8102E"/></svg>
-            All 4 MD Utilities
+            4 Maryland Utilities
           </div>
           <div class="hero-trust-item">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7z" fill="#C8102E"/></svg>
@@ -1198,24 +1206,25 @@
       </div>
       <div class="hero-visual">
         <div class="hero-card-main">
-          <div class="hero-card-label">EmPOWER Maryland Rebate</div>
-          <div class="hero-card-amount">$0</div>
-          <div class="hero-card-desc">EmPOWER MD covers up to 100% of costs — $0 after rebates.</div>
+          <div class="hero-card-label">EmPOWER Maryland rebates cover up to</div>
+          <div style="display:flex;align-items:center;gap:1rem;margin:.25rem 0 .5rem">
+            <div class="hero-card-pct">100%</div>
+            <div style="width:1px;height:3.5rem;background:rgba(255,255,255,.18);flex-shrink:0"></div>
+            <div class="hero-card-pct" style="color:#C8102E;text-shadow:0 0 30px rgba(200,16,46,.35)">$0</div>
+          </div>
+          <div style="font-family:'Barlow',sans-serif;font-weight:600;font-size:.85rem;color:rgba(255,255,255,.6);margin-bottom:1.25rem;letter-spacing:.01em">after rebates</div>
           <div class="hero-card-row">
             <div class="hero-card-stat">
-              <div class="hero-card-stat-val">Up to 100%</div>
-              <div class="hero-card-stat-lbl">Project covered</div>
+              <div class="hero-card-stat-val">5–20%</div>
+              <div class="hero-card-stat-lbl">Annually on your energy savings</div>
             </div>
             <div class="hero-card-stat">
-              <div class="hero-card-stat-val">5–20%</div>
-              <div class="hero-card-stat-lbl">Energy savings</div>
+              <div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="#F4A11D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;color:#F4A11D;line-height:1">Backed by EmPOWER MD</span>
+              </div>
+              <div class="hero-card-stat-lbl">A Government Approved Program</div>
             </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:.625rem;margin-top:.875rem;padding-top:.75rem;border-top:1px solid rgba(26,35,50,.08)">
-            <div style="width:32px;height:32px;background:rgba(200,16,46,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="#C8102E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div style="font-family:'Barlow',sans-serif"><strong style="font-weight:700;font-size:.85rem;color:#1A2332;display:block">State-Backed Program</strong><span style="font-size:.72rem;color:#888">EmPOWER Maryland certified</span></div>
           </div>
         </div>
       </div>
@@ -1227,10 +1236,10 @@
     <div class="trust-strip-inner">
       <span class="trust-strip-label">Authorized provider for:</span>
       <div class="utility-logos">
-        <span class="utility-logo">BGE</span>
-        <span class="utility-logo">Pepco</span>
-        <span class="utility-logo">Delmarva Power</span>
-        <span class="utility-logo">SMECO</span>
+        <a href="bge-energy-efficiency.html" class="utility-logo" style="text-decoration:none;color:inherit">BGE</a>
+        <a href="pepco-energy-efficiency.html" class="utility-logo" style="text-decoration:none;color:inherit">Pepco</a>
+        <a href="delmarva-energy-efficiency.html" class="utility-logo" style="text-decoration:none;color:inherit">Delmarva Power</a>
+        <a href="smeco-energy-efficiency.html" class="utility-logo" style="text-decoration:none;color:inherit">SMECO</a>
       </div>
     </div>
   </div>
@@ -1239,7 +1248,7 @@
   <div class="stats-band">
     <div class="stats-band-inner">
       <div class="stat-item">
-        <div class="stat-val">500+</div>
+        <div class="stat-val">5,000+</div>
         <div class="stat-lbl">Businesses Served</div>
       </div>
       <div class="stat-item">
@@ -1299,14 +1308,32 @@
   </section>
 
   <!-- Services -->
+  <!-- Currently Serving Marquee -->
+  <div style="background:#1A2332">
+    <div style="padding:.4rem 1.5rem .1rem;font-family:'Barlow',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center">Currently Serving</div>
+  </div>
+  <div style="background:#1A2332;padding:.4rem 0 .6rem;overflow:hidden;position:relative">
+    <div style="display:flex;width:max-content;align-items:center;gap:0;white-space:nowrap;animation:marquee 90s linear infinite">
+      <span class="mq-label">Currently Serving ›</span>
+      <span class="mq-city">Baltimore</span><span class="mq-dot">·</span><span class="mq-city">Annapolis</span><span class="mq-dot">·</span><span class="mq-city">Rockville</span><span class="mq-dot">·</span><span class="mq-city">Silver Spring</span><span class="mq-dot">·</span><span class="mq-city">Bethesda</span><span class="mq-dot">·</span><span class="mq-city">Gaithersburg</span><span class="mq-dot">·</span><span class="mq-city">Germantown</span><span class="mq-dot">·</span><span class="mq-city">Columbia</span><span class="mq-dot">·</span><span class="mq-city">Ellicott City</span><span class="mq-dot">·</span><span class="mq-city">Towson</span><span class="mq-dot">·</span><span class="mq-city">Bowie</span><span class="mq-dot">·</span><span class="mq-city">Greenbelt</span><span class="mq-dot">·</span><span class="mq-city">College Park</span><span class="mq-dot">·</span><span class="mq-city">Laurel</span><span class="mq-dot">·</span><span class="mq-city">Glen Burnie</span><span class="mq-dot">·</span><span class="mq-city">Dundalk</span><span class="mq-dot">·</span><span class="mq-city">Catonsville</span><span class="mq-dot">·</span><span class="mq-city">Owings Mills</span><span class="mq-dot">·</span><span class="mq-city">Bel Air</span><span class="mq-dot">·</span><span class="mq-city">Aberdeen</span><span class="mq-dot">·</span><span class="mq-city">Havre de Grace</span><span class="mq-dot">·</span><span class="mq-city">Waldorf</span><span class="mq-dot">·</span><span class="mq-city">La Plata</span><span class="mq-dot">·</span><span class="mq-city">Lexington Park</span><span class="mq-dot">·</span><span class="mq-city">Upper Marlboro</span><span class="mq-dot">·</span><span class="mq-city">Hyattsville</span><span class="mq-dot">·</span><span class="mq-city">Takoma Park</span><span class="mq-dot">·</span><span class="mq-city">Wheaton</span><span class="mq-dot">·</span><span class="mq-city">Olney</span><span class="mq-dot">·</span><span class="mq-city">Easton</span><span class="mq-dot">·</span><span class="mq-city">Salisbury</span><span class="mq-dot">·</span><span class="mq-city">Cambridge</span><span class="mq-dot">·</span><span class="mq-city">Severna Park</span><span class="mq-dot">·</span><span class="mq-city">Odenton</span><span class="mq-dot">·</span><span class="mq-city">Pasadena</span><span class="mq-dot">·</span><span class="mq-city">Elkridge</span><span class="mq-dot">·</span><span class="mq-city">Timonium</span><span class="mq-dot">·</span><span class="mq-city">Reisterstown</span><span class="mq-dot">·</span><span class="mq-city">Crofton</span><span class="mq-dot">·</span><span class="mq-city">Landover</span><span class="mq-dot">·</span><span class="mq-city">Largo</span><span class="mq-dot">·</span><span class="mq-city">Bladensburg</span><span class="mq-dot">·</span><span class="mq-city">Prince Frederick</span><span class="mq-dot">·</span><span class="mq-city">Edgewood</span><span class="mq-dot">·</span><span class="mq-city">Cockeysville</span><span class="mq-dot">·</span><span class="mq-city">Pikesville</span><span class="mq-dot">·</span><span class="mq-city">Randallstown</span><span class="mq-dot">·</span><span class="mq-city">Millersville</span><span class="mq-dot">·</span>
+      <span class="mq-label">Currently Serving ›</span>
+      <span class="mq-city">Baltimore</span><span class="mq-dot">·</span><span class="mq-city">Annapolis</span><span class="mq-dot">·</span><span class="mq-city">Rockville</span><span class="mq-dot">·</span><span class="mq-city">Silver Spring</span><span class="mq-dot">·</span><span class="mq-city">Bethesda</span><span class="mq-dot">·</span><span class="mq-city">Gaithersburg</span><span class="mq-dot">·</span><span class="mq-city">Germantown</span><span class="mq-dot">·</span><span class="mq-city">Columbia</span><span class="mq-dot">·</span><span class="mq-city">Ellicott City</span><span class="mq-dot">·</span><span class="mq-city">Towson</span><span class="mq-dot">·</span><span class="mq-city">Bowie</span><span class="mq-dot">·</span><span class="mq-city">Greenbelt</span><span class="mq-dot">·</span><span class="mq-city">College Park</span><span class="mq-dot">·</span><span class="mq-city">Laurel</span><span class="mq-dot">·</span><span class="mq-city">Glen Burnie</span><span class="mq-dot">·</span><span class="mq-city">Dundalk</span><span class="mq-dot">·</span><span class="mq-city">Catonsville</span><span class="mq-dot">·</span><span class="mq-city">Owings Mills</span><span class="mq-dot">·</span><span class="mq-city">Bel Air</span><span class="mq-dot">·</span><span class="mq-city">Aberdeen</span><span class="mq-dot">·</span><span class="mq-city">Havre de Grace</span><span class="mq-dot">·</span><span class="mq-city">Waldorf</span><span class="mq-dot">·</span><span class="mq-city">La Plata</span><span class="mq-dot">·</span><span class="mq-city">Lexington Park</span><span class="mq-dot">·</span><span class="mq-city">Upper Marlboro</span><span class="mq-dot">·</span><span class="mq-city">Hyattsville</span><span class="mq-dot">·</span><span class="mq-city">Takoma Park</span><span class="mq-dot">·</span><span class="mq-city">Wheaton</span><span class="mq-dot">·</span><span class="mq-city">Olney</span><span class="mq-dot">·</span><span class="mq-city">Easton</span><span class="mq-dot">·</span><span class="mq-city">Salisbury</span><span class="mq-dot">·</span><span class="mq-city">Cambridge</span><span class="mq-dot">·</span><span class="mq-city">Severna Park</span><span class="mq-dot">·</span><span class="mq-city">Odenton</span><span class="mq-dot">·</span><span class="mq-city">Pasadena</span><span class="mq-dot">·</span><span class="mq-city">Elkridge</span><span class="mq-dot">·</span><span class="mq-city">Timonium</span><span class="mq-dot">·</span><span class="mq-city">Reisterstown</span><span class="mq-dot">·</span><span class="mq-city">Crofton</span><span class="mq-dot">·</span><span class="mq-city">Landover</span><span class="mq-dot">·</span><span class="mq-city">Largo</span><span class="mq-dot">·</span><span class="mq-city">Bladensburg</span><span class="mq-dot">·</span><span class="mq-city">Prince Frederick</span><span class="mq-dot">·</span><span class="mq-city">Edgewood</span><span class="mq-dot">·</span><span class="mq-city">Cockeysville</span><span class="mq-dot">·</span><span class="mq-city">Pikesville</span><span class="mq-dot">·</span><span class="mq-city">Randallstown</span><span class="mq-dot">·</span><span class="mq-city">Millersville</span><span class="mq-dot">·</span>
+    </div>
+  </div>
+  <style>
+    .mq-label{font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;color:#F4A11D;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;padding:0 2rem}
+    .mq-city{font-family:'Barlow',sans-serif;font-weight:600;font-size:.85rem;color:#fff;flex-shrink:0;padding:0 .15rem}
+    .mq-dot{color:rgba(255,255,255,.3);flex-shrink:0;padding:0 .25rem}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  </style>
+
   <section class="services-section">
     <div class="services-inner">
       <div class="services-header">
         <div>
           <div class="section-eyebrow">Our Services</div>
-          <h2 class="section-title">Energy Upgrades, <em>All Covered</em></h2>
+          <h2 class="section-title">Upgrade Your Energy <em>Here.</em></h2>
         </div>
-        <a href="pricing.html" class="btn-primary" style="white-space:nowrap;">Get All Services Free</a>
       </div>
       <div class="services-grid">
         <!-- HVAC Tune-Up -->
@@ -1316,7 +1343,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
           <h3>HVAC Tune-Up</h3>
-          <p>Full inspection, cleaning, and optimization of your commercial HVAC systems. Up to 85% covered — rooftop units, split systems, and more.</p>
+          <p>Full inspection, cleaning, and optimization of your commercial HVAC systems. Up to 100% covered — rooftop units, split systems, and more.</p>
           <span class="service-card-link">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <!-- Building Tune-Up -->
@@ -1325,7 +1352,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M3 7v1m0 4v1m0 4v1M6 21V3l9 4v14M21 21V8l-6-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>Building Tune-Up</h3>
-          <p>Whole-building energy optimization covering controls, equipment, and operations. Typical savings of 5–20% on your energy bill.</p>
+          <p>Whole-building energy optimization covering controls, equipment, and operations. Up to 85% covered. Typical savings of 5–20% on your energy bill.</p>
           <span class="service-card-link">Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <!-- Lighting -->
@@ -1367,97 +1394,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Currently Serving Marquee -->
-  <div style="background:#1A2332;padding:.75rem 0;overflow:hidden;position:relative">
-    <div style="display:flex;align-items:center;gap:1.5rem;white-space:nowrap;animation:marquee 40s linear infinite">
-      <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;color:#F4A11D;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;padding-left:2rem">Currently Serving ›</span>
-      <!-- Cities repeated twice for seamless loop -->
-      <span class="mq-city">Baltimore</span><span class="mq-dot">·</span>
-      <span class="mq-city">Annapolis</span><span class="mq-dot">·</span>
-      <span class="mq-city">Rockville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Silver Spring</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bethesda</span><span class="mq-dot">·</span>
-      <span class="mq-city">Gaithersburg</span><span class="mq-dot">·</span>
-      <span class="mq-city">Germantown</span><span class="mq-dot">·</span>
-      <span class="mq-city">Columbia</span><span class="mq-dot">·</span>
-      <span class="mq-city">Ellicott City</span><span class="mq-dot">·</span>
-      <span class="mq-city">Towson</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bowie</span><span class="mq-dot">·</span>
-      <span class="mq-city">Greenbelt</span><span class="mq-dot">·</span>
-      <span class="mq-city">College Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Laurel</span><span class="mq-dot">·</span>
-      <span class="mq-city">Glen Burnie</span><span class="mq-dot">·</span>
-      <span class="mq-city">Dundalk</span><span class="mq-dot">·</span>
-      <span class="mq-city">Catonsville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Owings Mills</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bel Air</span><span class="mq-dot">·</span>
-      <span class="mq-city">Aberdeen</span><span class="mq-dot">·</span>
-      <span class="mq-city">Havre de Grace</span><span class="mq-dot">·</span>
-      <span class="mq-city">Waldorf</span><span class="mq-dot">·</span>
-      <span class="mq-city">La Plata</span><span class="mq-dot">·</span>
-      <span class="mq-city">Lexington Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Upper Marlboro</span><span class="mq-dot">·</span>
-      <span class="mq-city">Hyattsville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Takoma Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Wheaton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Olney</span><span class="mq-dot">·</span>
-      <span class="mq-city">Easton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Salisbury</span><span class="mq-dot">·</span>
-      <span class="mq-city">Cambridge</span><span class="mq-dot">·</span>
-      <span class="mq-city">Severna Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Odenton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Pasadena</span><span class="mq-dot">·</span>
-      <span class="mq-city">Elkridge</span><span class="mq-dot">·</span>
-      <span class="mq-city">Timonium</span><span class="mq-dot">·</span>
-      <span class="mq-city">Reisterstown</span><span class="mq-dot">·</span>
-      <!-- Second copy for seamless loop -->
-      <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.8rem;color:#F4A11D;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0">Currently Serving ›</span>
-      <span class="mq-city">Baltimore</span><span class="mq-dot">·</span>
-      <span class="mq-city">Annapolis</span><span class="mq-dot">·</span>
-      <span class="mq-city">Rockville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Silver Spring</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bethesda</span><span class="mq-dot">·</span>
-      <span class="mq-city">Gaithersburg</span><span class="mq-dot">·</span>
-      <span class="mq-city">Germantown</span><span class="mq-dot">·</span>
-      <span class="mq-city">Columbia</span><span class="mq-dot">·</span>
-      <span class="mq-city">Ellicott City</span><span class="mq-dot">·</span>
-      <span class="mq-city">Towson</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bowie</span><span class="mq-dot">·</span>
-      <span class="mq-city">Greenbelt</span><span class="mq-dot">·</span>
-      <span class="mq-city">College Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Laurel</span><span class="mq-dot">·</span>
-      <span class="mq-city">Glen Burnie</span><span class="mq-dot">·</span>
-      <span class="mq-city">Dundalk</span><span class="mq-dot">·</span>
-      <span class="mq-city">Catonsville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Owings Mills</span><span class="mq-dot">·</span>
-      <span class="mq-city">Bel Air</span><span class="mq-dot">·</span>
-      <span class="mq-city">Aberdeen</span><span class="mq-dot">·</span>
-      <span class="mq-city">Havre de Grace</span><span class="mq-dot">·</span>
-      <span class="mq-city">Waldorf</span><span class="mq-dot">·</span>
-      <span class="mq-city">La Plata</span><span class="mq-dot">·</span>
-      <span class="mq-city">Lexington Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Upper Marlboro</span><span class="mq-dot">·</span>
-      <span class="mq-city">Hyattsville</span><span class="mq-dot">·</span>
-      <span class="mq-city">Takoma Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Wheaton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Olney</span><span class="mq-dot">·</span>
-      <span class="mq-city">Easton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Salisbury</span><span class="mq-dot">·</span>
-      <span class="mq-city">Cambridge</span><span class="mq-dot">·</span>
-      <span class="mq-city">Severna Park</span><span class="mq-dot">·</span>
-      <span class="mq-city">Odenton</span><span class="mq-dot">·</span>
-      <span class="mq-city">Pasadena</span><span class="mq-dot">·</span>
-      <span class="mq-city">Elkridge</span><span class="mq-dot">·</span>
-      <span class="mq-city">Timonium</span><span class="mq-dot">·</span>
-      <span class="mq-city">Reisterstown</span><span class="mq-dot">·</span>
-    </div>
-  </div>
-  <style>
-    .mq-city{font-family:'Barlow',sans-serif;font-weight:600;font-size:.85rem;color:#fff;flex-shrink:0}
-    .mq-dot{color:rgba(255,255,255,.3);flex-shrink:0;margin:0 .25rem}
-    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  </style>
 
   <!-- How It Works -->
   <section class="how-section">
@@ -1501,7 +1437,7 @@
         <p>Join hundreds of Maryland businesses saving money through EmPOWER Maryland. It costs you nothing to find out if you qualify.</p>
       </div>
       <div class="cta-block-actions">
-        <a href="pricing.html" class="btn-white">Schedule a Free Tune-Up</a>
+        <a href="pricing.html" class="btn-white">Schedule Your $0 HVAC Tune-Up</a>
         <a href="tel:3018887090" class="btn-outline-white">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V13a1 1 0 01-1 1h-1C7.82 14 2 8.18 2 1V3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           (301) 888-7090
@@ -1601,7 +1537,7 @@
             <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
           </div>
           <div class="footer-brand-tagline">Smarter Buildings, Smaller Bills</div>
-          <div class="footer-brand-desc">Maryland's trusted commercial energy efficiency contractor. We help businesses save money through EmPOWER Maryland utility rebate programs — at zero out-of-pocket cost.</div>
+          <div class="footer-brand-desc">Maryland's trusted commercial energy efficiency contractor. We help businesses save money through EmPOWER Maryland utility rebate programs — <span style="font-size:1.05rem;font-weight:800;color:#C8102E;font-family:'Barlow',sans-serif;white-space:nowrap">$0 After Rebates.</span></div>
           <div class="footer-badge">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3L11 4.5 8.5 7l.5 3.5L6 9l-3 1.5.5-3.5L1 4.5 4.5 4z" fill="currentColor"/></svg>
             Licensed · Bonded · Insured
@@ -1645,7 +1581,7 @@
             <span>Serving all of Maryland</span>
           </div>
           <div style="margin-top:1rem;">
-            <a href="pricing.html" style="display:inline-block;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:0.875rem;padding:0.6rem 1.125rem;border-radius:6px;text-decoration:none;">Schedule Free Tune-Up</a>
+            <a href="pricing.html" style="display:inline-block;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:0.875rem;padding:0.6rem 1.125rem;border-radius:6px;text-decoration:none;">Schedule Your $0 HVAC Tune-Up</a>
           </div>
         </div>
       </div>

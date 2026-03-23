@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>MSE Blog CMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:'Inter',sans-serif;background:#0d1117;color:#e6edf3}
+
+    /* ── LOGIN ──────────────────────────────────────────────── */
+    #login-screen{height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 40%,rgba(200,16,46,.12) 0%,transparent 60%),#0d1117}
+    .login-card{width:100%;max-width:420px;background:#161b22;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem;box-shadow:0 24px 64px rgba(0,0,0,.6)}
+    .login-logo{display:flex;align-items:center;gap:.875rem;margin-bottom:2rem}
+    .login-logo img{height:44px;filter:brightness(0) invert(1);opacity:.9}
+    .login-logo-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;line-height:1.2}
+    .login-logo-sub{font-size:.7rem;color:#C8102E;font-weight:700;letter-spacing:.04em}
+    .login-card h2{font-family:'Barlow',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin:0 0 .375rem}
+    .login-card p{font-size:.85rem;color:rgba(255,255,255,.4);margin:0 0 1.75rem}
+    .field{margin-bottom:1.1rem}
+    .field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.4rem}
+    .field input{width:100%;background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.7rem 1rem;color:#e6edf3;font-size:.9rem;outline:none;transition:border .15s}
+    .field input:focus{border-color:rgba(200,16,46,.6)}
+    .btn-primary{width:100%;background:#C8102E;color:#fff;border:none;border-radius:8px;padding:.8rem;font-size:.9375rem;font-weight:700;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+    .btn-primary:hover{background:#a30d24}
+    .btn-primary:disabled{background:#4a1020;cursor:not-allowed}
+    .login-hint{font-size:.72rem;color:rgba(255,255,255,.25);margin-top:1.5rem;text-align:center;line-height:1.7}
+    .login-hint a{color:rgba(200,16,46,.7);text-decoration:none}
+    .login-hint a:hover{color:#C8102E}
+    .login-error{background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.3);border-radius:7px;color:#ff8096;font-size:.82rem;padding:.6rem .9rem;margin-bottom:1rem;display:none}
+
+    /* ── CMS SHELL ──────────────────────────────────────────── */
+    #cms{display:none;height:100vh;flex-direction:row}
+
+    /* ── SIDEBAR ────────────────────────────────────────────── */
+    .sidebar{width:272px;background:#161b22;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;flex-shrink:0}
+    .sidebar-top{padding:1.125rem 1rem .75rem;border-bottom:1px solid rgba(255,255,255,.06)}
+    .sidebar-brand{display:flex;align-items:center;gap:.625rem;margin-bottom:1rem}
+    .sidebar-brand img{height:28px;filter:brightness(0) invert(1);opacity:.8}
+    .sidebar-brand span{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;color:#fff}
+    .btn-new-post{width:100%;background:rgba(200,16,46,.15);color:#ff6b80;border:1px solid rgba(200,16,46,.3);border-radius:7px;padding:.6rem;font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .15s}
+    .btn-new-post:hover{background:rgba(200,16,46,.25);border-color:rgba(200,16,46,.5)}
+    .sidebar-section-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.75rem 1rem .375rem}
+    .article-list{flex:1;overflow-y:auto;padding:0 .5rem .5rem}
+    .article-list::-webkit-scrollbar{width:4px}.article-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+    .post-item{padding:.7rem .75rem;border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:1px;transition:all .12s}
+    .post-item:hover{background:rgba(255,255,255,.04)}
+    .post-item.active{background:rgba(200,16,46,.1);border-color:rgba(200,16,46,.2)}
+    .post-item-title{font-size:.82rem;font-weight:600;color:#e6edf3;line-height:1.4;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .post-item-meta{display:flex;align-items:center;gap:.5rem}
+    .cat-chip{font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(244,161,29,.15);color:#F4A11D;padding:.1rem .4rem;border-radius:3px}
+    .post-item-date{font-size:.67rem;color:rgba(255,255,255,.28)}
+    .sidebar-bottom{padding:.875rem 1rem;border-top:1px solid rgba(255,255,255,.06)}
+    .user-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+    .user-name{font-size:.75rem;color:rgba(255,255,255,.4)}
+    .btn-signout{background:transparent;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:.3rem .7rem;font-size:.72rem;cursor:pointer;transition:all .15s}
+    .btn-signout:hover{color:#fff;border-color:rgba(255,255,255,.2)}
+    .sidebar-loading{padding:1rem;font-size:.78rem;color:rgba(255,255,255,.3);text-align:center}
+
+    /* ── EDITOR AREA ────────────────────────────────────────── */
+    .editor-area{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#f6f8fa}
+
+    /* Empty state */
+    .empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;color:#aaa}
+    .empty-state svg{margin-bottom:1.25rem;opacity:.25}
+    .empty-state h3{font-family:'Barlow',sans-serif;font-size:1.25rem;color:#444;margin:0 0 .5rem}
+    .empty-state p{font-size:.9rem;margin:0 0 1.5rem;max-width:320px}
+    .btn-start{background:#C8102E;color:#fff;border:none;border-radius:8px;padding:.7rem 1.5rem;font-size:.9rem;font-weight:700;cursor:pointer}
+    .btn-start:hover{background:#a30d24}
+
+    /* Editor panel */
+    #editor-panel{display:none;flex:1;flex-direction:column;overflow:hidden}
+
+    /* Topbar */
+    .editor-topbar{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);padding:.875rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-shrink:0}
+    .topbar-left{display:flex;align-items:center;gap:.75rem}
+    .save-status{font-size:.78rem;color:#aaa;display:flex;align-items:center;gap:.375rem}
+    .status-dot{width:7px;height:7px;border-radius:50%;background:#aaa;display:inline-block}
+    .status-dot.saved{background:#48bb78}
+    .status-dot.unsaved{background:#F4A11D}
+    .topbar-actions{display:flex;align-items:center;gap:.5rem}
+    .btn-preview{background:transparent;color:#555;border:1px solid rgba(26,35,50,.15);border-radius:6px;padding:.45rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
+    .btn-preview:hover{border-color:#C8102E;color:#C8102E}
+    .btn-delete-post{background:transparent;color:#e53e3e;border:1px solid rgba(229,62,62,.25);border-radius:6px;padding:.45rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s}
+    .btn-delete-post:hover{background:rgba(229,62,62,.06)}
+    .btn-save-post{background:#C8102E;color:#fff;border:none;border-radius:6px;padding:.45rem 1.125rem;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.4rem}
+    .btn-save-post:hover{background:#a30d24}
+    .btn-save-post:disabled{background:#ccc;cursor:not-allowed}
+
+    /* Meta row */
+    .meta-row{background:#fff;border-bottom:1px solid rgba(26,35,50,.08);padding:.875rem 1.5rem;display:flex;gap:1rem;flex-shrink:0;flex-wrap:wrap}
+    .meta-item{display:flex;flex-direction:column;gap:.3rem;min-width:120px}
+    .meta-item label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999}
+    .meta-item input,.meta-item select{border:1px solid rgba(26,35,50,.12);border-radius:6px;padding:.4rem .625rem;font-size:.82rem;color:#1A2332;outline:none;background:#fff;font-family:'Inter',sans-serif;transition:border .15s}
+    .meta-item input:focus,.meta-item select:focus{border-color:#C8102E}
+    .meta-item.slug-field{flex:1;min-width:200px}
+
+    /* Title */
+    .title-row{background:#fff;border-bottom:1px solid rgba(26,35,50,.06);padding:1rem 1.5rem;flex-shrink:0}
+    #field-title{width:100%;border:none;outline:none;font-family:'Barlow',sans-serif;font-size:1.875rem;font-weight:800;color:#1A2332;letter-spacing:-.02em;background:transparent}
+    #field-title::placeholder{color:#ddd}
+
+    /* Quill */
+    .quill-wrap{flex:1;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+    #editor{flex:1;font-family:'Georgia',serif;overflow-y:auto}
+    .ql-toolbar.ql-snow{border:none!important;border-bottom:1px solid rgba(26,35,50,.08)!important;background:#fafafa;flex-shrink:0}
+    .ql-container.ql-snow{border:none!important;flex:1;display:flex;flex-direction:column;overflow:hidden}
+    .ql-editor{padding:2rem 1.5rem;max-width:760px;margin:0 auto;width:100%;font-size:1.0625rem;line-height:1.85;color:#444;overflow-y:auto}
+    .ql-editor h2{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.5rem;color:#1A2332}
+    .ql-editor h3{font-family:'Barlow',sans-serif;font-weight:700;color:#1A2332}
+    .ql-editor a{color:#C8102E}
+    .ql-editor blockquote{border-left:4px solid #C8102E;margin:1.5rem 0;padding:.75rem 1.25rem;background:#f5f5f5;border-radius:0 6px 6px 0;color:#555}
+
+    /* Toast */
+    #toast{position:fixed;bottom:1.5rem;right:1.5rem;background:#1A2332;color:#fff;padding:.8rem 1.1rem;border-radius:9px;font-size:.85rem;font-weight:600;box-shadow:0 8px 28px rgba(0,0,0,.3);transform:translateY(80px);opacity:0;transition:all .28s cubic-bezier(.34,1.56,.64,1);z-index:9999;display:flex;align-items:center;gap:.5rem;max-width:340px}
+    #toast.show{transform:translateY(0);opacity:1}
+    #toast.success::before{content:'';width:8px;height:8px;border-radius:50%;background:#48bb78;flex-shrink:0}
+    #toast.error::before{content:'';width:8px;height:8px;border-radius:50%;background:#C8102E;flex-shrink:0}
+
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .5s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+
+<!-- ══ LOGIN ═══════════════════════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="../brand_assets/mse-logo.png" alt="MSE"/>
+      <div>
+        <div class="login-logo-name">Maryland Smart Energy</div>
+        <div class="login-logo-sub">Blog CMS</div>
+      </div>
+    </div>
+    <h2>Admin Sign In</h2>
+    <p>Enter a GitHub Personal Access Token with <strong style="color:rgba(255,255,255,.6)">Contents: Read &amp; write</strong> permission for this repository.</p>
+    <div id="login-error" class="login-error"></div>
+    <div class="field">
+      <label>GitHub Personal Access Token</label>
+      <input type="password" id="pat-input" placeholder="github_pat_…" autocomplete="off" spellcheck="false"/>
+    </div>
+    <button class="btn-primary" id="login-btn" onclick="doLogin()">Sign In</button>
+    <p class="login-hint">
+      Create a token at <a href="https://github.com/settings/tokens" target="_blank">github.com → Settings → Developer settings → Fine-grained tokens</a>.<br/>
+      Scope: <strong style="color:rgba(255,255,255,.5)">Repository: KCpowermoves/MSE → Contents: Read &amp; write</strong>
+    </p>
+  </div>
+</div>
+
+<!-- ══ CMS ═════════════════════════════════════════════════════════════════ -->
+<div id="cms">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">
+        <img src="../brand_assets/mse-logo.png" alt="MSE"/>
+        <span>Blog CMS</span>
+      </div>
+      <button class="btn-new-post" onclick="newPost()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        New Article
+      </button>
+    </div>
+    <div class="sidebar-section-label">Articles</div>
+    <div class="article-list" id="article-list">
+      <div class="sidebar-loading">Loading articles…</div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="user-row">
+        <span class="user-name" id="user-name">—</span>
+        <button class="btn-signout" onclick="signOut()">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor area -->
+  <div class="editor-area">
+
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state">
+      <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="10" y="8" width="52" height="58" rx="5" stroke="#ccc" stroke-width="2.5"/><path d="M22 22h28M22 32h28M22 42h18" stroke="#ccc" stroke-width="2" stroke-linecap="round"/><circle cx="54" cy="54" r="12" fill="#C8102E" opacity=".15" stroke="#C8102E" stroke-width="2"/><path d="M54 49v5l3 3" stroke="#C8102E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Select or Create an Article</h3>
+      <p>Choose an article from the sidebar to edit, or start a new one.</p>
+      <button class="btn-start" onclick="newPost()">+ New Article</button>
+    </div>
+
+    <!-- Editor panel -->
+    <div id="editor-panel">
+      <!-- Topbar -->
+      <div class="editor-topbar">
+        <div class="topbar-left">
+          <div class="save-status">
+            <span class="status-dot" id="status-dot"></span>
+            <span id="status-text">—</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-preview" onclick="previewPost()">↗ Preview</button>
+          <button class="btn-delete-post" id="delete-btn" onclick="deletePost()">Delete</button>
+          <button class="btn-save-post" id="save-btn" onclick="savePost()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Save &amp; Publish
+          </button>
+        </div>
+      </div>
+
+      <!-- Meta fields -->
+      <div class="meta-row">
+        <div class="meta-item">
+          <label>Category</label>
+          <select id="field-category" onchange="markUnsaved()">
+            <option value="HVAC">HVAC</option>
+            <option value="Lighting">Lighting</option>
+            <option value="Building">Building</option>
+            <option value="Policy">Policy</option>
+            <option value="Case Study">Case Study</option>
+            <option value="EmPOWER">EmPOWER</option>
+            <option value="Energy">Energy</option>
+          </select>
+        </div>
+        <div class="meta-item">
+          <label>Publish Date</label>
+          <input type="date" id="field-date" onchange="markUnsaved()"/>
+        </div>
+        <div class="meta-item">
+          <label>Read Time</label>
+          <input type="text" id="field-readtime" placeholder="5 min read" oninput="markUnsaved()"/>
+        </div>
+        <div class="meta-item">
+          <label>Hero Image</label>
+          <select id="field-hero" onchange="markUnsaved()">
+            <option value="hvac-tune-up-hero.jpg">HVAC Hero</option>
+            <option value="building-tuneup-hero.jpg">Building Tune-Up Hero</option>
+            <option value="lighting-hero.jpg">Lighting Hero</option>
+            <option value="benchmarking-hero-black-female.jpg">Benchmarking Hero</option>
+            <option value="community-solar-hero.jpg">Community Solar Hero</option>
+            <option value="hvac-hero-background.jpg">HVAC Background</option>
+            <option value="hvac-tune-up-side.jpg">HVAC Side</option>
+            <option value="building-tuneup-side.jpg">Building Side</option>
+            <option value="lighting-side.jpg">Lighting Side</option>
+          </select>
+        </div>
+        <div class="meta-item slug-field">
+          <label>URL Slug (filename)</label>
+          <input type="text" id="field-slug" placeholder="my-article-title" oninput="markUnsaved()"/>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="title-row">
+        <input id="field-title" type="text" placeholder="Article title…" oninput="markUnsaved(); autoSlug()"/>
+      </div>
+
+      <!-- Rich text editor -->
+      <div class="quill-wrap">
+        <div id="editor"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+const REPO  = 'KCpowermoves/MSE';
+const BPATH = 'blog';
+const API   = 'https://api.github.com';
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let PAT          = '';
+let quill        = null;
+let posts        = [];        // [{name, sha, title, category, date}]
+let activeFile   = null;      // currently open filename
+let activeSha    = null;      // sha of currently open file
+let isNewPost    = false;
+let slugEdited   = false;     // true if user manually edited slug
+let unsaved      = false;
+
+// ─── AUTH ─────────────────────────────────────────────────────────────────────
+async function doLogin() {
+  const btn = id('login-btn');
+  const tok = id('pat-input').value.trim();
+  if (!tok) { loginErr('Please enter your Personal Access Token.'); return; }
+
+  btn.innerHTML = '<span class="spinner"></span> Signing in…';
+  btn.disabled = true;
+  id('login-error').style.display = 'none';
+
+  try {
+    // Verify token against the user endpoint
+    const uRes = await ghFetch('/user');
+    if (!uRes.ok) throw new Error('Token invalid or expired.');
+    const user = await uRes.json();
+
+    // Verify write access
+    const rRes = await ghFetch(`/repos/${REPO}`);
+    if (!rRes.ok) throw new Error('No access to repository KCpowermoves/MSE.');
+    const repo = await rRes.json();
+    if (!repo.permissions?.push) throw new Error('Token needs Contents: Write permission.');
+
+    PAT = tok;
+    sessionStorage.setItem('mse_pat', tok);
+    id('user-name').textContent = user.login || 'Admin';
+    startCMS();
+  } catch (e) {
+    loginErr(e.message);
+    btn.innerHTML = 'Sign In';
+    btn.disabled = false;
+  }
+}
+
+function loginErr(msg) {
+  const el = id('login-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function signOut() {
+  sessionStorage.removeItem('mse_pat');
+  location.reload();
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+function startCMS() {
+  id('login-screen').style.display = 'none';
+  id('cms').style.display = 'flex';
+
+  quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+      toolbar: [
+        [{ header: [2, 3, false] }],
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link', 'blockquote', 'image'],
+        ['clean']
+      ]
+    }
+  });
+  quill.on('text-change', markUnsaved);
+
+  loadPostList();
+}
+
+// ─── GITHUB API ────────────────────────────────────────────────────────────────
+function ghFetch(path, opts = {}) {
+  return fetch(`${API}${path}`, {
+    ...opts,
+    headers: {
+      'Authorization': `Bearer ${PAT}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json',
+      ...(opts.headers || {})
+    }
+  });
+}
+
+// ─── POST LIST ─────────────────────────────────────────────────────────────────
+async function loadPostList() {
+  id('article-list').innerHTML = '<div class="sidebar-loading">Loading…</div>';
+  try {
+    const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}`);
+    if (!res.ok) throw new Error(await res.text());
+    const files = (await res.json()).filter(f => f.name.endsWith('.html'));
+
+    // Light parse: just filename → readable title
+    posts = files.reverse().map(f => ({
+      name: f.name,
+      sha: f.sha,
+      title: slugToTitle(f.name.replace('.html','')),
+      category: '',
+      date: ''
+    }));
+
+    renderPostList();
+  } catch (e) {
+    id('article-list').innerHTML = `<div class="sidebar-loading" style="color:#ff8096">Error: ${e.message}</div>`;
+  }
+}
+
+function renderPostList() {
+  id('article-list').innerHTML = posts.length === 0
+    ? '<div class="sidebar-loading">No articles yet.</div>'
+    : posts.map(p => `
+        <div class="post-item ${p.name === activeFile ? 'active' : ''}" onclick="openPost('${p.name}')">
+          <div class="post-item-title">${esc(p.title)}</div>
+          <div class="post-item-meta">
+            ${p.category ? `<span class="cat-chip">${esc(p.category)}</span>` : ''}
+            ${p.date ? `<span class="post-item-date">${esc(p.date)}</span>` : ''}
+          </div>
+        </div>`).join('');
+}
+
+// ─── OPEN POST ─────────────────────────────────────────────────────────────────
+async function openPost(filename) {
+  if (unsaved && !confirm('You have unsaved changes. Discard them?')) return;
+
+  activeFile = filename;
+  isNewPost  = false;
+  slugEdited = true;
+  showEditorPanel();
+  setStatus('loading', 'Loading…');
+  id('save-btn').disabled = true;
+  id('delete-btn').style.display = 'inline-flex';
+  renderPostList();
+
+  try {
+    const res  = await ghFetch(`/repos/${REPO}/contents/${BPATH}/${filename}`);
+    const data = await res.json();
+    activeSha  = data.sha;
+    const html = decodeContent(data.content);
+
+    // Parse fields
+    const meta = parseMeta(html);
+    id('field-title').value    = meta.title;
+    id('field-category').value = meta.category || 'HVAC';
+    id('field-date').value     = meta.dateISO || '';
+    id('field-readtime').value = meta.readtime || '5 min read';
+    id('field-slug').value     = filename.replace('.html','');
+    id('field-hero').value     = meta.hero || 'hvac-tune-up-hero.jpg';
+
+    quill.root.innerHTML = meta.body;
+    setStatus('saved', `Editing: ${filename}`);
+    id('save-btn').disabled = false;
+    unsaved = false;
+
+    // Update list item with real meta
+    const idx = posts.findIndex(p => p.name === filename);
+    if (idx > -1) { posts[idx].title = meta.title || posts[idx].title; posts[idx].category = meta.category; posts[idx].date = meta.date; renderPostList(); }
+  } catch (e) {
+    toast('Failed to load: ' + e.message, 'error');
+    setStatus('saved', 'Error');
+  }
+}
+
+// ─── NEW POST ──────────────────────────────────────────────────────────────────
+function newPost() {
+  if (unsaved && !confirm('You have unsaved changes. Discard them?')) return;
+
+  activeFile = null;
+  activeSha  = null;
+  isNewPost  = true;
+  slugEdited = false;
+  unsaved    = false;
+  showEditorPanel();
+
+  id('field-title').value    = '';
+  id('field-category').value = 'HVAC';
+  id('field-date').value     = new Date().toISOString().split('T')[0];
+  id('field-readtime').value = '5 min read';
+  id('field-slug').value     = '';
+  id('field-hero').value     = 'hvac-tune-up-hero.jpg';
+  quill.setContents([]);
+  id('delete-btn').style.display = 'none';
+  id('save-btn').disabled = false;
+  setStatus('unsaved', 'New Article — Unsaved');
+  renderPostList();
+  id('field-title').focus();
+}
+
+// ─── SAVE POST ─────────────────────────────────────────────────────────────────
+async function savePost() {
+  const title    = id('field-title').value.trim();
+  const category = id('field-category').value;
+  const dateVal  = id('field-date').value;
+  const readtime = id('field-readtime').value.trim() || '5 min read';
+  const hero     = id('field-hero').value;
+  let   slug     = id('field-slug').value.trim();
+  const bodyHtml = quill.root.innerHTML;
+
+  if (!title) { toast('Please enter a title.', 'error'); return; }
+
+  if (!slug) {
+    slug = toSlug(title);
+    id('field-slug').value = slug;
+  }
+  const filename = slug.endsWith('.html') ? slug : `${slug}.html`;
+  const dateFormatted = dateVal
+    ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+    : '';
+
+  const btn = id('save-btn');
+  btn.innerHTML = '<span class="spinner"></span>';
+  btn.disabled = true;
+
+  try {
+    const html    = buildHTML({ title, category, date: dateFormatted, readtime, hero }, bodyHtml);
+    const encoded = b64Encode(html);
+    const payload = {
+      message: isNewPost ? `blog: add "${title}"` : `blog: update "${title}"`,
+      content: encoded
+    };
+    if (activeSha && !isNewPost) payload.sha = activeSha;
+
+    const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}/${filename}`, {
+      method: 'PUT',
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
+
+    const saved = await res.json();
+    activeSha  = saved.content.sha;
+    activeFile = filename;
+    isNewPost  = false;
+    unsaved    = false;
+    setStatus('saved', `Saved: ${filename}`);
+    toast('Article published!', 'success');
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Save & Publish';
+    btn.disabled = false;
+    id('delete-btn').style.display = 'inline-flex';
+    await loadPostList();
+    renderPostList();
+  } catch (e) {
+    toast('Save failed: ' + e.message, 'error');
+    btn.innerHTML = 'Save & Publish';
+    btn.disabled = false;
+  }
+}
+
+// ─── DELETE POST ──────────────────────────────────────────────────────────────
+async function deletePost() {
+  if (!activeFile || !activeSha) return;
+  if (!confirm(`Permanently delete "${activeFile}"? This cannot be undone.`)) return;
+
+  try {
+    const res = await ghFetch(`/repos/${REPO}/contents/${BPATH}/${activeFile}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ message: `blog: delete "${activeFile}"`, sha: activeSha })
+    });
+    if (!res.ok) throw new Error('Delete request failed.');
+
+    activeFile = null; activeSha = null; isNewPost = false; unsaved = false;
+    id('editor-panel').style.display = 'none';
+    id('empty-state').style.display = 'flex';
+    toast('Article deleted.', 'success');
+    await loadPostList();
+  } catch (e) {
+    toast('Delete failed: ' + e.message, 'error');
+  }
+}
+
+// ─── PREVIEW ──────────────────────────────────────────────────────────────────
+function previewPost() {
+  const title    = id('field-title').value.trim() || 'Preview';
+  const category = id('field-category').value;
+  const dateVal  = id('field-date').value;
+  const readtime = id('field-readtime').value || '5 min read';
+  const hero     = id('field-hero').value;
+  const date     = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
+  const html     = buildHTML({ title, category, date, readtime, hero }, quill.root.innerHTML);
+  const blob     = new Blob([html], { type: 'text/html' });
+  window.open(URL.createObjectURL(blob), '_blank');
+}
+
+// ─── PARSE EXISTING HTML ──────────────────────────────────────────────────────
+function parseMeta(html) {
+  const titleM    = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  const categoryM = html.match(/class="post-category"[^>]*>([\s\S]*?)<\/div>/);
+  const dateM     = html.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}/);
+  const readtimeM = html.match(/(\d+\s+min\s+read)/i);
+  const heroM     = html.match(/images\/([\w\-.]+\.jpg)/);
+  const bodyM     = html.match(/<article[^>]*class="post-body"[^>]*>([\s\S]*?)<\/article>/);
+
+  const date  = dateM ? dateM[0] : '';
+  let dateISO = '';
+  if (date) { const d = new Date(date); if (!isNaN(d)) dateISO = d.toISOString().split('T')[0]; }
+
+  return {
+    title:    titleM    ? titleM[1].trim() : '',
+    category: categoryM ? categoryM[1].trim() : '',
+    date,
+    dateISO,
+    readtime: readtimeM ? readtimeM[1] : '5 min read',
+    hero:     heroM     ? heroM[1] : 'hvac-tune-up-hero.jpg',
+    body:     bodyM     ? bodyM[1].trim() : ''
+  };
+}
+
+// ─── BUILD HTML ───────────────────────────────────────────────────────────────
+function buildHTML({ title, category, date, readtime, hero }, body) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(title)} | Maryland Smart Energy</title>
+  <meta name="description" content="${esc(title)} — Maryland Smart Energy blog on commercial energy efficiency." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .site-header{position:sticky;top:0;z-index:100}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;margin-top:.2rem}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;white-space:nowrap}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
+    .post-hero{background:#1A2332;padding:4rem 1.5rem;position:relative;overflow:hidden}
+    .post-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(26,35,50,.65),rgba(26,35,50,.65)),url('../brand_assets/images/${hero}') center/cover no-repeat;z-index:0}
+    .post-hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+    .post-category{display:inline-block;background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;padding:.25rem .75rem;border-radius:4px;margin-bottom:1rem}
+    .post-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;color:#fff;margin:0 0 1rem;line-height:1.15}
+    .post-meta{display:flex;align-items:center;gap:1.5rem;color:rgba(255,255,255,.5);font-size:.875rem}
+    .post-body{max-width:780px;margin:0 auto;padding:3rem 1.5rem}
+    .post-body p{font-size:1.0625rem;line-height:1.85;color:#444;margin:0 0 1.25rem}
+    .post-body h2{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.5rem;color:#1A2332;margin:2.5rem 0 .875rem}
+    .post-body h3{font-family:'Barlow',sans-serif;font-weight:700;font-size:1.125rem;color:#1A2332;margin:1.75rem 0 .5rem}
+    .post-body ul,.post-body ol{margin:0 0 1.25rem 1.5rem;padding:0}
+    .post-body li{font-size:1.0625rem;line-height:1.8;color:#444;margin-bottom:.5rem}
+    .post-body a{color:#C8102E}
+    .post-body blockquote{border-left:4px solid #C8102E;margin:2rem 0;padding:1rem 1.5rem;background:#f9f9f9;border-radius:0 8px 8px 0;color:#555;font-style:italic}
+    .callout{background:#F5F5F5;border-left:4px solid #C8102E;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
+    .callout p{margin:0;font-size:1rem;color:#333}
+    .cta-block{background:#C8102E;border-radius:12px;padding:2.5rem;text-align:center;margin:3rem 0}
+    .cta-block h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0 0 .75rem}
+    .cta-block p{color:rgba(255,255,255,.8);margin:0 0 1.5rem;font-size:1rem}
+    .cta-block a{display:inline-block;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;padding:.75rem 1.75rem;border-radius:6px;text-decoration:none;transition:transform .15s}.cta-block a:hover{transform:translateY(-2px)}
+    footer{background:#1A2332;padding:2rem 1.5rem;text-align:center}
+    footer p{color:rgba(255,255,255,.35);font-size:.875rem;margin:0}
+    footer a{color:rgba(255,255,255,.35);text-decoration:none}
+  </style>
+</head>
+<body>
+<div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="../index.html">
+      <img src="../brand_assets/mse-logo.png" alt="Maryland Smart Energy"/>
+      <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="../services/hvac-tune-up.html">HVAC Tune-Up</a><a href="../services/building-tune-up.html">Building Tune-Up</a><a href="../services/lighting.html">Lighting</a><a href="../services/energy-supply.html">Energy Supply</a><a href="../services/community-solar.html">Community Solar</a><a href="../services/benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="../about.html">About</a></li>
+      <li class="dropdown"><a href="../empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="../empower-maryland.html">EmPOWER Maryland Overview</a><a href="../bge-energy-efficiency.html">BGE Programs</a><a href="../pepco-energy-efficiency.html">Pepco Programs</a><a href="../delmarva-energy-efficiency.html">Delmarva Power Programs</a><a href="../smeco-energy-efficiency.html">SMECO Programs</a></div>
+      </li>
+      <li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem">
+      <a href="tel:3018887090" style="font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none">(301) 888-7090</a>
+      <a href="../pricing.html" class="nav-cta-btn">Schedule Your $0 HVAC Tune-Up</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div></nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../services/hvac-tune-up.html">HVAC Tune-Up</a><a href="../services/building-tune-up.html">Building Tune-Up</a><a href="../services/lighting.html">Lighting</a><a href="../about.html">About</a><a href="../empower-maryland.html">EmPOWER Maryland</a><a href="../blog.html">Blog</a><a href="../faq.html">FAQ</a><a href="../contact.html">Contact</a>
+    <a href="../pricing.html" class="mobile-cta">Schedule Your $0 HVAC Tune-Up</a>
+  </div>
+  <div class="announce-bar">$0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland.</div>
+</div>
+
+<section class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-category">${esc(category)}</div>
+    <h1>${esc(title)}</h1>
+    <div class="post-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${esc(date)}</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${esc(readtime)}</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+${body}
+  <div class="cta-block">
+    <h3>Ready for Your $0 HVAC Tune-Up?</h3>
+    <p>EmPOWER Maryland covers up to 100% of the cost. We handle every step of the paperwork.</p>
+    <a href="../pricing.html">Schedule Your Free Tune-Up →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2025 Maryland Smart Energy &nbsp;·&nbsp; <a href="../privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="tel:3018887090">(301) 888-7090</a></p>
+</footer>
+</body>
+</html>`;
+}
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function id(s) { return document.getElementById(s); }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toSlug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+function slugToTitle(s) { return s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+function decodeContent(b64) { return decodeURIComponent(escape(atob(b64.replace(/\n/g,'')))); }
+function b64Encode(str) {
+  try { return btoa(unescape(encodeURIComponent(str))); }
+  catch { return btoa(str); }
+}
+
+function showEditorPanel() {
+  id('empty-state').style.display = 'none';
+  id('editor-panel').style.display = 'flex';
+  id('editor-panel').style.flexDirection = 'column';
+  id('editor-panel').style.flex = '1';
+  id('editor-panel').style.overflow = 'hidden';
+}
+
+function markUnsaved() {
+  unsaved = true;
+  setStatus('unsaved', activeFile ? `Editing: ${activeFile}` : 'New Article — Unsaved');
+}
+
+function setStatus(state, text) {
+  id('status-text').textContent = text;
+  const dot = id('status-dot');
+  dot.className = 'status-dot';
+  if (state === 'saved')   dot.classList.add('saved');
+  if (state === 'unsaved') dot.classList.add('unsaved');
+}
+
+function autoSlug() {
+  if (slugEdited) return;
+  id('field-slug').value = toSlug(id('field-title').value);
+}
+
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = id('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3800);
+}
+
+// ─── STARTUP ──────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  // Restore session
+  const saved = sessionStorage.getItem('mse_pat');
+  if (saved) { PAT = saved; startCMS(); }
+
+  // Enter key on PAT field
+  id('pat-input').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+  // Slug manual edit detection
+  id('field-slug').addEventListener('input', () => { slugEdited = true; });
+
+  // Warn on unload if unsaved
+  window.addEventListener('beforeunload', e => {
+    if (unsaved) { e.preventDefault(); e.returnValue = ''; }
+  });
+});
+</script>
+</body>
+</html>

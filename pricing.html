@@ -174,7 +174,7 @@ function step1(){
         <span style="width:72px;text-align:center;font-size:28px;font-weight:700;color:#1B6B3A" id="u-disp">${state.units}</span>
         <button class="mse-stepper-btn" id="u-plus">+</button>
       </div>
-      <p style="font-size:13px;color:#94a3b8;margin:0;line-height:1.5">Standard pricing covers 3-ton to 20-ton units.<br>For units outside this range, we'll customize a quote.</p>
+      <p style="font-size:13px;color:#94a3b8;margin:0;line-height:1.5">Standard pricing covers 3-ton to 20-ton units.<br>For units outside this range, <a href="contact.html" style="color:#1B6B3A;font-weight:600;text-decoration:underline">click here to get a customized quote</a>.</p>
     </div>
     <button class="mse-btn mse-pri" id="s1-next" style="margin-top:32px;width:100%;max-width:320px">See My Pricing ${SVG.arrow}</button>
   </div>`;
@@ -189,7 +189,11 @@ function step2(){
   ];
   return `<div style="max-width:540px;margin:0 auto">
     <h2 style="font-size:28px;font-weight:700;margin-bottom:8px;text-align:center">Where should we send your plan details?</h2>
-    <p style="color:#64748b;font-size:16px;margin-bottom:32px;text-align:center;line-height:1.6">Pricing customized for ${state.units} unit${state.units!==1?'s':''}.</p>
+    <p style="color:#64748b;font-size:16px;margin-bottom:20px;text-align:center;line-height:1.6">Pricing customized for ${state.units} unit${state.units!==1?'s':''}.</p>
+    <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:10px;padding:12px 14px;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M11 2L3 6v5c0 4.97 3.36 9.63 8 10.93C15.64 20.63 19 15.97 19 11V6l-8-4z" fill="#16a34a" opacity=".15" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:3px">Risk-Free Guarantee</div><div style="font-size:12px;color:#166534;line-height:1.5">Get your full rebate — or we refund your deposit. Most rebates process in 4–6 weeks. If your utility is unresponsive, we'll refund you 100%.</div></div>
+    </div>
     <div style="display:flex;flex-direction:column;gap:16px">
       ${fields.map(f=>`<div>
         <label style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">${f.label}</label>

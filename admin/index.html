@@ -301,8 +301,6 @@ async function doLogin() {
     // Verify write access
     const rRes = await ghFetch(`/repos/${REPO}`);
     if (!rRes.ok) throw new Error('No access to repository KCpowermoves/MSE.');
-    const repo = await rRes.json();
-    if (!repo.permissions?.push) throw new Error('Token needs Contents: Write permission.');
 
     PAT = tok;
     sessionStorage.setItem('mse_pat', tok);

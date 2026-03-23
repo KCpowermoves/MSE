@@ -6,7 +6,8 @@
     "date": "March 23, 2026",
     "readtime": "10 min read",
     "hero": "pasted_image_0.webp",
-    "excerpt": "What do you think? I think I like this...."
+    "excerpt": "What do you think? I think I like this....",
+    "featured": false
   },
   {
     "slug": "hb864-maryland-energy-law-2024.html",
@@ -25,7 +26,8 @@
     "date": "December 3, 2025",
     "readtime": "6 min read",
     "hero": "hvac-tune-up-hero.jpg",
-    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before y..."
+    "excerpt": "Your rooftop unit is struggling. The building isn't cooling evenly, the energy bills are up, and your maintenance vendor just quoted you $12,000 to $18,000 for a new unit. Before y...",
+    "featured": true
   },
   {
     "slug": "led-lighting-warehouse-savings.html",

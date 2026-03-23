@@ -220,20 +220,13 @@
 
   <script>
   (async () => {
-    const HERO_MAP = {
-      'hvac-tune-up-hero.jpg': 'brand_assets/images/hvac-tune-up-hero.jpg',
-      'building-tuneup-hero.jpg': 'brand_assets/images/building-tuneup-hero.jpg',
-      'lighting-hero.jpg': 'brand_assets/images/lighting-hero.jpg',
-      'benchmarking-hero.jpg': 'brand_assets/images/benchmarking-hero.jpg',
-      'energy-supply-hero.jpg': 'brand_assets/images/energy-supply-hero.jpg',
-      'community-solar-hero.jpg': 'brand_assets/images/community-solar-hero.jpg',
-    };
-    function heroImg(h) { return HERO_MAP[h] || 'brand_assets/images/hvac-hero-background.jpg'; }
-    function catColor(c) {
-      const cat = (c||'').toLowerCase();
-      if (cat.includes('hvac')) return 'rgba(200,16,46,.08);color:#C8102E';
-      if (cat.includes('light')) return 'rgba(244,161,29,.1);color:#c47e00';
-      if (cat.includes('case') || cat.includes('study')) return 'rgba(96,165,250,.1);color:#2563eb';
+    function heroImg(h) { return h ? `brand_assets/images/${h}` : 'brand_assets/images/hvac-hero-background.jpg'; }
+    function tagColor(t) {
+      const s = (t||'').toLowerCase();
+      if (s.includes('hvac')) return 'rgba(200,16,46,.08);color:#C8102E';
+      if (s.includes('light')) return 'rgba(244,161,29,.1);color:#c47e00';
+      if (s.includes('case') || s.includes('study')) return 'rgba(96,165,250,.1);color:#2563eb';
+      if (s.includes('empower') || s.includes('maryland')) return 'rgba(72,187,120,.1);color:#276749';
       return 'rgba(200,16,46,.08);color:#C8102E';
     }
 
@@ -250,7 +243,7 @@
         <div class="featured-post" onclick="location.href='blog/${featured.slug}'" style="cursor:pointer">
           <div class="featured-img" style="background:linear-gradient(rgba(26,35,50,.55),rgba(26,35,50,.55)),url('${heroImg(featured.hero)}') center/cover no-repeat"></div>
           <div class="featured-content">
-            <span class="post-tag">${featured.category}</span>
+            <span class="post-tag">${featured.tags || featured.category || ''}</span>
             <div class="post-meta"><span>${featured.date}</span><span>·</span><span>${featured.readtime}</span></div>
             <h2>${featured.title}</h2>
             <p>${featured.excerpt}</p>
@@ -266,7 +259,7 @@
           <div class="post-card" onclick="location.href='blog/${p.slug}'" style="cursor:pointer">
             <div class="post-card-img" style="background:linear-gradient(rgba(26,35,50,.45),rgba(26,35,50,.45)),url('${heroImg(p.hero)}') center/cover no-repeat"></div>
             <div class="post-card-body">
-              <span class="post-tag" style="background:${catColor(p.category)}">${p.category}</span>
+              <span class="post-tag" style="background:${tagColor(p.tags || p.category)}">${p.tags || p.category || ''}</span>
               <h3 style="margin-top:.625rem">${p.title}</h3>
               <p>${p.excerpt}</p>
               <div class="post-card-meta">

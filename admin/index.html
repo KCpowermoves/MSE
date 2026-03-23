@@ -221,8 +221,8 @@
       <!-- Meta fields -->
       <div class="meta-row">
         <div class="meta-item">
-          <label>Category <span style="color:#C8102E">*</span></label>
-          <select id="field-category" onchange="markUnsaved()" required>
+          <label>Tags <span style="color:#C8102E">*</span></label>
+          <select id="field-tags" onchange="markUnsaved()" required>
             <option value="HVAC">HVAC</option>
             <option value="EmPOWER Maryland">EmPOWER Maryland</option>
             <option value="Lighting">Lighting</option>
@@ -390,7 +390,7 @@ async function loadPostList() {
     posts = entries.map(e => ({
       name: e.slug,
       title: e.title || slugToTitle(e.slug.replace('.html','')),
-      category: e.category || '',
+      tags: e.tags || e.category || '',
       date: e.date || '',
       featured: e.featured || false
     }));
@@ -410,7 +410,7 @@ function renderPostList() {
             onclick="event.stopPropagation();setFeatured('${p.name}')">★</button>
           <div class="post-item-title">${esc(p.title)}</div>
           <div class="post-item-meta">
-            ${p.category ? `<span class="cat-chip">${esc(p.category)}</span>` : ''}
+            ${p.tags ? `<span class="cat-chip">${esc(p.tags)}</span>` : ''}
             ${p.date ? `<span class="post-item-date">${esc(p.date)}</span>` : ''}
           </div>
         </div>`).join('');
@@ -461,7 +461,7 @@ async function openPost(filename) {
     // Parse fields
     const meta = parseMeta(html);
     id('field-title').value    = meta.title;
-    id('field-category').value = meta.category || 'HVAC';
+    id('field-tags').value = meta.tags || meta.category || 'HVAC';
     id('field-date').value     = meta.dateISO || '';
     id('field-readtime').value = meta.readtime || '5 min read';
     id('field-slug').value     = filename.replace('.html','');
@@ -474,7 +474,7 @@ async function openPost(filename) {
 
     // Update list item with real meta
     const idx = posts.findIndex(p => p.name === filename);
-    if (idx > -1) { posts[idx].title = meta.title || posts[idx].title; posts[idx].category = meta.category; posts[idx].date = meta.date; renderPostList(); }
+    if (idx > -1) { posts[idx].title = meta.title || posts[idx].title; posts[idx].tags = meta.tags; posts[idx].date = meta.date; renderPostList(); }
   } catch (e) {
     const isNotFound = e.message && (e.message.includes('Not Found') || e.message.includes('404'));
     if (isNotFound && confirm(`"${filename}" no longer exists on GitHub.\n\nRemove it from the blog index?`)) {
@@ -505,7 +505,7 @@ function newPost() {
   showEditorPanel();
 
   id('field-title').value    = '';
-  id('field-category').value = 'HVAC';
+  id('field-tags').value = 'HVAC';
   id('field-date').value     = new Date().toISOString().split('T')[0];
   id('field-readtime').value = '5 min read';
   id('field-slug').value     = '';
@@ -544,7 +544,7 @@ async function updateBlogIndex(action, postMeta) {
 // ─── SAVE POST ─────────────────────────────────────────────────────────────────
 async function savePost() {
   const title    = id('field-title').value.trim();
-  const category = id('field-category').value;
+  const tags     = id('field-tags').value;
   const dateVal  = id('field-date').value;
   const readtime = id('field-readtime').value.trim() || '5 min read';
   const hero     = id('field-hero').value;
@@ -567,7 +567,7 @@ async function savePost() {
   btn.disabled = true;
 
   try {
-    const html    = buildHTML({ title, category, date: dateFormatted, readtime, hero }, bodyHtml);
+    const html    = buildHTML({ title, tags, date: dateFormatted, readtime, hero }, bodyHtml);
     const encoded = b64Encode(html);
     const payload = {
       message: isNewPost ? `blog: add "${title}"` : `blog: update "${title}"`,
@@ -589,7 +589,7 @@ async function savePost() {
 
     // Update blog/index.json so blog listing page stays in sync
     const excerpt = quill.getText().substring(0, 180).trim() + '...';
-    await updateBlogIndex('upsert', { slug: filename, title, category, date: dateFormatted, readtime, hero, excerpt });
+    await updateBlogIndex('upsert', { slug: filename, title, tags, date: dateFormatted, readtime, hero, excerpt });
 
     setStatus('saved', `Saved: ${filename}`);
     toast('Article published!', 'success');
@@ -689,12 +689,12 @@ async function uploadHeroImage(input) {
 // ─── PREVIEW ──────────────────────────────────────────────────────────────────
 function previewPost() {
   const title    = id('field-title').value.trim() || 'Preview';
-  const category = id('field-category').value;
+  const tags     = id('field-tags').value;
   const dateVal  = id('field-date').value;
   const readtime = id('field-readtime').value || '5 min read';
   const hero     = id('field-hero').value;
   const date     = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : '';
-  const html     = buildHTML({ title, category, date, readtime, hero }, quill.root.innerHTML);
+  const html     = buildHTML({ title, tags, date, readtime, hero }, quill.root.innerHTML);
   const blob     = new Blob([html], { type: 'text/html' });
   window.open(URL.createObjectURL(blob), '_blank');
 }
@@ -714,7 +714,7 @@ function parseMeta(html) {
 
   return {
     title:    titleM    ? titleM[1].trim() : '',
-    category: categoryM ? categoryM[1].trim() : '',
+    tags:     categoryM ? categoryM[1].trim() : '',
     date,
     dateISO,
     readtime: readtimeM ? readtimeM[1] : '5 min read',
@@ -724,7 +724,7 @@ function parseMeta(html) {
 }
 
 // ─── BUILD HTML ───────────────────────────────────────────────────────────────
-function buildHTML({ title, category, date, readtime, hero }, body) {
+function buildHTML({ title, tags, date, readtime, hero }, body) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -806,7 +806,7 @@ function buildHTML({ title, category, date, readtime, hero }, body) {
 
 <section class="post-hero">
   <div class="post-hero-inner">
-    <div class="post-category">${esc(category)}</div>
+    <div class="post-category">${esc(tags)}</div>
     <h1>${esc(title)}</h1>
     <div class="post-meta">
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${esc(date)}</span>

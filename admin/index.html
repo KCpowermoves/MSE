@@ -293,18 +293,18 @@ async function doLogin() {
   id('login-error').style.display = 'none';
 
   try {
-    // Verify token against the user endpoint
-    const uRes = await ghFetch('/user');
-    if (!uRes.ok) throw new Error('Token invalid or expired.');
-    const user = await uRes.json();
-
-    // Verify write access
+    // Fine-grained PATs don't expose /user — verify via repo access instead
     const rRes = await ghFetch(`/repos/${REPO}`);
-    if (!rRes.ok) throw new Error('No access to repository KCpowermoves/MSE.');
+    if (!rRes.ok) throw new Error('Token invalid or no access to KCpowermoves/MSE.');
+
+    // Try /user but don't fail if it's blocked by fine-grained token scope
+    let username = 'Admin';
+    const uRes = await ghFetch('/user');
+    if (uRes.ok) { const u = await uRes.json(); username = u.login || 'Admin'; }
 
     PAT = tok;
     sessionStorage.setItem('mse_pat', tok);
-    id('user-name').textContent = user.login || 'Admin';
+    id('user-name').textContent = username;
     startCMS();
   } catch (e) {
     loginErr(e.message);

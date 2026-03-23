@@ -464,6 +464,28 @@ function newPost() {
   id('field-title').focus();
 }
 
+// ─── BLOG INDEX ───────────────────────────────────────────────────────────────
+async function updateBlogIndex(action, postMeta) {
+  const indexPath = `${BPATH}/index.json`;
+  let entries = [], indexSha = null;
+  const r = await ghFetch(`/repos/${REPO}/contents/${indexPath}`);
+  if (r.ok) {
+    const d = await r.json();
+    indexSha = d.sha;
+    try { entries = JSON.parse(atob(d.content.replace(/\n/g,''))); } catch {}
+  }
+  if (action === 'upsert') {
+    const i = entries.findIndex(e => e.slug === postMeta.slug);
+    if (i >= 0) entries[i] = postMeta; else entries.unshift(postMeta);
+  } else {
+    entries = entries.filter(e => e.slug !== postMeta.slug);
+  }
+  entries.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+  const payload = { message: 'blog: update index', content: b64Encode(JSON.stringify(entries, null, 2)) };
+  if (indexSha) payload.sha = indexSha;
+  await ghFetch(`/repos/${REPO}/contents/${indexPath}`, { method: 'PUT', body: JSON.stringify(payload) });
+}
+
 // ─── SAVE POST ─────────────────────────────────────────────────────────────────
 async function savePost() {
   const title    = id('field-title').value.trim();
@@ -509,6 +531,11 @@ async function savePost() {
     activeFile = filename;
     isNewPost  = false;
     unsaved    = false;
+
+    // Update blog/index.json so blog listing page stays in sync
+    const excerpt = quill.getText().substring(0, 180).trim() + '...';
+    await updateBlogIndex('upsert', { slug: filename, title, category, date: dateFormatted, readtime, hero, excerpt });
+
     setStatus('saved', `Saved: ${filename}`);
     toast('Article published!', 'success');
     btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Save & Publish';
@@ -535,6 +562,7 @@ async function deletePost() {
     });
     if (!res.ok) throw new Error('Delete request failed.');
 
+    await updateBlogIndex('delete', { slug: activeFile });
     activeFile = null; activeSha = null; isNewPost = false; unsaved = false;
     id('editor-panel').style.display = 'none';
     id('empty-state').style.display = 'flex';
@@ -637,7 +665,7 @@ function buildHTML({ title, category, date, readtime, hero }, body) {
 <div class="site-header">
   <nav><div class="nav-inner">
     <a class="nav-logo" href="../index.html">
-      <img src="/brand_assets/mse-logo.png" alt="Maryland Smart Energy"/>
+      <img src="https://www.mdsmartenergy.com/brand_assets/mse-logo.png" alt="Maryland Smart Energy"/>
       <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
     </a>
     <ul class="nav-links">

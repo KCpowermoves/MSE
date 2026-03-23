@@ -522,23 +522,30 @@ function newPost() {
 // ─── BLOG INDEX ───────────────────────────────────────────────────────────────
 async function updateBlogIndex(action, postMeta) {
   const indexPath = `${BPATH}/index.json`;
-  let entries = [], indexSha = null;
-  const r = await ghFetch(`/repos/${REPO}/contents/${indexPath}`);
-  if (r.ok) {
-    const d = await r.json();
-    indexSha = d.sha;
-    try { entries = JSON.parse(decodeContent(d.content)); } catch {}
+  // Retry once on SHA conflict (409) — happens when index was updated externally
+  for (let attempt = 0; attempt < 2; attempt++) {
+    let entries = [], indexSha = null;
+    const r = await ghFetch(`/repos/${REPO}/contents/${indexPath}`);
+    if (r.ok) {
+      const d = await r.json();
+      indexSha = d.sha;
+      try { entries = JSON.parse(decodeContent(d.content)); } catch {}
+    }
+    if (action === 'upsert') {
+      const i = entries.findIndex(e => e.slug === postMeta.slug);
+      if (i >= 0) entries[i] = postMeta; else entries.unshift(postMeta);
+    } else {
+      entries = entries.filter(e => e.slug !== postMeta.slug);
+    }
+    entries.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+    const payload = { message: 'blog: update index', content: b64Encode(JSON.stringify(entries, null, 2)) };
+    if (indexSha) payload.sha = indexSha;
+    const res = await ghFetch(`/repos/${REPO}/contents/${indexPath}`, { method: 'PUT', body: JSON.stringify(payload) });
+    if (res.ok) return;
+    const err = await res.json();
+    // 409 = SHA conflict, retry; anything else = hard fail
+    if (res.status !== 409 || attempt > 0) throw new Error('Index update failed: ' + (err.message || res.status));
   }
-  if (action === 'upsert') {
-    const i = entries.findIndex(e => e.slug === postMeta.slug);
-    if (i >= 0) entries[i] = postMeta; else entries.unshift(postMeta);
-  } else {
-    entries = entries.filter(e => e.slug !== postMeta.slug);
-  }
-  entries.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-  const payload = { message: 'blog: update index', content: b64Encode(JSON.stringify(entries, null, 2)) };
-  if (indexSha) payload.sha = indexSha;
-  await ghFetch(`/repos/${REPO}/contents/${indexPath}`, { method: 'PUT', body: JSON.stringify(payload) });
 }
 
 // ─── SAVE POST ─────────────────────────────────────────────────────────────────

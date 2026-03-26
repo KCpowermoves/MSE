@@ -7,6 +7,7 @@
   <meta name="description" content="Choose your commercial energy efficiency plan. $0 net-cost HVAC tune-up after EmPOWER Maryland rebate. Serving BGE, Pepco, Delmarva Power, and SMECO customers." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://js.stripe.com/v3/"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}
     h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
@@ -107,6 +108,14 @@
 <script>
 const state = { step:1, units:3, selectedPlan:null, errors:{}, form:{name:'',email:'',phone:'',address:'',utility:''} };
 const UTILITIES = ['BGE','Pepco','Delmarva Power','SMECO','Other'];
+
+// ── Stripe & HighLevel config ──────────────────────────────────────────────
+const STRIPE_PK = 'pk_test_51RnQDbR9NLRNby3KZMpFw85OO5LVVjM3KT5R406KcJblw12RS1i1XcqcQyI41llGFsjhCiN3KvefgEenLxNWWNAu00gL8u7AX8';
+const GHL_WEBHOOK_LEAD = 'YOUR_GHL_WEBHOOK_URL_HERE'; // Step 2: fires when contact info submitted
+const GHL_WEBHOOK_PAID = 'YOUR_GHL_WEBHOOK_URL_HERE'; // Step 4: fires after payment succeeds
+
+let stripeInstance = null;
+let stripeElements = null;
 
 function fmt(n){ return Number(n).toLocaleString(); }
 function totals(){ const u=state.units; return { t1:u*160, t2:u*54, t3:u<=5?2400:2400+(u-5)*160 }; }
@@ -334,17 +343,19 @@ function step4(){
       </div>
       ${note}
     </div>
-    <div style="background:#f8fafc;border:2px dashed #cbd5e1;border-radius:14px;padding:40px;text-align:center;margin-bottom:24px">
-      <p style="font-size:16px;font-weight:600;color:#475569;margin:0 0 8px">Stripe Payment Form</p>
-      <p style="font-size:13px;color:#94a3b8;margin:0;line-height:1.5">Stripe Elements will be embedded here.<br>Accepts all major credit cards and ACH transfers.</p>
+    <div id="payment-element-wrap" style="background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:16px;min-height:80px">
+      <div id="payment-element"></div>
+      <div id="payment-spinner" style="text-align:center;padding:16px;color:#94a3b8;font-size:14px">Loading payment form…</div>
     </div>
-    <button class="mse-btn mse-pri" style="width:100%;padding:16px 28px;font-size:17px">Complete Payment &#8212; $${fmt(p.total)}</button>
+    <div id="payment-error" style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#dc2626;font-size:14px;display:none"></div>
+    <button class="mse-btn mse-pri" id="s4-pay" style="width:100%;padding:16px 28px;font-size:17px;opacity:.6;cursor:not-allowed" disabled>Complete Payment &#8212; $${fmt(p.total)}</button>
     <p style="text-align:center;font-size:12px;color:#94a3b8;margin-top:16px;line-height:1.6">Secure payment powered by Stripe. By completing this purchase, you agree to our Terms of Service.<br>We'll contact you within 1 business day to schedule your first visit.</p>
     <div style="text-align:center;margin-top:20px"><button class="mse-btn mse-sec" id="s4-change">Change Plan</button></div>
   </div>`;
 }
 
 function render(){
+  if (new URLSearchParams(location.search).get('success') === '1') { showSuccess(); return; }
   const w=document.getElementById('mse-widget');
   const body=state.step===1?step1():state.step===2?step2():state.step===3?step3():step4();
   w.innerHTML=progress()+`<div class="mse-fade">${body}</div>`;
@@ -372,6 +383,17 @@ function bind(){
     if(!state.form.utility) e.utility='Please select your utility';
     state.errors=e;
     if(Object.keys(e).length){render();return;}
+    // Fire GHL lead capture (non-blocking — don't gate UI on this)
+    fireGHL(GHL_WEBHOOK_LEAD, {
+      firstName: state.form.name.split(' ')[0],
+      lastName: state.form.name.split(' ').slice(1).join(' '),
+      email: state.form.email,
+      phone: state.form.phone,
+      address: state.form.address,
+      utility: state.form.utility,
+      units: state.units,
+      source: 'pricing-page-step2'
+    });
     state.step=3;render();
   };
   // Step 3
@@ -385,6 +407,117 @@ function bind(){
   // Step 4
   const s4c=document.getElementById('s4-change');
   if(s4c) s4c.onclick=()=>{state.selectedPlan=null;state.step=3;render();};
+  if(document.getElementById('payment-element')) initStripe();
+}
+
+// ── Stripe payment initialization ─────────────────────────────────────────
+async function initStripe() {
+  const s4pay = document.getElementById('s4-pay');
+  const spinner = document.getElementById('payment-spinner');
+  const errEl = document.getElementById('payment-error');
+
+  try {
+    const {t1,t2,t3} = totals();
+    const amtMap = {'zero-cost':t1,'standard':t2,'premium':t3};
+    const amountCents = Math.round(amtMap[state.selectedPlan] * 100);
+
+    const res = await fetch('/api/create-payment-intent', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        amountCents,
+        metadata: {
+          name: state.form.name,
+          email: state.form.email,
+          phone: state.form.phone,
+          address: state.form.address,
+          utility: state.form.utility,
+          units: String(state.units),
+          plan: state.selectedPlan
+        }
+      })
+    });
+    if (!res.ok) throw new Error('Could not initialize payment. Please try again.');
+    const { clientSecret } = await res.json();
+
+    // Save state so it survives the post-payment redirect
+    sessionStorage.setItem('mse_checkout', JSON.stringify({
+      form: state.form, units: state.units, plan: state.selectedPlan,
+      amount: amtMap[state.selectedPlan]
+    }));
+
+    stripeInstance = Stripe(STRIPE_PK);
+    stripeElements = stripeInstance.elements({ clientSecret, appearance: {theme:'stripe'} });
+    const payEl = stripeElements.create('payment');
+    payEl.mount('#payment-element');
+    payEl.on('ready', () => {
+      if (spinner) spinner.style.display = 'none';
+      if (s4pay) { s4pay.disabled = false; s4pay.style.opacity = '1'; s4pay.style.cursor = 'pointer'; }
+    });
+
+    if (s4pay) {
+      s4pay.onclick = async () => {
+        s4pay.disabled = true;
+        s4pay.style.opacity = '.6';
+        s4pay.textContent = 'Processing…';
+        if (errEl) errEl.style.display = 'none';
+        const { error } = await stripeInstance.confirmPayment({
+          elements: stripeElements,
+          confirmParams: {
+            return_url: location.origin + '/pricing.html?success=1',
+            receipt_email: state.form.email
+          }
+        });
+        if (error) {
+          if (errEl) { errEl.textContent = error.message; errEl.style.display = 'block'; }
+          s4pay.disabled = false;
+          s4pay.style.opacity = '1';
+          s4pay.innerHTML = `Complete Payment &#8212; $${fmt(amtMap[state.selectedPlan])}`;
+        }
+      };
+    }
+  } catch (err) {
+    if (spinner) spinner.style.display = 'none';
+    if (errEl) { errEl.textContent = err.message; errEl.style.display = 'block'; }
+  }
+}
+
+// ── HighLevel webhook (non-blocking) ──────────────────────────────────────
+function fireGHL(url, payload) {
+  if (!url || url.startsWith('YOUR_')) return;
+  fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }).catch(()=>{});
+}
+
+// ── Post-payment success screen ───────────────────────────────────────────
+function showSuccess() {
+  const saved = JSON.parse(sessionStorage.getItem('mse_checkout') || '{}');
+  if (saved.form) {
+    fireGHL(GHL_WEBHOOK_PAID, {
+      firstName: (saved.form.name||'').split(' ')[0],
+      lastName: (saved.form.name||'').split(' ').slice(1).join(' '),
+      email: saved.form.email, phone: saved.form.phone,
+      address: saved.form.address, utility: saved.form.utility,
+      units: saved.units, plan: saved.plan, amountPaid: saved.amount,
+      source: 'pricing-page-payment-complete'
+    });
+    sessionStorage.removeItem('mse_checkout');
+  }
+  const firstName = saved.form ? (saved.form.name||'there').split(' ')[0] : 'there';
+  const w = document.getElementById('mse-widget');
+  w.innerHTML = `<div class="mse-fade" style="max-width:520px;margin:0 auto;text-align:center;padding:2.5rem 0">
+    <div style="width:72px;height:72px;background:#f0faf3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#1B6B3A" opacity=".15"/><path d="M10 18l6 6 10-10" stroke="#1B6B3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 style="font-size:28px;font-weight:700;color:#1a2b3c;margin:0 0 12px">You're all set, ${firstName}!</h2>
+    <p style="font-size:16px;color:#64748b;line-height:1.7;margin:0 0 32px">Your deposit was received. Our team will contact you within 1 business day to schedule your visit.</p>
+    <div style="background:#f8faf9;border-radius:14px;padding:24px;margin-bottom:32px;text-align:left">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#94a3b8;margin-bottom:16px">What happens next</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        ${[['Confirmation email','Check your inbox — your receipt is on the way.'],['We call you within 1 business day','Our team schedules your visit and handles all EmPOWER Maryland rebate paperwork.'],['Tune-up completed, rebate submitted','Your utility mails the rebate check directly to you.']].map(([t,d],i)=>`<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:24px;height:24px;background:#1B6B3A;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:#fff">${i+1}</div><div><div style="font-size:14px;font-weight:600;margin-bottom:2px">${t}</div><div style="font-size:13px;color:#64748b">${d}</div></div></div>`).join('')}
+      </div>
+    </div>
+    <p style="font-size:14px;color:#64748b">Questions? Call <a href="tel:3018887090" style="color:#1B6B3A;font-weight:600">(301) 888-7090</a></p>
+  </div>`;
 }
 
 render();

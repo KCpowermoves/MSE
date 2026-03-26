@@ -509,7 +509,10 @@ function showSuccess() {
       <p style="font-size:16px;color:#64748b;line-height:1.7;margin:0">Your deposit is confirmed. Now let's get your EmPOWER Maryland rebate paperwork started — complete the form below and we'll handle the rest.</p>
     </div>
     <div style="background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:28px;margin-bottom:24px">
-      <div prefill-inherit data-paperform-id="rxtuneupsite"></div>
+      <div data-paperform-id="rxtuneupsite"
+        data-prefill-signerfullname="${saved.form?.name||''}"
+        data-prefill-signeremail="${saved.form?.email||''}"
+        data-prefill-signerphone="${saved.form?.phone||''}"></div>
     </div>
     <p style="text-align:center;font-size:13px;color:#94a3b8">Questions? Call <a href="tel:3018887090" style="color:#1B6B3A;font-weight:600">(301) 888-7090</a></p>
   </div>`;

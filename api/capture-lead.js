@@ -13,7 +13,11 @@ async function ghl(path, body, token) {
     body: JSON.stringify(body)
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(JSON.stringify(data));
+  if (!res.ok) {
+    // GHL returns existing contactId on duplicate — extract and reuse it
+    if (data?.meta?.contactId) return { contact: { id: data.meta.contactId } };
+    throw new Error(JSON.stringify(data));
+  }
   return data;
 }
 

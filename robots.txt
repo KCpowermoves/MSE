@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 
-# Keep admin, internal tools, and test pages out of search results
 Disallow: /admin/
 Disallow: /game/
-Disallow: /0deposit/
+Disallow: /blog/lsdkjkjsdjklsdhjsdklf.html
+Disallow: /blog/this-is-a-new-article-i-m-testing-out.html
 
 Sitemap: https://www.mdsmartenergy.com/sitemap.xml

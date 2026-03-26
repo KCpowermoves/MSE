@@ -500,20 +500,25 @@ function showSuccess() {
   }
   const firstName = saved.form ? (saved.form.name||'there').split(' ')[0] : 'there';
   const w = document.getElementById('mse-widget');
-  w.innerHTML = `<div class="mse-fade" style="max-width:520px;margin:0 auto;text-align:center;padding:2.5rem 0">
-    <div style="width:72px;height:72px;background:#f0faf3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#1B6B3A" opacity=".15"/><path d="M10 18l6 6 10-10" stroke="#1B6B3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-    <h2 style="font-size:28px;font-weight:700;color:#1a2b3c;margin:0 0 12px">You're all set, ${firstName}!</h2>
-    <p style="font-size:16px;color:#64748b;line-height:1.7;margin:0 0 32px">Your deposit was received. Our team will contact you within 1 business day to schedule your visit.</p>
-    <div style="background:#f8faf9;border-radius:14px;padding:24px;margin-bottom:32px;text-align:left">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#94a3b8;margin-bottom:16px">What happens next</div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        ${[['Confirmation email','Check your inbox — your receipt is on the way.'],['We call you within 1 business day','Our team schedules your visit and handles all EmPOWER Maryland rebate paperwork.'],['Tune-up completed, rebate submitted','Your utility mails the rebate check directly to you.']].map(([t,d],i)=>`<div style="display:flex;gap:12px;align-items:flex-start"><div style="width:24px;height:24px;background:#1B6B3A;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:#fff">${i+1}</div><div><div style="font-size:14px;font-weight:600;margin-bottom:2px">${t}</div><div style="font-size:13px;color:#64748b">${d}</div></div></div>`).join('')}
+  w.innerHTML = `<div class="mse-fade" style="max-width:620px;margin:0 auto;padding:2.5rem 0">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="width:72px;height:72px;background:#f0faf3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#1B6B3A" opacity=".15"/><path d="M10 18l6 6 10-10" stroke="#1B6B3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
+      <h2 style="font-size:28px;font-weight:700;color:#1a2b3c;margin:0 0 12px">Payment received, ${firstName}!</h2>
+      <p style="font-size:16px;color:#64748b;line-height:1.7;margin:0">Your deposit is confirmed. Now let's get your EmPOWER Maryland rebate paperwork started — complete the form below and we'll handle the rest.</p>
     </div>
-    <p style="font-size:14px;color:#64748b">Questions? Call <a href="tel:3018887090" style="color:#1B6B3A;font-weight:600">(301) 888-7090</a></p>
+    <div style="background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:28px;margin-bottom:24px">
+      <div prefill-inherit data-paperform-id="rxtuneupsite"></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#94a3b8">Questions? Call <a href="tel:3018887090" style="color:#1B6B3A;font-weight:600">(301) 888-7090</a></p>
   </div>`;
+  // Load Paperform embed script
+  if (!document.querySelector('script[src*="paperform"]')) {
+    const s = document.createElement('script');
+    s.src = 'https://paperform.co/__embed.min.js';
+    document.body.appendChild(s);
+  }
 }
 
 render();

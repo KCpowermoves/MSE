@@ -111,9 +111,6 @@ const UTILITIES = ['BGE','Pepco','Delmarva Power','SMECO','Other'];
 
 // ── Stripe & HighLevel config ──────────────────────────────────────────────
 const STRIPE_PK = 'pk_test_51RnQDbR9NLRNby3KZMpFw85OO5LVVjM3KT5R406KcJblw12RS1i1XcqcQyI41llGFsjhCiN3KvefgEenLxNWWNAu00gL8u7AX8';
-const GHL_WEBHOOK_LEAD = 'YOUR_GHL_WEBHOOK_URL_HERE'; // Step 2: fires when contact info submitted
-const GHL_WEBHOOK_PAID = 'YOUR_GHL_WEBHOOK_URL_HERE'; // Step 4: fires after payment succeeds
-
 let stripeInstance = null;
 let stripeElements = null;
 
@@ -383,8 +380,8 @@ function bind(){
     if(!state.form.utility) e.utility='Please select your utility';
     state.errors=e;
     if(Object.keys(e).length){render();return;}
-    // Fire GHL lead capture (non-blocking — don't gate UI on this)
-    fireGHL(GHL_WEBHOOK_LEAD, {
+    // Capture lead in HighLevel (non-blocking — don't gate UI on this)
+    captureLead({
       firstName: state.form.name.split(' ')[0],
       lastName: state.form.name.split(' ').slice(1).join(' '),
       email: state.form.email,
@@ -482,17 +479,16 @@ async function initStripe() {
   }
 }
 
-// ── HighLevel webhook (non-blocking) ──────────────────────────────────────
-function fireGHL(url, payload) {
-  if (!url || url.startsWith('YOUR_')) return;
-  fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }).catch(()=>{});
+// ── HighLevel lead capture (non-blocking) ─────────────────────────────────
+function captureLead(payload) {
+  fetch('/api/capture-lead', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }).catch(()=>{});
 }
 
 // ── Post-payment success screen ───────────────────────────────────────────
 function showSuccess() {
   const saved = JSON.parse(sessionStorage.getItem('mse_checkout') || '{}');
   if (saved.form) {
-    fireGHL(GHL_WEBHOOK_PAID, {
+    captureLead({
       firstName: (saved.form.name||'').split(' ')[0],
       lastName: (saved.form.name||'').split(' ').slice(1).join(' '),
       email: saved.form.email, phone: saved.form.phone,

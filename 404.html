@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Maryland Smart Energy</title>
+  <script>
+    // Redirect /0deposit/[name] → /0deposit/?an=[name]
+    (function() {
+      var p = location.pathname;
+      if (p.match(/^\/0deposit\/[^/]+\/?$/)) {
+        var parts = p.split('/').filter(Boolean);
+        var slug = parts[parts.length - 1];
+        location.replace('/0deposit/?an=' + encodeURIComponent(slug));
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Source Sans 3',sans-serif;color:#333;background:#fff;margin:0}h1,h2,h3,h4{font-family:'Barlow',sans-serif;letter-spacing:-.02em}
+    .announce-bar{background:#F4A11D;color:#1A2332;font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;text-align:center;padding:.5rem 1rem}
+    .announce-bar a{color:#C8102E;font-weight:800;text-decoration:none;margin-left:.35rem}
+    .site-header{position:sticky;top:0;z-index:100}
+    nav{background:#fff;border-bottom:1px solid rgba(26,35,50,.1);box-shadow:0 1px 4px rgba(26,35,50,.06)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{display:flex;align-items:center;gap:.875rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto}
+    .nav-brand-name{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;line-height:1.15}
+    .nav-brand-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:.6875rem;color:#C8102E;line-height:1;margin-top:.2rem}
+    .nav-phone{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;white-space:nowrap}.nav-phone:hover{color:#C8102E}
+    .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+    .nav-links a{font-family:'Barlow',sans-serif;font-weight:600;font-size:.9rem;color:#1A2332;text-decoration:none;padding:.4rem .75rem;border-radius:4px;transition:background .15s,color .15s}.nav-links a:hover{background:#F5F5F5;color:#C8102E}
+    .dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:8px;box-shadow:0 8px 30px rgba(26,35,50,.12);min-width:220px;padding:.5rem;z-index:200}.dropdown:hover .dropdown-menu{display:block}.dropdown-menu::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.dropdown-menu a{display:block;padding:.5rem .75rem;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:#1A2332;text-decoration:none;border-radius:4px}.dropdown-menu a:hover{background:#F5F5F5;color:#C8102E}
+    .nav-cta-btn{background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:.9rem;padding:.5rem 1.125rem;border-radius:6px;text-decoration:none;display:inline-block;transition:background .15s,transform .1s}.nav-cta-btn:hover{background:#A30D24;transform:translateY(-1px)}
+    .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#1A2332}.mobile-nav{display:none;background:#fff;border-top:1px solid rgba(26,35,50,.1);padding:1rem 1.5rem}.mobile-nav.open{display:block}.mobile-nav a{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:1rem;color:#1A2332;text-decoration:none;padding:.6rem 0;border-bottom:1px solid rgba(26,35,50,.06)}.mobile-nav a:hover{color:#C8102E}.mobile-nav .mobile-cta{display:block;margin-top:1rem;background:#C8102E;color:#fff;text-align:center;padding:.75rem;border-radius:6px;font-weight:700}
+    @media(max-width:900px){.nav-links,.nav-cta-wrap{display:none!important}.mobile-menu-btn{display:block}}
+    @media(max-width:768px){.nav-inner{padding:0 1rem;height:60px}.nav-logo img{height:38px}.nav-brand-name{font-size:.875rem}.nav-brand-tag{display:none}}
+    .not-found{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:5rem 1.5rem}
+    .nf-inner{max-width:480px}
+    .nf-code{font-family:'Barlow',sans-serif;font-weight:900;font-size:7rem;line-height:1;color:rgba(26,35,50,.06);letter-spacing:-.04em;margin-bottom:-1.5rem}
+    .nf-inner h1{font-family:'Barlow',sans-serif;font-weight:900;font-size:2rem;color:#1A2332;margin:0 0 .75rem}
+    .nf-inner p{font-size:1rem;color:#888;line-height:1.7;margin:0 0 2rem}
+    .btn-home{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.875rem 1.75rem;border-radius:6px;text-decoration:none;transition:background .15s}.btn-home:hover{background:#A30D24}
+    footer{background:#1A2332;color:rgba(255,255,255,.7);padding:2.5rem 1.5rem}
+    .footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-bottom p{font-size:.8125rem;color:rgba(255,255,255,.35);margin:0}
+    .footer-legal a{font-size:.8125rem;color:rgba(255,255,255,.35);text-decoration:none;margin-left:1.25rem}
+  </style>
+</head>
+<body>
+
+<div class="site-header">
+  <nav><div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/mse-logo.png" alt="Maryland Smart Energy" />
+      <div><div class="nav-brand-name">Maryland Smart Energy</div><div class="nav-brand-tag">Smarter Buildings, Smaller Bills</div></div>
+    </a>
+    <ul class="nav-links">
+      <li class="dropdown"><a href="#" style="display:flex;align-items:center;gap:.25rem">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="services/building-tune-up.html">Building Tune-Up</a><a href="services/lighting.html">Lighting</a><a href="services/energy-supply.html">Energy Supply</a><a href="services/community-solar.html">Community Solar</a><a href="services/benchmarking.html">Benchmarking Services</a></div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li class="dropdown"><a href="empower-maryland.html" style="display:flex;align-items:center;gap:.25rem">EmPOWER Maryland <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="dropdown-menu"><a href="empower-maryland.html">Overview</a><a href="bge-energy-efficiency.html">BGE</a><a href="pepco-energy-efficiency.html">Pepco</a><a href="delmarva-energy-efficiency.html">Delmarva</a><a href="smeco-energy-efficiency.html">SMECO</a></div></li>
+      <li><a href="blog.html">Blog</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap" style="display:flex;align-items:center;gap:1rem"><a href="tel:3018887090" class="nav-phone">(301) 888-7090</a><a href="pricing.html" class="nav-cta-btn">Schedule Your $0 HVAC Tune-Up</a></div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav"><a href="services/hvac-tune-up.html">HVAC Tune-Up</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="pricing.html" class="mobile-cta">Schedule Your $0 HVAC Tune-Up</a></div>
+  </nav>
+  <div class="announce-bar">$0 HVAC Tune-Up. 100% Covered by EmPOWER Maryland. &mdash; <a href="/pricing.html">Schedule Now &rarr;</a></div>
+</div>
+
+<section class="not-found">
+  <div class="nf-inner">
+    <div class="nf-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>The page you're looking for doesn't exist or may have moved. Let's get you back on track.</p>
+    <a href="index.html" class="btn-home">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Go to Homepage
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Maryland Smart Energy. All rights reserved.</p>
+    <div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -124,9 +124,27 @@
 
   <div class="contact-wrap">
     <div class="form-section">
+      <!-- $0 deposit offer banner — shown only when ?offer=0deposit is in URL -->
+      <div id="offer-banner" style="display:none;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:.75rem">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M11 2L3 6v5c0 4.97 3.36 9.63 8 10.93C15.64 20.63 19 15.97 19 11V6l-8-4z" fill="#16a34a" opacity=".15" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><div style="font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;color:#15803d;margin-bottom:.2rem" id="offer-banner-title">✓ Your $0 Deposit Offer Has Been Applied</div><div style="font-size:.875rem;color:#166534;line-height:1.5" id="offer-banner-body">No deposit required. Complete this form and we'll reach out to confirm your appointment.</div></div>
+      </div>
+
+      <!-- Embedded paper form placeholder -->
+      <!-- ═══════════════════════════════════════════════════════════════
+           PAPER FORM EMBED — INSERT YOUR FORM CODE BELOW THIS LINE
+           Replace this comment block with your embedded form iframe
+           or form HTML. The ?an= agent name will be in the URL.
+           ═══════════════════════════════════════════════════════════════ -->
+      <!-- PAPER_FORM_EMBED_START -->
+      <!-- PAPER_FORM_EMBED_END -->
+
       <h2>Schedule Your Free Assessment</h2>
       <p>Fill out the form below and a member of our team will contact you within one business day. We handle all the utility paperwork — you just need to schedule.</p>
       <form action="#" method="POST" onsubmit="handleSubmit(event)">
+        <!-- Hidden tracking fields — populated by JS from URL params -->
+        <input type="hidden" id="agent_name" name="agent_name" />
+        <input type="hidden" id="offer_type" name="offer_type" />
         <div class="form-grid">
           <div class="form-group"><label for="fname">First Name <span>*</span></label><input type="text" id="fname" name="fname" placeholder="John" required /></div>
           <div class="form-group"><label for="lname">Last Name <span>*</span></label><input type="text" id="lname" name="lname" placeholder="Smith" required /></div>
@@ -207,6 +225,29 @@
     <div class="footer-bottom"><p>© 2026 Maryland Smart Energy. Licensed · Bonded · Insured.</p><div><a href="privacy.html" class="footer-legal">Privacy Policy</a><a href="terms.html" class="footer-legal">Terms of Service</a></div></div>
   </div></footer>
   <script>
+    // Read agent name + offer type from URL or sessionStorage
+    (function() {
+      const params = new URLSearchParams(location.search);
+      const an = params.get('an') || sessionStorage.getItem('mse_an') || '';
+      const offer = params.get('offer') || sessionStorage.getItem('mse_offer') || '';
+      if (an) sessionStorage.setItem('mse_an', an);
+      if (offer) sessionStorage.setItem('mse_offer', offer);
+
+      // Populate hidden fields
+      if (an) document.getElementById('agent_name').value = an;
+      if (offer) document.getElementById('offer_type').value = offer;
+
+      // Show offer banner
+      if (offer === '0deposit') {
+        const banner = document.getElementById('offer-banner');
+        banner.style.display = 'flex';
+        if (an) {
+          const name = an.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          document.getElementById('offer-banner-title').textContent = '✓ Your $0 Deposit Offer from ' + name + ' Has Been Applied';
+        }
+      }
+    })();
+
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('.submit-btn');

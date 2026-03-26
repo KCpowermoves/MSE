@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Keep admin, internal tools, and test pages out of search results
+Disallow: /admin/
+Disallow: /game/
+Disallow: /0deposit/
+
+Sitemap: https://www.mdsmartenergy.com/sitemap.xml

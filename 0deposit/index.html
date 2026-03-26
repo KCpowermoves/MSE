@@ -230,10 +230,10 @@
   if (slug) sessionStorage.setItem('mse_an', slug);
 
   function formatName(s) {
-    return s.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    return s.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   }
   function firstName(s) {
-    const part = s.split('-')[0];
+    const part = s.split('_')[0];
     return part.charAt(0).toUpperCase() + part.slice(1);
   }
 

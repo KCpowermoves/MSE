@@ -57,11 +57,7 @@ module.exports = async function handler(req, res) {
       contactId,
       name: oppName,
       monetaryValue: amountPaid || 0,
-      status: 'open',
-      customFields: [
-        { key: 'rx_program_utility', field_value: utility || '' },
-        { key: '_of_units',          field_value: String(units || '') }
-      ]
+      status: 'open'
     }, token);
 
     res.json({ success: true, contactId });

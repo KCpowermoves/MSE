@@ -1,5 +1,15 @@
 [
   {
+    "slug": "maryland-beps-hb49-2026-updates.html",
+    "title": "What's New for Maryland BEPS in 2026: The HB 49 Changes Every Building Owner Must Know",
+    "tags": "BEPS Compliance",
+    "date": "April 3, 2026",
+    "readtime": "6 min read",
+    "hero": "hb49-beps-2026-hero.svg",
+    "excerpt": "House Bill 49 brought significant updates to Maryland BEPS in 2026 — a new $100 annual reporting fee, a full waiver for Montgomery County buildings, and new exemption pathways for hospitals and SCIFs. Here's what changed and what it means for your property.",
+    "featured": true
+  },
+  {
     "slug": "maryland-beps-compliance-guide.html",
     "title": "Maryland BEPS Explained: What Building Owners Must Do Before the Deadlines Hit",
     "tags": "BEPS Compliance",
@@ -7,7 +17,7 @@
     "readtime": "8 min read",
     "hero": "benchmarking-hero.jpg",
     "excerpt": "Maryland's Building Energy Performance Standards are now in effect for buildings 35,000 sq ft and larger. Here's what owners need to do before the deadlines hit — and how to use EmPOWER Maryland rebates to fund the path to compliance.",
-    "featured": true
+    "featured": false
   },
   {
     "slug": "hb864-maryland-energy-law-2024.html",

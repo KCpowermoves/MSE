@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSE — Pay Calculator</title>
+<link rel="icon" type="image/png" href="brand_assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #1A2332;
+  --navy-mid:  #243044;
+  --red:       #C8102E;
+  --red-dark:  #A30D24;
+  --gold:      #F4A11D;
+  --gold-dark: #D4891A;
+  --bg:        #F4F7FB;
+  --border:    #D0D8E4;
+  --text:      #1A2332;
+  --muted:     #6B7A8D;
+  --c-gray:    #888780;
+  --c-blue:    #185FA5;
+  --c-green:   #0F6E56;
+}
+
+body {
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--navy);
+  padding: 0.55rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-bottom: 3px solid var(--red);
+  flex-shrink: 0;
+}
+.logo-wrap {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(248,161,29,0.4);
+}
+.logo-wrap img { width: 26px; height: 26px; object-fit: contain; }
+.header-text h1 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: #fff; letter-spacing: -0.01em;
+}
+.header-text p { font-size: 11px; color: #AABBCC; margin-top: 1px; }
+.header-text p span { color: var(--gold); font-weight: 600; }
+
+/* ── LAYOUT ── */
+.layout {
+  display: grid;
+  grid-template-columns: 238px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL ── */
+.left {
+  background: #fff;
+  border-right: 1px solid var(--border);
+  padding: 0.875rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.panel-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+/* Scenario buttons */
+.scenario-grid { display: flex; flex-direction: column; gap: 4px; }
+.scn-btn {
+  padding: 5px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11.5px;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--muted);
+  text-align: left;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.scn-btn:hover { background: #E8EEF7; color: var(--red); border-color: var(--red); }
+.scn-btn.active {
+  background: var(--navy);
+  color: var(--gold);
+  border-color: var(--navy);
+  font-weight: 600;
+}
+
+.divider { border: none; border-top: 1px solid #E8EEF7; }
+
+/* Sliders */
+.slider-group { display: flex; flex-direction: column; gap: 10px; }
+.sl-row { display: flex; flex-direction: column; gap: 3px; }
+.sl-head { display: flex; justify-content: space-between; align-items: baseline; }
+.sl-name { font-size: 11.5px; font-weight: 600; color: var(--text); }
+.sl-val  { font-family: 'Barlow', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); }
+.sl-desc { font-size: 10px; color: var(--muted); }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--red);
+  cursor: pointer;
+  height: 4px;
+}
+
+/* Tab buttons */
+.tab-group { display: flex; flex-direction: column; gap: 4px; }
+.tab {
+  padding: 5px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11.5px; font-weight: 500;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--muted);
+  text-align: left;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tab:hover { background: #E8EEF7; color: var(--navy); }
+.tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+/* Breakeven */
+.be-box { display: flex; flex-direction: column; gap: 5px; }
+.be-item { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.be-item strong { color: var(--navy); font-weight: 600; }
+
+/* ── RIGHT PANEL ── */
+.right {
+  padding: 0.875rem 1.125rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+/* Metric cards */
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px; }
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.625rem 0.75rem;
+  border-top: 3px solid var(--border);
+  box-shadow: 0 1px 3px rgba(26,35,50,0.05), 0 1px 2px rgba(26,35,50,0.04);
+}
+.card.c-gray  { border-top-color: var(--c-gray); }
+.card.c-blue  { border-top-color: var(--c-blue); }
+.card.c-green { border-top-color: var(--c-green); }
+.card.c-red   { border-top-color: var(--red); }
+.card-label { font-size: 10.5px; color: var(--muted); margin-bottom: 2px; }
+.card-val   { font-family: 'Barlow', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.card-sub   { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+/* Legend */
+.legend { display: flex; gap: 14px; font-size: 11px; color: var(--muted); align-items: center; }
+.ld {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Chart grid */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 8px;
+  flex: 1;
+}
+.chart-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px rgba(26,35,50,0.05);
+}
+.chart-box.wide { grid-column: 1 / -1; }
+.ct {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11.5px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.cw  { position: relative; width: 100%; height: 160px; }
+.cws { position: relative; width: 100%; height: 128px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-wrap">
+    <img src="brand_assets/mse-logo.png" alt="MSE logo" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:8px;font-weight:700;color:#1A2332;line-height:1.1;text-align:center\'>MSE</span>'">
+  </div>
+  <div class="header-text">
+    <h1>Maryland Smart Energy &mdash; Pay Calculator</h1>
+    <p>Salary &nbsp;&middot;&nbsp; <span>Hybrid</span> &nbsp;&middot;&nbsp; Full Commission</p>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+
+    <div>
+      <p class="panel-label">Scenarios</p>
+      <div class="scenario-grid">
+        <button class="scn-btn active" onclick="loadScenario(5,0,this)">5 standard units/day</button>
+        <button class="scn-btn" onclick="loadScenario(10,0,this)">10 standard units/day</button>
+        <button class="scn-btn" onclick="loadScenario(0,50,this)">50 PTAC units/day</button>
+        <button class="scn-btn" onclick="loadScenario(3,0,this)">Slow week &mdash; 3 units/day</button>
+        <button class="scn-btn" onclick="loadScenario(7,20,this)">Mixed &mdash; 7 std + 20 PTAC</button>
+        <button class="scn-btn" onclick="loadScenario(0,0,this)">Zero production</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div>
+      <p class="panel-label">Adjust</p>
+      <div class="slider-group">
+        <div class="sl-row">
+          <div class="sl-head">
+            <span class="sl-name">Standard units/day</span>
+            <span class="sl-val" id="std-out">5</span>
+          </div>
+          <input type="range" min="0" max="20" step="1" value="5" id="std-slider" oninput="clearA();update()">
+          <span class="sl-desc">$50 commission &middot; $25 hybrid</span>
+        </div>
+        <div class="sl-row">
+          <div class="sl-head">
+            <span class="sl-name">PTAC units/day</span>
+            <span class="sl-val" id="ptac-out">0</span>
+          </div>
+          <input type="range" min="0" max="200" step="1" value="0" id="ptac-slider" oninput="clearA();update()">
+          <span class="sl-desc">$10 commission &middot; $5 hybrid</span>
+        </div>
+        <div class="sl-row">
+          <div class="sl-head">
+            <span class="sl-name">Days/week</span>
+            <span class="sl-val" id="days-out">5</span>
+          </div>
+          <input type="range" min="1" max="6" step="1" value="5" id="days-slider" oninput="clearA();update()">
+          <span class="sl-desc">Flexible schedule</span>
+        </div>
+        <div class="sl-row">
+          <div class="sl-head">
+            <span class="sl-name">Weeks/year</span>
+            <span class="sl-val" id="weeks-out">50</span>
+          </div>
+          <input type="range" min="40" max="52" step="1" value="50" id="weeks-slider" oninput="clearA();update()">
+          <span class="sl-desc">Allows for time off</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div>
+      <p class="panel-label">Show models</p>
+      <div class="tab-group">
+        <button class="tab active" onclick="setTab('all',this)">All models</button>
+        <button class="tab" onclick="setTab('salary',this)">Salary only</button>
+        <button class="tab" onclick="setTab('hybrid',this)">Hybrid only</button>
+        <button class="tab" onclick="setTab('commission',this)">Full commission only</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div>
+      <p class="panel-label">Breakeven</p>
+      <div class="be-box">
+        <div class="be-item">Hybrid beats salary: <strong>3.4 units/day</strong></div>
+        <div class="be-item">Commission beats salary: <strong>3.7 units/day</strong></div>
+        <div class="be-item">Commission &gt; Hybrid: <strong>4.0 units/day</strong></div>
+        <div class="be-item">50% paid: <strong>following week</strong></div>
+        <div class="be-item">Remaining 50%: <strong>6&ndash;8 weeks</strong></div>
+      </div>
+    </div>
+
+  </div><!-- /left -->
+
+  <!-- RIGHT PANEL -->
+  <div class="right">
+
+    <div class="cards">
+      <div class="card c-gray">
+        <div class="card-label">Salary (current) &mdash; daily</div>
+        <div class="card-val" id="c-sal-d" style="color:var(--c-gray)">$184</div>
+        <div class="card-sub" id="c-sal-w">$920/wk &middot; $47,840/yr</div>
+      </div>
+      <div class="card c-blue">
+        <div class="card-label">Hybrid &mdash; daily</div>
+        <div class="card-val" id="c-hyb-d" style="color:var(--c-blue)">&mdash;</div>
+        <div class="card-sub" id="c-hyb-w">&mdash;</div>
+      </div>
+      <div class="card c-green">
+        <div class="card-label">Full commission &mdash; daily</div>
+        <div class="card-val" id="c-com-d" style="color:var(--c-green)">&mdash;</div>
+        <div class="card-sub" id="c-com-w">&mdash;</div>
+      </div>
+      <div class="card c-red">
+        <div class="card-label">Commission vs. salary</div>
+        <div class="card-val" id="c-diff" style="color:var(--c-green)">&mdash;</div>
+        <div class="card-sub" id="c-diff-s">annually</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><span class="ld" style="background:var(--c-gray)"></span>Salary</span>
+      <span><span class="ld" style="background:var(--c-blue)"></span>Hybrid</span>
+      <span><span class="ld" style="background:var(--c-green)"></span>Full commission</span>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-box">
+        <div class="ct">Weekly income</div>
+        <div class="cw"><canvas id="ch-wk"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <div class="ct">Annual income</div>
+        <div class="cw"><canvas id="ch-yr"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <div class="ct">Earnings vs. units/day</div>
+        <div class="cw"><canvas id="ch-scale"></canvas></div>
+      </div>
+      <div class="chart-box wide">
+        <div class="ct">Cumulative income &mdash; 12 months</div>
+        <div class="cws"><canvas id="ch-mo"></canvas></div>
+      </div>
+    </div>
+
+  </div><!-- /right -->
+</div><!-- /layout -->
+
+<script>
+const SAL_WK = 920, SAL_YR = 47840, SAL_DAY = 184;
+const C = { s: '#888780', h: '#185FA5', c: '#0F6E56' };
+let CH = {}, tab = 'all';
+
+function calc(std, ptac, days, wks) {
+  const cd = std * 50 + ptac * 10;
+  const hd = 100 + std * 25 + ptac * 5;
+  return {
+    s: { day: SAL_DAY, wk: SAL_WK, yr: SAL_YR },
+    h: { day: hd, wk: hd * days, yr: hd * days * wks },
+    c: { day: cd, wk: cd * days, yr: cd * days * wks }
+  };
+}
+
+const f  = n => '$' + Math.round(n).toLocaleString();
+const fK = n => '$' + Math.round(n / 1000) + 'K';
+
+function loadScenario(std, ptac, btn) {
+  document.getElementById('std-slider').value   = std;
+  document.getElementById('ptac-slider').value  = ptac;
+  document.getElementById('days-slider').value  = 5;
+  document.getElementById('weeks-slider').value = 50;
+  document.querySelectorAll('.scn-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  update();
+}
+
+function clearA() {
+  document.querySelectorAll('.scn-btn').forEach(b => b.classList.remove('active'));
+}
+
+function setTab(t, el) {
+  tab = t;
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  update();
+}
+
+function vis(m) { return tab === 'all' || tab === m; }
+
+function update() {
+  const std  = +document.getElementById('std-slider').value;
+  const ptac = +document.getElementById('ptac-slider').value;
+  const days = +document.getElementById('days-slider').value;
+  const wks  = +document.getElementById('weeks-slider').value;
+
+  document.getElementById('std-out').textContent   = std;
+  document.getElementById('ptac-out').textContent  = ptac;
+  document.getElementById('days-out').textContent  = days;
+  document.getElementById('weeks-out').textContent = wks;
+
+  const r = calc(std, ptac, days, wks);
+
+  document.getElementById('c-sal-d').textContent = f(r.s.day);
+  document.getElementById('c-sal-w').textContent = f(r.s.wk) + '/wk \u00B7 ' + f(r.s.yr) + '/yr';
+  document.getElementById('c-hyb-d').textContent = f(r.h.day);
+  document.getElementById('c-hyb-w').textContent = f(r.h.wk) + '/wk \u00B7 ' + f(r.h.yr) + '/yr';
+  document.getElementById('c-com-d').textContent = f(r.c.day);
+  document.getElementById('c-com-w').textContent = f(r.c.wk) + '/wk \u00B7 ' + f(r.c.yr) + '/yr';
+
+  const diff = r.c.yr - SAL_YR;
+  const el = document.getElementById('c-diff');
+  el.textContent = (diff >= 0 ? '+' : '') + f(diff);
+  el.style.color = diff >= 0 ? '#0F6E56' : '#A30D24';
+  document.getElementById('c-diff-s').textContent = (diff >= 0 ? 'more' : 'less') + ' than salary/yr';
+
+  drawAll(r, days, wks);
+}
+
+function drawAll(r, days, wks) {
+  const models = [
+    { lbl: 'Salary',     key: 's', col: C.s },
+    { lbl: 'Hybrid',     key: 'h', col: C.h },
+    { lbl: 'Commission', key: 'c', col: C.c },
+  ].filter(m => vis(m.key === 's' ? 'salary' : m.key === 'h' ? 'hybrid' : 'commission'));
+
+  mkBar('ch-wk', models.map(m => m.lbl), models.map(m => r[m.key].wk), models.map(m => m.col));
+  mkBar('ch-yr', models.map(m => m.lbl), models.map(m => r[m.key].yr), models.map(m => m.col));
+
+  const mos = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const mb = wks / 12;
+  const mds = [];
+  if (vis('salary'))     mds.push({ data: mos.map((_,i) => Math.round(r.s.wk * mb * (i+1))), borderColor: C.s, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  if (vis('hybrid'))     mds.push({ data: mos.map((_,i) => Math.round(r.h.wk * mb * (i+1))), borderColor: C.h, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  if (vis('commission')) mds.push({ data: mos.map((_,i) => Math.round(r.c.wk * mb * (i+1))), borderColor: C.c, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  mkLine('ch-mo', mos, mds);
+
+  const xs = Array.from({ length: 21 }, (_, i) => i);
+  const sds = [];
+  if (vis('salary'))     sds.push({ data: xs.map(() => Math.round(SAL_WK * wks / 12)), borderColor: C.s, fill: false, tension: 0, pointRadius: 0, borderWidth: 1.5, borderDash: [5,4], backgroundColor: 'transparent' });
+  if (vis('hybrid'))     sds.push({ data: xs.map(s => Math.round((100 + s * 25) * 5 * wks / 12)), borderColor: C.h, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  if (vis('commission')) sds.push({ data: xs.map(s => Math.round(s * 50 * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+
+  if (CH['sc']) CH['sc'].destroy();
+  CH['sc'] = new Chart(document.getElementById('ch-scale'), {
+    type: 'line',
+    data: { labels: xs, datasets: sds },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { title: { display: true, text: 'Units/day', font: { size: 10 }, color: '#888780' }, ticks: { font: { size: 10 } } },
+        y: { ticks: { callback: v => fK(v), font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+function mkBar(id, labels, data, colors) {
+  if (CH[id]) CH[id].destroy();
+  CH[id] = new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { ticks: { callback: v => fK(v), font: { size: 10 } } },
+        x: { ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+function mkLine(id, labels, datasets) {
+  if (CH[id]) CH[id].destroy();
+  CH[id] = new Chart(document.getElementById(id), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { ticks: { callback: v => fK(v), font: { size: 10 } } },
+        x: { ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+update();
+</script>
+</body>
+</html>

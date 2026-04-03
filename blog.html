@@ -232,7 +232,7 @@
 
   <script>
   (async () => {
-    function heroImg(h) { return h ? `brand_assets/images/${h}` : 'brand_assets/images/hvac-hero-background.jpg'; }
+    function heroImg(h) { if (!h) return 'brand_assets/images/hvac-hero-background.jpg'; return h.startsWith('http') ? h : `brand_assets/images/${h}`; }
     function tagColor(t) {
       const s = (t||'').toLowerCase();
       if (s.includes('hvac')) return 'rgba(200,16,46,.08);color:#C8102E';

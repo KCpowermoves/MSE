@@ -151,6 +151,43 @@ input[type="range"] {
 .tab:hover { background: #E8EEF7; color: var(--navy); }
 .tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 
+/* Self-sold toggle */
+.self-sold-btn {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1.5px dashed var(--border);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11.5px; font-weight: 600;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--muted);
+  text-align: left;
+  display: flex; align-items: center; gap: 7px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.self-sold-btn:hover { background: #FFF8EC; color: var(--gold-dark); border-color: var(--gold); }
+.self-sold-btn.active {
+  background: #FFF3D6;
+  color: #8A5A00;
+  border: 1.5px solid var(--gold);
+  border-color: var(--gold-dark);
+}
+.self-sold-btn .ss-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.self-sold-btn.active .ss-dot { background: var(--gold-dark); }
+.self-sold-rates {
+  font-size: 10px; color: var(--muted);
+  margin-top: 4px; padding-left: 2px;
+  display: none;
+}
+.self-sold-rates.visible { display: block; }
+
 /* Breakeven */
 .be-box { display: flex; flex-direction: column; gap: 5px; }
 .be-item { font-size: 11px; color: var(--muted); line-height: 1.5; }
@@ -261,7 +298,7 @@ input[type="range"] {
             <span class="sl-val" id="std-out">5</span>
           </div>
           <input type="range" min="0" max="20" step="1" value="5" id="std-slider" oninput="clearA();update()">
-          <span class="sl-desc">$50 commission &middot; $25 hybrid</span>
+          <span class="sl-desc" id="desc-std">$50 commission &middot; $25 hybrid</span>
         </div>
         <div class="sl-row">
           <div class="sl-head">
@@ -269,7 +306,7 @@ input[type="range"] {
             <span class="sl-val" id="ptac-out">0</span>
           </div>
           <input type="range" min="0" max="200" step="1" value="0" id="ptac-slider" oninput="clearA();update()">
-          <span class="sl-desc">$10 commission &middot; $5 hybrid</span>
+          <span class="sl-desc" id="desc-ptac">$10 commission &middot; $5 hybrid</span>
         </div>
         <div class="sl-row">
           <div class="sl-head">
@@ -293,6 +330,19 @@ input[type="range"] {
     <hr class="divider">
 
     <div>
+      <p class="panel-label">Account type</p>
+      <button class="self-sold-btn" id="ss-btn" onclick="toggleSelfSold()">
+        <span class="ss-dot"></span>
+        Self-sold account
+      </button>
+      <div class="self-sold-rates" id="ss-rates">
+        +$30/std unit &middot; +$5/PTAC unit added to commission &amp; hybrid
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div>
       <p class="panel-label">Show models</p>
       <div class="tab-group">
         <button class="tab active" onclick="setTab('all',this)">All models</button>
@@ -310,8 +360,6 @@ input[type="range"] {
         <div class="be-item">Hybrid beats salary: <strong>3.4 units/day</strong></div>
         <div class="be-item">Commission beats salary: <strong>3.7 units/day</strong></div>
         <div class="be-item">Commission &gt; Hybrid: <strong>4.0 units/day</strong></div>
-        <div class="be-item">50% paid: <strong>following week</strong></div>
-        <div class="be-item">Remaining 50%: <strong>6&ndash;8 weeks</strong></div>
       </div>
     </div>
 
@@ -374,16 +422,36 @@ input[type="range"] {
 <script>
 const SAL_WK = 920, SAL_YR = 47840, SAL_DAY = 184;
 const C = { s: '#888780', h: '#185FA5', c: '#0F6E56' };
-let CH = {}, tab = 'all';
+let CH = {}, tab = 'all', selfSold = false;
+
+// Self-sold bonus rates
+const SS_STD = 30, SS_PTAC = 5;
 
 function calc(std, ptac, days, wks) {
-  const cd = std * 50 + ptac * 10;
-  const hd = 100 + std * 25 + ptac * 5;
+  const bonus = selfSold ? (std * SS_STD + ptac * SS_PTAC) : 0;
+  const cd = std * 50 + ptac * 10 + bonus;
+  const hd = 100 + std * 25 + ptac * 5 + bonus;
   return {
     s: { day: SAL_DAY, wk: SAL_WK, yr: SAL_YR },
     h: { day: hd, wk: hd * days, yr: hd * days * wks },
     c: { day: cd, wk: cd * days, yr: cd * days * wks }
   };
+}
+
+function toggleSelfSold() {
+  selfSold = !selfSold;
+  const btn = document.getElementById('ss-btn');
+  const rates = document.getElementById('ss-rates');
+  btn.classList.toggle('active', selfSold);
+  rates.classList.toggle('visible', selfSold);
+  // Update slider descriptions
+  document.getElementById('desc-std').textContent  = selfSold
+    ? '$80 commission \u00B7 $55 hybrid (self-sold)'
+    : '$50 commission \u00B7 $25 hybrid';
+  document.getElementById('desc-ptac').textContent = selfSold
+    ? '$15 commission \u00B7 $10 hybrid (self-sold)'
+    : '$10 commission \u00B7 $5 hybrid';
+  update();
 }
 
 const f  = n => '$' + Math.round(n).toLocaleString();
@@ -461,9 +529,10 @@ function drawAll(r, days, wks) {
 
   const xs = Array.from({ length: 21 }, (_, i) => i);
   const sds = [];
+  const ssBonus = selfSold ? SS_STD : 0; // scale chart uses standard units only
   if (vis('salary'))     sds.push({ data: xs.map(() => Math.round(SAL_WK * wks / 12)), borderColor: C.s, fill: false, tension: 0, pointRadius: 0, borderWidth: 1.5, borderDash: [5,4], backgroundColor: 'transparent' });
-  if (vis('hybrid'))     sds.push({ data: xs.map(s => Math.round((100 + s * 25) * 5 * wks / 12)), borderColor: C.h, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
-  if (vis('commission')) sds.push({ data: xs.map(s => Math.round(s * 50 * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  if (vis('hybrid'))     sds.push({ data: xs.map(s => Math.round((100 + s * (25 + ssBonus)) * 5 * wks / 12)), borderColor: C.h, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  if (vis('commission')) sds.push({ data: xs.map(s => Math.round(s * (50 + ssBonus) * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
 
   if (CH['sc']) CH['sc'].destroy();
   CH['sc'] = new Chart(document.getElementById('ch-scale'), {

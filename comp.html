@@ -150,6 +150,26 @@ input[type="range"] {
 }
 .tab:hover { background: #E8EEF7; color: var(--navy); }
 .tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.tab.ss-hidden { display: none; }
+
+/* Sales-only toggle */
+.sales-view-wrap { display: none; margin-top: 4px; }
+.sales-view-wrap.visible { display: block; }
+.sales-only-btn {
+  width: 100%;
+  padding: 5px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11.5px; font-weight: 500;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--muted);
+  text-align: left;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.sales-only-btn:hover { background: #FFF8EC; color: var(--gold-dark); border-color: var(--gold); }
+.sales-only-btn.active { background: var(--gold-dark); color: #fff; border-color: var(--gold-dark); }
 
 /* Self-sold toggle */
 .self-sold-btn {
@@ -345,10 +365,13 @@ input[type="range"] {
     <div>
       <p class="panel-label">Show models</p>
       <div class="tab-group">
-        <button class="tab active" onclick="setTab('all',this)">All models</button>
-        <button class="tab" onclick="setTab('salary',this)">Salary only</button>
-        <button class="tab" onclick="setTab('hybrid',this)">Hybrid only</button>
-        <button class="tab" onclick="setTab('commission',this)">Full commission only</button>
+        <button class="tab active" id="tab-all"        onclick="setTab('all',this)">All models</button>
+        <button class="tab"        id="tab-salary"     onclick="setTab('salary',this)">Salary only</button>
+        <button class="tab"        id="tab-hybrid"     onclick="setTab('hybrid',this)">Hybrid only</button>
+        <button class="tab"        id="tab-commission" onclick="setTab('commission',this)">Full commission only</button>
+      </div>
+      <div class="sales-view-wrap" id="sales-view-wrap">
+        <button class="sales-only-btn" id="sales-only-btn" onclick="toggleSalesOnly()">Sales commission only</button>
       </div>
     </div>
 
@@ -391,7 +414,7 @@ input[type="range"] {
       </div>
     </div>
 
-    <div class="legend">
+    <div class="legend" id="legend">
       <span><span class="ld" style="background:var(--c-gray)"></span>Salary</span>
       <span><span class="ld" style="background:var(--c-blue)"></span>Hybrid</span>
       <span><span class="ld" style="background:var(--c-green)"></span>Full commission</span>
@@ -421,41 +444,66 @@ input[type="range"] {
 
 <script>
 const SAL_WK = 920, SAL_YR = 47840, SAL_DAY = 184;
-const C = { s: '#888780', h: '#185FA5', c: '#0F6E56' };
-let CH = {}, tab = 'all', selfSold = false;
-
-// Self-sold bonus rates
+const C = { s: '#888780', h: '#185FA5', c: '#0F6E56', gold: '#D4891A' };
 const SS_STD = 30, SS_PTAC = 5;
+let CH = {}, tab = 'all', selfSold = false, salesOnly = false;
+
+const f  = n => '$' + Math.round(n).toLocaleString();
+const fK = n => '$' + Math.round(n / 1000) + 'K';
 
 function calc(std, ptac, days, wks) {
   const bonus = selfSold ? (std * SS_STD + ptac * SS_PTAC) : 0;
   const cd = std * 50 + ptac * 10 + bonus;
   const hd = 100 + std * 25 + ptac * 5 + bonus;
+  const sd = std * SS_STD + ptac * SS_PTAC; // sales-only daily
   return {
-    s: { day: SAL_DAY, wk: SAL_WK, yr: SAL_YR },
-    h: { day: hd, wk: hd * days, yr: hd * days * wks },
-    c: { day: cd, wk: cd * days, yr: cd * days * wks }
+    s:    { day: SAL_DAY, wk: SAL_WK, yr: SAL_YR },
+    h:    { day: hd, wk: hd * days, yr: hd * days * wks },
+    c:    { day: cd, wk: cd * days, yr: cd * days * wks },
+    sale: { day: sd, wk: sd * days, yr: sd * days * wks }
   };
 }
 
 function toggleSelfSold() {
   selfSold = !selfSold;
-  const btn = document.getElementById('ss-btn');
-  const rates = document.getElementById('ss-rates');
-  btn.classList.toggle('active', selfSold);
-  rates.classList.toggle('visible', selfSold);
-  // Update slider descriptions
-  document.getElementById('desc-std').textContent  = selfSold
-    ? '$80 commission \u00B7 $55 hybrid (self-sold)'
-    : '$50 commission \u00B7 $25 hybrid';
-  document.getElementById('desc-ptac').textContent = selfSold
-    ? '$15 commission \u00B7 $10 hybrid (self-sold)'
-    : '$10 commission \u00B7 $5 hybrid';
+  document.getElementById('ss-btn').classList.toggle('active', selfSold);
+  document.getElementById('ss-rates').classList.toggle('visible', selfSold);
+
+  const hideTabs = ['tab-all', 'tab-salary', 'tab-hybrid'];
+  hideTabs.forEach(id => document.getElementById(id).classList.toggle('ss-hidden', selfSold));
+  document.getElementById('sales-view-wrap').classList.toggle('visible', selfSold);
+
+  if (selfSold) {
+    // Force to commission-only, reset salesOnly
+    salesOnly = false;
+    document.getElementById('sales-only-btn').classList.remove('active');
+    setTabById('commission');
+    document.getElementById('desc-std').textContent  = '$80/unit (self-sold commission)';
+    document.getElementById('desc-ptac').textContent = '$15/unit (self-sold commission)';
+  } else {
+    salesOnly = false;
+    document.getElementById('sales-only-btn').classList.remove('active');
+    setTabById('all');
+    document.getElementById('desc-std').textContent  = '$50 commission \u00B7 $25 hybrid';
+    document.getElementById('desc-ptac').textContent = '$10 commission \u00B7 $5 hybrid';
+  }
   update();
 }
 
-const f  = n => '$' + Math.round(n).toLocaleString();
-const fK = n => '$' + Math.round(n / 1000) + 'K';
+function toggleSalesOnly() {
+  salesOnly = !salesOnly;
+  document.getElementById('sales-only-btn').classList.toggle('active', salesOnly);
+  // Deactivate commission tab visually when in sales-only mode
+  document.getElementById('tab-commission').classList.toggle('active', !salesOnly);
+  update();
+}
+
+function setTabById(t) {
+  tab = t;
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('tab-' + t);
+  if (el) el.classList.add('active');
+}
 
 function loadScenario(std, ptac, btn) {
   document.getElementById('std-slider').value   = std;
@@ -467,11 +515,10 @@ function loadScenario(std, ptac, btn) {
   update();
 }
 
-function clearA() {
-  document.querySelectorAll('.scn-btn').forEach(b => b.classList.remove('active'));
-}
+function clearA() { document.querySelectorAll('.scn-btn').forEach(b => b.classList.remove('active')); }
 
 function setTab(t, el) {
+  if (salesOnly) { salesOnly = false; document.getElementById('sales-only-btn').classList.remove('active'); }
   tab = t;
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
@@ -493,53 +540,141 @@ function update() {
 
   const r = calc(std, ptac, days, wks);
 
-  document.getElementById('c-sal-d').textContent = f(r.s.day);
-  document.getElementById('c-sal-w').textContent = f(r.s.wk) + '/wk \u00B7 ' + f(r.s.yr) + '/yr';
-  document.getElementById('c-hyb-d').textContent = f(r.h.day);
-  document.getElementById('c-hyb-w').textContent = f(r.h.wk) + '/wk \u00B7 ' + f(r.h.yr) + '/yr';
-  document.getElementById('c-com-d').textContent = f(r.c.day);
-  document.getElementById('c-com-w').textContent = f(r.c.wk) + '/wk \u00B7 ' + f(r.c.yr) + '/yr';
+  if (salesOnly) {
+    // Cards show sales-commission-only breakdown
+    document.getElementById('c-sal-d').textContent = f(r.sale.day);
+    document.getElementById('c-sal-w').textContent = f(r.sale.wk) + '/wk \u00B7 ' + f(r.sale.yr) + '/yr';
+    document.getElementById('c-hyb-d').textContent = f(r.sale.wk);
+    document.getElementById('c-hyb-w').textContent = 'per week';
+    document.getElementById('c-com-d').textContent = f(r.sale.yr);
+    document.getElementById('c-com-w').textContent = 'per year';
+    document.getElementById('c-diff').textContent  = f(r.sale.yr / 12);
+    document.getElementById('c-diff').style.color  = C.gold;
+    document.getElementById('c-diff-s').textContent = 'per month (avg)';
 
-  const diff = r.c.yr - SAL_YR;
-  const el = document.getElementById('c-diff');
-  el.textContent = (diff >= 0 ? '+' : '') + f(diff);
-  el.style.color = diff >= 0 ? '#0F6E56' : '#A30D24';
-  document.getElementById('c-diff-s').textContent = (diff >= 0 ? 'more' : 'less') + ' than salary/yr';
+    // Card labels
+    document.querySelector('#c-sal-d').closest('.card').querySelector('.card-label').textContent = 'Sales comm. \u2014 daily';
+    document.querySelector('#c-hyb-d').closest('.card').querySelector('.card-label').textContent = 'Sales comm. \u2014 weekly';
+    document.querySelector('#c-com-d').closest('.card').querySelector('.card-label').textContent = 'Sales comm. \u2014 annual';
+    document.querySelector('#c-diff').closest('.card').querySelector('.card-label').textContent  = 'Sales comm. \u2014 monthly';
+
+    // Legend
+    document.getElementById('legend').innerHTML =
+      '<span><span class="ld" style="background:' + C.gold + '"></span>Sales commission (+$30 std / +$5 PTAC)</span>';
+  } else {
+    // Normal mode — restore card labels
+    document.querySelector('#c-sal-d').closest('.card').querySelector('.card-label').textContent = selfSold ? 'Self-sold commission \u2014 daily' : 'Salary (current) \u2014 daily';
+    document.querySelector('#c-hyb-d').closest('.card').querySelector('.card-label').textContent = selfSold ? 'Full commission \u2014 daily' : 'Hybrid \u2014 daily';
+    document.querySelector('#c-com-d').closest('.card').querySelector('.card-label').textContent = selfSold ? 'Full commission \u2014 weekly' : 'Full commission \u2014 daily';
+    document.querySelector('#c-diff').closest('.card').querySelector('.card-label').textContent  = 'Commission vs. salary';
+
+    if (selfSold) {
+      // Commission-only cards: daily / weekly / annual / vs salary
+      document.getElementById('c-sal-d').textContent = f(r.c.day);
+      document.getElementById('c-sal-w').textContent = f(r.c.wk) + '/wk \u00B7 ' + f(r.c.yr) + '/yr';
+      document.getElementById('c-hyb-d').textContent = f(r.c.day);
+      document.getElementById('c-hyb-w').textContent = f(r.c.wk) + '/wk \u00B7 ' + f(r.c.yr) + '/yr';
+      document.getElementById('c-com-d').textContent = f(r.c.wk);
+      document.getElementById('c-com-w').textContent = 'per week';
+    } else {
+      document.getElementById('c-sal-d').textContent = f(r.s.day);
+      document.getElementById('c-sal-w').textContent = f(r.s.wk) + '/wk \u00B7 ' + f(r.s.yr) + '/yr';
+      document.getElementById('c-hyb-d').textContent = f(r.h.day);
+      document.getElementById('c-hyb-w').textContent = f(r.h.wk) + '/wk \u00B7 ' + f(r.h.yr) + '/yr';
+      document.getElementById('c-com-d').textContent = f(r.c.day);
+      document.getElementById('c-com-w').textContent = f(r.c.wk) + '/wk \u00B7 ' + f(r.c.yr) + '/yr';
+    }
+
+    const diff = r.c.yr - SAL_YR;
+    document.getElementById('c-diff').textContent = (diff >= 0 ? '+' : '') + f(diff);
+    document.getElementById('c-diff').style.color = diff >= 0 ? '#0F6E56' : '#A30D24';
+    document.getElementById('c-diff-s').textContent = (diff >= 0 ? 'more' : 'less') + ' than salary/yr';
+
+    // Restore legend
+    if (selfSold) {
+      document.getElementById('legend').innerHTML =
+        '<span><span class="ld" style="background:' + C.c + '"></span>Full commission (self-sold)</span>';
+    } else {
+      document.getElementById('legend').innerHTML =
+        '<span><span class="ld" style="background:' + C.s + '"></span>Salary</span>' +
+        '<span><span class="ld" style="background:' + C.h + '"></span>Hybrid</span>' +
+        '<span><span class="ld" style="background:' + C.c + '"></span>Full commission</span>';
+    }
+  }
 
   drawAll(r, days, wks);
 }
 
 function drawAll(r, days, wks) {
-  const models = [
-    { lbl: 'Salary',     key: 's', col: C.s },
-    { lbl: 'Hybrid',     key: 'h', col: C.h },
-    { lbl: 'Commission', key: 'c', col: C.c },
-  ].filter(m => vis(m.key === 's' ? 'salary' : m.key === 'h' ? 'hybrid' : 'commission'));
+  const mos = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const mb  = wks / 12;
+  const xs  = Array.from({ length: 21 }, (_, i) => i);
+
+  if (salesOnly) {
+    // Show only sales bonus
+    mkBar('ch-wk', ['Sales'], [r.sale.wk], [C.gold]);
+    mkBar('ch-yr', ['Sales'], [r.sale.yr], [C.gold]);
+    mkLine('ch-mo', mos, [{
+      data: mos.map((_,i) => Math.round(r.sale.wk * mb * (i+1))),
+      borderColor: C.gold, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent'
+    }]);
+    const sds = [{
+      data: xs.map(s => Math.round((s * SS_STD) * 5 * wks / 12)),
+      borderColor: C.gold, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent'
+    }];
+    if (CH['sc']) CH['sc'].destroy();
+    CH['sc'] = new Chart(document.getElementById('ch-scale'), {
+      type: 'line', data: { labels: xs, datasets: sds },
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { title: { display: true, text: 'Units/day', font: { size: 10 }, color: '#888780' }, ticks: { font: { size: 10 } } },
+          y: { ticks: { callback: v => fK(v), font: { size: 10 } } }
+        }
+      }
+    });
+    return;
+  }
+
+  // Normal / self-sold commission-only mode
+  let models;
+  if (selfSold) {
+    models = [{ lbl: 'Commission', key: 'c', col: C.c }];
+  } else {
+    models = [
+      { lbl: 'Salary',     key: 's', col: C.s },
+      { lbl: 'Hybrid',     key: 'h', col: C.h },
+      { lbl: 'Commission', key: 'c', col: C.c },
+    ].filter(m => vis(m.key === 's' ? 'salary' : m.key === 'h' ? 'hybrid' : 'commission'));
+  }
 
   mkBar('ch-wk', models.map(m => m.lbl), models.map(m => r[m.key].wk), models.map(m => m.col));
   mkBar('ch-yr', models.map(m => m.lbl), models.map(m => r[m.key].yr), models.map(m => m.col));
 
-  const mos = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const mb = wks / 12;
   const mds = [];
-  if (vis('salary'))     mds.push({ data: mos.map((_,i) => Math.round(r.s.wk * mb * (i+1))), borderColor: C.s, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
-  if (vis('hybrid'))     mds.push({ data: mos.map((_,i) => Math.round(r.h.wk * mb * (i+1))), borderColor: C.h, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
-  if (vis('commission')) mds.push({ data: mos.map((_,i) => Math.round(r.c.wk * mb * (i+1))), borderColor: C.c, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  if (selfSold) {
+    mds.push({ data: mos.map((_,i) => Math.round(r.c.wk * mb * (i+1))), borderColor: C.c, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  } else {
+    if (vis('salary'))     mds.push({ data: mos.map((_,i) => Math.round(r.s.wk * mb * (i+1))), borderColor: C.s, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+    if (vis('hybrid'))     mds.push({ data: mos.map((_,i) => Math.round(r.h.wk * mb * (i+1))), borderColor: C.h, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+    if (vis('commission')) mds.push({ data: mos.map((_,i) => Math.round(r.c.wk * mb * (i+1))), borderColor: C.c, fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2, backgroundColor: 'transparent' });
+  }
   mkLine('ch-mo', mos, mds);
 
-  const xs = Array.from({ length: 21 }, (_, i) => i);
+  const ssBonus = selfSold ? SS_STD : 0;
   const sds = [];
-  const ssBonus = selfSold ? SS_STD : 0; // scale chart uses standard units only
-  if (vis('salary'))     sds.push({ data: xs.map(() => Math.round(SAL_WK * wks / 12)), borderColor: C.s, fill: false, tension: 0, pointRadius: 0, borderWidth: 1.5, borderDash: [5,4], backgroundColor: 'transparent' });
-  if (vis('hybrid'))     sds.push({ data: xs.map(s => Math.round((100 + s * (25 + ssBonus)) * 5 * wks / 12)), borderColor: C.h, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
-  if (vis('commission')) sds.push({ data: xs.map(s => Math.round(s * (50 + ssBonus) * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  if (selfSold) {
+    sds.push({ data: xs.map(s => Math.round(s * (50 + ssBonus) * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  } else {
+    if (vis('salary'))     sds.push({ data: xs.map(() => Math.round(SAL_WK * wks / 12)), borderColor: C.s, fill: false, tension: 0, pointRadius: 0, borderWidth: 1.5, borderDash: [5,4], backgroundColor: 'transparent' });
+    if (vis('hybrid'))     sds.push({ data: xs.map(s => Math.round((100 + s * 25) * 5 * wks / 12)), borderColor: C.h, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+    if (vis('commission')) sds.push({ data: xs.map(s => Math.round(s * 50 * 5 * wks / 12)), borderColor: C.c, fill: false, tension: 0.2, pointRadius: 0, borderWidth: 2, backgroundColor: 'transparent' });
+  }
 
   if (CH['sc']) CH['sc'].destroy();
   CH['sc'] = new Chart(document.getElementById('ch-scale'), {
-    type: 'line',
-    data: { labels: xs, datasets: sds },
-    options: {
-      responsive: true, maintainAspectRatio: false,
+    type: 'line', data: { labels: xs, datasets: sds },
+    options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
         x: { title: { display: true, text: 'Units/day', font: { size: 10 }, color: '#888780' }, ticks: { font: { size: 10 } } },
@@ -554,8 +689,7 @@ function mkBar(id, labels, data, colors) {
   CH[id] = new Chart(document.getElementById(id), {
     type: 'bar',
     data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
-    options: {
-      responsive: true, maintainAspectRatio: false,
+    options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
         y: { ticks: { callback: v => fK(v), font: { size: 10 } } },
@@ -568,10 +702,8 @@ function mkBar(id, labels, data, colors) {
 function mkLine(id, labels, datasets) {
   if (CH[id]) CH[id].destroy();
   CH[id] = new Chart(document.getElementById(id), {
-    type: 'line',
-    data: { labels, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
+    type: 'line', data: { labels, datasets },
+    options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
         y: { ticks: { callback: v => fK(v), font: { size: 10 } } },

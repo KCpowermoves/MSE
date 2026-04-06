@@ -153,7 +153,7 @@ input[type="range"] {
 .tab.ss-hidden { display: none; }
 
 /* Sales-only toggle */
-.sales-view-wrap { display: none; margin-top: 4px; }
+.sales-view-wrap { display: none; margin-top: 6px; }
 .sales-view-wrap.visible { display: block; }
 .sales-only-btn {
   width: 100%;
@@ -356,7 +356,10 @@ input[type="range"] {
         Self-sold account
       </button>
       <div class="self-sold-rates" id="ss-rates">
-        +$30/std unit &middot; +$5/PTAC unit added to commission &amp; hybrid
+        +$30/std unit &middot; +$5/PTAC unit added to commission
+      </div>
+      <div class="sales-view-wrap" id="sales-view-wrap">
+        <button class="sales-only-btn" id="sales-only-btn" onclick="toggleSalesOnly()">Sales commission only</button>
       </div>
     </div>
 
@@ -369,9 +372,6 @@ input[type="range"] {
         <button class="tab"        id="tab-salary"     onclick="setTab('salary',this)">Salary only</button>
         <button class="tab"        id="tab-hybrid"     onclick="setTab('hybrid',this)">Hybrid only</button>
         <button class="tab"        id="tab-commission" onclick="setTab('commission',this)">Full commission only</button>
-      </div>
-      <div class="sales-view-wrap" id="sales-view-wrap">
-        <button class="sales-only-btn" id="sales-only-btn" onclick="toggleSalesOnly()">Sales commission only</button>
       </div>
     </div>
 

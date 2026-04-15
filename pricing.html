@@ -204,6 +204,7 @@ function step2(){
     {key:'name',label:'Full Name',type:'text',ph:'John Smith'},
     {key:'email',label:'Email Address',type:'email',ph:'john@company.com'},
     {key:'phone',label:'Phone Number',type:'tel',ph:'(301) 555-0123'},
+    {key:'address',label:'Service Address',type:'text',ph:'123 Main St, Baltimore, MD 21201'},
   ];
   return `<div style="max-width:540px;margin:0 auto">
     <h2 style="font-size:28px;font-weight:700;margin-bottom:8px;text-align:center">Where should we send your plan details?</h2>
@@ -388,11 +389,13 @@ function bind(){
     if(!state.form.name.trim()) e.name='Required';
     if(!state.form.email.trim()||!/\S+@\S+\.\S+/.test(state.form.email)) e.email='Valid email required';
     if(!state.form.phone.trim()) e.phone='Required';
+    if(!state.form.address.trim()) e.address='Required';
     if(!state.form.utility) e.utility='Please select your utility';
     state.errors=e;
     if(Object.keys(e).length){render();return;}
     // Capture lead in HighLevel (non-blocking — don't gate UI on this)
     captureLead({
+      businessName: state.form.businessName,
       firstName: state.form.name.split(' ')[0],
       lastName: state.form.name.split(' ').slice(1).join(' '),
       email: state.form.email,
@@ -500,6 +503,7 @@ function showSuccess() {
   const saved = JSON.parse(sessionStorage.getItem('mse_checkout') || '{}');
   if (saved.form) {
     captureLead({
+      businessName: saved.form.businessName,
       firstName: (saved.form.name||'').split(' ')[0],
       lastName: (saved.form.name||'').split(' ').slice(1).join(' '),
       email: saved.form.email, phone: saved.form.phone,

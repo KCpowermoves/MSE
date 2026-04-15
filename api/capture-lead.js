@@ -25,22 +25,25 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { firstName, lastName, email, phone, address, utility, units, plan, amountPaid, source } = req.body;
+    const { businessName, firstName, lastName, email, phone, address, utility, units, plan, amountPaid, source } = req.body;
     const token = process.env.GHL_API_TOKEN;
+    const locationId = process.env.GHL_LOCATION_ID;
     const isPaid = source === 'pricing-page-payment-complete';
 
     // 1. Create / upsert contact
     const contactData = await ghl('/contacts/', {
-      locationId: process.env.GHL_LOCATION_ID,
+      locationId,
       firstName,
       lastName,
+      companyName: businessName,
       email,
       phone,
       address1: address,
       source: 'Pricing Page',
       tags: isPaid ? ['Paid Deposit', 'Pricing Page'] : ['Pricing Lead', 'Pricing Page'],
       customFields: [
-        { key: 'num_of_units', field_value: String(units || '') }
+        { key: 'num_of_units', field_value: String(units || '') },
+        { key: 'utility', field_value: String(utility || '') }
       ]
     }, token);
 
@@ -56,6 +59,7 @@ module.exports = async function handler(req, res) {
     const oppName = `${planLabel} — ${units} unit${units !== 1 ? 's' : ''} — ${firstName} ${lastName}`;
 
     await ghl('/opportunities/', {
+      locationId,
       pipelineId: PIPELINE_ID,
       pipelineStageId: isPaid ? STAGE_PAID_DEPOSIT : STAGE_PROSPECT,
       contactId,

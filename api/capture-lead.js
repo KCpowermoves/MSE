@@ -56,7 +56,8 @@ module.exports = async function handler(req, res) {
                     : plan === 'premium'   ? 'Total Building Energy Plan'
                     : 'HVAC Tune-Up';
 
-    const oppName = `${planLabel} — ${units} unit${units !== 1 ? 's' : ''} — ${firstName} ${lastName}`;
+    const businessLabel = (businessName && businessName.trim()) || `${firstName} ${lastName}`.trim();
+    const oppName = `${businessLabel} (${units} unit${units !== 1 ? 's' : ''}) — ${planLabel}`;
 
     await ghl('/opportunities/', {
       locationId,

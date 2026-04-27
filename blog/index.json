@@ -1,5 +1,15 @@
 [
   {
+    "slug": "shell-arc-resources-maryland-energy-impact.html",
+    "title": "Shell's $16.4B Bet on Canadian Gas: What It Means for Maryland Energy Bills",
+    "tags": "Energy Markets",
+    "date": "April 27, 2026",
+    "readtime": "6 min read",
+    "hero": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600&q=80",
+    "excerpt": "Shell's $16.4 billion acquisition of ARC Resources locks up huge Canadian gas reserves headed for LNG export. Here's why every Maryland business owner and homeowner sits downstream of this deal.",
+    "featured": true
+  },
+  {
     "slug": "maryland-beps-hb49-2026-updates.html",
     "title": "What's New for Maryland BEPS in 2026: The HB 49 Changes Every Building Owner Must Know",
     "tags": "BEPS Compliance",
@@ -7,7 +17,7 @@
     "readtime": "6 min read",
     "hero": "https://upload.wikimedia.org/wikipedia/commons/0/06/Maryland_State_House_from_College_Ave.JPG",
     "excerpt": "House Bill 49 brought significant updates to Maryland BEPS in 2026 — a new $100 annual reporting fee, a full waiver for Montgomery County buildings, and new exemption pathways for hospitals and SCIFs. Here's what changed and what it means for your property.",
-    "featured": true
+    "featured": false
   },
   {
     "slug": "maryland-beps-compliance-guide.html",

@@ -2,6 +2,9 @@ const PIPELINE_ID        = 't5GXCnSn3dyLTJuvhJCV';
 const STAGE_PROSPECT     = '9fabf423-3f93-4ae7-ad93-d9eece6e658b'; // Prospect
 const STAGE_PAID_DEPOSIT = 'c94ca8b9-f125-4862-bafa-a368ee0a1fe2'; // Customer Paid Deposit
 
+const RESIDENTIAL_PIPELINE_ID = 'Zz4fuPR58XlwuLfJu6lH';
+const RESIDENTIAL_STAGE_NEW_LEAD = 'e81087e1-3ffd-4b93-a09f-846357e53da4';
+
 async function ghl(path, body, token) {
   const res = await fetch(`https://services.leadconnectorhq.com${path}`, {
     method: 'POST',
@@ -21,8 +24,56 @@ async function ghl(path, body, token) {
   return data;
 }
 
+async function handleResidential(req, res) {
+  try {
+    const { firstName, lastName, email, phone, address, utility, bestTimeToCall } = req.body;
+    const token = process.env.GHL_API_TOKEN;
+    const locationId = process.env.GHL_LOCATION_ID;
+
+    const contactData = await ghl('/contacts/', {
+      locationId,
+      firstName,
+      lastName,
+      email,
+      phone,
+      address1: address,
+      source: 'Pricing Page Residential',
+      tags: ['Residential', 'Pricing Page'],
+      customFields: [
+        { key: 'utility', field_value: String(utility || '') },
+        { key: 'best_time_to_call', field_value: String(bestTimeToCall || '') },
+        { key: 'customer_type', field_value: 'Residential' }
+      ]
+    }, token);
+
+    const contactId = contactData.contact?.id;
+    if (!contactId) throw new Error('No contact ID returned from GHL');
+
+    const oppName = `${[firstName, lastName].filter(Boolean).join(' ').trim() || 'Residential lead'} — ${utility || 'unknown utility'}`;
+
+    await ghl('/opportunities/', {
+      locationId,
+      pipelineId: RESIDENTIAL_PIPELINE_ID,
+      pipelineStageId: RESIDENTIAL_STAGE_NEW_LEAD,
+      contactId,
+      name: oppName,
+      monetaryValue: 0,
+      status: 'open'
+    }, token);
+
+    res.json({ success: true, contactId });
+  } catch (err) {
+    console.error('capture-lead residential error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  if (req.body && req.body.customerType === 'residential') {
+    return handleResidential(req, res);
+  }
 
   try {
     const { businessName, firstName, lastName, email, phone, address, utility, units, plan, amountPaid, source } = req.body;

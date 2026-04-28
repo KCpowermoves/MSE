@@ -5,6 +5,8 @@ const STAGE_PAID_DEPOSIT = 'c94ca8b9-f125-4862-bafa-a368ee0a1fe2'; // Customer P
 const RESIDENTIAL_PIPELINE_ID = 'Zz4fuPR58XlwuLfJu6lH';
 const RESIDENTIAL_STAGE_NEW_LEAD = 'e81087e1-3ffd-4b93-a09f-846357e53da4';
 
+const { appendResidentialLead } = require('./lib/google-sheets');
+
 async function ghl(path, body, token) {
   const res = await fetch(`https://services.leadconnectorhq.com${path}`, {
     method: 'POST',
@@ -60,6 +62,12 @@ async function handleResidential(req, res) {
       monetaryValue: 0,
       status: 'open'
     }, token);
+
+    try {
+      await appendResidentialLead({ firstName, lastName, email, phone, address, utility, bestTimeToCall });
+    } catch (sheetErr) {
+      console.error('residential sheet append error:', sheetErr.message);
+    }
 
     res.json({ success: true, contactId });
   } catch (err) {

@@ -105,6 +105,34 @@
     .ladder-num{font-family:'Barlow',sans-serif;font-weight:900;font-size:.75rem;letter-spacing:.15em;color:#F4A11D;margin-bottom:.5rem}
     .ladder-title{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#fff;margin:0 0 .75rem;line-height:1.2;letter-spacing:-.01em}
     .ladder-pay{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;color:rgba(255,255,255,.65)}
+
+    /* Careers — role cards */
+    .roles{padding:5rem 1.5rem;background:#fff}
+    .roles-inner{max-width:1100px;margin:0 auto}
+    .roles-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;text-align:center;margin-bottom:.5rem}
+    .roles h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.875rem,3vw,2.5rem);text-align:center;color:#1A2332;margin:0 0 3rem;letter-spacing:-.02em}
+    .role-card{background:#fff;border:1px solid rgba(26,35,50,.08);border-radius:18px;padding:2.25rem 2rem;margin-bottom:1.25rem;box-shadow:0 4px 14px -6px rgba(26,35,50,.08);transition:transform .15s cubic-bezier(.34,1.56,.64,1),box-shadow .15s,border-color .15s}
+    .role-card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(26,35,50,.18);border-color:rgba(200,16,46,.18)}
+    .role-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;margin-bottom:.5rem}
+    .role-card-titleblock h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.625rem;color:#1A2332;margin:0;letter-spacing:-.02em}
+    .role-card-tag{display:inline-block;font-family:'Barlow',sans-serif;font-weight:700;font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:#F4A11D;margin-top:.4rem}
+    .role-card-pay{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#C8102E;white-space:nowrap}
+    .role-card-summary{font-size:1.0625rem;line-height:1.7;color:#444;margin:0 0 1.5rem}
+    .role-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem 2.5rem;margin-bottom:1.5rem}
+    @media(max-width:700px){.role-card-grid{grid-template-columns:1fr}}
+    .role-card-grid h4{font-family:'Barlow',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#888;margin:0 0 .65rem}
+    .role-card-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+    .role-card-grid li{font-size:.9375rem;line-height:1.55;color:#333;padding-left:1.25rem;position:relative}
+    .role-card-grid li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%;background:#C8102E}
+    .role-card-meta{display:flex;gap:1.25rem;flex-wrap:wrap;color:#666;font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;margin-bottom:1.5rem}
+    .role-card-meta span{display:inline-flex;align-items:center;gap:.4rem}
+    .role-card-meta svg{color:#C8102E}
+    .role-card-bottom{display:flex;justify-content:space-between;align-items:center;gap:1.25rem;flex-wrap:wrap;padding-top:1.25rem;border-top:1px solid rgba(26,35,50,.06)}
+    .role-card-game-link{font-family:'Barlow',sans-serif;font-weight:700;font-size:.875rem;color:#1A2332;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;border-bottom:2px solid transparent;transition:border-color .15s,color .15s}
+    .role-card-game-link:hover{color:#C8102E;border-bottom-color:#C8102E}
+    .btn-apply{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem 1.4rem;border-radius:8px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 20px -6px rgba(200,16,46,.45);transition:transform .12s cubic-bezier(.34,1.56,.64,1),box-shadow .12s}
+    .btn-apply:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(200,16,46,.55)}
+    .btn-apply:active{transform:translateY(0)}
     </style>
 </head>
 <body>
@@ -202,6 +230,187 @@
         <div class="ladder-pay">$150K – $250K+ / yr</div>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="roles" id="open-roles">
+  <div class="roles-inner">
+    <div class="roles-eyebrow">Open roles</div>
+    <h2>Pick where you want to land.</h2>
+
+    <article class="role-card" id="role-field-service-tech">
+      <div class="role-card-top">
+        <div class="role-card-titleblock">
+          <h3>Field Service Technician</h3>
+          <div class="role-card-tag">Stage 02 · Install side</div>
+        </div>
+        <div class="role-card-pay">$60K – $120K / yr</div>
+      </div>
+      <p class="role-card-summary">The install side of the operation. Show up, clean and tune commercial rooftop HVAC units, document the work, move to the next stop. No selling required — accounts are pre-set.</p>
+      <div class="role-card-grid">
+        <div>
+          <h4>Day-to-day</h4>
+          <ul>
+            <li>Service multiple units per stop</li>
+            <li>Photo documentation and paperwork on a phone</li>
+            <li>Real weather, real rooftops, real ladders</li>
+            <li>Weekly pay; full reconciliation after utility reimbursement</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Maryland driver's license</li>
+            <li>Personal vehicle</li>
+            <li>50+ lb lift, ladder climb</li>
+            <li>Coachable — no HVAC license required, we train you</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-card-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Full-time · 1099</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Maryland — BGE, Pepco, Delmarva, SMECO</span>
+      </div>
+      <div class="role-card-bottom">
+        <a class="role-card-game-link" href="game.html" target="_blank" rel="noopener">
+          See what a tune-up looks like → Play Tune-Up Tech
+        </a>
+        <button type="button" class="btn-apply" data-role="field-service-tech" onclick="openApplyModal('field-service-tech')">
+          Apply
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="role-card" id="role-field-sales-rep">
+      <div class="role-card-top">
+        <div class="role-card-titleblock">
+          <h3>Field Sales Representative</h3>
+          <div class="role-card-tag">Sales side · Outside sales</div>
+        </div>
+        <div class="role-card-pay">$80K – $180K / yr</div>
+      </div>
+      <p class="role-card-summary">Open commercial accounts. Walk into offices, warehouses, restaurants, and hotels — explain the EmPOWER program, lock the relationship, hand the install to the tech crew. Most owners say yes because it costs them nothing.</p>
+      <div class="role-card-grid">
+        <div>
+          <h4>Day-to-day</h4>
+          <ul>
+            <li>No cold calls, no scripts, no desk</li>
+            <li>Door-to-door commercial outside sales</li>
+            <li>Build a book of accounts that re-qualifies every 3 years</li>
+            <li>Commission-based; weekly pay</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Maryland driver's license &amp; vehicle</li>
+            <li>Field, door-to-door, or trades sales background preferred</li>
+            <li>Self-driven — you set your day</li>
+            <li>Bilingual a plus (Spanish especially)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-card-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Full-time · 1099</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Statewide Maryland</span>
+      </div>
+      <div class="role-card-bottom">
+        <span></span>
+        <button type="button" class="btn-apply" data-role="field-sales-rep" onclick="openApplyModal('field-sales-rep')">
+          Apply
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="role-card" id="role-field-and-sales-tech">
+      <div class="role-card-top">
+        <div class="role-card-titleblock">
+          <h3>Field &amp; Sales Technician</h3>
+          <div class="role-card-tag">Stage 03 · Top earners live here</div>
+        </div>
+        <div class="role-card-pay">$96K – $192K / yr</div>
+      </div>
+      <p class="role-card-summary">You sell <em>and</em> you service. Walk into a building, get the yes, do the tune-up on the spot, paperwork, next stop. Both install pay and sales bonus stack on the work you book yourself.</p>
+      <div class="role-card-grid">
+        <div>
+          <h4>Day-to-day</h4>
+          <ul>
+            <li>Mix of self-generated and dispatched work</li>
+            <li>Stage 03 in MSE's career ladder</li>
+            <li>Top performers consistently clear the high end</li>
+            <li>Weekly pay; full reconciliation after utility reimbursement</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Same baseline as Field Service Tech</li>
+            <li>Willingness to talk to building owners</li>
+            <li>Sales experience nice but not required — we train both sides</li>
+            <li>Coachable, self-driven</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-card-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Full-time · 1099</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Statewide Maryland</span>
+      </div>
+      <div class="role-card-bottom">
+        <a class="role-card-game-link" href="game.html" target="_blank" rel="noopener">
+          See what a tune-up looks like → Play Tune-Up Tech
+        </a>
+        <button type="button" class="btn-apply" data-role="field-and-sales-tech" onclick="openApplyModal('field-and-sales-tech')">
+          Apply
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </article>
+
+    <article class="role-card" id="role-field-manager">
+      <div class="role-card-top">
+        <div class="role-card-titleblock">
+          <h3>Senior Manager / Field Manager</h3>
+          <div class="role-card-tag">Stage 04 · Leadership</div>
+        </div>
+        <div class="role-card-pay">$150K – $250K+ / yr</div>
+      </div>
+      <p class="role-card-summary">You own a territory. Build the crew, ride along, train new techs, audit paperwork, and grow the book. Personal earnings plus team overrides.</p>
+      <div class="role-card-grid">
+        <div>
+          <h4>Day-to-day</h4>
+          <ul>
+            <li>Mix of in-field coaching and crew dispatch</li>
+            <li>Senior leadership work alongside Kevin and the ops team</li>
+            <li>Personal pay + team overrides</li>
+            <li>Territory-based — you own a region</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Requirements</h4>
+          <ul>
+            <li>2+ years field service, sales, or trades-management background</li>
+            <li>Maryland driver's license &amp; vehicle</li>
+            <li>Proven coaching / leadership</li>
+            <li>Strong organization, comfortable with paperwork audits</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-card-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Full-time · W-2</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Statewide Maryland — territory-based</span>
+      </div>
+      <div class="role-card-bottom">
+        <a class="role-card-game-link" href="game.html" target="_blank" rel="noopener">
+          See what a tune-up looks like → Play Tune-Up Tech
+        </a>
+        <button type="button" class="btn-apply" data-role="field-manager" onclick="openApplyModal('field-manager')">
+          Apply
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </article>
   </div>
 </section>
 </main>

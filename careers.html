@@ -133,6 +133,23 @@
     .btn-apply{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem 1.4rem;border-radius:8px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 20px -6px rgba(200,16,46,.45);transition:transform .12s cubic-bezier(.34,1.56,.64,1),box-shadow .12s}
     .btn-apply:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(200,16,46,.55)}
     .btn-apply:active{transform:translateY(0)}
+
+    /* Careers — Try the job */
+    .try-job{padding:5rem 1.5rem;background:#F5F5F5}
+    .try-job-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    @media(max-width:900px){.try-job-inner{grid-template-columns:1fr;gap:2rem}}
+    .try-job-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;margin-bottom:.75rem}
+    .try-job-text h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,2.75vw,2.25rem);color:#1A2332;margin:0 0 1rem;letter-spacing:-.02em;line-height:1.15}
+    .try-job-text h2 em{font-style:normal;color:#C8102E}
+    .try-job-text p{font-size:1.0625rem;line-height:1.7;color:#444;margin:0 0 1.5rem}
+    .try-job-card{position:relative;background:#0d1117;border-radius:16px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 24px 48px -16px rgba(26,35,50,.35)}
+    .try-job-card img{width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .25s}
+    .try-job-card:hover img{opacity:.7}
+    .try-job-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1.5rem;background:linear-gradient(to top,rgba(13,17,23,.85) 0%,rgba(13,17,23,.45) 60%,rgba(13,17,23,.25) 100%)}
+    .try-job-card-title{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0 0 .25rem;letter-spacing:-.02em}
+    .try-job-card-sub{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.7);margin:0 0 1.25rem;letter-spacing:.05em;text-transform:uppercase}
+    .try-job-card-cta{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem 1.4rem;border-radius:8px;text-decoration:none;box-shadow:0 8px 20px -6px rgba(200,16,46,.55);transition:transform .12s cubic-bezier(.34,1.56,.64,1)}
+    .try-job-card-cta:hover{transform:translateY(-2px)}
     </style>
 </head>
 <body>
@@ -411,6 +428,28 @@
         </button>
       </div>
     </article>
+  </div>
+</section>
+
+<section class="try-job">
+  <div class="try-job-inner">
+    <div class="try-job-text">
+      <div class="try-job-eyebrow">Try the job</div>
+      <h2>Curious what the work feels like? <em>Play Tune-Up Tech.</em></h2>
+      <p>Tune-Up Tech is a simulation of the actual technician workflow. Visit a building. Tune up the units. Document the job. Move to the next stop. Same loop, every day — except in the real version, the units pay you.</p>
+      <p style="font-family:'Barlow',sans-serif;font-weight:600;color:#666;font-size:.9375rem;margin:0">Plays in your browser. Two minutes is enough to get the feel.</p>
+    </div>
+    <a class="try-job-card" href="game.html" target="_blank" rel="noopener" aria-label="Play Tune-Up Tech in a new tab">
+      <img src="https://placehold.co/800x500/1A2332/F4A11D?text=Tune-Up+Tech" alt="" />
+      <div class="try-job-card-overlay">
+        <h3 class="try-job-card-title">Tune-Up Tech</h3>
+        <div class="try-job-card-sub">A field-tech simulator</div>
+        <span class="try-job-card-cta">
+          Play the game
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+    </a>
   </div>
 </section>
 </main>

@@ -150,6 +150,32 @@
     .try-job-card-sub{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.7);margin:0 0 1.25rem;letter-spacing:.05em;text-transform:uppercase}
     .try-job-card-cta{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem 1.4rem;border-radius:8px;text-decoration:none;box-shadow:0 8px 20px -6px rgba(200,16,46,.55);transition:transform .12s cubic-bezier(.34,1.56,.64,1)}
     .try-job-card-cta:hover{transform:translateY(-2px)}
+
+    /* Careers — requirements */
+    .reqs{padding:5rem 1.5rem;background:#fff}
+    .reqs-inner{max-width:1000px;margin:0 auto;text-align:center}
+    .reqs-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;margin-bottom:.5rem}
+    .reqs h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,2.75vw,2.25rem);color:#1A2332;margin:0 0 2.5rem;letter-spacing:-.02em}
+    .reqs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:2.5rem}
+    @media(max-width:900px){.reqs-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:500px){.reqs-grid{grid-template-columns:1fr}}
+    .req-pill{background:#F5F5F5;border:1px solid rgba(26,35,50,.05);border-radius:14px;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    .req-pill svg{color:#C8102E}
+    .req-pill span{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;color:#1A2332;text-align:center;line-height:1.3}
+    .reqs-callout{background:linear-gradient(135deg,rgba(244,161,29,.08),rgba(200,16,46,.06));border:1px solid rgba(244,161,29,.25);border-radius:14px;padding:1.5rem 1.75rem;font-family:'Barlow',sans-serif;font-weight:700;font-size:1.0625rem;color:#1A2332}
+    .reqs-callout em{font-style:normal;color:#C8102E}
+
+    /* Careers — real talk */
+    .real-talk{padding:5rem 1.5rem;background:#1A2332;color:#fff}
+    .real-talk-inner{max-width:1000px;margin:0 auto}
+    .real-talk-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#F4A11D;text-align:center;margin-bottom:.5rem}
+    .real-talk h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.75rem,2.75vw,2.25rem);text-align:center;color:#fff;margin:0 0 2.5rem;letter-spacing:-.02em}
+    .rt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    @media(max-width:900px){.rt-grid{grid-template-columns:1fr}}
+    .rt-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2rem 1.75rem}
+    .rt-card-num{font-family:'Barlow',sans-serif;font-weight:900;font-size:.75rem;letter-spacing:.15em;color:#F4A11D;margin-bottom:.5rem}
+    .rt-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#fff;margin:0 0 .75rem;letter-spacing:-.01em}
+    .rt-card p{font-size:.9375rem;line-height:1.65;color:rgba(255,255,255,.72);margin:0}
     </style>
 </head>
 <body>
@@ -450,6 +476,62 @@
         </span>
       </div>
     </a>
+  </div>
+</section>
+
+<section class="reqs">
+  <div class="reqs-inner">
+    <div class="reqs-eyebrow">What you'll need</div>
+    <h2>The bar is honest, not high.</h2>
+    <div class="reqs-grid">
+      <div class="req-pill">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="7.5" cy="14.5" r="1.5" fill="currentColor"/><path d="M3 10h18"/></svg>
+        <span>Maryland driver's license</span>
+      </div>
+      <div class="req-pill">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-9h-11z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/></svg>
+        <span>Personal vehicle</span>
+      </div>
+      <div class="req-pill">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M18 4v16M6 8h12M6 16h12"/></svg>
+        <span>Climb ladders</span>
+      </div>
+      <div class="req-pill">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg>
+        <span>50+ lb lift</span>
+      </div>
+      <div class="req-pill">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 9 18 21 6"/></svg>
+        <span>Coachable, work ethic</span>
+      </div>
+    </div>
+    <div class="reqs-callout">
+      <em>No HVAC license needed.</em> We train you on everything — paperwork, the EmPOWER program, the equipment, the talk track.
+    </div>
+  </div>
+</section>
+
+<section class="real-talk">
+  <div class="real-talk-inner">
+    <div class="real-talk-eyebrow">Real talk</div>
+    <h2>Three honest things, before you apply.</h2>
+    <div class="rt-grid">
+      <div class="rt-card">
+        <div class="rt-card-num">01</div>
+        <h3>It's a field job.</h3>
+        <p>Rooftops. Weather. Ladders. No A/C between stops. If you want a desk, this isn't it — and that's by design.</p>
+      </div>
+      <div class="rt-card">
+        <div class="rt-card-num">02</div>
+        <h3>It's commission-driven.</h3>
+        <p>Pay scales with output. Top earners show up. There's a paid training floor while you ramp — after that, the people who hustle make the most.</p>
+      </div>
+      <div class="rt-card">
+        <div class="rt-card-num">03</div>
+        <h3>It's self-driven.</h3>
+        <p>You set the day. That's a gift if you have a work ethic and a problem if you don't. We hire for the first one.</p>
+      </div>
+    </div>
   </div>
 </section>
 </main>

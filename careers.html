@@ -89,6 +89,22 @@
     .why-card-icon{width:48px;height:48px;border-radius:12px;background:rgba(200,16,46,.1);display:flex;align-items:center;justify-content:center;color:#C8102E;margin-bottom:1rem}
     .why-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;margin:0 0 .5rem;letter-spacing:-.01em}
     .why-card p{font-size:.9375rem;line-height:1.6;color:#555;margin:0}
+
+    /* Careers — ladder */
+    .ladder{padding:5rem 1.5rem;background:#1A2332;color:#fff;position:relative;overflow:hidden}
+    .ladder::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(244,161,29,.08),transparent 60%);pointer-events:none}
+    .ladder-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+    .ladder-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#F4A11D;text-align:center;margin-bottom:.5rem}
+    .ladder h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.875rem,3vw,2.5rem);text-align:center;color:#fff;margin:0 0 3rem;letter-spacing:-.02em}
+    .ladder h2 em{font-style:normal;color:#F4A11D}
+    .ladder-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative}
+    @media(max-width:900px){.ladder-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.ladder-grid{grid-template-columns:1fr}}
+    .ladder-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.75rem 1.25rem;text-decoration:none;color:inherit;transition:transform .15s cubic-bezier(.34,1.56,.64,1),background .15s,border-color .15s}
+    .ladder-step:hover{transform:translateY(-2px);background:rgba(255,255,255,.07);border-color:rgba(244,161,29,.35)}
+    .ladder-num{font-family:'Barlow',sans-serif;font-weight:900;font-size:.75rem;letter-spacing:.15em;color:#F4A11D;margin-bottom:.5rem}
+    .ladder-title{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#fff;margin:0 0 .75rem;line-height:1.2;letter-spacing:-.01em}
+    .ladder-pay{font-family:'Barlow',sans-serif;font-weight:700;font-size:.9375rem;color:rgba(255,255,255,.65)}
     </style>
 </head>
 <body>
@@ -156,6 +172,35 @@
         <h3>Real career path</h3>
         <p>Trainee → Field Tech → Sales &amp; Service → Field Manager. Promote from within. Senior leadership roles open as we grow.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="ladder">
+  <div class="ladder-inner">
+    <div class="ladder-eyebrow">Career path</div>
+    <h2>Everyone starts the same way. <em>Where you go is up to you.</em></h2>
+    <div class="ladder-grid">
+      <a class="ladder-step" href="#role-trainee-overview">
+        <div class="ladder-num">STAGE 01</div>
+        <h3 class="ladder-title">Trainee</h3>
+        <div class="ladder-pay">Hourly during 2–4 week paid training</div>
+      </a>
+      <a class="ladder-step" href="#role-field-service-tech">
+        <div class="ladder-num">STAGE 02</div>
+        <h3 class="ladder-title">Field Service Technician</h3>
+        <div class="ladder-pay">$60K – $120K / yr</div>
+      </a>
+      <a class="ladder-step" href="#role-field-and-sales-tech">
+        <div class="ladder-num">STAGE 03</div>
+        <h3 class="ladder-title">Field &amp; Sales Technician</h3>
+        <div class="ladder-pay">$96K – $192K / yr</div>
+      </a>
+      <a class="ladder-step" href="#role-field-manager">
+        <div class="ladder-num">STAGE 04</div>
+        <h3 class="ladder-title">Senior Manager / Field Manager</h3>
+        <div class="ladder-pay">$150K – $250K+ / yr</div>
+      </a>
     </div>
   </div>
 </section>

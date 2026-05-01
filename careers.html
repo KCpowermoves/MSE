@@ -142,9 +142,10 @@
     .try-job-text h2 em{font-style:normal;color:#C8102E}
     .try-job-text p{font-size:1.0625rem;line-height:1.7;color:#444;margin:0 0 1.5rem}
     .try-job-card{position:relative;background:#0d1117;border-radius:16px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 24px 48px -16px rgba(26,35,50,.35)}
-    .try-job-card img{width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .25s}
+    .try-job-card img{width:100%;height:100%;object-fit:cover;transition:transform .25s}
+    .try-job-card:hover img{transform:scale(1.03)}
     .try-job-card:hover img{opacity:.7}
-    .try-job-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1.5rem;background:linear-gradient(to top,rgba(13,17,23,.85) 0%,rgba(13,17,23,.45) 60%,rgba(13,17,23,.25) 100%)}
+    .try-job-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;color:#fff;text-align:left;padding:1.5rem;background:linear-gradient(to top,rgba(13,17,23,.85) 0%,rgba(13,17,23,.5) 35%,rgba(13,17,23,0) 60%)}
     .try-job-card-title{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;margin:0 0 .25rem;letter-spacing:-.02em}
     .try-job-card-sub{font-family:'Barlow',sans-serif;font-weight:600;font-size:.875rem;color:rgba(255,255,255,.7);margin:0 0 1.25rem;letter-spacing:.05em;text-transform:uppercase}
     .try-job-card-cta{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:.9375rem;padding:.75rem 1.4rem;border-radius:8px;text-decoration:none;box-shadow:0 8px 20px -6px rgba(200,16,46,.55);transition:transform .12s cubic-bezier(.34,1.56,.64,1)}
@@ -504,7 +505,7 @@
       <p style="font-family:'Barlow',sans-serif;font-weight:600;color:#666;font-size:.9375rem;margin:0">Plays in your browser. Two minutes is enough to get the feel.</p>
     </div>
     <a class="try-job-card" href="game.html" target="_blank" rel="noopener" aria-label="Play Tune-Up Tech in a new tab">
-      <img src="https://placehold.co/800x500/1A2332/F4A11D?text=Tune-Up+Tech" alt="" />
+      <img src="brand_assets/images/gamescreenshot.png" alt="Tune-Up Tech in-game preview" />
       <div class="try-job-card-overlay">
         <h3 class="try-job-card-title">Tune-Up Tech</h3>
         <div class="try-job-card-sub">A field-tech simulator</div>

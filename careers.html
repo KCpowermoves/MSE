@@ -58,6 +58,23 @@
       .nav-brand-tag { display: none; }
       .mobile-menu-btn { display: block; }
     }
+
+    /* Careers page — hero */
+    .careers-hero{position:relative;background:linear-gradient(135deg,#1A2332 0%,#243044 100%);color:#fff;padding:6rem 1.5rem 5rem;overflow:hidden}
+    .careers-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(244,161,29,.18),transparent 50%),radial-gradient(circle at 80% 80%,rgba(200,16,46,.15),transparent 55%);pointer-events:none}
+    .careers-hero::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4'><rect width='4' height='4' fill='%23ffffff' fill-opacity='0.02'/><circle cx='2' cy='2' r='0.5' fill='%23ffffff' fill-opacity='0.04'/></svg>");opacity:.5;pointer-events:none}
+    .careers-hero-inner{position:relative;z-index:1;max-width:920px;margin:0 auto;text-align:center}
+    .careers-hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,161,29,.12);border:1px solid rgba(244,161,29,.35);color:#F4A11D;font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .85rem;border-radius:100px;margin-bottom:1.5rem}
+    .careers-hero-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:#F4A11D;box-shadow:0 0 12px rgba(244,161,29,.7)}
+    .careers-hero h1{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(2.5rem,5.5vw,4.25rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 1.25rem;color:#fff}
+    .careers-hero h1 em{font-style:normal;color:#F4A11D}
+    .careers-hero p{font-size:clamp(1.0625rem,1.25vw,1.25rem);line-height:1.65;color:rgba(255,255,255,.78);max-width:680px;margin:0 auto 2.25rem}
+    .careers-hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-careers-primary{display:inline-flex;align-items:center;gap:.5rem;background:#C8102E;color:#fff;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;box-shadow:0 12px 32px -8px rgba(200,16,46,.5);transition:transform .12s cubic-bezier(.34,1.56,.64,1),box-shadow .12s}
+    .btn-careers-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(200,16,46,.6)}
+    .btn-careers-primary:active{transform:translateY(0)}
+    .btn-careers-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;transition:background .15s,transform .12s}
+    .btn-careers-secondary:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
     </style>
 </head>
 <body>
@@ -83,6 +100,22 @@
 
 <main id="main">
   <!-- sections added in Tasks 7–15 -->
+<section class="careers-hero">
+  <div class="careers-hero-inner">
+    <div class="careers-hero-eyebrow">Now Hiring — Maryland</div>
+    <h1>Build a real career. <em>In the field.</em> In Maryland.</h1>
+    <p>Paid training. Weekly pay. A real career path with one of Maryland's fastest-growing EmPOWER providers — not a gig, not a side hustle, not a national chain.</p>
+    <div class="careers-hero-actions">
+      <a href="#open-roles" class="btn-careers-primary">
+        See open roles
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#why-mse" class="btn-careers-secondary">
+        Why MSE
+      </a>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer><div class="footer-inner">

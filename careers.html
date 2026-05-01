@@ -176,6 +176,19 @@
     .rt-card-num{font-family:'Barlow',sans-serif;font-weight:900;font-size:.75rem;letter-spacing:.15em;color:#F4A11D;margin-bottom:.5rem}
     .rt-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.125rem;color:#fff;margin:0 0 .75rem;letter-spacing:-.01em}
     .rt-card p{font-size:.9375rem;line-height:1.65;color:rgba(255,255,255,.72);margin:0}
+
+    /* Careers — closing CTA */
+    .careers-cta{padding:5rem 1.5rem;background:#fff}
+    .careers-cta-inner{max-width:920px;margin:0 auto;background:linear-gradient(135deg,#C8102E 0%,#A30D24 100%);border-radius:18px;padding:3rem 2.5rem;text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(200,16,46,.45)}
+    .careers-cta-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.18),transparent 50%);pointer-events:none}
+    .careers-cta-inner *{position:relative;z-index:1}
+    .careers-cta h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.875rem,3vw,2.5rem);color:#fff;margin:0 0 .75rem;letter-spacing:-.02em}
+    .careers-cta p{font-size:1.0625rem;line-height:1.6;color:rgba(255,255,255,.85);margin:0 0 2rem;max-width:540px;margin-left:auto;margin-right:auto}
+    .careers-cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-careers-cta-white{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#C8102E;font-family:'Barlow',sans-serif;font-weight:800;font-size:1rem;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 20px -6px rgba(0,0,0,.25);transition:transform .12s cubic-bezier(.34,1.56,.64,1)}
+    .btn-careers-cta-white:hover{transform:translateY(-2px)}
+    .btn-careers-cta-ghost{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;transition:background .15s}
+    .btn-careers-cta-ghost:hover{background:rgba(255,255,255,.18)}
     </style>
 </head>
 <body>
@@ -531,6 +544,22 @@
         <h3>It's self-driven.</h3>
         <p>You set the day. That's a gift if you have a work ethic and a problem if you don't. We hire for the first one.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="careers-cta">
+  <div class="careers-cta-inner">
+    <h2>Ready to apply?</h2>
+    <p>Fill out the application — we review every one personally and reach out within one business day to book your 1-on-1.</p>
+    <div class="careers-cta-actions">
+      <button type="button" class="btn-careers-cta-white" onclick="openApplyModal('field-and-sales-tech')">
+        Apply now
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="tel:3018887090" class="btn-careers-cta-ghost">
+        Or call (301) 888-7090
+      </a>
     </div>
   </div>
 </section>

@@ -75,6 +75,20 @@
     .btn-careers-primary:active{transform:translateY(0)}
     .btn-careers-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;padding:.95rem 1.6rem;border-radius:8px;text-decoration:none;transition:background .15s,transform .12s}
     .btn-careers-secondary:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+
+    /* Careers — Why MSE */
+    .why-mse{padding:5rem 1.5rem;background:#fff}
+    .why-mse-inner{max-width:1200px;margin:0 auto}
+    .why-mse-eyebrow{font-family:'Barlow',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C8102E;text-align:center;margin-bottom:.5rem}
+    .why-mse h2{font-family:'Barlow',sans-serif;font-weight:900;font-size:clamp(1.875rem,3vw,2.5rem);text-align:center;color:#1A2332;margin:0 0 3rem;letter-spacing:-.02em}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+    .why-card{background:#F5F5F5;border-radius:14px;padding:1.75rem 1.5rem;border:1px solid rgba(26,35,50,.04);transition:transform .15s cubic-bezier(.34,1.56,.64,1),box-shadow .15s}
+    .why-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px -12px rgba(26,35,50,.18)}
+    .why-card-icon{width:48px;height:48px;border-radius:12px;background:rgba(200,16,46,.1);display:flex;align-items:center;justify-content:center;color:#C8102E;margin-bottom:1rem}
+    .why-card h3{font-family:'Barlow',sans-serif;font-weight:800;font-size:1.0625rem;color:#1A2332;margin:0 0 .5rem;letter-spacing:-.01em}
+    .why-card p{font-size:.9375rem;line-height:1.6;color:#555;margin:0}
     </style>
 </head>
 <body>
@@ -113,6 +127,35 @@
       <a href="#why-mse" class="btn-careers-secondary">
         Why MSE
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="why-mse" id="why-mse">
+  <div class="why-mse-inner">
+    <div class="why-mse-eyebrow">Why MSE</div>
+    <h2>A real company — with a real bench behind you.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Paid training</h3>
+        <p>2–4 weeks paid hourly while you ride along and learn the field. No prior HVAC license required.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <h3>Weekly pay + commission</h3>
+        <p>Paychecks every week, with full reconciliation after utility reimbursement. Top performers consistently clear six figures.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Maryland-built, Maryland-only</h3>
+        <p>We work BGE, Pepco, Delmarva, and SMECO territories. Not a national chain bolting on a side business.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
+        <h3>Real career path</h3>
+        <p>Trainee → Field Tech → Sales &amp; Service → Field Manager. Promote from within. Senior leadership roles open as we grow.</p>
+      </div>
     </div>
   </div>
 </section>

@@ -1,7 +1,6 @@
 const Busboy = require('busboy');
 const { validateApplication, getRoleDisplayName } = require('./lib/career-validation');
 const { uploadResume } = require('./lib/google-drive');
-const { sendApplicationAlert } = require('./lib/career-email');
 
 const MAX_RESUME_BYTES = 10 * 1024 * 1024; // 10 MB
 const ALLOWED_RESUME_MIME = new Set([
@@ -151,31 +150,20 @@ module.exports = async function handler(req, res) {
       monetaryValue: 0,
       status: 'open'
     }, token);
+
+    if (fields.tellUsAboutYou) {
+      try {
+        await ghl(`/contacts/${contactId}/notes`, {
+          body: `About the applicant:\n\n${fields.tellUsAboutYou}\n\nResume: ${resumeUrl || '(upload pending)'}`,
+          userId: process.env.GHL_USER_ID || undefined
+        }, token);
+      } catch (noteErr) {
+        console.error('career-application: HighLevel note failed:', noteErr.message);
+      }
+    }
   } catch (err) {
     console.error('career-application: HighLevel push failed:', err.message);
-    // Continue — we already have the resume in Drive. Email is the safety net.
-  }
-
-  try {
-    await sendApplicationAlert({
-      roleDisplayName,
-      firstName: fields.firstName,
-      lastName: fields.lastName,
-      email: fields.email,
-      phone: fields.phone,
-      zip: fields.zip,
-      yearsExperience: fields.yearsExperience,
-      hasMdLicense: fields.hasMdLicense,
-      hasVehicle: fields.hasVehicle,
-      comfortableFieldWork: fields.comfortableFieldWork,
-      referralSource: fields.referralSource,
-      tellUsAboutYou: fields.tellUsAboutYou,
-      resumeUrl,
-      contactId
-    });
-  } catch (err) {
-    console.error('career-application: email alert failed:', err.message);
-    // Do not fail the request — the application is recorded.
+    // Continue — the resume is already saved in Drive.
   }
 
   return res.status(200).json({ success: true, contactId });

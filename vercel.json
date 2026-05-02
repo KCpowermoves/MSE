@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/app",
+      "destination": "https://ms-eapp.vercel.app/login",
+      "permanent": false
+    },
+    {
+      "source": "/app/:path*",
+      "destination": "https://ms-eapp.vercel.app/:path*",
+      "permanent": false
+    }
+  ]
+}

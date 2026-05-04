@@ -213,7 +213,9 @@
         '</button>' +
       '</div>';
 
-    siteHeader.parentNode.insertBefore(banner, siteHeader.nextSibling);
+    // Append inside .site-header (which is position:sticky) so the banner
+    // stays stuck to the top alongside the nav + announce bar.
+    siteHeader.appendChild(banner);
 
     var dismissBtn = banner.querySelector('.mse-share-banner-dismiss');
     if (dismissBtn) {

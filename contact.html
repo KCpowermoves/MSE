@@ -264,7 +264,7 @@
         const banner = document.getElementById('offer-banner');
         banner.style.display = 'flex';
         if (an) {
-          const name = an.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          const name = an.split(/[_-]+/).filter(Boolean).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
           document.getElementById('offer-banner-title').textContent = '✓ Your $0 Deposit Offer from ' + name + ' Has Been Applied';
         }
       }

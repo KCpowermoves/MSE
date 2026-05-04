@@ -14,9 +14,10 @@
 .mse-share-banner-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.85rem 3rem 0.85rem 1.25rem;
+  padding: 0.85rem 3rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.85rem;
 }
 
@@ -26,11 +27,12 @@
 }
 
 .mse-share-banner-text {
-  flex: 1;
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 0.5rem 0.85rem;
   flex-wrap: wrap;
+  text-align: center;
   font-size: 0.9375rem;
   line-height: 1.5;
 }

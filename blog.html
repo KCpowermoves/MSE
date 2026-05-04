@@ -251,7 +251,8 @@
       // Always render newest first regardless of JSON order
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      const featured = posts.find(p => p.featured) || posts[0];
+      // Newest post is always featured at the top
+      const featured = posts[0];
       const rest = posts; // all posts shown in Recent Articles, newest first
 
       let html = `

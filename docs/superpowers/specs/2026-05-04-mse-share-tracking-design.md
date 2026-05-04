@@ -91,3 +91,52 @@ Manual smoke checks performed:
    }
    ```
 3. Hand the referrer their share URL by appending `?an=<slug>` to any blog post URL — e.g. `https://mdsmartenergy.com/blog/maryland-beps-compliance-guide.html?an=crystal_smith`.
+
+## Self-serve affiliate signup (viral path)
+
+Beyond the curated registry, every blog post ends with a "Earn a Referral
+Reward" widget that lets any reader become a referrer. They enter name + email
++ optional company; the widget POSTs to `/api/register-affiliate`, then reveals
+a personalized share URL plus LinkedIn / X / mailto buttons. The reward
+promise: *"When your share turns into a closed project, we'll reach out to
+send a referral reward your way."*
+
+**Backend.** `/api/register-affiliate` writes to a Google Sheet via the
+service account and (when configured) creates a HighLevel contact tagged
+`Blog Affiliate`. Both writes are best-effort — if either fails, the user
+still gets their share link, since blocking a viral share over a backend hiccup
+isn't worth it.
+
+**Required env vars (already used by other endpoints):**
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL`
+- `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`
+
+**New env var:**
+- `AFFILIATE_SIGNUP_SHEET` — spreadsheetId of the affiliate signup sheet.
+
+**Optional (mirrors existing capture-lead pattern):**
+- `GHL_API_TOKEN`, `GHL_LOCATION_ID` — when both are set, signups also create a
+  HighLevel contact.
+
+**One-time setup before deploying:**
+1. Create a Google Sheet. Row 1 headers: `Date | Name | Email | Company | Slug | Post URL | Post Title | Status | Notes`.
+2. Share the sheet with the service account email (Editor).
+3. Copy the spreadsheetId from the sheet URL.
+4. In Vercel, add `AFFILIATE_SIGNUP_SHEET=<id>` to env vars (production + preview).
+5. Redeploy.
+
+Until those are set, `appendAffiliateSignup` short-circuits with a `skipped: true`
+log line and the widget still shows success — useful for shipping the front-end
+first and wiring storage later.
+
+**Spam protection:** the form has a hidden `website` honeypot; bots that
+fill it get a silent 200 with no record written. Server-side validation also
+caps name at 60 chars, email at 120 chars, company at 80 chars, and strips
+`<>"'\\` chars from text inputs.
+
+**Reward fulfillment workflow:**
+1. Lead arrives via `/contact.html` (or `/0deposit/`) carrying `agent_name=<slug>`.
+2. Kevin opens the affiliate sheet, finds the row matching the slug, gets the
+   email + name.
+3. When the lead converts, Kevin emails the affiliate to send their reward.
+4. Kevin updates the `Status` column from `pending` → `contacted` → `paid`.

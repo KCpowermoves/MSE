@@ -54,4 +54,35 @@ async function appendResidentialLead(payload) {
   return { spreadsheetId, partner };
 }
 
-module.exports = { appendResidentialLead };
+async function appendAffiliateSignup(payload) {
+  const spreadsheetId = process.env.AFFILIATE_SIGNUP_SHEET;
+  if (!spreadsheetId || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) {
+    console.warn(
+      `Affiliate signup sheet append skipped (sheetId set=${!!spreadsheetId}, ` +
+      `auth set=${!!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL})`
+    );
+    return { skipped: true };
+  }
+  const sheets = google.sheets({ version: 'v4', auth: getAuth() });
+  const row = [
+    new Date().toISOString(),
+    payload.name || '',
+    payload.email || '',
+    payload.company || '',
+    payload.slug || '',
+    payload.postUrl || '',
+    payload.postTitle || '',
+    'pending', // status — Kevin updates manually as leads convert
+    '' // notes
+  ];
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: 'Sheet1!A:I',
+    valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'INSERT_ROWS',
+    requestBody: { values: [row] }
+  });
+  return { spreadsheetId };
+}
+
+module.exports = { appendResidentialLead, appendAffiliateSignup };

@@ -306,22 +306,36 @@
     widget.className = 'mse-share-credit';
     widget.innerHTML =
       '<div class="mse-share-credit-inner">' +
-        '<div class="mse-share-credit-eyebrow">Share &amp; Get Credit</div>' +
-        '<h2 class="mse-share-credit-title">Know someone in your network who needs to read this?</h2>' +
-        '<p class="mse-share-credit-sub">Share this article with your contacts. If your share leads to a project we close, we\'ll know it came from you.</p>' +
-        '<div class="mse-share-credit-form" data-state="empty">' +
+        '<div class="mse-share-credit-eyebrow">Earn a Referral Reward</div>' +
+        '<h2 class="mse-share-credit-title">Know someone who needs to read this?</h2>' +
+        '<p class="mse-share-credit-sub">Share this article with your network. When your share turns into a closed project, we\'ll reach out to send a referral reward your way.</p>' +
+        '<form class="mse-share-credit-form" novalidate>' +
           '<div class="mse-share-credit-fields">' +
             '<label class="mse-share-credit-field">' +
               '<span class="mse-share-credit-label">Your name <em>*</em></span>' +
-              '<input type="text" class="mse-share-credit-name" placeholder="Sarah Smith" maxlength="60" autocomplete="name" />' +
+              '<input type="text" class="mse-share-credit-name" placeholder="Sarah Smith" maxlength="60" autocomplete="name" required />' +
             '</label>' +
             '<label class="mse-share-credit-field">' +
+              '<span class="mse-share-credit-label">Email <em>*</em></span>' +
+              '<input type="email" class="mse-share-credit-email" placeholder="sarah@smithproperties.com" maxlength="120" autocomplete="email" required />' +
+            '</label>' +
+            '<label class="mse-share-credit-field mse-share-credit-field-full">' +
               '<span class="mse-share-credit-label">Company <em class="mse-share-credit-optional">(optional)</em></span>' +
               '<input type="text" class="mse-share-credit-company" placeholder="Smith Properties LLC" maxlength="80" autocomplete="organization" />' +
             '</label>' +
           '</div>' +
-        '</div>' +
-        '<div class="mse-share-credit-actions" hidden>' +
+          '<div class="mse-share-credit-honeypot" aria-hidden="true">' +
+            '<label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>' +
+          '</div>' +
+          '<div class="mse-share-credit-submit-row">' +
+            '<button type="submit" class="mse-share-credit-submit" data-no-share-track>Get my referral link</button>' +
+            '<span class="mse-share-credit-error" hidden></span>' +
+          '</div>' +
+          '<p class="mse-share-credit-fineprint">We email you only if your share converts. No spam, no list-selling.</p>' +
+        '</form>' +
+        '<div class="mse-share-credit-success" hidden>' +
+          '<div class="mse-share-credit-success-line"><strong class="mse-share-credit-success-name"></strong>, your link is ready.</div>' +
+          '<p class="mse-share-credit-success-sub">If your share leads to a closed project, we\'ll be in touch about your reward.</p>' +
           '<div class="mse-share-credit-url-row">' +
             '<input type="text" class="mse-share-credit-url" readonly aria-label="Your personalized share link" />' +
             '<button type="button" class="mse-share-credit-copy" data-no-share-track>Copy link</button>' +
@@ -340,15 +354,20 @@
               ' Email it' +
             '</a>' +
           '</div>' +
-          '<p class="mse-share-credit-fineprint">Honor system — we trust the name you enter. If a lead comes in via your link, we\'ll reach out.</p>' +
         '</div>' +
       '</div>';
 
     article.appendChild(widget);
 
+    var form = widget.querySelector('.mse-share-credit-form');
     var nameInput = widget.querySelector('.mse-share-credit-name');
+    var emailInput = widget.querySelector('.mse-share-credit-email');
     var companyInput = widget.querySelector('.mse-share-credit-company');
-    var actions = widget.querySelector('.mse-share-credit-actions');
+    var honeyInput = widget.querySelector('.mse-share-credit-honeypot input');
+    var submitBtn = widget.querySelector('.mse-share-credit-submit');
+    var errorSpan = widget.querySelector('.mse-share-credit-error');
+    var successPanel = widget.querySelector('.mse-share-credit-success');
+    var successName = widget.querySelector('.mse-share-credit-success-name');
     var urlField = widget.querySelector('.mse-share-credit-url');
     var copyBtn = widget.querySelector('.mse-share-credit-copy');
     var liBtn = widget.querySelector('.mse-share-credit-li');
@@ -356,32 +375,106 @@
     var emBtn = widget.querySelector('.mse-share-credit-em');
 
     var docTitle = document.title.split('|')[0].trim() || document.title;
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function update() {
-      var name = nameInput.value.trim();
-      var company = sanitizeCompany(companyInput.value);
-      var nameSlug = nameToSlug(name);
-      if (!nameSlug || nameSlug.length < 2) {
-        actions.hidden = true;
-        return;
-      }
+    function showError(msg) {
+      errorSpan.textContent = msg;
+      errorSpan.hidden = false;
+    }
+
+    function clearError() {
+      errorSpan.textContent = '';
+      errorSpan.hidden = true;
+    }
+
+    function buildShareUrl(nameSlug, company) {
       var base = location.origin + location.pathname;
       var qs = '?an=' + encodeURIComponent(nameSlug);
       if (company) qs += '&co=' + encodeURIComponent(company);
-      var shareUrl = base + qs;
-      urlField.value = shareUrl;
+      return base + qs;
+    }
 
+    function showSuccess(name, nameSlug, company) {
+      var shareUrl = buildShareUrl(nameSlug, company);
+      successName.textContent = firstNameOf(name);
+      urlField.value = shareUrl;
       var encUrl = encodeURIComponent(shareUrl);
       var encTitle = encodeURIComponent(docTitle);
       liBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encUrl;
       twBtn.href = 'https://twitter.com/intent/tweet?url=' + encUrl + '&text=' + encTitle;
-      emBtn.href = 'mailto:?subject=' + encTitle + '&body=' + encodeURIComponent('Thought you\'d find this useful:\n\n' + shareUrl);
+      emBtn.href = 'mailto:?subject=' + encTitle + '&body=' + encodeURIComponent("Thought you'd find this useful:\n\n" + shareUrl);
 
-      actions.hidden = false;
+      form.style.display = 'none';
+      successPanel.hidden = false;
     }
 
-    nameInput.addEventListener('input', update);
-    companyInput.addEventListener('input', update);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearError();
+
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+      var company = sanitizeCompany(companyInput.value);
+      var nameSlug = nameToSlug(name);
+
+      if (!name || name.length < 2) { showError('Add your name.'); nameInput.focus(); return; }
+      if (!nameSlug || nameSlug.length < 2) { showError('Try a different name.'); nameInput.focus(); return; }
+      if (!email || !EMAIL_RE.test(email)) { showError('Enter a valid email.'); emailInput.focus(); return; }
+
+      submitBtn.disabled = true;
+      var prevText = submitBtn.textContent;
+      submitBtn.textContent = 'Saving…';
+
+      var payload = {
+        name: name,
+        email: email,
+        company: company || '',
+        slug: nameSlug,
+        postUrl: location.origin + location.pathname,
+        postTitle: docTitle,
+        website: honeyInput ? honeyInput.value : ''
+      };
+
+      var fail = function (msg) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = prevText;
+        showError(msg || 'Something went wrong. Try again?');
+      };
+
+      if (!window.fetch) {
+        // Last-resort: skip the API call but still give them a link.
+        showSuccess(name, nameSlug, company);
+        return;
+      }
+
+      fetch('/api/register-affiliate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+        .then(function (resp) {
+          if (resp.ok && resp.body && resp.body.ok) {
+            showSuccess(name, nameSlug, company);
+          } else {
+            var code = resp.body && resp.body.error;
+            if (code === 'email_invalid') return fail('That email looks off — try again.');
+            if (code === 'name_required') return fail('Add your name.');
+            // Soft-fail: still show success if the server's having issues, since we
+            // don't want to block the user from sharing. But log it.
+            console.warn('register-affiliate non-ok:', resp);
+            showSuccess(name, nameSlug, company);
+          }
+        })
+        .catch(function (err) {
+          console.warn('register-affiliate error:', err && err.message);
+          // Soft-fail: still let them share even if the network call failed.
+          showSuccess(name, nameSlug, company);
+        });
+    });
+
+    nameInput.addEventListener('input', clearError);
+    emailInput.addEventListener('input', clearError);
 
     copyBtn.addEventListener('click', function () {
       var v = urlField.value;

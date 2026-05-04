@@ -1,5 +1,25 @@
 [
   {
+    "slug": "umes-residence-hall-tune-up.html",
+    "title": "UMES Residence Hall: A Whole-Building HVAC Tune-Up Story",
+    "tags": "Case Study",
+    "date": "May 2, 2026",
+    "readtime": "7 min read",
+    "hero": "https://www.mdsmartenergy.com/brand_assets/images/case-studies/umes-hero.jpg",
+    "excerpt": "The University of Maryland Eastern Shore tuned up over a dozen conditioning units across one of its most sought-after residence halls. Result: over $15K in BGE rebates, energy savings projected for years to come, and equipment that will serve students longer.",
+    "featured": false
+  },
+  {
+    "slug": "hilton-garden-inn-bel-air-tune-up.html",
+    "title": "Hilton Garden Inn Bel Air: A Whole-Property HVAC Tune-Up Story",
+    "tags": "Case Study",
+    "date": "April 30, 2026",
+    "readtime": "6 min read",
+    "hero": "https://www.mdsmartenergy.com/brand_assets/images/case-studies/hilton-hero.jpg",
+    "excerpt": "A 100+ room Harford County hotel ran every guest room through the BGE Building Tune-Up program. The result: thousands in rebates, meaningful annual savings, and a measurably better guest experience. Here's the full story.",
+    "featured": false
+  },
+  {
     "slug": "shell-arc-resources-maryland-energy-impact.html",
     "title": "Shell's $16.4B Bet on Canadian Gas: What It Means for Maryland Energy Bills",
     "tags": "Energy Markets",

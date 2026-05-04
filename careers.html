@@ -222,6 +222,10 @@
     .modal-success h3{font-family:'Barlow',sans-serif;font-weight:900;font-size:1.25rem;color:#1A2332;margin:0 0 .5rem}
     .modal-success p{color:#555;font-size:.9375rem;line-height:1.6;margin:0 0 1.25rem}
     </style>
+
+  <!-- share-tracking: customer/agent referral attribution (?an=) -->
+  <link rel="stylesheet" href="/share-tracking.css" />
+  <script src="/share-tracking.js" defer></script>
 </head>
 <body>
 <div class="site-header">
@@ -577,7 +581,7 @@
 <section class="careers-cta">
   <div class="careers-cta-inner">
     <h2>Ready to apply?</h2>
-    <p>Fill out the application — we review every one personally and reach out within one business day to book your 1-on-1.</p>
+    <p>Fill out the application. We review every one personally and will reach out if it looks like a fit.</p>
     <div class="careers-cta-actions">
       <button type="button" class="btn-careers-cta-white" onclick="openApplyModal('field-and-sales-tech')">
         Apply now
@@ -598,7 +602,7 @@
 
     <div id="apply-form-wrap">
       <h2 id="apply-modal-title">Apply</h2>
-      <p class="modal-sub">We review every application personally. We'll reach out within 1 business day.</p>
+      <p class="modal-sub">We review every application personally and will reach out if it looks like a fit.</p>
 
       <div class="modal-banner" id="apply-banner"></div>
 
@@ -692,7 +696,7 @@
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 13 10 18 20 7"/></svg>
       </div>
       <h3>Thanks — we got your application.</h3>
-      <p>We review every one personally. Expect a text or call within 1 business day to book your 1-on-1.</p>
+      <p>We review every one personally and will reach out if it looks like a fit.</p>
       <button type="button" class="modal-submit" onclick="closeApplyModal()">Close</button>
     </div>
   </div>

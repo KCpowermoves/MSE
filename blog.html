@@ -248,6 +248,9 @@
       const posts = await res.json();
       if (!posts.length) { document.getElementById('blog-loading').textContent = 'No articles yet.'; return; }
 
+      // Always render newest first regardless of JSON order
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
       const featured = posts.find(p => p.featured) || posts[0];
       const rest = posts; // all posts shown in Recent Articles, newest first
 

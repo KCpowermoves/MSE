@@ -1,5 +1,5 @@
 {
-  "_comment": "Customer/contact referrers who share blog posts. Slug → display fields. Use underscores in slugs to match the convention in 0deposit/agents.json. Add new entries by hand. The share-tracking script reads this; if a slug isn't here, the banner falls back to free-form title-case (no company line).",
+  "_comment": "Customer/contact referrers who share blog posts. Slug → display fields. Use underscores in slugs to match the convention in 0deposit/agents.json. Add new entries by hand. The share-tracking script reads this; if a slug isn't here, share-tracking falls back to /0deposit/agents.json (sales agents), then to free-form title-case.",
   "_example": {
     "name": "Jane Example",
     "company": "Example Property Group",

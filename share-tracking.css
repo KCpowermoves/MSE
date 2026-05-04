@@ -141,3 +141,244 @@
     transform: none;
   }
 }
+
+/* ── Bottom-of-article share-credit widget ─────────────────────────── */
+
+.mse-share-credit {
+  margin: 3rem 0 1rem;
+  background: linear-gradient(140deg, #fffaf2 0%, #fff5e8 100%);
+  border: 1px solid rgba(200, 16, 46, 0.16);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.75rem;
+  font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  color: #1a2332;
+  box-shadow:
+    0 1px 2px rgba(26, 35, 50, 0.04),
+    0 12px 32px -16px rgba(200, 16, 46, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.mse-share-credit::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #C8102E 0%, #F4A11D 100%);
+}
+
+.mse-share-credit-inner {
+  position: relative;
+}
+
+.mse-share-credit-eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C8102E;
+  margin-bottom: 0.65rem;
+}
+
+.mse-share-credit-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #1a2332;
+  margin: 0 0 0.5rem;
+}
+
+.mse-share-credit-sub {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #4a5568;
+  margin: 0 0 1.25rem;
+  max-width: 56ch;
+}
+
+.mse-share-credit-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.mse-share-credit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.mse-share-credit-label {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: #1a2332;
+  letter-spacing: 0.01em;
+}
+
+.mse-share-credit-label em {
+  font-style: normal;
+  color: #C8102E;
+  margin-left: 0.15rem;
+}
+
+.mse-share-credit-label .mse-share-credit-optional {
+  color: #888;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+.mse-share-credit-field input {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: #1a2332;
+  background: #fff;
+  border: 1.5px solid rgba(26, 35, 50, 0.12);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  outline: 0;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.mse-share-credit-field input::placeholder {
+  color: rgba(26, 35, 50, 0.35);
+}
+
+.mse-share-credit-field input:hover {
+  border-color: rgba(26, 35, 50, 0.22);
+}
+
+.mse-share-credit-field input:focus-visible {
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.18);
+}
+
+.mse-share-credit-actions {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(200, 16, 46, 0.22);
+}
+
+.mse-share-credit-actions[hidden] {
+  display: none;
+}
+
+.mse-share-credit-url-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.mse-share-credit-url {
+  flex: 1;
+  font-family: 'Source Sans 3', monospace;
+  font-size: 0.8125rem;
+  color: #4a5568;
+  background: #fff;
+  border: 1px solid rgba(26, 35, 50, 0.1);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  outline: 0;
+  cursor: text;
+}
+
+.mse-share-credit-copy {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #1a2332;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 150ms ease, transform 100ms ease;
+}
+
+.mse-share-credit-copy:hover { background: #2a3a52; }
+.mse-share-credit-copy:active { transform: translateY(1px); }
+.mse-share-credit-copy:focus-visible {
+  outline: 2px solid #C8102E;
+  outline-offset: 2px;
+}
+.mse-share-credit-copy.is-copied {
+  background: #16a34a;
+}
+
+.mse-share-credit-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.mse-share-credit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  color: #1a2332;
+  background: #fff;
+  border: 1.5px solid rgba(26, 35, 50, 0.14);
+  border-radius: 8px;
+  padding: 0.5rem 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, transform 100ms ease, background 150ms ease;
+}
+
+.mse-share-credit-btn:hover {
+  border-color: #C8102E;
+  color: #C8102E;
+  transform: translateY(-1px);
+}
+
+.mse-share-credit-btn:active { transform: translateY(0); }
+
+.mse-share-credit-btn:focus-visible {
+  outline: 2px solid #C8102E;
+  outline-offset: 2px;
+}
+
+.mse-share-credit-btn svg { flex-shrink: 0; }
+
+.mse-share-credit-li:hover { color: #0a66c2; border-color: #0a66c2; }
+.mse-share-credit-tw:hover { color: #000; border-color: #000; }
+
+.mse-share-credit-fineprint {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+  color: #888;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .mse-share-credit {
+    margin: 2.25rem 0 0.75rem;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 14px;
+  }
+  .mse-share-credit-title {
+    font-size: 1.15rem;
+  }
+  .mse-share-credit-fields {
+    grid-template-columns: 1fr;
+  }
+  .mse-share-credit-url-row {
+    flex-direction: column;
+  }
+  .mse-share-credit-buttons {
+    flex-direction: column;
+  }
+  .mse-share-credit-btn {
+    justify-content: center;
+  }
+}

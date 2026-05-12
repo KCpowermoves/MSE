@@ -1,5 +1,15 @@
 [
   {
+    "slug": "maryland-electric-prices-hvac-cleaning-efficiency.html",
+    "title": "Maryland Electric Prices Are Climbing Again. A Dirty HVAC Quietly Doubles the Damage",
+    "tags": "Energy Markets",
+    "date": "May 12, 2026",
+    "readtime": "6 min read",
+    "hero": "https://www.mdsmartenergy.com/brand_assets/images/hvac-hero-background.jpg",
+    "excerpt": "BGE, Pepco, Delmarva, and SMECO rates keep going up. PJM capacity prices cleared at record highs, data center demand is pulling power out of the region, and gas generation costs are rising. The cheapest move you can make this year is also the most overlooked: clean the equipment that is burning the power.",
+    "featured": true
+  },
+  {
     "slug": "umes-residence-hall-tune-up.html",
     "title": "UMES Residence Hall: A Whole-Building HVAC Tune-Up Story",
     "tags": "Case Study",
@@ -27,7 +37,7 @@
     "readtime": "6 min read",
     "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Shell_LNG_tanker_CARDISSA_%2837640300821%29.jpg/1920px-Shell_LNG_tanker_CARDISSA_%2837640300821%29.jpg",
     "excerpt": "Shell's $16.4 billion acquisition of ARC Resources locks up huge Canadian gas reserves headed for LNG export. Here's why every Maryland business owner and homeowner sits downstream of this deal.",
-    "featured": true
+    "featured": false
   },
   {
     "slug": "maryland-beps-hb49-2026-updates.html",

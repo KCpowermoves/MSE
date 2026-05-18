@@ -1,6 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- GA4:BEGIN (auto-injected by inject-analytics.mjs — do not edit by hand) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-64TC30PKPX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-64TC30PKPX');
+</script>
+<script>
+/* Maryland Smart Energy — custom conversion events. No dependencies. */
+(function () {
+  function ev(name, params) {
+    try { gtag('event', name, params || {}); } catch (e) {}
+  }
+  function ctx(el) {
+    return {
+      link_text: (el && (el.innerText || el.textContent) || '').trim().slice(0, 100),
+      link_url: (el && el.getAttribute && el.getAttribute('href')) || '',
+      page_location: location.href,
+      page_path: location.pathname
+    };
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').trim();
+    var text = ((a.innerText || a.textContent) || '').trim();
+
+    // Phone clicks — high-value lead signal
+    if (/^tel:/i.test(href)) { ev('phone_click', ctx(a)); return; }
+
+    // Email clicks
+    if (/^mailto:/i.test(href)) { ev('email_click', ctx(a)); return; }
+
+    // Primary CTA: anything routing to the scheduling / $0 deposit pages,
+    // or whose label is the "Schedule your $0 tune-up" call to action.
+    if (/(^|\/)pricing\.html/i.test(href) ||
+        /0deposit/i.test(href) ||
+        /schedule[^a-z]*your[^a-z]*\$?0?[^a-z]*hvac|schedule[^a-z]*(your[^a-z]*)?(free[^a-z]*)?tune[- ]?up/i.test(text)) {
+      ev('cta_schedule_click', ctx(a));
+    }
+  }, true);
+
+  // Best-effort Paperform submission -> GA4 'generate_lead'.
+  // The authoritative submission conversion should also be configured via
+  // Paperform's native Google Analytics integration (see ANALYTICS-SETUP.md).
+  window.addEventListener('message', function (e) {
+    try {
+      if (!/paperform/i.test(String(e.origin || ''))) return;
+      var d = e.data || {};
+      var t = String((typeof d === 'object' && (d.type || d.event)) || d || '');
+      if (/submit|submission|complete|thank/i.test(t)) {
+        ev('generate_lead', { method: 'paperform', page_path: location.pathname });
+      }
+    } catch (err) {}
+  });
+})();
+</script>
+<!-- GA4:END -->
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="../brand_assets/favicon.png" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shell's $16.4B Bet on Canadian Gas: What It Means for Maryland Energy Bills | Maryland Smart Energy</title>
